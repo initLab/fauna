@@ -2,10 +2,9 @@
 <html>
   <head>
     <title>InitLabAuth</title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= stylesheet_link_tag    "app", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "app", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=PT+Sans&subset=latin,latin-ext,cyrillic".html_safe, media: 'all', "data-turbolinks-tag" => true %>
+    <%= stylesheet_link_tag "app", media: "all", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
   <body class="home blog">
@@ -45,5 +44,6 @@
 	<p>Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a></p>
       </div>
     </div> <!-- /container -->
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </body>
 </html>
