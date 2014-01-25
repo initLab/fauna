@@ -50,7 +50,7 @@ end
 
 group :development, :test do
   # RSpec for testing
-  gem 'rspec'
+  gem 'rspec-rails'
 
   # Use debugger
   # gem 'debugger'
