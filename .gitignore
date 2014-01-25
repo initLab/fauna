@@ -16,3 +16,6 @@
 /tmp
 /.ruby-gemset
 /.ruby-version
+/config/database.yml
+/config/initializers/secret_token.rb
+/config/initializers/devise.rb

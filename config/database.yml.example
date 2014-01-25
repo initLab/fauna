@@ -11,9 +11,9 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: initLabAuth_development
+  database: initlab_auth_development
   pool: 5
-  username: root
+  username: vloo
   password:
   socket: /var/run/mysqld/mysqld.sock
 
@@ -23,17 +23,17 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: initLabAuth_test
+  database: initlab_auth_test
   pool: 5
-  username: root
+  username: vloo
   password:
   socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql2
   encoding: utf8
-  database: initLabAuth_production
+  database: initlab_auth_production
   pool: 5
-  username: root
+  username: vloo
   password:
   socket: /var/run/mysqld/mysqld.sock
