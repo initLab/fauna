@@ -1,13 +1,16 @@
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-signin'}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'devise-form'}) do |f| %>
   <h2>Вход</h2>
+  <%= devise_error_messages! %>
 
-  <%= f.email_field :email, class: 'form-control', placeholder: 'Имейл адрес', :autofocus => true %>
-  <%= f.password_field :password, class: 'form-control', placeholder: 'Парола' %>
+  <div class="form-group">
+    <%= f.email_field :email, class: 'form-control', placeholder: 'Имейл адрес', :autofocus => true %>
+    <%= f.password_field :password, class: 'form-control', placeholder: 'Парола' %>
+  </div>
   <%= f.label :remember_me, class: 'checkbox' do %>
     <%= f.check_box :remember_me %> Запомни ме
   <% end  %>
 
   <%= f.submit "Вход" %>
-  <div style="clear: both"/>
+
   <%= render "devise/shared/links" %>
 <% end %>

@@ -1,18 +1,11 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: 'devise-form'}) do |f| %>
+  <h2>Регистрация</h2>
   <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
+  <div class="form-group">
+    <%= f.email_field :email, class: 'form-control', placeholder: "Имейл адрес", :autofocus => true %>
+    <%= f.password_field :password, class: 'form-control', placeholder: "Парола" %>
+    <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Отново паролата" %>
+  </div>
+  <%= f.submit "Регистрация" %>
+  <%= render "devise/shared/links" %>
 <% end %>
-
-<%= render "devise/shared/links" %>
