@@ -1,0 +1,2 @@
+class Phone < Device
+end
