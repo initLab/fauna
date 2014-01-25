@@ -12,25 +12,33 @@
     <div id="container">
       <header id="top">
         <hgroup>
-
 	  <h1><a href="/">init Lab</a></h1>
 	  <h2>&nbsp;/ Hackerspace in Sofia</h2>
-
         </hgroup>
-          <div class="menu-main-container">
-            <ul id="menu-main" class="menu">
-              <li><a href="//initlab.org">Към сайта на initLab</a></li>
+        <div class="menu-main-container">
+          <ul id="menu-main" class="menu">
+            <li><a href="//initlab.org">Към сайта на initLab</a></li>
+            <% unless user_signed_in? %>
               <li><%= link_to "Вход", new_user_session_path %></li>
-            </ul>
-          </div>
+              <li><%= link_to "Регистрация", new_user_registration_path %></li>
+            <% else %>
+              <li><%= link_to "Изход", destroy_user_session_path, method: :delete %></li>
+            <% end %>
+          </ul>
+        </div>
       </header>
       <div id="main">
         <div class="row">
+
+        <% unless flash.empty? %>
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
+        <% end  %>
+
 <%= yield %>
+
         </div>
-      </div>
+      </div><!-- main -->
 
       <div id="copyright">
 	<p>Proudly running on <a href="http://rubyonrails.org">Ruby on Rails</a></p>
