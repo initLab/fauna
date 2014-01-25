@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>InitLabAuth</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <head>
+    <title>InitLabAuth</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag    "app", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "app", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="home blog">
+    <div id="container">
+      <header id="top">
+        <hgroup>
 
+	  <h1><a href="/">init Lab</a></h1>
+	  <h2>&nbsp;/ Hackerspace in Sofia</h2>
+
+        </hgroup>
+          <div class="menu-main-container">
+            <ul id="menu-main" class="menu">
+              <li><a href="//initlab.org">Към сайта на initLab</a></li>
+              <li><%= link_to "Вход", new_user_session_path %></li>
+            </ul>
+          </div>
+      </header>
+      <div id="main">
+        <div class="row">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
 <%= yield %>
+        </div>
+      </div>
 
-</body>
+      <div id="copyright">
+	<p>Proudly running on <a href="http://rubyonrails.org">Ruby on Rails</a></p>
+	<p>Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a></p>
+      </div>
+    </div> <!-- /container -->
+  </body>
 </html>

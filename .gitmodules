@@ -1,0 +1,3 @@
+[submodule "lib/initlab-wp-theme"]
+	path = lib/initlab-theme
+	url = https://github.com/initLab/wp-theme.git

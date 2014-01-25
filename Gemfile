@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'devise-i18n'
 
+# The current initlab.org theme uses compass, so we need it here, too
+gem 'compass-rails'
+
 # Rails i18n
 gem 'rails-i18n', '~> 4.0.0'
 
