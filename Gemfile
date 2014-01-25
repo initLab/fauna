@@ -51,6 +51,7 @@ end
 group :development, :test do
   # RSpec for testing
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
 
   # Use debugger
   # gem 'debugger'
