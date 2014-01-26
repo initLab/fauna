@@ -14,8 +14,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore developer-specific files
 /.ruby-gemset
 /.ruby-version
+/Guardfile
+
+# Ignore sensitive information
 /config/database.yml
 /config/initializers/secret_token.rb
 /config/initializers/devise.rb
