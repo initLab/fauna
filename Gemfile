@@ -57,11 +57,14 @@ group :development do
   gem 'guard-rspec'
 end
 
-group :development, :test do
+# Use debugger
+# gem 'debugger', group: [:development, :test]
+
+group :test do
   # RSpec for testing
   gem 'rspec-rails'
   gem 'shoulda-matchers'
 
-  # Use debugger
-  # gem 'debugger'
+  # Simplecov for code coverage statistics
+  gem 'simplecov'
 end
