@@ -3,4 +3,6 @@ class Device < ActiveRecord::Base
   # existing scripts
   self.table_name = "objects"
   belongs_to :owner, class_name: 'User', foreign_key: 'userid'
+
+  validates :value, presence: true
 end
