@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+.notice, .alert {
+  border-radius: 5px;
+  padding: 10px;
+  border: 2px solid rgb(153, 153, 153);
+  background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px;
+}

@@ -30,8 +30,11 @@
       <div id="main">
         <div class="row">
 
-        <% unless flash.empty? %>
+        <% if flash[:notice] %>
           <p class="notice"><%= notice %></p>
+        <% end %>
+
+        <% if flash[:alert]  %>
           <p class="alert"><%= alert %></p>
         <% end  %>
 
