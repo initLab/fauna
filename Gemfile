@@ -35,6 +35,9 @@ gem 'devise-i18n'
 # The current initlab.org theme uses compass, so we need it here, too
 gem 'compass-rails'
 
+# Use foreigner for foreign key definition
+gem 'foreigner'
+
 # Rails i18n
 gem 'rails-i18n', '~> 4.0.0'
 

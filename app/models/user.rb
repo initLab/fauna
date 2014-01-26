@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :devices, foreign_key: 'userid'
+  has_many :devices, foreign_key: 'userid', dependent: :destroy
 end
