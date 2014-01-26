@@ -52,6 +52,9 @@ group :development do
 
   gem 'pry'
   gem 'pry-doc'
+
+  # Continuous testing with Guard
+  gem 'guard-rspec'
 end
 
 group :development, :test do
