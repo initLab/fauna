@@ -1,29 +1,31 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: 'devise-form'}) do |f| %>
+  <h2>Редакция на профил</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div class="form-group">
+    <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Имейл адрес" %>
+    <%= f.text_field :name, class: 'form-control', placeholder: "Име" %>
+    <%= f.text_field :url, class: 'form-control', placeholder: "Сайт" %>
+    <%= f.text_field :twitter, class: 'form-control', placeholder: "Туитър хендъл" %>
+    <%= f.label :privacy, class: 'checkbox' do %>
+      <%= f.check_box :privacy %> Скрий туитър хендъла ми от @initlabkeeper
+    <% end  %>
+  </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <div class="form-group">
+    <%= f.label :password %><i>(въведете тези полета само ако искате да промените паролата си)</i>
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Нова парола" %>
+    <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Пак новата парола" %>
+  </div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+  <div><%= f.label :current_password %> <i>(нужно е да въведете текущата парола, за да потвърдите промените)</i><br />
+    <%= f.password_field :current_password, class: 'form-control', placeholder: 'Текуща парола' %></div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-<%= link_to "Back", :back %>
+<div class="devise-form">
+  <h3>Не сте щастливи?</h3>
+  <%= button_to "Изтрий регистрацията ми", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete %>
+</div>

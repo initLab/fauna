@@ -23,8 +23,6 @@
   z-index: 2;
 }
 
-
-
 .devise-form .form-group input:first-of-type {
   margin-bottom: -1px;
   border-bottom-left-radius: 0;
@@ -40,4 +38,18 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.devise-form .avatar img {
+    margin: 0 auto;
+}
+
+.devise-form .avatar-container {
+  margin: 0 auto;
+  padding-bottom: 20px;
+  width: 128px;
+}
+
+.devise-form input[type=submit] {
+  width: 100%;
 }
