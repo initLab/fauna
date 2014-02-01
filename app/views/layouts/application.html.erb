@@ -5,6 +5,32 @@
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=PT+Sans&subset=latin,latin-ext,cyrillic".html_safe, media: 'all', "data-turbolinks-tag" => true %>
     <%= stylesheet_link_tag "app", media: "all", "data-turbolinks-track" => true %>
+    <!-- For iOS 2.0+ and Android 2.1+: -->
+    <link rel="apple-touch-icon-precomposed" href="<%= asset_path "favicon-152.png" %>">
+
+    <!-- For IE 10 Metro: -->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="<%= asset_path "favicon-144.png" %>">
+
+    <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<%= asset_path "favicon-152.png" %>">
+
+    <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= asset_path "favicon-144.png" %>">
+
+    <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<%= asset_path "favicon-120.png" %>">
+
+    <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= asset_path "favicon-114.png" %>">
+
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= asset_path "favicon-72.png" %>">
+
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="<%= asset_path "favicon-57.png" %>">
+    <link rel="icon" href="<%= asset_path "favicon-32.png" %>" sizes="32x32">
+
     <%= csrf_meta_tags %>
   </head>
   <body class="home blog">
