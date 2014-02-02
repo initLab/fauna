@@ -1,0 +1,20 @@
+bg:
+  activerecord:
+    models:
+      user: "Лабър"
+      phone: "Телефон"
+      computer: "Компютър"
+      device: "Устройство"
+    attributes:
+      user:
+        name: "Име"
+        url: "Сайт"
+        password: "Парола"
+        password_confirmation: "Потвърждение на паролата"
+        current_password: "Текуща парола"
+      phone:
+        owner: "Собственик"
+        value: "Номер"
+      computer:
+        owner: "Собственик"
+        value: "MAC адрес"
