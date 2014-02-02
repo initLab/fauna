@@ -1,7 +1,7 @@
 class Arp
   def self.all
     `ip neigh show`.split(/\n/).map do |entry|
-      Arp.new *entry.scan(/\A([0-9a-f:.]*?) dev ([a-z0-9]*?) lladdr ([0-9a-f:].*?) .*\z/i).first
+      Arp.new *entry.scan(/\A([0-9a-f:.]*?) dev ([a-z0-9.]*?) lladdr ([0-9a-f:].*?) .*\z/i).first
     end
   end
 
