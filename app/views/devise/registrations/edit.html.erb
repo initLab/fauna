@@ -7,10 +7,7 @@
       <div class="form-group">
         <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Имейл адрес" %>
         <%= f.text_field :name, class: 'form-control', placeholder: "Име" %>
-        <div class="input-container">
-          <div class="icon-ph"><i class="ss-icon-social ss-twitter"></i></div>
-          <%= f.text_field :url, class: 'form-control', placeholder: "Сайт" %>
-        </div>
+        <%= f.text_field :url, class: 'form-control', placeholder: "Сайт" %>
         <%= f.text_field :twitter, class: 'form-control', placeholder: "Туитър хендъл" %>
         <%= f.label :privacy, class: 'checkbox' do %>
           <%= f.check_box :privacy %> Скрий туитър хендъла ми от @initlabkeeper

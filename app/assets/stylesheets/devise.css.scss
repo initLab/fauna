@@ -49,3 +49,21 @@
   padding-bottom: 20px;
   width: 128px;
 }
+
+.input-container {
+  padding: 0;
+  position: relative;
+}
+
+.input-container .icon-ph {
+    position: absolute;
+    z-index: 10;
+    padding: 10px;
+    line-height: 2em;
+    font-size: 16px;
+    opacity: 0.5;
+}
+
+.input-container input[type=text] {
+    padding-left: 30px;
+}
