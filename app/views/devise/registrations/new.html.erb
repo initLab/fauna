@@ -6,6 +6,6 @@
     <%= f.password_field :password, class: 'form-control', placeholder: "Парола" %>
     <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Отново паролата" %>
   </div>
-  <%= f.submit "Регистрация" %>
+  <%= f.submit "Регистрация", class: 'button' %>
   <%= render "devise/shared/links" %>
 <% end %>

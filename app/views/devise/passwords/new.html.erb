@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
   <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Имейл' %>
 
-  <div><%= f.submit "Изпрати ми инструкции за промяна" %></div>
+  <div><%= f.submit "Изпрати ми инструкции за промяна", class: 'button' %></div>
 
   <%= render "devise/shared/links" %>
 <% end %>
