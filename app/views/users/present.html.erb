@@ -1,0 +1,14 @@
+<section class="messages" id="presence-wrapper">
+  <header><h1>Кой e в Лаб'а?</h1></header>
+  <div id="presence">
+    <ul>
+      <% if @users.any? %>
+        <% @users.each do |user| %>
+          <%= render user %>
+        <% end %>
+      <% else %>
+        <strong>Всички ги е хванала липсата</strong>
+      <% end  %>
+    </ul>
+  </div>
+</section>

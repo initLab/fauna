@@ -1,0 +1,12 @@
+<% user ||= @user  %>
+<li>
+  <strong><%= user.name %></strong>
+  <% if user.twitter  %>
+    <br>
+    <%= link_to "@#{user.twitter}", "https://twitter.com/#{user.twitter}" %>
+  <% end %>
+  <% if user.url  %>
+    <br>
+    <%= link_to "#{user.url}", user.url %>
+  <% end %>
+</li>

@@ -6,7 +6,7 @@ class Arp
   end
 
   def self.present_users
-    all.map(&:owner).uniq
+    all.map(&:owner).uniq.compact
   end
 
   def self.mac_by_ip_address(ip_address)
