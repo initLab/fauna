@@ -1,4 +1,8 @@
 InitLabAuth::Application.routes.draw do
+  resource :user, only: :show do
+    resources :computers, only: [:new, :create, :edit, :update, :destroy], module: :devices
+  end
+
   devise_for :users
   get "home/index"
   root "home#index"

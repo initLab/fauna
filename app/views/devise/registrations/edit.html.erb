@@ -1,31 +1,56 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: 'devise-form'}) do |f| %>
-  <h2>Редакция на профил</h2>
+<div class="container">
+  <section>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: 'devise-form'}) do |f| %>
+      <%= devise_error_messages! %>
+      <h3>Лични данни</h3>
 
-  <%= devise_error_messages! %>
+      <div class="form-group">
+        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Имейл адрес" %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "Име" %>
+        <div class="input-container">
+          <div class="icon-ph"><i class="ss-icon-social ss-twitter"></i></div>
+          <%= f.text_field :url, class: 'form-control', placeholder: "Сайт" %>
+        </div>
+        <%= f.text_field :twitter, class: 'form-control', placeholder: "Туитър хендъл" %>
+        <%= f.label :privacy, class: 'checkbox' do %>
+          <%= f.check_box :privacy %> Скрий туитър хендъла ми от @initlabkeeper
+        <% end  %>
+      </div>
 
-  <div class="form-group">
-    <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Имейл адрес" %>
-    <%= f.text_field :name, class: 'form-control', placeholder: "Име" %>
-    <%= f.text_field :url, class: 'form-control', placeholder: "Сайт" %>
-    <%= f.text_field :twitter, class: 'form-control', placeholder: "Туитър хендъл" %>
-    <%= f.label :privacy, class: 'checkbox' do %>
-      <%= f.check_box :privacy %> Скрий туитър хендъла ми от @initlabkeeper
-    <% end  %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password %><i>(</span>въведете тези полета само ако искате да промените паролата си)</i>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Нова парола" %>
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Пак новата парола" %>
+      </div>
 
-  <div class="form-group">
-    <%= f.label :password %><i>(въведете тези полета само ако искате да промените паролата си)</i>
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Нова парола" %>
-    <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Пак новата парола" %>
-  </div>
+      <div><%= f.label :current_password %> <i>(нужно е да въведете текущата парола, за да потвърдите промените)</i><br />
+        <%= f.password_field :current_password, class: 'form-control', placeholder: 'Текуща парола' %></div>
 
-  <div><%= f.label :current_password %> <i>(нужно е да въведете текущата парола, за да потвърдите промените)</i><br />
-    <%= f.password_field :current_password, class: 'form-control', placeholder: 'Текуща парола' %></div>
+      <div><%= f.submit "Update" %></div>
+    <% end %>
+  </section>
+  <section>
+    <div class="devise-form">
+      <h3>Мрежови устройства</h3>
+      <ul id="computers">
+        <% @user.computers.each do |computer| %>
+          <%= render partial: '/devices/computers/computer', object: computer %>
+        <% end %>
+      </ul>
+      <%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link' %>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
 
-<div class="devise-form">
-  <h3>Не сте щастливи?</h3>
-  <%= button_to "Изтрий регистрацията ми", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete %>
+      <h3>Телефони</h3>
+      <ul>
+        <li>+359 888 666 444 <small>Редактирай, Изтрий</small></li>
+        <li>Добави нов телефон</li>
+      </ul>
+    </div>
+  </section>
+  <section>
+    <div class="devise-form">
+      <h3>Не сте щастливи?</h3>
+      <%= button_to "Изтрий регистрацията ми", registration_path(resource_name), data: {confirm: "Сигурни ли сте?"}, method: :delete %>
+    </div>
+  </section>
 </div>

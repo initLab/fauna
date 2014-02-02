@@ -1,0 +1,4 @@
+<% if @computer.errors.any? %>
+<% else %>
+  $('#edit_computer_<%= @computer.id %>').parent().replaceWith("<%= j render(@computer) %>");
+<% end %>

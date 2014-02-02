@@ -1,0 +1,7 @@
+<li>
+  <%= form_for [:user, @computer], html: {class: 'inline-form'}, remote: true do |f| %>
+    <%= f.text_field :value %>
+    <%= f.submit "Запиши", class: 'button' %>
+    <div class="errors"></div>
+  <% end %>
+</li>

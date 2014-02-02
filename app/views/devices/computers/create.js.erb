@@ -1,0 +1,6 @@
+<% if @computer.errors.any? %>
+<% else %>
+  $('#new_computer_link').show();
+  $('#new_computer').parent().remove();
+  $('#computers').append('<%= j render(@computer) %>');
+<% end %>
