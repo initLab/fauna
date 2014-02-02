@@ -73,3 +73,7 @@ group :test do
   # Simplecov for code coverage statistics
   gem 'simplecov'
 end
+
+group :production do
+  gem 'puma'
+end
