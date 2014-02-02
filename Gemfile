@@ -51,7 +51,9 @@ end
 
 group :development do
   # Use Capistrano for deployment
-  # gem 'capistrano'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
 
   gem 'pry'
   gem 'pry-doc'
