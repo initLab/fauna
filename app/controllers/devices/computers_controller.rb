@@ -39,7 +39,7 @@ module Devices
       end
 
       def assign_computer
-        @computer = Computer.find params[:id]
+        @computer = Computer.find(params[:id]).decorate
       end
   end
 end

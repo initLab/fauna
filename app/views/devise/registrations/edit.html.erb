@@ -34,7 +34,7 @@
       <h3>Мрежови устройства</h3>
       <ul id="computers" class="devices">
         <% @user.computers.each do |computer| %>
-          <%= render partial: '/devices/computers/computer', object: computer %>
+          <%= render partial: '/devices/computers/computer', object: computer.decorate %>
         <% end %>
       </ul>
       <div class="new_device_link"><%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link' %></div>
@@ -42,7 +42,7 @@
       <h3>Телефони</h3>
       <ul id="phones" class="devices">
         <% @user.phones.each do |phone| %>
-          <%= render partial: '/devices/phones/phone', object: phone %>
+          <%= render partial: '/devices/phones/phone', object: phone.decorate %>
         <% end %>
       </ul>
       <div class="new_device_link"><%= link_to "Добави нов телефон", new_user_phone_path, remote: true, id: 'new_phone_link' %></div>

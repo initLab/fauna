@@ -28,6 +28,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Create decorators with Draper
+gem 'draper'
+
 # Use devise for authentication
 gem 'devise'
 gem 'devise-i18n'

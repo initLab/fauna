@@ -39,7 +39,7 @@ module Devices
       end
 
       def assign_phone
-        @phone = Phone.find params[:id]
+        @phone = Phone.find(params[:id]).decorate
       end
   end
 end
