@@ -37,8 +37,7 @@
           <%= render partial: '/devices/computers/computer', object: computer %>
         <% end %>
       </ul>
-      <%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link' %>
-
+      <div class="new_device_link"><%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link' %></div>
 
       <h3>Телефони</h3>
       <ul>

@@ -5,4 +5,5 @@ class Device < ActiveRecord::Base
   belongs_to :owner, class_name: 'User', foreign_key: 'userid'
 
   validates :value, presence: true
+  validates :value, uniqueness: true
 end
