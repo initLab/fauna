@@ -4,11 +4,11 @@ module Devices
     before_filter :assign_phone, only: [:edit, :update, :destroy]
 
     def new
-      @phone = Phone.new
+      @phone = Phone.new.decorate
     end
 
     def create
-      @phone = Phone.new phone_params
+      @phone = Phone.new(phone_params).decorate
       @phone.owner = current_user
       if @phone.save
         render status: :created
@@ -21,7 +21,7 @@ module Devices
     end
 
     def update
-      if @phone.update(phone_params)
+      if @phone.decorate.update(phone_params)
         render status: :ok
       else
         render status: :unprocessable_entity
