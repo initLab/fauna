@@ -1,6 +1,6 @@
 <li>
   <%= form_for [:user, @phone], html: {class: 'inline-form'}, remote: true do |f| %>
-    <%= f.phone_field :value, required: true, pattern: '[0-9]{10}' %>
+    <%= f.phone_field :value, required: true, pattern: '[0-9]{9,10}' %>
     <%= f.submit "Запиши", class: 'button' %>
   <% end %>
 </li>
