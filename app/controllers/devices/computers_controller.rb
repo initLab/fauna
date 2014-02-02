@@ -1,5 +1,6 @@
 module Devices
   class ComputersController < ApplicationController
+    before_filter :authenticate_user!
     before_filter :assign_computer, only: [:edit, :update, :destroy]
 
     def new

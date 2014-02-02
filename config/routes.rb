@@ -1,5 +1,6 @@
 InitLabAuth::Application.routes.draw do
   resource :user, only: :show do
+    resources :phones, only: [:new, :create, :edit, :update, :destroy], module: :devices
     resources :computers, only: [:new, :create, :edit, :update, :destroy], module: :devices
   end
 

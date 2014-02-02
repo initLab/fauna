@@ -40,10 +40,12 @@
       <div class="new_device_link"><%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link' %></div>
 
       <h3>Телефони</h3>
-      <ul>
-        <li>+359 888 666 444 <small>Редактирай, Изтрий</small></li>
-        <li>Добави нов телефон</li>
+      <ul id="phones" class="devices">
+        <% @user.phones.each do |phone| %>
+          <%= render partial: '/devices/phones/phone', object: phone %>
+        <% end %>
       </ul>
+      <div class="new_device_link"><%= link_to "Добави нов телефон", new_user_phone_path, remote: true, id: 'new_phone_link' %></div>
     </div>
   </section>
   <section>

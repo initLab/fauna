@@ -1,0 +1,6 @@
+<% if @phone.errors.any? %>
+<% else %>
+  $('#new_phone_link').show();
+  $('#new_phone').parent().remove();
+  $('#phones').append('<%= j render(@phone) %>');
+<% end %>
