@@ -32,7 +32,7 @@
   <section>
     <div class="devise-form">
       <h3>Мрежови устройства</h3>
-      <ul id="computers">
+      <ul id="computers" class="devices">
         <% @user.computers.each do |computer| %>
           <%= render partial: '/devices/computers/computer', object: computer %>
         <% end %>
