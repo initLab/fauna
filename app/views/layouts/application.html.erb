@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>InitLabAuth</title>
+    <title><%= content_for?(:title) ? yield(:title) : "initLab ID System" %></title>
     <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=PT+Sans&subset=latin,latin-ext,cyrillic".html_safe, media: 'all', "data-turbolinks-tag" => true %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 
