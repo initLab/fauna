@@ -60,6 +60,9 @@ group :development do
 
   # Continuous testing with Guard
   gem 'guard-rspec'
+
+  # Deploy to a puma  server
+  gem 'capistrano3-puma'
 end
 
 # Use debugger

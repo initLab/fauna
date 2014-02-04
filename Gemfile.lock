@@ -39,6 +39,8 @@ GEM
     capistrano-rails (1.1.1)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano3-puma (0.2.0)
+      capistrano (~> 3.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     chunky_png (1.2.9)
@@ -226,6 +228,7 @@ DEPENDENCIES
   capistrano
   capistrano-bundler
   capistrano-rails
+  capistrano3-puma
   coffee-rails (~> 4.0.0)
   compass-rails
   devise
