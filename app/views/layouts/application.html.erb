@@ -31,6 +31,8 @@
     <link rel="apple-touch-icon-precomposed" href="<%= asset_path "favicon-57.png" %>">
     <link rel="icon" href="<%= asset_path "favicon-32.png" %>" sizes="32x32">
 
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
     <%= csrf_meta_tags %>
   </head>
   <body class="home blog">
@@ -74,6 +76,5 @@
 	<p>Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a></p>
       </div>
     </div> <!-- /container -->
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </body>
 </html>
