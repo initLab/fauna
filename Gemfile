@@ -7,6 +7,9 @@ gem 'rails', '4.0.4'
 gem 'sass-rails'
 gem 'sprockets', '2.11.0'
 
+# Use mysql as the database for Active Record
+gem 'mysql2'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 
@@ -80,7 +83,4 @@ end
 
 group :production do
   gem 'puma'
-
-  # Use mysql as the database for Active Record
-  gem 'mysql2'
 end
