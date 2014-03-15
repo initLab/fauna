@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 
-# Use mysql as the database for Active Record
-gem 'mysql2'
-
 # Use SCSS for stylesheets
 gem 'sass-rails'
 gem 'sprockets', '2.11.0'
@@ -64,6 +61,9 @@ group :development do
 
   # Deploy to a puma  server
   gem 'capistrano3-puma'
+
+  # Use SQLite for development
+  gem 'sqlite3'
 end
 
 # Use debugger
@@ -80,4 +80,7 @@ end
 
 group :production do
   gem 'puma'
+
+  # Use mysql as the database for Active Record
+  gem 'mysql2'
 end
