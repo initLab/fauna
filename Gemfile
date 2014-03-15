@@ -72,7 +72,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :test do
+group :test, :development do
   # RSpec for testing
   gem 'rspec-rails'
   gem 'shoulda-matchers'
