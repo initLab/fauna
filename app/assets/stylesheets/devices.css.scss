@@ -12,18 +12,6 @@ ul.devices {
     white-space: nowrap;
 }
 
-#computers li:before {
-    font-family: "SSSymbolicons";
-    content: "\EB84";
-    padding-right: 5px;
-}
-
-#phones li:before {
-    font-family: "SSSymbolicons";
-    content: "\1F4F1";
-    padding-right: 5px;
-}
-
 .new_device_link {
     width: 100%;
     text-align: center;
@@ -60,3 +48,45 @@ ul.devices {
     margin-left: -5px;
     height: 1.5em;
 }
+
+
+.authentication {
+  section { 
+    width: 50%;
+  }
+
+  .devise-form {
+      max-width: 100%;
+  }
+
+  .inline-form {
+    display: block;
+    position: relative;
+    .ss-icon {
+      position: absolute;
+      background: rgba(0,0,0,.1);
+      border-radius: 5px 0 0 5px;
+      border-right: 1px solid #bbb;
+      color: #666666;
+      height: 2.9em;
+      line-height: 3.2em;
+      text-align: center;
+      text-shadow: 0 1px 0 #fff;
+      width: 3em;
+    }
+    input {
+      padding: .8em;
+      padding-left: 3.5em;
+      &[type="text"],
+      &[type="tel"] {
+        height: auto;
+      }
+      &[type="submit"] {
+        height: 2.95em;
+        padding: 0;
+      }
+    }
+  }
+}
+
+
