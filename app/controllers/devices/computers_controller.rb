@@ -5,8 +5,7 @@ module Devices
 
     def new
       @computer = Computer.new
-      puts request.remote_addr
-      @computer.value = Arp.mac_by_ip_address(request.remote_addr)
+      @computer.value = Arp.mac_by_ip_address(request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip)
     end
 
     def create
