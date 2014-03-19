@@ -1,8 +1,7 @@
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post, class: 'devise-form'}) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), builder: FancyFormBuilder, html: {method: :post, class: 'devise-form'}) do |f| %>
   <h2>Забравена парола?</h2>
 
-  <%= devise_error_messages! %>
-  <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Имейл' %>
+  <%= f.email_field :email, autofocus: true %>
 
   <div><%= f.submit "Изпрати ми инструкции за промяна", class: 'button' %></div>
 
