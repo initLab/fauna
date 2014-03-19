@@ -20,5 +20,10 @@ module InitLabAuth
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :bg
+
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      puts html_tag.class
+      html_tag
+    end
   end
 end
