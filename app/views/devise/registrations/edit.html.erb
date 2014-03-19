@@ -1,27 +1,26 @@
 <div class="container authentication">
   <section>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: 'devise-form'}) do |f| %>
-      <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: FancyFormBuilder, html: {method: :put, class: 'devise-form'}) do |f| %>
       <h3>Лични данни</h3>
 
       <div class="form-group">
-        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Имейл адрес" %>
-        <%= f.text_field :name, class: 'form-control', placeholder: "Име" %>
-        <%= f.text_field :url, class: 'form-control', placeholder: "Сайт" %>
-        <%= f.text_field :twitter, class: 'form-control', placeholder: "Туитър потребителско име" %>
-        <%= f.label :privacy, class: 'checkbox' do %>
-          <%= f.check_box :privacy %> Скрий туитър хендъла ми от @initlabkeeper
-        <% end  %>
+        <%= f.email_field :email, autofocus: true %>
+        <%= f.text_field :name %>
+        <%= f.text_field :url %>
+        <%= f.text_field :twitter %>
+        <%= f.check_box :privacy, label: "Скрий туитър хендъла ми от @initlabkeeper" %>
       </div>
 
       <div class="form-group">
         <%= f.label :password %><em>(</span>въведете тези полета само ако искате да промените паролата си)</em>
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Нова парола" %>
-        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Пак новата парола" %>
+        <%= f.password_field :password %>
+        <%= f.password_field :password_confirmation %>
       </div>
 
-      <div><%= f.label :current_password %> <em>(нужно е да въведете текущата парола, за да потвърдите промените)</em><br />
-        <%= f.password_field :current_password, class: 'form-control', placeholder: 'Текуща парола' %></div>
+      <div>
+        <%= f.label :current_password %> <em>(нужно е да въведете текущата парола, за да потвърдите промените)</em><br />
+        <%= f.password_field :current_password %>
+      </div>
 
       <div><%= f.submit "Обнови", class: 'button' %></div>
     <% end %>
