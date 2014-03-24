@@ -17,7 +17,7 @@ class FancyFormBuilder < ActionView::Helpers::FormBuilder
     options = args.extract_options!
     options[:label] ||= @object.class.human_attribute_name(name)
     args << options
-    label :privacy, class: 'checkbox' do
+    label name, class: 'checkbox' do
       "#{super(name, *args)} #{options[:label]}".html_safe
     end
   end
