@@ -18,4 +18,8 @@ namespace :initial_setup do
 end
 
 desc 'Perform initial setup of the application'
-task initial_setup: ['initial_setup:secret_token', 'initial_setup:db_config']
+task initial_setup: ['initial_setup:secret_token',
+                     'initial_setup:db_config',
+                     'db:create',
+                     'db:migrate',
+                     'db:test:prepare']
