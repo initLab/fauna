@@ -23,7 +23,6 @@
 # Ignore sensitive information
 /config/database.yml
 /config/initializers/secret_token.rb
-/config/initializers/devise.rb
 
 # Ignore simplecov's output
 /coverage
