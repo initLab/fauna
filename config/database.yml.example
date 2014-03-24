@@ -16,7 +16,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: initlab_auth_production
+  database: fauna_production
   pool: 5
   username: vloo
   password:

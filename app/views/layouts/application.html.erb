@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : "initLab ID System" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "init Lab Fauna" %></title>
     <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=PT+Sans&subset=latin,latin-ext,cyrillic".html_safe, media: 'all', "data-turbolinks-tag" => true %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 
@@ -40,11 +40,11 @@
       <header id="top">
         <hgroup>
 	  <h1><a href="/">init Lab</a></h1>
-	  <h2>&nbsp;/ Identity System</h2>
+	  <h2>&nbsp;/ Fauna</h2>
         </hgroup>
         <div class="menu-main-container">
           <ul id="menu-main" class="menu">
-            <li><a href="//initlab.org">Към сайта на initLab</a></li>
+            <li><a href="//initlab.org">Към сайта на init Lab</a></li>
             <% unless user_signed_in? %>
               <li><%= link_to "Вход", new_user_session_path %></li>
               <li><%= link_to "Регистрация", new_user_registration_path %></li>
