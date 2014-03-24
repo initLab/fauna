@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-InitLabAuth::Application.load_tasks
+Fauna::Application.load_tasks

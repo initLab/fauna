@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
-gem 'sprockets', '2.11.0'
+gem 'sass-rails', '~> 4.0.2'
+gem 'sprockets'
 
 # Use mysql as the database for Active Record
 gem 'mysql2'
