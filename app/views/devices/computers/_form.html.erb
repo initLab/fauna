@@ -1,6 +1,9 @@
 <li>
-  <%= form_for [:user, @computer], html: {class: 'inline-form'}, remote: true do |f| %>
-    <%= f.text_field :value, required: true, pattern: '[A-Fa-f0-9]{12}' %>
-    <%= f.submit "Запиши", class: 'button' %>
+  <%= form_for [:user, @computer], remote: true do |f| %>
+    <div class="input-with-icon inline-form">
+        <i class="ss-icon ss-wifi"></i>
+        <%= f.submit "Запиши", class: 'button' %>
+        <%= f.text_field :value, required: true, pattern: '[A-Fa-f0-9]{12}' %>
+    </div>
   <% end %>
 </li>
