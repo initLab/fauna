@@ -3,10 +3,19 @@
   border: 2px solid #999;
   border-radius: 5px;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: .5em 1em;
 }
-
 
 .alert {
-  @extend .notice;
+  @include notification-mixin($alert);
 }
+
+.warning {
+  @include notification-mixin($warning);
+}
+
+.success {
+  @include notification-mixin($success);
+}
+
+
