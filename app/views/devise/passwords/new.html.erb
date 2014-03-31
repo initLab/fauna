@@ -1,4 +1,4 @@
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), builder: FancyFormBuilder, html: {method: :post, class: 'devise-form medium-6 medium-push-3'}) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), builder: FancyFormBuilder, html: {method: :post, class: 'medium-6 medium-push-3'}) do |f| %>
   <h2>Забравена парола?</h2>
 
   <%= f.email_field :email, autofocus: true %>

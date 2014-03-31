@@ -29,6 +29,12 @@
 @mixin breakpoint($type, $fallback:false, $parent:true) {
   // Adds styles for the class only for the specified view
 
+  @if $type == small {
+    @media (min-width: $break-small) {
+      @content;
+    }
+  }
+
   @if $type == medium {
     @media (min-width: $break-medium) {
       @content;

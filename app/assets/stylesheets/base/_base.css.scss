@@ -1,63 +1,53 @@
 %inline-block {
   display: inline-block; 
-  vertical-align: baseline; 
+  vertical-align: top; 
   *display: inline; 
   *vertical-align: auto;
   *zoom: 1;
 }
 
 
-
-.input-container {
+form {
   padding: 0;
-  position: relative;
+  overflow: visible;
+  input{
+    &[type="submit"] {
+      float: right;
+      margin-right: 0;
+    }
+    &[type="checkbox"] {
+      vertical-align: top;
+    }
+  }
 }
 
-.input-container .icon-ph {
-  position: absolute;
-  z-index: 10;
-  padding: 10px;
-  line-height: 2em;
-  font-size: 16px;
-  opacity: 0.5;
+.form__footer {
+  margin-top: 2em;
 }
 
-.input-container input[type=text] {
-  padding-left: 30px;
+.form__group {
+  margin-bottom: 1em;
+  .input--icon {
+    input {
+      margin-bottom: 0;
+      border-radius: 0;
+      border-bottom-width: 0;
+    }
+
+    &:first-of-type input {
+      border-radius: 5px 5px 0 0;
+    }
+    &:last-of-type input {
+      border-radius: 0 0 5px 5px;
+      border-bottom-width: 1px;
+    }
+  }
+  .checkbox {
+    margin-top: .5em;
+  }
 }
 
-.inline-form {
-  padding: 0;
-  display: inline-block;
-}
-
-.inline-form input[type=text], input[type=tel] {
-  font-family: "Monospace";
-  vertical-align: top;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  display:inline-block;
-  width: 64%;
-  margin:0;
-  padding: 0px;
-  font-size: 1em;
-  float: none;
-  height: 1.5em;
-}
-
-.inline-form input[type=submit] {
-  display: inline-block;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  margin: 0;
-  padding: 0;
-  width: 30%;
-  float: none;
-  margin-left: -5px;
-  height: 1.5em;
-}
-
-.input-with-icon {
+.input--icon {
   display: block;
   position: relative;
   .ss-icon {
@@ -65,28 +55,50 @@
     background: rgba(0,0,0,.1);
     border-radius: 5px 0 0 5px;
     border-right: 1px solid #bbb;
-    color: #666666;
+    color: #666;
     height: 100%;
     line-height: 3.2em;
     text-align: center;
     text-shadow: 0 1px 0 #fff;
     width: 3em;
+    z-index: 10;
+    &.ss-cell {
+      line-height: 3.8em;
+    }
   }
   input {
-    padding: 1em 1em 1em 4.2em;
+    padding: 0 .5em 0 3.5em;
+    position: relative;
+    z-index: 1;
     &[type="text"],
+    &[type="email"],
+    &[type="password"],
     &[type="tel"] {
-      height: auto;
+      font: normal 1em "PT Sans",Verdana,sans-serif;
+      height: 3em;
+    }
+  }
+}
+
+.form--inline {
+  input {
+    &[type="text"],
+    &[type="email"],
+    &[type="password"],
+    &[type="tel"] {
+      @extend .medium-9;
+      border-radius: 3px 0 0 3px;
     }
     &[type="submit"] {
-      height: 2.95em;
+      @extend .medium-3;
       position: absolute;
       right: 0;
       top: 0;
       margin: 0;
       height: 100%;
+      border-radius: 0 3px 3px 0;
     }
   }
 }
 
-
+.container { padding: 1em; }

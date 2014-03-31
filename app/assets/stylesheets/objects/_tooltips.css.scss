@@ -1,0 +1,19 @@
+.tooltip { 
+  position: absolute;
+  padding: 5px;
+  z-index: 2;
+  background: #333;
+  color: #eee;
+  top: .5em;
+  text-shadow: 0 -1px 0 #000;
+  border-radius: 5px;
+  &:before {
+    content: " ";
+    border: 5px solid #333;
+    border-color: transparent #333 transparent transparent;
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    margin-top: -5px;
+  }
+}
