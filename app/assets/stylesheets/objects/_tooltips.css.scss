@@ -7,6 +7,7 @@
   top: .5em;
   text-shadow: 0 -1px 0 #000;
   border-radius: 5px;
+  display: none;
   &:before {
     content: " ";
     border: 5px solid #333;
@@ -16,4 +17,8 @@
     top: 50%;
     margin-top: -5px;
   }
+  &.error {
+      display: block;
+  }
 }
+
