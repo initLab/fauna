@@ -1,0 +1,9 @@
+@media screen and (min-width: $break-medium) {
+  @include generate-grid(medium);
+}
+
+@media screen and (min-width: $break-large) {
+  @include generate-grid(large);
+}
+
+

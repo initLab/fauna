@@ -4,8 +4,8 @@ rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.0
+  - 2.1.1
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:create db:migrate db:test:prepare spec
+  - RAILS_ENV=test bundle exec rake --trace initial_setup spec
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - cp config/initializers/devise.rb.example config/initializers/devise.rb

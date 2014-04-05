@@ -21,8 +21,6 @@ ActiveRecord::Schema.define(version: 20140126120032) do
     t.datetime "updated_at"
   end
 
-  add_index "objects", ["userid"], name: "objects_userid_fk", using: :btree
-
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -42,9 +40,7 @@ ActiveRecord::Schema.define(version: 20140126120032) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  add_foreign_key "objects", "users", name: "objects_userid_fk", column: "userid", dependent: :delete
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

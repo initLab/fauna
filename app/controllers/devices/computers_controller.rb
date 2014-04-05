@@ -4,9 +4,7 @@ module Devices
     before_filter :assign_computer, only: [:edit, :update, :destroy]
 
     def new
-      @computer = Computer.new
-      puts request.remote_addr
-      @computer.value = Arp.mac_by_ip_address(request.remote_addr)
+      @computer = Computer.new value: current_mac_address
     end
 
     def create

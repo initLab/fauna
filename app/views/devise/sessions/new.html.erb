@@ -1,16 +1,13 @@
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'devise-form'}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), builder: FancyFormBuilder, html: {class: 'medium-6 medium-push-3'}) do |f| %>
   <h2>Вход</h2>
-  <%= devise_error_messages! %>
-
   <div class="form-group">
-    <%= f.email_field :email, class: 'form-control', placeholder: 'Имейл адрес', :autofocus => true %>
-    <%= f.password_field :password, class: 'form-control', placeholder: 'Парола' %>
+    <%= f.email_field :email, :autofocus => true %>
+    <%= f.password_field :password %>
   </div>
-  <%= f.label :remember_me, class: 'checkbox' do %>
-    <%= f.check_box :remember_me %> Запомни ме
-  <% end  %>
+  <%= f.check_box :remember_me, label: 'Запомни ме' %>
 
-  <%= f.submit "Вход", class: 'button' %>
-
-  <%= render "devise/shared/links" %>
+  <footer class="form__footer">
+    <%= f.submit "Вход", class: 'button' %>
+    <%= render "devise/shared/links" %>
+  </footer>
 <% end %>
