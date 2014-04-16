@@ -1,4 +1,4 @@
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), builder: FancyFormBuilder, html: {class: 'devise-form'}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), builder: FancyFormBuilder, html: {class: 'medium-6 medium-push-3'}) do |f| %>
   <h2>Вход</h2>
   <div class="form-group">
     <%= f.email_field :email, :autofocus => true %>
@@ -6,7 +6,8 @@
   </div>
   <%= f.check_box :remember_me, label: 'Запомни ме' %>
 
-  <%= f.submit "Вход", class: 'button' %>
-
-  <%= render "devise/shared/links" %>
+  <footer class="form__footer">
+    <%= f.submit "Вход", class: 'button' %>
+    <%= render "devise/shared/links" %>
+  </footer>
 <% end %>

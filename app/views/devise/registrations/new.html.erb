@@ -1,10 +1,12 @@
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), builder: FancyFormBuilder, html: {class: 'devise-form'}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), builder: FancyFormBuilder, html: {class: 'medium-6 medium-push-3'}) do |f| %>
   <h2>Регистрация</h2>
   <div class="form-group">
     <%= f.email_field :email, :autofocus => true %>
     <%= f.password_field :password %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <%= f.submit "Регистрация", class: 'button' %>
-  <%= render "devise/shared/links" %>
+  <footer class="form__footer">
+    <%= f.submit "Регистрация", class: 'button' %>
+    <%= render "devise/shared/links" %>
+  </footer>
 <% end %>

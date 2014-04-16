@@ -26,3 +26,6 @@
 
 # Ignore simplecov's output
 /coverage
+
+# Ignore swap files
+*.swp
