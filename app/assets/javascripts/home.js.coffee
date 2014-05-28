@@ -2,27 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ = jQuery
-
 $(document).on "page:change", ->
+  displayFormErrors()
 
-    $('.form-control').each ->
-        data_error = $(@).data('error')
+@displayFormErrors = () ->
+  $('.form-control').each ->
+    if $(@).data('error').length > 0
+      displayToolTip $(@), $(@).data('error').join(', ')
 
-        tooltip = $(@).siblings('.tooltip')
-        tooltip.text(data_error)
-            .css('right', -(tooltip.outerWidth() + 10) + 'px')
-
-
-        validateInput(data_error, tooltip)
-        $(@).keypress ->
-            validateInput(data_error, tooltip)
-        
-
-validateInput = (error, tooltip) ->
-    if error.length
-       tooltip.addClass('error')
-    else
-       tooltip.attr('class', 'tooltip')
-
-
+displayToolTip = (targetElement, message) ->
+  tooltip = $("<span class=\"tooltip error\">#{message}</span>")
+  targetElement.after tooltip
+  tooltip.css 'right', -(tooltip.outerWidth() + 10) + 'px'
