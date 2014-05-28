@@ -1,9 +1,21 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), builder: FancyFormBuilder, html: {class: 'medium-6 medium-push-3'}) do |f| %>
   <h2>Регистрация</h2>
-  <div class="form-group">
-    <%= f.email_field :email, :autofocus => true %>
-    <%= f.password_field :password %>
-    <%= f.password_field :password_confirmation %>
+  <div class="form__group">
+    <div class="input--icon">
+      <i class="ss-icon ss-mail"></i>
+      <%= f.email_field :email, autofocus: true %>
+      <span class="tooltip">&nbsp;</span>
+    </div>
+    <div class="input--icon">
+      <i class="ss-icon ss-key"></i>
+      <%= f.password_field :password %>
+      <span class="tooltip">&nbsp;</span>
+    </div>
+    <div class="input--icon">
+      <i class="ss-icon ss-key"></i>
+      <%= f.password_field :password_confirmation %>
+      <span class="tooltip">&nbsp;</span>
+    </div>
   </div>
   <footer class="form__footer">
     <%= f.submit "Регистрация", class: 'button' %>
