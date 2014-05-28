@@ -3,8 +3,7 @@ cache: bundler
 rvm:
   - 1.9.3
   - 2.0.0
-  - 2.1.0
-  - 2.1.1
+  - 2.1.2
 script:
   - RAILS_ENV=test bundle exec rake --trace initial_setup spec
 before_script:
