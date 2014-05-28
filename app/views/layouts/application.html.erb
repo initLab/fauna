@@ -39,12 +39,13 @@
     <div id="container">
       <header id="top">
         <hgroup>
-	  <h1><a href="/">init Lab</a></h1>
-	  <h2>&nbsp;/ Fauna</h2>
+	  <h1><a href="//initlab.org">init Lab</a></h1>
+	  <h2>&nbsp;/ <a href="/">Fauna</a></h2>
         </hgroup>
         <div class="menu-main-container">
           <ul id="menu-main" class="menu">
             <li><a href="//initlab.org">Към сайта на init Lab</a></li>
+            <li><a href="/">Кой е в Лаб'а?</a></li>
             <% unless user_signed_in? %>
               <li><%= link_to "Вход", new_user_session_path %></li>
               <li><%= link_to "Регистрация", new_user_registration_path %></li>
