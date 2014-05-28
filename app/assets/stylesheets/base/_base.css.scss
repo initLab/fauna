@@ -1,11 +1,10 @@
 %inline-block {
-  display: inline-block; 
-  vertical-align: top; 
-  *display: inline; 
+  display: inline-block;
+  vertical-align: top;
+  *display: inline;
   *vertical-align: auto;
   *zoom: 1;
 }
-
 
 form {
   padding: 0;
@@ -102,3 +101,21 @@ form {
 }
 
 .container { padding: 1em; }
+
+.authentication {
+  div ~ h3 {
+    margin-top: 20px;
+  }
+}
+
+.device {
+  padding-left: 5px;
+
+  div ~ div {
+    margin-top: 5px;
+  }
+}
+
+.new_device_link {
+  margin-left: 22px;
+}
