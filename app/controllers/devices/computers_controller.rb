@@ -8,7 +8,7 @@ module Devices
     end
 
     def create
-      @computer = Computer.new computer_params
+      @computer = Computer.new(computer_params).decorate
       @computer.owner = current_user
       if @computer.save
         render status: :created

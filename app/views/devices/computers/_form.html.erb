@@ -2,6 +2,6 @@
   <div class="input--icon">
     <i class="ss-icon ss-wifi"></i>
     <%= f.submit "Запиши", class: 'button' %>
-    <%= f.text_field :value, required: true %>
+    <%= f.text_field :value, required: true, value: @computer.mac_address %>
   </div>
 <% end %>
