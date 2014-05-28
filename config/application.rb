@@ -4,7 +4,7 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env)
+Bundler.require(*Rails.groups)
 
 module Fauna
   class Application < Rails::Application
@@ -22,7 +22,6 @@ module Fauna
     config.i18n.default_locale = :bg
 
     config.action_view.field_error_proc = Proc.new do |html_tag, instance|
-      puts html_tag.class
       html_tag
     end
   end
