@@ -10,10 +10,6 @@
           <%= f.text_field :name, autofocus: true %>
         </div>
         <div class="input--icon">
-          <i class="ss-icon ss-mail"></i>
-          <%= f.email_field :email %>
-        </div>
-        <div class="input--icon">
           <i class="ss-icon ss-earth"></i>
           <%= f.text_field :url %>
         </div>
@@ -22,6 +18,14 @@
           <%= f.text_field :twitter %>
         </div>
         <%= f.check_box :privacy, label: "Скрий туитър хендъла ми от @initlabkeeper" %>
+      </div>
+
+      <div>
+        <%= f.label :email %><em>(за да го промените, трябва да въведете и текущата си парола най-отдолу)</em>
+        <div class="input--icon">
+          <i class="ss-icon ss-mail"></i>
+          <%= f.email_field :email %>
+        </div>
       </div>
 
       <div class="form__group">
@@ -37,7 +41,7 @@
       </div>
 
       <div>
-        <%= f.label :current_password %> <em>(нужно е да въведете текущата парола, за да потвърдите промените)</em><br />
+        <%= f.label :current_password %> <em>(нужно е да въведете текущата парола, за да потвърдите промените на парола и Email)</em><br />
         <div class="input--icon">
           <i class="ss-icon ss-key"></i>
           <%= f.password_field :current_password %>
