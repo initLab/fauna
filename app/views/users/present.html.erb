@@ -1,14 +1,8 @@
-<section class="messages" id="presence-wrapper">
-  <header><h1>Кой e в Лаб'а?</h1></header>
-  <div id="presence">
+<section class="messages container" id="presence-wrapper">
+  <div id="presence" class="medium-12">
+    <header><h1>Кой e в Лаб'а?</h1></header>
     <ul>
-      <% if @users.any? %>
-        <% @users.each do |user| %>
-          <%= render user %>
-        <% end %>
-      <% else %>
-        <strong>Всички ги е хванала липсата</strong>
-      <% end  %>
+      <%= render(partial: 'user', collection: @users) || render(partial: 'no_users') %>
     </ul>
   </div>
 </section>
