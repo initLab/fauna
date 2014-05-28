@@ -1,10 +1,9 @@
 <li>
   <% if user.url.present?  %>
-    <br>
     <%= link_to user.url do %>
       <strong><%= user.name %></strong>
     <% end %>
-  <% else  %>
+  <% else %>
     <strong><%= user.name %></strong>
   <% end %>
 
