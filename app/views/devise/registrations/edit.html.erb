@@ -1,5 +1,5 @@
 <div class="container authentication">
-  <section class="medium-6">
+  <section class="medium-4 medium-push-1">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: FancyFormBuilder, html: {method: :put}) do |f| %>
       <h3>Лични данни</h3>
 
@@ -46,21 +46,23 @@
       <div><%= f.submit "Обнови", class: 'button' %></div>
     <% end %>
   </section>
-  <section class="medium-5 medium-push-1">
+
+  <section class="medium-4 medium-push-1">
     <h3>Мрежови устройства</h3>
+
     <div id="computers" class="device">
-      <% @user.computers.each do |computer| %>
-        <%= render partial: '/devices/computers/computer', object: computer.decorate %>
-      <% end %>
+      <%= render partial: '/devices/computers/computer', collection: @user.computers.decorate %>
     </div>
-    <div class="new_device_link"><%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link' %></div>
+
+    <div class="new_device_link">
+      <%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link' %>
+    </div>
 
     <h3>Телефони</h3>
     <div id="phones" class="device">
-      <% @user.phones.each do |phone| %>
-        <%= render partial: '/devices/phones/phone', object: phone.decorate %>
-      <% end %>
+      <%= render partial: '/devices/phones/phone', collection: @user.phones.decorate %>
     </div>
+
     <div class="new_device_link"><%= link_to "Добави нов телефон", new_user_phone_path, remote: true, id: 'new_phone_link' %></div>
     <h3>Не сте щастливи?</h3>
     <%= button_to "Изтрий регистрацията ми", registration_path(resource_name), data: {confirm: "Сигурни ли сте?"}, method: :delete, class: 'button' %>
