@@ -1,5 +1,6 @@
 <% phone ||= @phone  %>
 <div id="phone_<%= phone.id %>">
+  <i class="ss-icon ss-cell"></i>
   <code><%= phone.number %></code>
   <small>
     (<%= link_to "редактирай", edit_user_phone_path(phone), remote: true %> /

@@ -1,4 +1,6 @@
 <% if @phone.errors.any? %>
+  $('#edit_phone_<%= @phone.id %>').replaceWith('<%= j render 'form' %>');
+  displayFormErrors();
 <% else %>
-  $('#edit_phone_<%= @phone.id %>').parent().replaceWith("<%= j render(@phone) %>");
+  $('#edit_phone_<%= @phone.id %>').replaceWith("<%= j render(@phone) %>");
 <% end %>

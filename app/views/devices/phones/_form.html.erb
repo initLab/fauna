@@ -1,7 +1,7 @@
-<%= form_for [:user, @phone], html: {class: 'form--inline'}, remote: true do |f| %>
+<%= form_for [:user, @phone], builder: FancyFormBuilder, html: {class: 'form--inline'}, remote: true do |f| %>
   <div class="input--icon">
     <i class="ss-icon ss-cell"></i>
     <%= f.submit "Запиши", class: 'button' %>
-    <%= f.phone_field :value, required: true, pattern: '[0-9]{9,10}' %>
+    <%= f.phone_field :value, required: true %>
   </div>
 <% end %>
