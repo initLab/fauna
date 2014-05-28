@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     resources :computers, only: [:new, :create, :edit, :update, :destroy], module: :devices
   end
 
-  devise_for :users
+  devise_for :users, :controllers => {registrations: 'registrations',
+                                           sessions: 'sessions'}
   get "users/present"
 
   get "home/index"
