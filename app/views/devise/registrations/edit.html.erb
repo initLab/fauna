@@ -52,7 +52,7 @@
     <h3>Мрежови устройства</h3>
 
     <div id="computers" class="device">
-      <%= render partial: '/devices/computers/computer', collection: @user.computers.decorate %>
+      <%= render partial: '/devices/computers/computer', collection: @user.computers %>
     </div>
 
     <div class="new_device_link">
@@ -61,7 +61,7 @@
 
     <h3>Телефони</h3>
     <div id="phones" class="device">
-      <%= render partial: '/devices/phones/phone', collection: @user.phones.decorate %>
+      <%= render partial: '/devices/phones/phone', collection: @user.phones %>
     </div>
 
     <div class="new_device_link"><%= link_to "Добави нов телефон", new_user_phone_path, remote: true, id: 'new_phone_link' %></div>

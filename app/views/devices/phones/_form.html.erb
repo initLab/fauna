@@ -2,6 +2,6 @@
   <div class="input--icon">
     <i class="ss-icon ss-cell"></i>
     <%= f.submit "Запиши", class: 'button' %>
-    <%= f.phone_field :value, required: true, value: @phone.value.prepend('0') %>
+    <%= f.phone_field :value, required: true, value: @phone.number %>
   </div>
 <% end %>

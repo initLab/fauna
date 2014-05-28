@@ -8,4 +8,8 @@ class Computer < Device
   def value=(mac_address)
     write_attribute :value, mac_address.upcase.gsub(/[:-]/, '') if mac_address.present?
   end
+
+  def mac_address
+    value.downcase.scan(/../).join(":")
+  end
 end
