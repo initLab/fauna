@@ -45,10 +45,12 @@ gem 'foreigner'
 # Rails i18n
 gem 'rails-i18n'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
+# bundle exec rake doc:rails generates the API under doc/api.
+gem 'sdoc', require: false, group: :doc
+
+# Spring speeds up development by keeping your application running in the
+# background. Read more: https://github.com/rails/spring
+gem 'spring', group: :development
 
 group :development do
   # Use Capistrano for deployment
@@ -76,6 +78,9 @@ group :test, :development do
   # RSpec for testing
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+
+  # Use Spring for RSpec
+  gem 'spring-commands-rspec'
 
   # Simplecov for code coverage statistics
   gem 'simplecov'
