@@ -1,3 +1,7 @@
+.notifications > p {
+  margin: 20px;
+}
+
 .notice {
   background: #ddd;
   border: 2px solid #999;
@@ -17,5 +21,3 @@
 .success {
   @include notification-mixin($success);
 }
-
-

@@ -56,15 +56,18 @@
         </div>
       </header>
       <div id="main">
-        <% if flash[:notice] %>
-          <p class="notice"><%= notice %></p>
-        <% end %>
+        <div class="notifications">
+          <% if flash[:notice] %>
+            <p class="notice"><%= notice %></p>
+          <% end %>
 
-        <% if flash[:alert]  %>
-          <p class="alert"><%= alert %></p>
-        <% end  %>
+          <% if flash[:alert]  %>
+            <p class="alert"><%= alert %></p>
+          <% end  %>
+        </div>
 
 <%= yield %>
+
       </div><!-- main -->
 
       <div id="copyright">
