@@ -1,22 +1,57 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
+/* ========================================================================== 
+ * [Master Stylesheet]
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ * --------------------------------------------------------------------------
+ * Project: InitLab Authentication System ``Fauna''
+ * Version: 1.0
+ * Assigned to: Petko Bordjukov(@ignisf),
+ *              Monika Eftimova(@plazmonii)
+ * --------------------------------------------------------------------------
  *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require app
- *= require_self
- *= require_tree .
- */
+ * ========================================================================== */
 
-.notice, .alert {
-  border-radius: 5px;
-  padding: 10px;
-  border: 2px solid rgb(153, 153, 153);
-  background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.05);
-  margin-bottom: 10px;
-}
+// = require app
+// = require_self
+
+@charset "UTF-8";
+
+ 
+// Variables
+@import 'vars';
+
+// Mixins
+@import 'mixins';
+
+
+/* Grid
+   ========================================================================== */
+
+@import 'base/grid';
+
+@import 'base/base';
+
+
+/* Typography
+   ========================================================================== */
+
+@import 'base/typography';
+
+
+/* Controllers
+   ========================================================================== */
+
+@import 'objects/devices';
+
+@import 'objects/devise';
+
+
+/* Notifications
+   ========================================================================== */
+
+@import 'objects/notifications';
+
+/* Notifications
+   ========================================================================== */
+
+@import 'objects/tooltips';
+

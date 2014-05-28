@@ -1,10 +1,11 @@
-InitLabAuth::Application.routes.draw do
+Rails.application.routes.draw do
   resource :user, only: :show do
     resources :phones, only: [:new, :create, :edit, :update, :destroy], module: :devices
     resources :computers, only: [:new, :create, :edit, :update, :destroy], module: :devices
   end
 
-  devise_for :users
+  devise_for :users, :controllers => {registrations: 'registrations',
+                                           sessions: 'sessions'}
   get "users/present"
 
   get "home/index"

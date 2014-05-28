@@ -1,4 +1,6 @@
 <% if @computer.errors.any? %>
+  $('#edit_computer_<%= @computer.id %>').replaceWith('<%= j render 'form' %>');
+  displayFormErrors();
 <% else %>
-  $('#edit_computer_<%= @computer.id %>').parent().replaceWith("<%= j render(@computer) %>");
+  $('#edit_computer_<%= @computer.id %>').replaceWith("<%= j render @computer %>");
 <% end %>

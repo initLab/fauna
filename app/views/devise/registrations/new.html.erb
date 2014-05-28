@@ -1,11 +1,28 @@
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: 'devise-form'}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), builder: FancyFormBuilder, html: {class: 'medium-4 medium-push-4'}) do |f| %>
   <h2>Регистрация</h2>
-  <%= devise_error_messages! %>
-  <div class="form-group">
-    <%= f.email_field :email, class: 'form-control', placeholder: "Имейл адрес", :autofocus => true %>
-    <%= f.password_field :password, class: 'form-control', placeholder: "Парола" %>
-    <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Отново паролата" %>
+  <div class="form__group">
+    <div class="input--icon">
+      <i class="ss-icon ss-user"></i>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="input--icon">
+      <i class="ss-icon ss-mail"></i>
+      <%= f.email_field :email %>
+    </div>
+
+    <div class="input--icon">
+      <i class="ss-icon ss-key"></i>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="input--icon">
+      <i class="ss-icon ss-key"></i>
+      <%= f.password_field :password_confirmation %>
+    </div>
   </div>
-  <%= f.submit "Регистрация", class: 'button' %>
-  <%= render "devise/shared/links" %>
+  <footer class="form__footer">
+    <%= f.submit "Регистрация", class: 'button' %>
+    <%= render "devise/shared/links" %>
+  </footer>
 <% end %>

@@ -1,7 +1,8 @@
 <% computer ||= @computer  %>
-<li id="computer_<%= computer.id %>">
+<div id="computer_<%= computer.id %>">
+  <i class="ss-icon ss-wifi"></i>
   <code><%= computer.value %></code>
   <small>
     (<%= link_to "редактирай", edit_user_computer_path(computer), remote: true %> /
     <%= link_to "изтрий", user_computer_path(computer), remote: true, method: :delete, data: {confirm: "Сигурни ли сте?"} %>)</small>
-</li>
+</div>

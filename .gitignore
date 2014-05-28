@@ -22,8 +22,10 @@
 
 # Ignore sensitive information
 /config/database.yml
-/config/initializers/secret_token.rb
-/config/initializers/devise.rb
+/config/secrets.yml
 
 # Ignore simplecov's output
 /coverage
+
+# Ignore swap files
+*.swp

@@ -4,9 +4,9 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env)
+Bundler.require(*Rails.groups)
 
-module InitLabAuth
+module Fauna
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -20,5 +20,9 @@ module InitLabAuth
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :bg
+
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      html_tag
+    end
   end
 end

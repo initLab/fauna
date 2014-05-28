@@ -1,6 +1,8 @@
 <% if @computer.errors.any? %>
+  $('#new_computer').replaceWith('<%= j render 'form' %>');
+  displayFormErrors();
 <% else %>
   $('#new_computer_link').show();
-  $('#new_computer').parent().remove();
-  $('#computers').append('<%= j render(@computer) %>');
+  $('#new_computer').remove();
+  $('#computers').append('<%= j render @computer %>');
 <% end %>

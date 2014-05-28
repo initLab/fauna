@@ -1,12 +1,17 @@
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'devise-form', method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), builder: FancyFormBuilder, html: {method: :put, class: 'medium-4 medium-push-4'}) do |f| %>
   <h2>Промяна на парола</h2>
-
-  <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="form-group">
-    <%= f.password_field :password, autofocus: true, class: 'form-control', placeholder: 'Нова парола' %>
-    <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Пак новата парола' %>
+  <div class="form__group">
+    <div class="input--icon">
+      <i class="ss-icon ss-key"></i>
+      <%= f.password_field :password, autofocus: true %>
+    </div>
+
+    <div class="input--icon">
+      <i class="ss-icon ss-key"></i>
+      <%= f.password_field :password_confirmation %>
+    </div>
   </div>
 
   <div><%= f.submit "Промени паролата", class: 'button' %></div>

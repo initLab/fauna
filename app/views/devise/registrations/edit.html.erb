@@ -1,54 +1,71 @@
-<div class="container">
-  <section>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: 'devise-form'}) do |f| %>
-      <%= devise_error_messages! %>
-      <h3>Лични данни</h3>
+<div class="container authentication">
+  <section class="medium-4 medium-push-1">
+    <h3>Лични данни</h3>
 
-      <div class="form-group">
-        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Имейл адрес" %>
-        <%= f.text_field :name, class: 'form-control', placeholder: "Име" %>
-        <%= f.text_field :url, class: 'form-control', placeholder: "Сайт" %>
-        <%= f.text_field :twitter, class: 'form-control', placeholder: "Туитър потребителско име" %>
-        <%= f.label :privacy, class: 'checkbox' do %>
-          <%= f.check_box :privacy %> Скрий туитър хендъла ми от @initlabkeeper
-        <% end  %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: FancyFormBuilder, html: {method: :put}) do |f| %>
+
+      <div class="form__group">
+        <div class="input--icon">
+          <i class="ss-icon ss-user"></i>
+          <%= f.text_field :name, autofocus: true %>
+        </div>
+        <div class="input--icon">
+          <i class="ss-icon ss-mail"></i>
+          <%= f.email_field :email %>
+        </div>
+        <div class="input--icon">
+          <i class="ss-icon ss-earth"></i>
+          <%= f.text_field :url %>
+        </div>
+        <div class="input--icon">
+          <i class="ss-icon ss-bird"></i>
+          <%= f.text_field :twitter %>
+        </div>
+        <%= f.check_box :privacy, label: "Скрий туитър хендъла ми от @initlabkeeper" %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :password %><i>(</span>въведете тези полета само ако искате да промените паролата си)</i>
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Нова парола" %>
-        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Пак новата парола" %>
+      <div class="form__group">
+        <%= f.label :password %><em>(въведете тези полета само ако искате да промените паролата си)</em>
+        <div class="input--icon">
+          <i class="ss-icon ss-key"></i>
+          <%= f.password_field :password %>
+        </div>
+        <div class="input--icon">
+          <i class="ss-icon ss-key"></i>
+          <%= f.password_field :password_confirmation %>
+        </div>
       </div>
 
-      <div><%= f.label :current_password %> <i>(нужно е да въведете текущата парола, за да потвърдите промените)</i><br />
-        <%= f.password_field :current_password, class: 'form-control', placeholder: 'Текуща парола' %></div>
+      <div>
+        <%= f.label :current_password %> <em>(нужно е да въведете текущата парола, за да потвърдите промените)</em><br />
+        <div class="input--icon">
+          <i class="ss-icon ss-key"></i>
+          <%= f.password_field :current_password %>
+        </div>
+      </div>
 
       <div><%= f.submit "Обнови", class: 'button' %></div>
     <% end %>
   </section>
-  <section>
-    <div class="devise-form">
-      <h3>Мрежови устройства</h3>
-      <ul id="computers" class="devices">
-        <% @user.computers.each do |computer| %>
-          <%= render partial: '/devices/computers/computer', object: computer.decorate %>
-        <% end %>
-      </ul>
-      <div class="new_device_link"><%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link' %></div>
 
-      <h3>Телефони</h3>
-      <ul id="phones" class="devices">
-        <% @user.phones.each do |phone| %>
-          <%= render partial: '/devices/phones/phone', object: phone.decorate %>
-        <% end %>
-      </ul>
-      <div class="new_device_link"><%= link_to "Добави нов телефон", new_user_phone_path, remote: true, id: 'new_phone_link' %></div>
+  <section class="medium-4 medium-push-1">
+    <h3>Мрежови устройства</h3>
+
+    <div id="computers" class="device">
+      <%= render partial: '/devices/computers/computer', collection: @user.computers.decorate %>
     </div>
-  </section>
-  <section>
-    <div class="devise-form">
-      <h3>Не сте щастливи?</h3>
-      <%= button_to "Изтрий регистрацията ми", registration_path(resource_name), data: {confirm: "Сигурни ли сте?"}, method: :delete, class: 'button' %>
+
+    <div class="new_device_link">
+      <%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link' %>
     </div>
+
+    <h3>Телефони</h3>
+    <div id="phones" class="device">
+      <%= render partial: '/devices/phones/phone', collection: @user.phones.decorate %>
+    </div>
+
+    <div class="new_device_link"><%= link_to "Добави нов телефон", new_user_phone_path, remote: true, id: 'new_phone_link' %></div>
+    <h3>Не сте щастливи?</h3>
+    <%= button_to "Изтрий регистрацията ми", registration_path(resource_name), data: {confirm: "Сигурни ли сте?"}, method: :delete, class: 'button' %>
   </section>
 </div>

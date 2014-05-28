@@ -1,7 +1,8 @@
 <% phone ||= @phone  %>
-<li id="phone_<%= phone.id %>">
+<div id="phone_<%= phone.id %>">
+  <i class="ss-icon ss-cell"></i>
   <code><%= phone.number %></code>
   <small>
     (<%= link_to "редактирай", edit_user_phone_path(phone), remote: true %> /
     <%= link_to "изтрий", user_phone_path(phone), remote: true, method: :delete, data: {confirm: "Сигурни ли сте?"} %>)</small>
-</li>
+</div>

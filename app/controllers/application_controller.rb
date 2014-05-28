@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up).push(*[:name])
     devise_parameter_sanitizer.for(:account_update).push(*[:name, :url, :twitter, :privacy])
+  end
+
+  def current_mac_address
+    Arp.mac_by_ip_address(request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip)
   end
 end

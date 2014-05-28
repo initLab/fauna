@@ -14,7 +14,7 @@
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-# server 'a.initlab.org', user: 'foo', roles: %w{web app db}
+server 'cassie.ludost.net', user: 'ignisf', roles: %w{web app db}
 
 set :puma_bind, "tcp://127.0.0.1:9292"
 
