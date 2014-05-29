@@ -7,8 +7,24 @@ describe User do
   end
 
   describe '#destroy' do
-    it 'destroys dependent Computers'
-    it 'destroys dependent Phones'
+    let(:user) { create :user }
+
+    before do
+      create :phone, owner: user
+      create :computer, owner: user
+    end
+
+    it 'destroys dependent Computers' do
+      computer = user.computers.first
+      user.destroy
+      expect { Computer.find computer.id }.to raise_error ActiveRecord::RecordNotFound
+    end
+
+    it 'destroys dependent Phones' do
+      phone = user.phones.first
+      user.destroy
+      expect { Phone.find phone.id }.to raise_error ActiveRecord::RecordNotFound
+    end
   end
 
   describe 'url' do
