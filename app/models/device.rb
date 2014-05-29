@@ -4,8 +4,8 @@ class Device < ActiveRecord::Base
   self.table_name = "objects"
   belongs_to :owner, class_name: 'User', foreign_key: 'userid'
 
+  validates :userid, presence: true
   validates :value, presence: true
-  validates :value, uniqueness: true
 
   def self.find_sti_class(type_name)
     {'phone' => Phone, 'mac' => Computer}[type_name]
