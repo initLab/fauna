@@ -77,7 +77,12 @@ end
 group :test, :development do
   # RSpec for testing
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
+
+  # Use factory girl instead of fixtures
+  gem 'factory_girl_rails'
+
+  # Used for creating fake names, emails, etc.
+  gem 'faker'
 
   # Use Spring for RSpec
   gem 'spring-commands-rspec'
