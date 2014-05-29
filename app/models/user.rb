@@ -12,6 +12,6 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   def twitter=(handle)
-    write_attribute :twitter, handle.gsub(/\A@/,'')
+    write_attribute :twitter, handle.gsub(/\A@/,'') if handle
   end
 end
