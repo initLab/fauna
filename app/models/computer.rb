@@ -11,6 +11,6 @@ class Computer < Device
   end
 
   def mac_address
-    value.downcase.scan(/../).join(":")
+    "#{value}".downcase.scan(/../).join(":")
   end
 end

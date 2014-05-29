@@ -13,6 +13,11 @@ describe Computer do
     it 'returns the value downcased and delimited with colons' do
       build(:computer, value: 'aaaaaaaaaaaa').mac_address.should eq 'aa:aa:aa:aa:aa:aa'
     end
+
+    it 'returns an empty string when the value is empty or nil' do
+      build(:computer, value: nil).mac_address.should eq ''
+      build(:computer, value: '').mac_address.should eq ''
+    end
   end
 
   describe 'value' do
