@@ -54,6 +54,7 @@ gem 'spring', group: :development
 
 # Add carrierwave for picture uploads
 gem 'carrierwave'
+gem 'mini_magick'
 
 group :development do
   # Use Capistrano for deployment

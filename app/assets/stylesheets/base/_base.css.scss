@@ -72,7 +72,8 @@ form {
     &[type="text"],
     &[type="email"],
     &[type="password"],
-    &[type="tel"] {
+    &[type="tel"],
+    &[type="file"] {
       font: normal 1em "PT Sans",Verdana,sans-serif;
       height: 3em;
     }
@@ -84,7 +85,8 @@ form {
     &[type="text"],
     &[type="email"],
     &[type="password"],
-    &[type="tel"] {
+    &[type="tel"],
+    &[type="file"] {
       @extend .medium-9;
       border-radius: 3px 0 0 3px;
     }
@@ -128,4 +130,15 @@ a.button, a:focus.button, a:hover.button, a:visited.button {
   line-height: 4em;
   color: white;
   text-decoration: none;
+}
+
+.avatar-container {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+
+  img {
+    max-width: 100px;
+    max-height: 100px;
+  }
 }

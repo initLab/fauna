@@ -4,6 +4,17 @@
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: FancyFormBuilder, html: {method: :put}) do |f| %>
 
+      <div class="avatar-container">
+        <div class="tweet_avatar">
+          <%= image_tag resource.picture_url %>
+        </div>
+      </div>
+
+      <div class="input--icon">
+          <i class="ss-icon ss-userportrait"></i>
+          <%= f.file_field :picture %>
+      </div>
+
       <div class="form__group">
         <div class="input--icon">
           <i class="ss-icon ss-user"></i>

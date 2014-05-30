@@ -1,5 +1,5 @@
 class FancyFormBuilder < ActionView::Helpers::FormBuilder
-  (field_helpers - [:label, :check_box, :radio_button, :fields_for, :hidden_field, :file_field]).each do |selector|
+  (field_helpers - [:label, :check_box, :radio_button, :fields_for, :hidden_field]).each do |selector|
     define_method(selector) do |name, *args|
       options = args.extract_options!
       options[:placeholder] ||= @object.class.human_attribute_name(name)
