@@ -52,6 +52,9 @@ gem 'sdoc', require: false, group: :doc
 # background. Read more: https://github.com/rails/spring
 gem 'spring', group: :development
 
+# Add carrierwave for picture uploads
+gem 'carrierwave'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
