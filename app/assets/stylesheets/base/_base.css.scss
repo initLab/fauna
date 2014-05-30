@@ -116,6 +116,16 @@ form {
   }
 }
 
-.new_device_link {
-  margin-left: 22px;
+a.button, a:focus.button, a:hover.button, a:visited.button {
+  margin-top: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  float: none;
+  width: auto;
+  display: inline;
+  font-family: "PT Sans",Verdana,sans-serif;
+  font-size: 1em;
+  line-height: 4em;
+  color: white;
+  text-decoration: none;
 }
