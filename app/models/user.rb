@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates :url, format: {with: /\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/ix, message: 'must be a valid http(s) URL'}, allow_blank: true
   validates :name, presence: true
 
+  mount_uploader :picture, PictureUploader
+
   def twitter=(handle)
     write_attribute :twitter, handle.gsub(/\A@/,'') if handle
   end
