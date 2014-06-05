@@ -157,6 +157,8 @@ a.button, a:focus.button, a:hover.button, a:visited.button {
 }
 
 .individual {
+  width: 25% !important;
+
   .avatar {
     display: block;
     width: 50px;
