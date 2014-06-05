@@ -17,4 +17,5 @@ displayToolTip = (targetElement, message) ->
   tooltip.css 'right', -(tooltip.outerWidth() + 10) + 'px'
 
 scrollToLastToolTip = () ->
-  $('html, body').animate({scrollTop: $('.error').last().offset().top}, 100);
+  if $('.error').length
+    $('html, body').animate({scrollTop: $('.error').last().offset().top}, 100);
