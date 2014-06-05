@@ -4,6 +4,13 @@
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: FancyFormBuilder, html: {method: :put}) do |f| %>
 
+      <div class="avatar-container">
+        <div class="tweet_avatar gravatar">
+          <%= image_tag "//www.gravatar.com/avatar/#{resource.email_md5}?s=100&d=retro" %>
+          <span class="overlay">Avatar by <%= link_to 'Gravatar', 'https://gravatar.com' %></span>
+        </div>
+      </div>
+
       <div class="form__group">
         <div class="input--icon">
           <i class="ss-icon ss-user"></i>
