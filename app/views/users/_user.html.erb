@@ -1,14 +1,19 @@
-<li>
-  <% if user.url.present?  %>
-    <%= link_to user.url do %>
+<li class="individual">
+  <span class="avatar">
+    <%= image_tag "//www.gravatar.com/avatar/#{user.email_md5}?s=50&d=retro" %>
+  </span>
+  <span class="info">
+    <% if user.url.present?  %>
+      <%= link_to user.url do %>
+        <strong><%= user.name %></strong>
+      <% end %>
+    <% else %>
       <strong><%= user.name %></strong>
     <% end %>
-  <% else %>
-    <strong><%= user.name %></strong>
-  <% end %>
 
-  <% if user.twitter.present?  %>
-    <br>
-    <%= link_to "@#{user.twitter}", "https://twitter.com/#{user.twitter}" %>
-  <% end %>
+    <% if user.twitter.present?  %>
+      <br>
+      <%= link_to "@#{user.twitter}", "https://twitter.com/#{user.twitter}" %>
+    <% end %>
+  </span>
 </li>

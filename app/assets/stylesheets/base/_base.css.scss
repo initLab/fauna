@@ -155,3 +155,20 @@ a.button, a:focus.button, a:hover.button, a:visited.button {
     display: none;
   }
 }
+
+.individual {
+  .avatar {
+    display: block;
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin: 9px 1em 0px 0.1em;
+    clear: left;
+  }
+
+  .info {
+    display: block;
+    padding: 0px 1em 0px 4.2em;
+    margin: 5px;
+  }
+}
