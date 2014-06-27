@@ -2,6 +2,6 @@
 
 @users.each do |user|
   json.set! user.id do
-    json.extract!(user, :id, :name, :url, :twitter, :privacy)
+    json.extract!(user, :id, :email_md5, :name, :url, :twitter, :privacy)
   end
 end

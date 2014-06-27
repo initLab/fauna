@@ -5,6 +5,7 @@
 $(document).on "page:change", ->
   displayFormErrors()
   scrollToLastToolTip()
+  animateGravatarOverlay()
 
 @displayFormErrors = () ->
   $('.form-control').each ->
@@ -17,4 +18,13 @@ displayToolTip = (targetElement, message) ->
   tooltip.css 'right', -(tooltip.outerWidth() + 10) + 'px'
 
 scrollToLastToolTip = () ->
-  $('html, body').animate({scrollTop: $('.error').last().offset().top}, 100);
+  if $('.error').length
+    $('html, body').animate({scrollTop: $('.error').last().offset().top}, 100);
+
+animateGravatarOverlay = () ->
+  $('.gravatar').mouseenter () ->
+    $(this).find('.overlay').fadeIn()
+
+  $('.gravatar .overlay').each ->
+    $(@).mouseleave ->
+      $(@).fadeOut()
