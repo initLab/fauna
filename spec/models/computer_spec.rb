@@ -1,22 +1,22 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Computer do
-  it { should be_a Device }
+  it { is_expected.to be_a Device }
 
   describe '::sti_name' do
     it 'is mac' do
-      Computer.sti_name.should eq 'mac'
+      expect(Computer.sti_name).to eq 'mac'
     end
   end
 
   describe '#mac_address' do
     it 'returns the value downcased and delimited with colons' do
-      build(:computer, value: 'aaaaaaaaaaaa').mac_address.should eq 'aa:aa:aa:aa:aa:aa'
+      expect(build(:computer, value: 'aaaaaaaaaaaa').mac_address).to eq 'aa:aa:aa:aa:aa:aa'
     end
 
     it 'returns an empty string when the value is empty or nil' do
-      build(:computer, value: nil).mac_address.should eq ''
-      build(:computer, value: '').mac_address.should eq ''
+      expect(build(:computer, value: nil).mac_address).to eq ''
+      expect(build(:computer, value: '').mac_address).to eq ''
     end
   end
 
@@ -31,19 +31,21 @@ describe Computer do
 
     it 'is stored capitalized and without delimiters' do
       mac_formats.each do |mac_format|
-        build(:computer, value: mac_format).value.should eq 'AAAAAAAAAAAA'
+        expect(build(:computer, value: mac_format).value).to eq 'AAAAAAAAAAAA'
       end
     end
 
     it 'can not be an invalid mac address' do
       invalid_macs.each do |mac_address|
-        build(:computer, value: mac_address).should have(1).error_on :value
+        computer = build :computer, value: mac_address
+        expect(computer).to have_error_on :value
       end
     end
 
     it 'must be unique' do
-      computer = create(:computer)
-      build(:computer, value: computer.value).should have(1).error_on :value
+      existing_computer = create(:computer)
+      new_computer = build :computer, value: existing_computer.value
+      expect(new_computer).to have_error_on :value
     end
   end
 end

@@ -76,7 +76,7 @@ end
 
 group :test, :development do
   # RSpec for testing
-  gem 'rspec-rails', '~> 2.12'
+  gem 'rspec-rails'
 
   # Use factory girl instead of fixtures
   gem 'factory_girl_rails'
