@@ -10,7 +10,6 @@ describe User do
     let(:user) { create :user }
 
     before do
-      create :phone, owner: user
       create :computer, owner: user
     end
 
@@ -18,12 +17,6 @@ describe User do
       computer = user.computers.first
       user.destroy
       expect { Computer.find computer.id }.to raise_error ActiveRecord::RecordNotFound
-    end
-
-    it 'destroys dependent Phones' do
-      phone = user.phones.first
-      user.destroy
-      expect { Phone.find phone.id }.to raise_error ActiveRecord::RecordNotFound
     end
   end
 

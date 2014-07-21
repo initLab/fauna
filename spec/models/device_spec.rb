@@ -14,15 +14,10 @@ describe Device do
   describe 'STI hacks' do
     before do
       create :device, type: 'mac', value: 'aa:aa:aa:aa:aa:aa'
-      create :device, type: 'phone', value: '0881222333'
     end
 
     it 'allow records with type mac to be recognized as Computers' do
       Device.where(type: 'mac').all? { |device| expect(device).to be_a Computer }
-    end
-
-    it 'allow records with type phone to be recognized as Phones' do
-      Device.where(type: 'phone').all? { |device| expect(device).to be_a Phone }
     end
   end
 end

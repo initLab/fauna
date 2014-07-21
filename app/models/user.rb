@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :phones, foreign_key: 'userid', dependent: :destroy
   has_many :computers, foreign_key: 'userid', dependent: :destroy
 
   validates :twitter, format: {with: /\A[A-Za-z0-9_]{1,15}\z/, message: 'must be a twitter handle'}, allow_blank: true

@@ -66,15 +66,6 @@
       <%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link', class: 'button' %>
     </div>
 
-    <h3>Телефони</h3>
-    <div id="phones" class="device">
-      <%= render partial: '/devices/phones/phone', collection: @user.phones %>
-    </div>
-
-    <div class="new_device_link">
-      <%= link_to "Добави нов телефон", new_user_phone_path, remote: true, id: 'new_phone_link', class: 'button' %>
-    </div>
-
     <h3>Не сте щастливи?</h3>
     <%= link_to "Изтрий регистрацията ми", registration_path(resource_name), data: {confirm: "Сигурни ли сте?"}, method: :delete, class: 'button' %>
   </section>

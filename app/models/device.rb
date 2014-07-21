@@ -8,6 +8,6 @@ class Device < ActiveRecord::Base
   validates :value, presence: true
 
   def self.find_sti_class(type_name)
-    {'phone' => Phone, 'mac' => Computer}[type_name]
+    {'mac' => Computer}[type_name]
   end
 end
