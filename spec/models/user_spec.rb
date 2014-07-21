@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe User do
   it 'checks if the name is present' do
-    build(:user, name: nil).should have(1).error_on :name
+    expect(build(:user, name: nil)).to have_error_on :name
   end
 
   describe '#destroy' do
@@ -32,22 +32,22 @@ describe User do
     let(:invalid_urls) { %w(javascript:alert(foo.bar) mailto:)}
 
     it 'can be nil' do
-      build(:user, url: nil).should have(:no).errors_on :url
-      build(:user, url: '').should have(:no).errors_on :url
+      expect(build(:user, url: nil)).to_not have_error_on :url
+      expect(build(:user, url: '')).to_not have_error_on :url
     end
 
     it 'can be an HTTP URL' do
-      build(:user, url: 'http://example.com').should have(:no).errors_on :url
+      expect(build(:user, url: 'http://example.com')).to_not have_error_on :url
     end
 
     it 'can be an HTTPS URL' do
-      build(:user, url: 'https://example.com').should have(:no).errors_on :url
+      expect(build(:user, url: 'https://example.com')).to_not have_error_on :url
     end
 
     it 'cannot be anything but an HTTP(S) URL' do
-      build(:user, url: 'javascript:alert(foo)').should have(1).errors_on :url
-      build(:user, url: 'example.com').should have(1).errors_on :url
-      build(:user, url: 'foobar').should have(1).errors_on :url
+      expect(build(:user, url: 'javascript:alert(foo)')).to have_error_on :url
+      expect(build(:user, url: 'example.com')).to have_error_on :url
+      expect(build(:user, url: 'foobar')).to have_error_on :url
     end
   end
 
@@ -56,22 +56,22 @@ describe User do
     let(:invalid_handles) { %w(- абв abcdefghijklmnopqrst) }
 
     it 'is stored without a starting @' do
-      build(:user, twitter: '@foobar').twitter.should eq 'foobar'
+      expect(build(:user, twitter: '@foobar').twitter).to eq 'foobar'
     end
 
     it 'can be nil' do
-      build(:user, twitter: nil).should have(:no).errors_on :twitter
+      expect(build(:user, twitter: nil)).to_not have_error_on :twitter
     end
 
     it 'can be a valid handle' do
       valid_handles.each do |handle|
-        build(:user, twitter: handle).should have(:no).errors_on :twitter
+        expect(build(:user, twitter: handle)).to_not have_error_on :twitter
       end
     end
 
     it 'cannot be an invalid handle' do
       invalid_handles.each do |handle|
-        build(:user, twitter: handle).should have(1).errors_on :twitter
+        expect(build(:user, twitter: handle)).to have_error_on :twitter
       end
     end
   end
