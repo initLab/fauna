@@ -1,6 +1,6 @@
 <li>
   <span class="avatar">
-    <%= image_tag "//www.gravatar.com/avatar/#{user.email_md5}?s=50&d=retro" %>
+    <%= image_tag "//www.gravatar.com/avatar/#{user.email_md5}?s=50&d=retro", alt: user.name %>
   </span>
   <span class="info">
     <% if user.url.present?  %>
