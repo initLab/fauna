@@ -16,11 +16,11 @@
 
   @for $i from 1 through $columns {
     .#{$size}-#{$i} {
-      width: ((100 / $columns) * $i) * 1%;
+      width: ((99 / $columns) * $i) * 1%;
     }
 
     .#{$size}-push-#{$i} {
-      margin-left: ((100 / $columns) * $i) * 1%;
+      margin-left: ((99 / $columns) * $i) * 1%;
     }
   }
 }
@@ -45,7 +45,7 @@
     @media (min-width: $break-large) {
       @content;
     }
-  } 
+  }
 
   @if $fallback {
     @if $parent {
