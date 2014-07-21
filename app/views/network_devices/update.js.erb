@@ -1,0 +1,6 @@
+<% if @network_device.errors.any? %>
+  $('#edit_network_device_<%= @network_device.id %>').replaceWith('<%= j render 'form' %>');
+  displayFormErrors();
+<% else %>
+  $('#edit_network_device_<%= @network_device.id %>').replaceWith("<%= j render @network_device %>");
+<% end %>

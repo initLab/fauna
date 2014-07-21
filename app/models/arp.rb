@@ -24,6 +24,6 @@ class Arp
   end
 
   def owner
-    Computer.find_or_initialize_by(value: @mac_address).owner
+    NetworkDevice.find_or_initialize_by(value: @mac_address).owner
   end
 end

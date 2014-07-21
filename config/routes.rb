@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resource :user, only: :show do
-    resources :phones, only: [:new, :create, :edit, :update, :destroy], module: :devices
-    resources :computers, only: [:new, :create, :edit, :update, :destroy], module: :devices
+    resources :network_devices, only: [:new, :create, :edit, :update, :destroy]
   end
 
   devise_for :users, :controllers => {registrations: 'registrations',

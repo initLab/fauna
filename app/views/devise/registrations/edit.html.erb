@@ -58,12 +58,12 @@
   <section class="medium-5 medium-push-1">
     <h3>Мрежови устройства</h3>
 
-    <div id="computers" class="device">
-      <%= render partial: '/devices/computers/computer', collection: @user.computers %>
+    <div id="network_devices" class="device">
+      <%= render partial: '/network_devices/network_device', collection: @user.network_devices %>
     </div>
 
     <div class="new_device_link">
-      <%= link_to "Добави нов MAC адрес", new_user_computer_path, remote: true, id: 'new_computer_link', class: 'button' %>
+      <%= link_to "Добави нов MAC адрес", new_user_network_device_path, remote: true, id: 'new_network_device_link', class: 'button' %>
     </div>
 
     <h3>Не сте щастливи?</h3>

@@ -10,13 +10,13 @@ describe User do
     let(:user) { create :user }
 
     before do
-      create :computer, owner: user
+      create :network_device, owner: user
     end
 
     it 'destroys dependent Computers' do
-      computer = user.computers.first
+      network_device = user.network_devices.first
       user.destroy
-      expect { Computer.find computer.id }.to raise_error ActiveRecord::RecordNotFound
+      expect { NetworkDevice.find network_device.id }.to raise_error ActiveRecord::RecordNotFound
     end
   end
 
