@@ -8,7 +8,6 @@ Rails.application.routes.draw do
                                            sessions: 'sessions'}
   get "users/present"
 
-  get "home/index"
   root "users#present"
 
   # The priority is based upon order of creation: first created -> highest priority.
