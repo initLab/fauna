@@ -3,7 +3,7 @@ require 'rails_helper'
 describe NetworkDevice do
   it 'cannot exist without an owner' do
     device = build :network_device, owner: nil
-    expect(device).to have_error_on :userid
+    expect(device).to have_error_on :owner_id
   end
 
   it 'cannot exist without a value' do

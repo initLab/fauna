@@ -1,6 +1,7 @@
 class NetworkDevice < ActiveRecord::Base
-  belongs_to :owner, class_name: 'User', foreign_key: 'userid'
-  validates :userid, presence: true
+  belongs_to :owner, class_name: 'User'
+
+  validates :owner_id, presence: true
   validates :value, presence: true
 
   validates :value, format: { with: /\A[0-9A-F]{12}\z/i, message: 'must be a mac address' }
