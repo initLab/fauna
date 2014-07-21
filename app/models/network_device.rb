@@ -2,16 +2,18 @@ class NetworkDevice < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
 
   validates :owner_id, presence: true
-  validates :value, presence: true
+  validates :mac_address, presence: true
 
-  validates :value, format: { with: /\A[0-9A-F]{12}\z/i, message: 'must be a mac address' }
-  validates :value, uniqueness: true
+  # TODO Add i18n
+  validates :mac_address, format: { with: /\A[0-9A-F]{2}([:-]?)([0-9A-F]{2}\1){4}[0-9A-F]{2}\z/i, message: 'must be a mac address' }
 
-  def value=(mac_address)
-    write_attribute :value, mac_address.upcase.gsub(/[:-]/, '') if mac_address
-  end
+  validates :mac_address, uniqueness: true
 
-  def mac_address
-    "#{value}".downcase.scan(/../).join(":")
+  before_save :normalize_mac_address!
+
+  private
+
+  def normalize_mac_address!
+    self.mac_address = mac_address.downcase.gsub(/[:-]/, '').scan(/../).join(':')
   end
 end

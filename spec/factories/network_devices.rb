@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :network_device do
     owner
-    value { "#{Faker::Number.number(6)}".ljust(12, '0') }
+    mac_address { Faker::Internet.mac_address }
   end
 end

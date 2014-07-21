@@ -3,7 +3,7 @@ class NetworkDevicesController < ApplicationController
   before_filter :assign_network_device, only: [:edit, :update, :destroy]
 
   def new
-    @network_device = NetworkDevice.new value: current_mac_address
+    @network_device = NetworkDevice.new mac_address: current_mac_address
   end
 
   def create
@@ -34,7 +34,7 @@ class NetworkDevicesController < ApplicationController
   private
 
   def network_device_params
-    params.require(:network_device).permit(:value)
+    params.require(:network_device).permit(:mac_address)
   end
 
   def assign_network_device
