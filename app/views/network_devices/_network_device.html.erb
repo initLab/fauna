@@ -1,0 +1,8 @@
+<% network_device ||= @network_device  %>
+<div id="network_device_<%= network_device.id %>">
+  <i class="ss-icon ss-wifi"></i>
+  <code><%= network_device.mac_address %></code>
+  <small>
+    (<%= link_to "редактирай", edit_user_network_device_path(network_device), remote: true %> /
+    <%= link_to "изтрий", user_network_device_path(network_device), remote: true, method: :delete, data: {confirm: "Сигурни ли сте?"} %>)</small>
+</div>

@@ -2,9 +2,7 @@ bg:
   activerecord:
     models:
       user: "Лабър"
-      phone: "Телефон"
-      computer: "Компютър"
-      device: "Устройство"
+      network_device: "Мрежово устройство"
     attributes:
       user:
         name: "Име"
@@ -12,9 +10,6 @@ bg:
         password: "Парола"
         password_confirmation: "Потвърждение на паролата"
         current_password: "Текуща парола"
-      phone:
+      network_device:
         owner: "Собственик"
-        value: "Номер"
-      computer:
-        owner: "Собственик"
-        value: "MAC адрес"
+        mac_address: "MAC адрес"

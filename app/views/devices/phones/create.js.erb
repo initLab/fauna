@@ -1,8 +1,0 @@
-<% if @phone.errors.any? %>
-  $('#new_phone').replaceWith('<%= j render 'form' %>');
-  displayFormErrors();
-<% else %>
-  $('#new_phone_link').show();
-  $('#new_phone').remove();
-  $('#phones').append('<%= j render @phone %>');
-<% end %>
