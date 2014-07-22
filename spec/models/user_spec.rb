@@ -6,6 +6,34 @@ describe User do
     expect(build(:user, name: nil)).to have_error_on :name
   end
 
+  it 'check if the username is present' do
+    expect(build(:user, username: nil)).to have_error_on :username
+  end
+
+  describe 'username' do
+    it 'must be present' do
+      expect(build(:user, username: nil)).to have_error_on :username
+    end
+
+    it 'must be at least one character' do
+      expect(build(:user, username: '')).to have_error_on :username
+    end
+
+    it 'must be unique' do
+      existing_user = create :user
+
+      expect(build(:user, username: existing_user.username)).to have_error_on :username
+    end
+
+    it 'must only contain letters, numbers, _ and -' do
+      invalid_usernames = %w(ji*r3f пешо +vlado)
+
+      invalid_usernames.each do |username|
+        expect(build(:user, username: username)).to have_error_on :username
+      end
+    end
+  end
+
   describe '#destroy' do
     let(:user) { create :user }
 

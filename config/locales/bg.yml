@@ -1,5 +1,11 @@
 bg:
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              invalid: Блах
     models:
       user: "Лабър"
       network_device: "Мрежово устройство"
@@ -7,6 +13,8 @@ bg:
       user:
         name: "Име"
         url: "Сайт"
+        username: "Потребителско име"
+        login: "Потребителско име или Email"
         password: "Парола"
         password_confirmation: "Потвърждение на паролата"
         current_password: "Текуща парола"
