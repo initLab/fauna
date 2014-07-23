@@ -10,20 +10,28 @@ describe User do
     expect(build(:user, username: nil)).to have_error_on :username
   end
 
-  it 'checks if user is found by email' do
-    existing_user = create :user
+  describe '::find_for_database_authentication' do
+    let(:user) { create :user }
 
-    expect(User.find_for_database_authentication login: existing_user.email).not_to be_nil
-  end
+    it 'return user when email is passed' do
+      expect(User.find_for_database_authentication login: user.email).not_to be_nil
+    end
 
-  it 'checks if user is found by username' do
-    existing_user = create :user
+    it 'return user when username is passed' do
+      expect(User.find_for_database_authentication login: user.username).not_to be_nil
+    end
 
-    expect(User.find_for_database_authentication login: existing_user.username).not_to be_nil
-  end
+    it 'return nil when login is not existing' do
+      expect(User.find_for_database_authentication login: "randomuser").to be_nil
+    end
 
-  it 'checks if unexisting  user is found' do
-    expect(User.find_for_database_authentication login: "randomuser").to be_nil
+    it 'return nil when login is nil' do
+      expect(User.find_for_database_authentication login: "randomuser").to be_nil
+    end
+
+    it 'return nil when login is omitted' do
+      expect(User.find_for_database_authentication Hash.new).to be_nil
+    end
   end
 
   describe 'username' do
