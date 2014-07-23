@@ -6,8 +6,24 @@ describe User do
     expect(build(:user, name: nil)).to have_error_on :name
   end
 
-  it 'check if the username is present' do
+  it 'checks if the username is present' do
     expect(build(:user, username: nil)).to have_error_on :username
+  end
+
+  it 'checks if user is found by email' do
+    existing_user = create :user
+
+    expect(User.find_for_database_authentication login: existing_user.email).not_to be_nil
+  end
+
+  it 'checks if user is found by username' do
+    existing_user = create :user
+
+    expect(User.find_for_database_authentication login: existing_user.username).not_to be_nil
+  end
+
+  it 'checks if unexisting  user is found' do
+    expect(User.find_for_database_authentication login: "randomuser").to be_nil
   end
 
   describe 'username' do
