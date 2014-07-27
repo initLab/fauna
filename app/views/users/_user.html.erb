@@ -1,19 +1,25 @@
-<li>
-  <span class="avatar">
-    <%= image_tag "//www.gravatar.com/avatar/#{user.email_md5}?s=50&d=retro", alt: user.name %>
-  </span>
-  <span class="info">
-    <% if user.url.present?  %>
-      <%= link_to user.url do %>
-        <strong><%= user.name %></strong>
+<% unless (user_counter + 1) % 4 == 0 %>
+  <div class="one-fourth team  zp_start_animation">
+<% else %>
+  <div class="one-fourth team last-column zp_start_animation">
+<% end %>
+  <div class="box-wrapper">
+    <div class="team_image_block">
+      <%= image_tag "//www.gravatar.com/avatar/#{user.email_md5}?s=300&d=retro", alt: user.name %>
+    </div>
+    <h4>
+      <% if user.url.present?  %>
+        <%= link_to user.url do %>
+          <%= user.name %>
+        <% end %>
+      <% else %>
+        <%= user.name %>
       <% end %>
-    <% else %>
-      <strong><%= user.name %></strong>
-    <% end %>
-
+    </h4>
     <% if user.twitter.present?  %>
-      <br>
-      <%= link_to "@#{user.twitter}", "https://twitter.com/#{user.twitter}" %>
+      <h5>
+        <%= link_to "@#{user.twitter}", "https://twitter.com/#{user.twitter}" %>
+      </h5>
     <% end %>
-  </span>
-</li>
+  </div>
+</div>

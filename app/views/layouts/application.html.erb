@@ -37,8 +37,10 @@
   <body>
     <div class="site-container">
       <div class="site-wrapper">
+
         <header class="site-header" role="banner">
           <div class="wrap">
+            <div id="custom_sidebar_tigger" class="nav-btn"></div>
             <div class="title-area">
               <h1 class="site-title">init Lab Fauna</h1>
               <h2 class="site-description">Управление на акаунти</h2>
@@ -67,14 +69,14 @@
                   </li>
                 <% end %>
               </ul>
-
             </nav>
-
           </div>
         </header>
 
         <div class="site-inner">
-          <%= yield %>
+          <div class="wrap">
+            <%= yield %>
+          </div>
         </div>
 
         <footer class="site-footer">
