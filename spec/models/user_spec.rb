@@ -71,6 +71,11 @@ describe User do
         expect(build(:user, username: username)).to have_error_on :username
       end
     end
+
+    it 'can never be an email' do
+      expect(build(:user, username: 'foo@bar')).to have_error_on :username
+      expect(build(:user, username: 'foo@bar.com')).to have_error_on :username
+    end
   end
 
   describe '#destroy' do
