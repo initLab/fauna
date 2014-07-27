@@ -6,9 +6,6 @@ describe User do
     expect(build(:user, name: nil)).to have_error_on :name
   end
 
-  it 'checks if the username is present' do
-    expect(build(:user, username: nil)).to have_error_on :username
-  end
 
   describe '::find_for_database_authentication' do
     let(:user) { create :user }
