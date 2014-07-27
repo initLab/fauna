@@ -1,8 +1,4 @@
-<% unless (user_counter + 1) % 4 == 0 %>
-  <div class="one-fourth team  zp_start_animation">
-<% else %>
-  <div class="one-fourth team last-column zp_start_animation">
-<% end %>
+<div class="one-fourth team <%= if (user_counter + 1) % 4 == 0 then 'last-column' end %> zp_start_animation">
   <div class="box-wrapper">
     <div class="team_image_block">
       <%= image_tag "//www.gravatar.com/avatar/#{user.email_md5}?s=300&d=retro", alt: user.name %>
@@ -16,10 +12,13 @@
         <%= user.name %>
       <% end %>
     </h4>
-    <% if user.twitter.present?  %>
-      <h5>
-        <%= link_to "@#{user.twitter}", "https://twitter.com/#{user.twitter}" %>
-      </h5>
-    <% end %>
+    <p>
+      <span class="team_socials">
+        <% if user.twitter.present?  %>
+          <%= link_to "L", "https://twitter.com/#{user.twitter}", class: %w(t_twitter hastip) %>
+        <% end %>
+        <%= link_to "F", "#", class: %w(t_facebook hastip) %>
+      </span>
+    </p>
   </div>
 </div>
