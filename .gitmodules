@@ -1,0 +1,3 @@
+[submodule "vendor/initlanesis"]
+	path = vendor/initlanesis
+	url = https://github.com/initLab/initlanesis.git
