@@ -140,4 +140,11 @@ describe User do
       end
     end
   end
+
+  describe '#email_md5' do
+    it 'returns an md5 sum of the email' do
+      user = build :user, email: 'foo@example.com'
+      expect(user.email_md5).to eq 'b48def645758b95537d4424c84d1a9ff'
+    end
+  end
 end
