@@ -2,8 +2,80 @@
 require 'rails_helper'
 
 describe User do
-  it 'checks if the name is present' do
-    expect(build(:user, name: nil)).to have_error_on :name
+  describe 'name' do
+    it 'must be present' do
+      expect(build(:user, name: nil)).to have_error_on :name
+    end
+  end
+
+  describe '::find_for_database_authentication' do
+    let(:user) { create :user }
+
+    it 'returns the user whose email is passed' do
+      expect(User.find_for_database_authentication login: user.email).not_to be_nil
+    end
+
+    it 'returns the user whose username is passed' do
+      expect(User.find_for_database_authentication login: user.username).not_to be_nil
+    end
+
+    it 'returns nil when the passed login does not exist' do
+      expect(User.find_for_database_authentication login: "randomuser").to be_nil
+    end
+
+    context 'when there are users with no username' do
+      let(:legacy_users) { build_list :user, 5, username: nil }
+
+      before do
+        legacy_users.each { |user| user.save(validate: false) }
+        create_list :user, 5
+      end
+
+      it 'returns the legacy user when passed her email' do
+        expect(User.find_for_database_authentication login: legacy_users.first.email).not_to be_nil
+      end
+
+      it 'returns nil when the login is nil' do
+        expect(User.find_for_database_authentication login: nil).to be_nil
+      end
+
+      it 'returns nil when the login is omitted' do
+        expect(User.find_for_database_authentication({})).to be_nil
+      end
+
+      it 'returns nil when the login is blank' do
+        expect(User.find_for_database_authentication({login: ''})).to be_nil
+      end
+    end
+  end
+
+  describe 'username' do
+    it 'must be present' do
+      expect(build(:user, username: nil)).to have_error_on :username
+    end
+
+    it 'must be at least one character' do
+      expect(build(:user, username: '')).to have_error_on :username
+    end
+
+    it 'must be unique' do
+      existing_user = create :user
+
+      expect(build(:user, username: existing_user.username)).to have_error_on :username
+    end
+
+    it 'must only contain letters, numbers, _ and -' do
+      invalid_usernames = %w(ji*r3f пешо +vlado)
+
+      invalid_usernames.each do |username|
+        expect(build(:user, username: username)).to have_error_on :username
+      end
+    end
+
+    it 'can never be an email' do
+      expect(build(:user, username: 'foo@bar')).to have_error_on :username
+      expect(build(:user, username: 'foo@bar.com')).to have_error_on :username
+    end
   end
 
   describe '#destroy' do

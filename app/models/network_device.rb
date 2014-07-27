@@ -4,8 +4,7 @@ class NetworkDevice < ActiveRecord::Base
   validates :owner_id, presence: true
   validates :mac_address, presence: true
 
-  # TODO Add i18n
-  validates :mac_address, format: { with: /\A[0-9A-F]{2}([:-]?)([0-9A-F]{2}\1){4}[0-9A-F]{2}\z/i, message: 'must be a mac address' }
+  validates :mac_address, format: { with: /\A[0-9A-F]{2}([:-]?)([0-9A-F]{2}\1){4}[0-9A-F]{2}\z/i }
 
   validates :mac_address, uniqueness: true
 

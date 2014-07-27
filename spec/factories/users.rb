@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :user, aliases: [:owner] do
     name { Faker::Name.name }
+    sequence(:username) { |u| "username#{u}" }
     email { |u| Faker::Internet.email(u.name) }
     twitter 'foobar'
     url { Faker::Internet.url }

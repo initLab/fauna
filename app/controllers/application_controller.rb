@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up).push(*[:name])
-    devise_parameter_sanitizer.for(:account_update).push(*[:name, :url, :twitter, :privacy])
+    devise_parameter_sanitizer.for(:sign_up).push(*[:name, :username, :email])
+    devise_parameter_sanitizer.for(:sign_in).push(*[:username])
+    devise_parameter_sanitizer.for(:account_update).push(*[:name, :username, :email, :url, :twitter, :privacy])
   end
 
   def current_mac_address
