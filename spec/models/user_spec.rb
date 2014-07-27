@@ -2,32 +2,50 @@
 require 'rails_helper'
 
 describe User do
-  it 'checks if the name is present' do
-    expect(build(:user, name: nil)).to have_error_on :name
+  describe 'name' do
+    it 'must be present' do
+      expect(build(:user, name: nil)).to have_error_on :name
+    end
   end
-
 
   describe '::find_for_database_authentication' do
     let(:user) { create :user }
 
-    it 'return user when email is passed' do
+    it 'returns the user whose email is passed' do
       expect(User.find_for_database_authentication login: user.email).not_to be_nil
     end
 
-    it 'return user when username is passed' do
+    it 'returns the user whose username is passed' do
       expect(User.find_for_database_authentication login: user.username).not_to be_nil
     end
 
-    it 'return nil when login is not existing' do
+    it 'returns nil when the passed login does not exist' do
       expect(User.find_for_database_authentication login: "randomuser").to be_nil
     end
 
-    it 'return nil when login is nil' do
-      expect(User.find_for_database_authentication login: "randomuser").to be_nil
-    end
+    context 'when there are users with no username' do
+      let(:legacy_users) { build_list :user, 5, username: nil }
 
-    it 'return nil when login is omitted' do
-      expect(User.find_for_database_authentication Hash.new).to be_nil
+      before do
+        legacy_users.each { |user| user.save(validate: false) }
+        create_list :user, 5
+      end
+
+      it 'returns the legacy user when passed her email' do
+        expect(User.find_for_database_authentication login: legacy_users.first.email).not_to be_nil
+      end
+
+      it 'returns nil when the login is nil' do
+        expect(User.find_for_database_authentication login: nil).to be_nil
+      end
+
+      it 'returns nil when the login is omitted' do
+        expect(User.find_for_database_authentication({})).to be_nil
+      end
+
+      it 'returns nil when the login is blank' do
+        expect(User.find_for_database_authentication({login: ''})).to be_nil
+      end
     end
   end
 
