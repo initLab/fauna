@@ -1,8 +1,11 @@
-<section class="messages container" id="presence-wrapper">
-  <div id="presence" class="medium-12">
-    <header><h1>Кой e в Лаб'а?</h1></header>
-    <ul>
+<section>
+  <div>
+    <header>
+      <h2>Кой e в Лаб'а?</h2>
+    </header>
+    <div class="team-container">
       <%= render(partial: 'user', collection: @users) || render(partial: 'no_users') %>
-    </ul>
+    </div>
+    <div class="clearfix"></div>
   </div>
 </section>

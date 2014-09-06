@@ -2,7 +2,6 @@
 <html>
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "init Lab Fauna" %></title>
-    <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=PT+Sans&subset=latin,latin-ext,cyrillic".html_safe, media: 'all', "data-turbolinks-track" => true %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 
     <!-- For iOS 2.0+ and Android 2.1+: -->
@@ -35,46 +34,64 @@
 
     <%= csrf_meta_tags %>
   </head>
-  <body class="home blog">
-    <div id="container">
-      <header id="top">
-        <hgroup>
-	  <h1><a href="//initlab.org">init Lab</a></h1>
-	  <h2>&nbsp;/ <a href="/">Fauna</a></h2>
-        </hgroup>
-        <div class="menu-main-container">
-          <ul id="menu-main" class="menu">
-            <li><a href="//initlab.org">Към сайта на init Lab</a></li>
-            <li><a href="/">Кой е в Лаб'а?</a></li>
-            <% unless user_signed_in? %>
-              <li><%= link_to "Вход", new_user_session_path %></li>
-              <li><%= link_to "Регистрация", new_user_registration_path %></li>
-            <% else %>
-              <li><%= link_to "Редакция на профил", edit_user_registration_path %></li>
-              <li><%= link_to "Изход", destroy_user_session_path, method: :delete %></li>
-            <% end %>
-          </ul>
+  <body>
+    <div class="site-container">
+      <div class="site-wrapper">
+
+        <header class="site-header" role="banner">
+          <div class="wrap">
+            <div id="custom_sidebar_tigger" class="nav-btn"></div>
+            <div class="title-area">
+              <h1 class="site-title">init Lab Fauna</h1>
+              <h2 class="site-description">Управление на акаунти</h2>
+            </div>
+
+            <nav id="top" class="nav-primary" role="navigation">
+              <ul class="menu genesis-nav-menu menu-primary">
+                <li class="menu-item menu-item-object-page">
+                  <%= link_to 'Към сайта на init Lab', '//initlab.org' %>
+                </li>
+                <li class="menu-item menu-item-object-page">
+                  <%= link_to "Кой е в Лаб'а?", '/' %>
+                </li>
+                <% unless user_signed_in? %>
+                  <li class="menu-item menu-item-object-page">
+                    <%= link_to "Вход", new_user_session_path %></li>
+                  <li class="menu-item menu-item-object-page">
+                    <%= link_to "Регистрация", new_user_registration_path %>
+                  </li>
+                <% else %>
+                  <li class="menu-item menu-item-object-page">
+                    <%= link_to "Редакция на профил", edit_user_registration_path %>
+                  </li>
+                  <li class="menu-item menu-item-object-page">
+                    <%= link_to "Изход", destroy_user_session_path, method: :delete %>
+                  </li>
+                <% end %>
+              </ul>
+            </nav>
+          </div>
+        </header>
+
+        <div class="site-inner">
+          <div class="wrap">
+            <%= yield %>
+          </div>
         </div>
-      </header>
-      <div id="main">
-        <div class="notifications">
-          <% if flash[:notice] %>
-            <p class="notice"><%= notice %></p>
-          <% end %>
 
-          <% if flash[:alert]  %>
-            <p class="alert"><%= alert %></p>
-          <% end  %>
-        </div>
-
-<%= yield %>
-
-      </div><!-- main -->
-
-      <div id="copyright">
-	<p>Proudly running on <%= link_to 'Ruby on Rails', 'http://rubyonrails.org' %>. Source code available on <%= link_to 'Github', 'https://github.com/initLab/fauna' %></p>
-	<p>Licensed under <%= link_to 'Creative Commons Attribution-ShareAlike 3.0 Unported License', 'http://creativecommons.org/licenses/by-sa/3.0/' %></p>
-      </div>
-    </div> <!-- /container -->
+        <footer class="site-footer">
+          <div class="wrap">
+            <hr>
+            <div class="creds">
+	      <p>Licensed under <%= link_to 'Creative Commons Attribution-ShareAlike 3.0 Unported License', 'http://creativecommons.org/licenses/by-sa/3.0/' %></p>
+	      <p>Source code available on <%= link_to 'Github', 'https://github.com/initLab/fauna' %></p>
+            </div>
+          </div>
+        </footer>
+      </div> <!-- /site-wrapper -->
+      <a id="top-link" href="#top" style="display: block;">
+        ↑ Top of Page
+      </a>
+    </div> <!-- /site-container -->
   </body>
 </html>
