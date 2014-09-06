@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :set_access_control_headers, only: :present
+  before_action :set_access_control_headers, only: :present
 
   def present
     @users = Arp.present_users
