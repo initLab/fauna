@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.1.6rc'
+gem 'rails', '~> 4.2.0'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
+gem 'sass-rails'
 gem 'sprockets'
 
 # Use mysql as the database for Active Record
@@ -35,12 +35,6 @@ gem 'draper'
 # Use devise for authentication
 gem 'devise'
 gem 'devise-i18n'
-
-# The current initlab.org theme uses compass, so we need it here, too
-gem 'compass-rails'
-
-# Use foreigner for foreign key definition
-gem 'foreigner'
 
 # Rails i18n
 gem 'rails-i18n'
