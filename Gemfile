@@ -46,6 +46,11 @@ gem 'sdoc', require: false, group: :doc
 # background. Read more: https://github.com/rails/spring
 gem 'spring', group: :development
 
+# Use Polymer for the UI
+gem 'polymer-rails'
+gem 'polymer-core-rails'
+gem 'polymer-paper-rails'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
