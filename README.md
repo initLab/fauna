@@ -1,7 +1,7 @@
-initLab Identity System
-=======================
+initLab Management Automation System
+====================================
 
-A simple system for tracking who's in initLab.
+A not so simple system for hackerspace management automation.
 
 Installation
 ------------
