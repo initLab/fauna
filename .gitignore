@@ -30,3 +30,6 @@
 
 # Ignore swap files
 *.swp
+
+# Ignore ERD diagrams
+/erd.pdf
