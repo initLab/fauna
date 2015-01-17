@@ -6,6 +6,6 @@ A not so simple system for hackerspace management automation.
 Installation
 ------------
 
-1. `git clone https://github.com/ignisf/init-lab-auth.git --recursive`
-2. Run `bundle install; bundle exec rake initial_setup`
-3. You can now run the rails server with `bundle exec rails s`
+1. `git clone https://github.com/initlab/fauna.git`
+2. Run `bin/setup`
+3. You can now run the rails server with `bin/rails s`
