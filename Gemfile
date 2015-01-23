@@ -43,6 +43,9 @@ gem 'sdoc', require: false, group: :doc
 # background. Read more: https://github.com/rails/spring
 gem 'spring', group: :development
 
+# Phone number validation
+gem 'phony_rails'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
@@ -80,6 +83,9 @@ group :test, :development do
 
   # Simplecov for code coverage statistics
   gem 'simplecov'
+
+  # Database dumping
+  gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
 end
 
 group :production do

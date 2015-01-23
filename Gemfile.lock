@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jetthoughts/yaml_db.git
+  revision: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
+  ref: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
+  specs:
+    yaml_db (0.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -65,6 +72,9 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colorize (0.7.5)
+    countries (0.10.0)
+      currencies (~> 0.4.2)
+    currencies (0.4.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -144,6 +154,11 @@ GEM
       shellany (~> 0.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    phony (2.10.2)
+    phony_rails (0.9.0)
+      activesupport (>= 3.0)
+      countries (>= 0.8.2)
+      phony (~> 2.10.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -283,6 +298,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   pg
+  phony_rails
   pry
   pry-doc
   puma
@@ -299,3 +315,4 @@ DEPENDENCIES
   therubyracer
   turbolinks
   uglifier
+  yaml_db!
