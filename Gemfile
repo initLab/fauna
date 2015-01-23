@@ -46,6 +46,9 @@ gem 'spring', group: :development
 # Phone number validation
 gem 'phony_rails'
 
+# Slim templating engine
+gem 'slim-rails'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
