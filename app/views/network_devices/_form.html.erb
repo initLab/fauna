@@ -1,7 +1,0 @@
-<%= form_for [:user, @network_device], html: {class: 'form--inline'}, builder: FancyFormBuilder, remote: true do |f| %>
-  <div class="input--icon">
-    <i class="ss-icon ss-wifi"></i>
-    <%= f.submit "Запиши", class: 'button' %>
-    <%= f.text_field :mac_address, required: true, value: @network_device.mac_address %>
-  </div>
-<% end %>

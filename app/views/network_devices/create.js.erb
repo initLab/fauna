@@ -1,8 +1,0 @@
-<% if @network_device.errors.any? %>
-  $('#new_network_device').replaceWith('<%= j render 'form' %>');
-  displayFormErrors();
-<% else %>
-  $('#new_network_device_link').show();
-  $('#new_network_device').remove();
-  $('#network_devices').append('<%= j render @network_device %>');
-<% end %>
