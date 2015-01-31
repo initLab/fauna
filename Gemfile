@@ -49,6 +49,10 @@ gem 'phony_rails'
 # Slim templating engine
 gem 'slim-rails'
 
+# Use the Bootstrap CSS framework
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
