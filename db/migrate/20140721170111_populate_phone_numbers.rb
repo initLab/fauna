@@ -1,6 +1,6 @@
 class PopulatePhoneNumbers < ActiveRecord::Migration
   def up
-    execute 'INSERT INTO phone_numbers SELECT * FROM objects WHERE type = "phone";'
+    execute "INSERT INTO phone_numbers SELECT * FROM objects WHERE type='phone';"
   end
 
   def down
