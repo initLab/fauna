@@ -33,3 +33,4 @@
 
 # Ignore ERD diagrams
 /erd.pdf
+/app/assets/stylesheets/.sass-cache/
