@@ -111,6 +111,9 @@ GEM
     formatador (0.2.5)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
+    gravatar-ultimate (2.0.0)
+      activesupport (>= 2.3.14)
+      rack
     guard (2.11.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -314,6 +317,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   font-awesome-sass
+  gravatar-ultimate
   guard-rspec
   jbuilder
   jquery-rails

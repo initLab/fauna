@@ -1,0 +1,18 @@
+.present_user
+  .thumbnail
+    = image_tag Gravatar.new(present_user.email).image_url ssl: true, s: 242, d: 'retro'
+    .caption
+      h5
+        = present_user.name
+        .small
+          = present_user.username
+      .links
+        - if present_user.twitter.present?
+          = link_to "https://twitter.com/#{present_user.twitter}", class: 'btn btn-primary' do
+            = icon 'twitter', '', class: 'fa-2x'
+        - if present_user.try(:github)
+          = link_to "https://github.com/#{present_user.github}", class: 'btn btn-default' do
+            = icon 'github', '', class: 'fa-2x'
+        - if present_user.url.present?
+          = link_to present_user.url, class: 'btn btn-info' do
+            = icon 'link', '', class: 'fa-2x'

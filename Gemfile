@@ -53,6 +53,8 @@ gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
+gem 'gravatar-ultimate'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'

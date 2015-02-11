@@ -1,4 +1,29 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import 'paper_variables';
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'paper';
+
+.present_user {
+    @extend .col-sm-3;
+    @extend .col-md-3;
+    @extend .center-block;
+
+    @media (max-width: $screen-xs-max) {
+        max-width: 256px;
+    }
+
+    .caption {
+        @extend .text-center;
+    }
+
+    img {
+        @extend .img-responsive;
+    }
+
+    .links {
+        @extend .btn-group;
+        @extend .btn-group-sm;
+    }
+}
