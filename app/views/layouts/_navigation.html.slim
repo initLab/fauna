@@ -5,46 +5,45 @@ nav.navbar.navbar-inverse.navbar-static-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="#"  Brand
+      = link_to 'Фауна', root_url, class: 'navbar-brand'
     .navbar-collapse.collapse.navbar-inverse-collapse
       ul.nav.navbar-nav
         li.active
-          a href="#"  Active
+          = link_to users_present_path do
+            = icon 'street-view', 'Присъствие'
         li
-          a href="#"  Link
+          = link_to '#' do
+            = icon 'sign-in', 'Отваряне на вратата'
         li.dropdown
-          a.dropdown-toggle data-toggle="dropdown" href="#"
-            | Dropdown
-            b.caret
+          = link_to "#", class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
+            = icon 'users', 'Лабъри'
+            b.caret<
           ul.dropdown-menu
             li
-              a href="#"  Action
+              = link_to 'Управление', '#'
             li
-              a href="#"  Another action
+              = link_to "Членски внос", "#"
+        li.dropdown
+          = link_to '#', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
+            = icon 'flask', 'Лаб'
+            b.caret<
+          ul.dropdown-menu
             li
-              a href="#"  Something else here
-            li.divider
-            li.dropdown-header Dropdown header
+              = link_to "Достъп", "#"
             li
-              a href="#"  Separated link
+              = link_to "Библиотека", "#"
             li
-              a href="#"  One more separated link
-      form.navbar-form.navbar-left
-        input.form-control.col-lg-8 placeholder="Search" type="text" /
+              = link_to "Инвентар", "#"
+            li
+              = link_to "Счетоводство", "#"
       ul.nav.navbar-nav.navbar-right
-        li
-          a href="#"  Link
         li.dropdown
           a.dropdown-toggle data-toggle="dropdown" href="#"
-            | Dropdown
-            b.caret
+            = icon 'user', 'Акаунт'
+            b.caret<
           ul.dropdown-menu
             li
-              a href="#"  Action
-            li
-              a href="#"  Another action
-            li
-              a href="#"  Something else here
+              = link_to "Преглед/редакция", "#"
             li.divider
             li
-              a href="#"  Separated link
+              = link_to "Изход", "#"
