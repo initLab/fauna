@@ -4,6 +4,8 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'paper';
+@import 'roboto';
+@import 'open_sans';
 
 .present_user {
     @extend .col-sm-3;
