@@ -30,16 +30,29 @@
     }
 }
 
+.no_users {
+    margin-top: 30px;
+    @extend .col-sm-4;
+    @extend .col-sm-offset-4;
+    @extend .text-center;
+
+    i {
+        font-size: 150px;
+    }
+    .caption {
+    }
+}
+
 html {
     position: relative;
     min-height: 100%;
 }
 
 body {
-    margin-bottom: 60px;
+    margin-bottom: 64px;
 
     @media (max-width: $screen-xs-max) {
-        margin-bottom: 120px;
+        margin-bottom: 128px;
     }
 }
 
@@ -47,11 +60,11 @@ body {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: 64px;
     background-color: #f5f5f5;
 
     @media (max-width: $screen-xs-max) {
-        height: 120px;
+        height: 128px;
     }
 
     p {
