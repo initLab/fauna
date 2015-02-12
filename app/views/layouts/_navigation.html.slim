@@ -1,4 +1,4 @@
-nav.navbar.navbar-inverse.navbar-static-top
+nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_color) : 'navbar-inverse'}"
   .container
     .navbar-header
       button.navbar-toggle data-target=".navbar-inverse-collapse" data-toggle="collapse" type="button"
@@ -8,12 +8,12 @@ nav.navbar.navbar-inverse.navbar-static-top
       = link_to 'Фауна', root_url, class: 'navbar-brand'
     .navbar-collapse.collapse.navbar-inverse-collapse
       ul.nav.navbar-nav
-        li.active
+        li class="#{'active' if current_page?(users_present_path) || current_page?(root_path)}"
           = link_to users_present_path do
             = icon 'street-view', 'Присъствие'
         li
           = link_to '#' do
-            = icon 'sign-in', 'Отваряне на вратата'
+            = icon 'unlock', 'Отваряне на вратата'
         li.dropdown
           = link_to "#", class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
             = icon 'users', 'Лабъри'
@@ -37,13 +37,18 @@ nav.navbar.navbar-inverse.navbar-static-top
             li
               = link_to "Счетоводство", "#"
       ul.nav.navbar-nav.navbar-right
-        li.dropdown
-          a.dropdown-toggle data-toggle="dropdown" href="#"
-            = icon 'user', 'Акаунт'
-            b.caret<
-          ul.dropdown-menu
-            li
-              = link_to "Преглед/редакция", "#"
-            li.divider
-            li
-              = link_to "Изход", "#"
+        - if user_signed_in?
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown" href="#"
+              = icon 'user', 'Акаунт'
+              b.caret<
+            ul.dropdown-menu
+              li
+                = link_to "Преглед/редакция", "#"
+              li.divider
+              li
+                = link_to "Изход", "#"
+        - else
+          li class="#{'active' if controller_name == 'sessions'}"
+            = link_to new_user_session_path do
+              = icon 'sign-in', 'Вход'
