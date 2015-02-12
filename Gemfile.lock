@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/doabit/bootstrap-sass-extras.git
+  revision: 0e7678b3fe49907f2121066e756b9b753da933ab
+  specs:
+    bootstrap-sass-extras (0.0.6)
+      rails (>= 3.1.0)
+
+GIT
   remote: git://github.com/jetthoughts/yaml_db.git
   revision: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
   ref: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
@@ -310,6 +317,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  bootstrap-sass-extras!
   capistrano
   capistrano-bundler
   capistrano-rails
