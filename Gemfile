@@ -49,11 +49,15 @@ gem 'phony_rails'
 # Slim templating engine
 gem 'slim-rails'
 
-# Use the Bootstrap CSS framework
+# Use the Bootstrap CSS framework and the FA icon font
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
+# Gravatar helper
 gem 'gravatar-ultimate'
+
+# Use simple form for form building
+gem 'simple_form'
 
 group :development do
   # Use Capistrano for deployment
