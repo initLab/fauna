@@ -14,7 +14,6 @@ bg:
           attributes:
             mac_address:
               invalid: трябва да бъде валиден MAC адрес
-
     models:
       user: Лабър
       network_device: Мрежово устройство
