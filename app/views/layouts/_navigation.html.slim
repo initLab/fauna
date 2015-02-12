@@ -47,7 +47,7 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
                 = link_to "Преглед/редакция", "#"
               li.divider
               li
-                = link_to "Изход", "#"
+                = link_to 'Изход', destroy_user_session_path, method: :delete
         - else
           li class="#{'active' if controller_name == 'sessions'}"
             = link_to new_user_session_path do
