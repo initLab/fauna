@@ -5,16 +5,17 @@ html
     meta charset="utf-8"
     title
       = content_for?(:title) ? "#{yield(:title)} | Fauna" : 'Fauna'
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+
     meta name="viewport" content="width=device-width, initial-scale=1"
+
+    = render partial: 'layouts/icons'
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    == render partial: 'layouts/navigation'
-    .container
-      .row
-        .flash_message
-          = bootstrap_flash
+    = render partial: 'layouts/navigation'
+    = render partial: 'layouts/flash'
     main
       == yield
-    == render partial: 'layouts/footer'
+    = render partial: 'layouts/footer'
