@@ -1,0 +1,10 @@
+.no_users {
+    margin-top: 30px;
+    @extend .col-sm-4;
+    @extend .col-sm-offset-4;
+    @extend .text-center;
+
+    i {
+        font-size: 150px;
+    }
+}
