@@ -1,0 +1,15 @@
+section.container
+  .row
+    .login
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        header
+          legend
+            h3 Вход
+        .form-inputs
+          = f.input :login, required: false, autofocus: true
+          = f.input :password, required: false
+          = f.input :remember_me, label: 'Запомни ме', as: :boolean if devise_mapping.rememberable?
+
+        .form-actions
+          = f.button :submit, 'Влез', class: 'btn btn-primary btn-lg btn-block'
+      = render "devise/shared/links"
