@@ -60,6 +60,9 @@ gem 'gravatar-ultimate'
 # Use simple form for form building
 gem 'simple_form'
 
+# Use Kaminari for pagination
+gem 'kaminari'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'

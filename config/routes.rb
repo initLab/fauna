@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     resources :network_devices, only: [:new, :create, :edit, :update, :destroy]
   end
 
+  namespace :fauna do
+    resources :users, only: [:index, :edit, :update, :show, :destroy]
+  end
+
   devise_for :users, :controllers => {registrations: 'registrations',
                                            sessions: 'sessions'}
   get "users/present"

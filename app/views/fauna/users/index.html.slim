@@ -1,0 +1,21 @@
+- content_for(:title) {'Лабъри'}
+section.container
+  header.row
+    .col-sm-12
+      h2
+        | Лабъри
+  .users
+    .row
+      .col-sm-12
+        table.table.table-striped.table-hover
+          thead
+            tr
+              th Име
+              th Email
+              th Роли
+              th Действия
+          tbody#user_table
+            = render @users
+    .row
+      .col-sm-4.col-sm-offset-4#pagination
+        = paginate @users, remote: true
