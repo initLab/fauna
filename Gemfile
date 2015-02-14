@@ -63,6 +63,9 @@ gem 'simple_form'
 # Use Kaminari for pagination
 gem 'kaminari'
 
+# Use rolify for authorization
+gem 'rolify'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
