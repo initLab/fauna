@@ -11,8 +11,8 @@ section.container
             time< datetime="#{Time.now.iso8601}" = Time.now.to_formatted_s(:time)
   .present_users
     - if @users.any?
-      - @users.each_slice(4) do |users|
-        == render partial: 'present_user_row', locals: {users: users}
+      .row
+        = render partial: 'present_user', collection: @users
     - else
       .row
         .no_users

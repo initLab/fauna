@@ -1,3 +1,7 @@
+- if present_user_counter % 6 == 0
+  .clearfix.visible-lg-block
+- if present_user_counter % 4 == 0
+  .clearfix.visible-sm-block
 .present_user
   .thumbnail
     = image_tag Gravatar.new(present_user.email).image_url ssl: true, s: 242, d: 'retro'
