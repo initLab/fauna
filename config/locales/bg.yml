@@ -32,6 +32,7 @@ bg:
   views:
     registrations:
       sign_up: Регистрация
+      sign_me_up: Регистрирай ме
       minimum_characters: "най-малко %{minimum} символа"
     passwords:
       forgotten_password: Забравена парола
