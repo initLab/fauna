@@ -54,6 +54,7 @@ GEM
     autoprefixer-rails (5.1.5)
       execjs
       json
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
     bootstrap-sass (3.3.3)
       autoprefixer-rails (>= 5.0.0.1)
@@ -136,6 +137,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hike (1.2.3)
+    hirb (0.7.3)
     hitimes (1.2.2)
     i18n (0.7.0)
     jbuilder (2.2.6)
@@ -187,6 +189,8 @@ GEM
     pry-doc (0.6.0)
       pry (~> 0.9)
       yard (~> 0.8)
+    pry-rails (0.3.3)
+      pry (>= 0.9.10)
     puma (2.11.0)
       rack (>= 1.1, < 2.0)
     rack (1.6.0)
@@ -320,6 +324,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bootstrap-sass
   bootstrap-sass-extras!
   capistrano
@@ -335,6 +340,7 @@ DEPENDENCIES
   font-awesome-sass
   gravatar-ultimate
   guard-rspec
+  hirb
   jbuilder
   jquery-rails
   kaminari
@@ -342,6 +348,7 @@ DEPENDENCIES
   phony_rails
   pry
   pry-doc
+  pry-rails
   puma
   rails (~> 4.2.0)
   rails-i18n

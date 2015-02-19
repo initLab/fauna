@@ -73,6 +73,7 @@ group :development do
   gem 'capistrano-bundler'
 
   gem 'pry'
+  gem 'pry-rails'
   gem 'pry-doc'
 
   # Continuous testing with Guard
@@ -106,6 +107,12 @@ group :test, :development do
 
   # Database dumping
   gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
+end
+
+group :development do
+  # Goodies for prettier printing of records in the console
+  gem 'awesome_print'
+  gem 'hirb'
 end
 
 group :production do
