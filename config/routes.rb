@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
-  resource :user, only: :show do
+  resource :user, only: [] do
     resources :network_devices, only: [:new, :create, :edit, :update, :destroy]
+  end
+
+  authenticated do
+    devise_scope :user do
+      get 'users/edit' => 'devise/registrations#edit', as: :user_root
+    end
   end
 
   namespace :fauna do
     resources :users, only: [:index, :edit, :update, :show, :destroy]
   end
 
-  devise_for :users, :controllers => {registrations: 'registrations',
-                                           sessions: 'sessions'}
+  devise_for :users
   get "users/present"
-
   root "users#present"
 
   # The priority is based upon order of creation: first created -> highest priority.

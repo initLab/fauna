@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe SessionsController do
+describe Devise::SessionsController do
   before { @request.env["devise.mapping"] = Devise.mappings[:user] }
 
   it { is_expected.to be_kind_of Devise::SessionsController }
