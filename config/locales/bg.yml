@@ -30,7 +30,14 @@ bg:
         owner: Собственик
         mac_address: MAC адрес
   views:
+    registrations:
+      sign_up: Регистрация
+    passwords:
+      forgotten_password: Забравена парола
     sessions:
       sign_in: Влез
       sign_in_heading: Вход
       remember_me: Запомни ме
+      sign_in_with: "Влез с %{provider}"
+    confirmations:
+      did_not_receive_confirmation_instructions: Не сте получили инструкции за потвърждение?
