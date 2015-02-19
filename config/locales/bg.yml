@@ -5,7 +5,7 @@ bg:
         user:
           attributes:
             username:
-              invalid: може да съдържа само букви, цифри, – и -
+              invalid: може да съдържа само букви, цифри, „_“ и „-“
             twitter:
               invalid: трябва да бъде валиден twitter акаунт
             url:
