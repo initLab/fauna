@@ -113,6 +113,8 @@ group :development do
   # Goodies for prettier printing of records in the console
   gem 'awesome_print'
   gem 'hirb'
+
+  gem 'better_errors'
 end
 
 group :production do
