@@ -29,3 +29,8 @@ bg:
       network_device:
         owner: Собственик
         mac_address: MAC адрес
+  views:
+    sessions:
+      sign_in: Влез
+      sign_in_heading: Вход
+      remember_me: Запомни ме
