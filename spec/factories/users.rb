@@ -10,4 +10,12 @@ FactoryGirl.define do
     password Faker::Internet.password
     password_confirmation { |u| u.password }
   end
+
+  factory :registration, class: User do
+    name { Faker::Name.name }
+    sequence(:username) { |u| "username#{u}" }
+    email { |u| Faker::Internet.email(u.username) }
+    password Faker::Internet.password
+    password_confirmation { |u| u.password }
+  end
 end
