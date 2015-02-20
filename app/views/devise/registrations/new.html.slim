@@ -14,5 +14,5 @@ section.container
           = f.input :password, required: true, hint: (t("views.registrations.minimum_characters", minimum: @minimum_password_length) if @validatable)
           = f.input :password_confirmation, required: true
         .form-actions
-          = f.button :submit, t('views.registrations.sign_me_up'), class: 'btn btn-primary btn-lg btn-block'
+          = f.button :submit, t('views.registrations.sign_me_up')
       = render "devise/shared/links"

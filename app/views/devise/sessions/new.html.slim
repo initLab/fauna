@@ -12,5 +12,5 @@ section.container
           = f.input :remember_me, label: t('views.sessions.remember_me'), as: :boolean if devise_mapping.rememberable?
 
         .form-actions
-          = f.button :submit, t('views.sessions.sign_in'), class: 'btn btn-primary btn-lg btn-block'
+          = f.button :submit, t('views.sessions.sign_in')
       = render "devise/shared/links"
