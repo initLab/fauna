@@ -29,6 +29,19 @@ bg:
       network_device:
         owner: Собственик
         mac_address: MAC адрес
+  mailers:
+    unlocks:
+      hello: "Здравейте, %{name}!"
+      your_account_has_been_locked: Акаунтът ви беше заключен заради прекалено голям брой неуспешни опити за вход.
+      click_the_link_below_to_unlock: Кликнете линкът отдолу, за да го отключите.
+    registrations:
+      welcome: "Добре дошли, %{name}!"
+      confirm_by_clicking: Можете да потвърдите акаунта си като кликнете на линка отдолу
+    passwords:
+      hello: "Здравейте, %{name}!"
+      someone_has_requested_a_link: Някой поиска линк за промяна на парола на акаунта Ви. Паролата може да бъде променена от линкът отдолу.
+      if_you_did_not_request: Ако не желаете да смените паролата си, моля изтрийте това писмо.
+      your_password_will_not_change: Паролата Ви няма да бъде променена, докато не кликнете горния линк и не въведете нова парола.
   views:
     registrations:
       sign_up: Регистрация

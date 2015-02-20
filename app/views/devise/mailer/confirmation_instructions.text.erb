@@ -1,0 +1,5 @@
+<%= t 'mailers.registrations.welcome', name: @resource.name %>
+
+<%= t 'mailers.registrations.confirm_by_clicking' %>
+
+<%= confirmation_url @resource, confirmation_token: @token %>
