@@ -10,6 +10,10 @@ describe User do
     expect(build(:user)).to be_a Devise::Models::Confirmable
   end
 
+  it 'lets Devise handle account locking' do
+    expect(build(:user)).to be_a Devise::Models::Lockable
+  end
+
   describe 'name' do
     it 'must be present' do
       expect(build(:user, name: nil)).to have_error_on :name

@@ -1,0 +1,19 @@
+- content_for(:title) { t 'views.unlocks.resend_unlock_instructions' }
+
+section.container
+  .row
+    .centered_form
+      = simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+        header
+          legend
+            h3 = t('views.unlocks.resend_unlock_instructions')
+        = f.error_notification
+        = f.full_error :unlock_token
+
+        .form-inputs
+          = f.input :email, required: true, autofocus: true
+
+        .form-actions
+          = f.button :submit, t('views.unlocks.resend')
+
+      = render "devise/shared/links"
