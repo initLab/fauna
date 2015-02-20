@@ -43,3 +43,5 @@ bg:
       sign_in_with: "Влез с %{provider}"
     confirmations:
       did_not_receive_confirmation_instructions: Не сте получили инструкции за потвърждение?
+    unlocks:
+      did_not_receive_unlock_instructions: Не сте получили инструкции за отключване?

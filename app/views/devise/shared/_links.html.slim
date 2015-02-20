@@ -12,11 +12,11 @@ br
   br
 
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
-  = link_to t('views.sessions.sign_in_heading'), new_confirmation_path(resource_name)
+  = link_to t('views.confirmations.did_not_receive_confirmation_instructions'), new_confirmation_path(resource_name)
   br
 
 - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-  = link_to t('views.confirmations.did_not_receive_confirmation_instructions'), new_unlock_path(resource_name)
+  = link_to t('views.unlocks.did_not_receive_unlock_instructions'), new_unlock_path(resource_name)
   br
 
 - if devise_mapping.omniauthable?
