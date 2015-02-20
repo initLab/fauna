@@ -42,6 +42,8 @@ bg:
       remember_me: Запомни ме
       sign_in_with: "Влез с %{provider}"
     confirmations:
+      resend_confirmation: Изпращане на Email за потвърждение
+      resend: Изпрати
       did_not_receive_confirmation_instructions: Не сте получили инструкции за потвърждение?
     unlocks:
       did_not_receive_unlock_instructions: Не сте получили инструкции за отключване?

@@ -1,0 +1,19 @@
+- content_for(:title) { t 'views.confirmations.resend_confirmation' }
+
+section.container
+  .row
+    .centered_form
+      = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+        header
+          legend
+            h3 = t('views.confirmations.resend_confirmation')
+        = f.error_notification
+        = f.full_error :confirmation_token
+
+        .form-inputs
+          = f.input :email, required: true, autofocus: true
+
+        .form-actions
+          = f.button :submit, t('views.confirmations.resend')
+
+      = render "devise/shared/links"
