@@ -2,6 +2,10 @@
 require 'rails_helper'
 
 describe User do
+  it 'lets Devise handle email and password validations' do
+    expect(build(:user)).to be_a Devise::Models::Validatable
+  end
+
   it 'lets Devise handle email confirmations' do
     expect(build(:user)).to be_a Devise::Models::Confirmable
   end
