@@ -36,6 +36,10 @@ bg:
       minimum_characters: "най-малко %{minimum} символа"
     passwords:
       forgotten_password: Забравена парола
+      send_instructions: Изпрати инструкции
+      change_your_password: Променете паролата си
+      new_password: Нова парола
+      confirm_your_new_password: Потвърждение на новата парола
     sessions:
       sign_in: Влез
       sign_in_heading: Вход
