@@ -89,7 +89,7 @@ group :development do
   gem 'awesome_print'
   gem 'hirb'
 
-  gem 'better_errors', platforms: %w(ruby_20 ruby_21 ruby_22)
+  gem 'better_errors'
 end
 
 # Use debugger
