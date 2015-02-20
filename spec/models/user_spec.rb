@@ -2,6 +2,10 @@
 require 'rails_helper'
 
 describe User do
+  it 'lets Devise handle email confirmations' do
+    expect(build(:user)).to be_a Devise::Models::Confirmable
+  end
+
   describe 'name' do
     it 'must be present' do
       expect(build(:user, name: nil)).to have_error_on :name

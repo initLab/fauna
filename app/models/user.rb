@@ -2,8 +2,8 @@ require 'digest/md5'
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
 
   has_many :network_devices, foreign_key: :owner_id, dependent: :destroy
