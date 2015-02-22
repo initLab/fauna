@@ -26,6 +26,7 @@ bg:
         password: Парола
         password_confirmation: Потвърждение на паролата
         current_password: Текуща парола
+        privacy: Не искам да присъствам в публични списъци
         gpg_fingerprint: Отпечатък на GPG ключ
         jabber: Jabber акаунт
         picture: Снимка
@@ -51,6 +52,14 @@ bg:
       sign_up: Регистрация
       sign_me_up: Регистрирай ме
       minimum_characters: "най-малко %{minimum} символа"
+      edit_account: Редакция на акаунт
+      leave_blank_if_you_do_not_want_to_change: оставете празно, ако не искате да я променяте
+      we_need_your_current_password: нуждаем се от сегашната Ви парола, за да потвърдим промените
+      update: Промени
+      account_cancelation: Изтриване на акаунт
+      unhappy: Не Сте щастливи?
+      cancel_my_account: Изтрий акаунта ми
+      are_you_sure: Сигурни ли Сте, че искате да изтриете регистрацията си?
     passwords:
       forgotten_password: Забравена парола
       send_instructions: Изпрати инструкции

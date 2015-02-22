@@ -1,0 +1,44 @@
+- content_for(:title) { t 'views.registrations.edit_account' }
+
+section.container
+  .row
+    .account_form
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :horizontal_form, html: { method: :put, class: 'form-horizontal' }) do |f|
+        header
+          legend
+            h3 = t('views.registrations.edit_account')
+        = f.error_notification
+
+        .form-inputs
+          .avatar_box
+            .edit_gravatar
+              = image_tag Gravatar.new(resource.email).image_url(ssl: true, s: 128, d: 'retro')
+              span.overlay
+                | Avatar by
+                =< link_to 'Gravatar', 'https://gravatar.com'
+
+          = f.input :username, required: true, autofocus: true
+          = f.input :email, required: true
+
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            p
+              | Currently waiting confirmation for:
+              =< resource.unconfirmed_email
+
+          = f.input :password, autocomplete: "off", hint: t('views.registrations.leave_blank_if_you_do_not_want_to_change'), required: false
+          = f.input :password_confirmation, required: false
+
+          = f.input :github
+          = f.input :twitter
+          = f.input :url
+          = f.input :jabber
+          = f.input :gpg_fingerprint
+          = f.input :privacy
+
+          = f.input :current_password, hint: t('views.registrations.we_need_your_current_password'), required: true
+        .form-actions
+          = f.button :submit, t('views.registrations.update')
+      .clearfix
+      h4
+        = t('views.registrations.unhappy')
+        = link_to t('views.registrations.cancel_my_account'), registration_path(resource_name), data: { confirm: t('views.registrations.are_you_sure') }, method: :delete, class: 'btn btn-danger pull-right'

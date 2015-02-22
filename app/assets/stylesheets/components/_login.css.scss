@@ -11,3 +11,48 @@
         @extend .btn-block;
     }
 }
+
+.account_form {
+    @extend .col-md-10;
+    @extend .col-md-offset-1;
+    @extend .col-lg-8;
+    @extend .col-lg-offset-2;
+
+    input[type=submit] {
+        @extend .btn;
+        @extend .btn-primary;
+        @extend .btn-lg;
+        @extend .btn-block;
+    }
+}
+
+.form-horizontal {
+    div.boolean {
+        padding: 10px;
+        @extend .col-sm-offset-3;
+    }
+}
+
+.avatar_box {
+    @extend .text-center;
+    padding-bottom: 2em;
+}
+
+.edit_gravatar {
+    @extend .img-thumbnail;
+
+    position: relative;
+
+    .overlay {
+        @extend .text-center;
+        background-color: rgba(225, 238, 255, 0.9);
+        border-radius: 5px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        display: none;
+    }
+}

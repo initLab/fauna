@@ -13,6 +13,8 @@ bg:
     hints:
       user:
         github: потребителско име
+        twitter: потребителско име с или без „@“
+        url: URL, започващ с „http://“ или „https://“
         jabber: Jabber акаунт във формат „username@domain.com“
         gpg_fingerprint: Отпечатък на GPG ключ с или без интервали
     # Examples
