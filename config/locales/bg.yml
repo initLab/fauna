@@ -10,6 +10,12 @@ bg:
               invalid: трябва да бъде валиден twitter акаунт
             url:
               invalid: трябва да бъде валиден http(s) адрес
+            jabber:
+              invalid: трябва да съдържа „@“ точно веднъж
+            github:
+              invalid: трябва да съдържа по-малко от 40 латински букви, цифри или „-“ и да не започва с „-“
+            gpg_fingerprint:
+              invalid: трябва да съдържа точно 40 цифри или латински букви от „A“ до „F“
         network_device:
           attributes:
             mac_address:
