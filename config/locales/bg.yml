@@ -26,6 +26,7 @@ bg:
         password: Парола
         password_confirmation: Потвърждение на паролата
         current_password: Текуща парола
+        gpg_fingerprint: Отпечатък на GPG ключ
         jabber: Jabber акаунт
         github: Github акаунт
       network_device:

@@ -14,8 +14,11 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :github, format: {with: /\A[a-z][a-z-]{,38}\z/i }, allow_blank: true
   validates :jabber, format: {with: /\A[^@]+@[^@]+\z/ }, allow_blank: true
+  validates :gpg_fingerprint, format: {with: /\A[0-9a-f]{4}( ?)([0-9a-f]{4}\1){4}\1{0,2}([0-9a-f]{4}\1){4}[0-9a-f]{4}\z/i }, allow_blank: true
 
   attr_accessor :login
+  after_validation :normalize_gpg_fingerprint
+
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -31,5 +34,11 @@ class User < ActiveRecord::Base
 
   def twitter=(handle)
     write_attribute :twitter, handle.gsub(/\A@/,'') if handle
+  end
+
+  private
+
+  def normalize_gpg_fingerprint
+    self.gpg_fingerprint = gpg_fingerprint.gsub(' ', '').upcase.gsub(/([0-9a-f]{4})/i, '\1 ').strip if self.gpg_fingerprint.present?
   end
 end

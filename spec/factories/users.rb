@@ -12,6 +12,7 @@ FactoryGirl.define do
     confirmed_at Time.now
     github 'foobar'
     jabber 'foo@bar.com'
+    gpg_fingerprint 'AAAA AAAA AAAA AAAA AAAA  AAAA AAAA AAAA AAAA AAAA'
   end
 
   factory :registration, class: User do

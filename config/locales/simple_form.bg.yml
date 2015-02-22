@@ -14,6 +14,7 @@ bg:
       user:
         github: потребителско име
         jabber: Jabber акаунт във формат „username@domain.com“
+        gpg_fingerprint: Отпечатък на GPG ключ с или без интервали
     # Examples
     # labels:
     #   defaults:
