@@ -56,6 +56,19 @@ bg:
   views:
     navigation:
       view_edit: Преглед/редакция
+      sign_in: Вход
+      sign_out: Изход
+      account: Акаунт
+      lab: Лаб
+      labbers: Лабъри
+      door_access: Отваряне на вратата
+      presence: Присъствие
+      access: Достъп
+      library: Библиотека
+      inventory: Инвентар
+      accounting: Счетоводство
+      management: Управление
+      members_fee: Членски внос
     registrations:
       sign_up: Регистрация
       sign_me_up: Регистрирай ме
