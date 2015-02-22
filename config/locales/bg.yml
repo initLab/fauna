@@ -28,6 +28,7 @@ bg:
         current_password: Текуща парола
         gpg_fingerprint: Отпечатък на GPG ключ
         jabber: Jabber акаунт
+        picture: Снимка
         github: Github акаунт
       network_device:
         owner: Собственик
