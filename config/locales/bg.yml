@@ -54,6 +54,8 @@ bg:
       if_you_did_not_request: Ако не желаете да смените паролата си, моля изтрийте това писмо.
       your_password_will_not_change: Паролата Ви няма да бъде променена, докато не кликнете горния линк и не въведете нова парола.
   views:
+    navigation:
+      view_edit: Преглед/редакция
     registrations:
       sign_up: Регистрация
       sign_me_up: Регистрирай ме
