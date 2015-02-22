@@ -10,6 +10,8 @@ FactoryGirl.define do
     password Faker::Internet.password
     password_confirmation { |u| u.password }
     confirmed_at Time.now
+    github 'foobar'
+    jabber 'foo@bar.com'
   end
 
   factory :registration, class: User do

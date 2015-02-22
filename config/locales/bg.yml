@@ -26,6 +26,8 @@ bg:
         password: Парола
         password_confirmation: Потвърждение на паролата
         current_password: Текуща парола
+        jabber: Jabber акаунт
+        github: Github акаунт
       network_device:
         owner: Собственик
         mac_address: MAC адрес

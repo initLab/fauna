@@ -153,6 +153,39 @@ describe User do
     end
   end
 
+  describe 'github username' do
+    it 'can be nil' do
+      expect(build(:user, github: nil)).to_not have_error_on :github
+    end
+
+    it 'can only contain alphanumeric characters or dashes' do
+      expect(build(:user, github: '!foobar')).to have_error_on :github
+      expect(build(:user, github: 'foobar')).to_not have_error_on :github
+      expect(build(:user, github: 'foobar-')).to_not have_error_on :github
+    end
+
+    it 'cannot begin with a dash' do
+      expect(build(:user, github: '-foobar')).to have_error_on :github
+    end
+
+    it 'cannot be longer than 39 characters' do
+      expect(build(:user, github: 'a' * 40)).to have_error_on :github
+      expect(build(:user, github: 'a' * 39)).to_not have_error_on :github
+    end
+  end
+
+  describe 'jabber account' do
+    it 'can be nil' do
+      expect(build(:user, jabber: nil)).to_not have_error_on :jabber
+    end
+
+    it 'must contain exactly one @' do
+      expect(build(:user, jabber: 'foo@bar.com')).to_not have_error_on :jabber
+      expect(build(:user, jabber: 'foobar.com')).to have_error_on :jabber
+      expect(build(:user, jabber: 'foo@@bar.com')).to have_error_on :jabber
+    end
+  end
+
   describe '#email_md5' do
     it 'returns an md5 sum of the email' do
       user = build :user, email: 'foo@example.com'
