@@ -1,7 +1,5 @@
-- if present_user_counter % 6 == 0
-  .clearfix.visible-lg-block
 - if present_user_counter % 4 == 0
-  .clearfix.visible-sm-block
+  .clearfix
 .present_user
   .thumbnail
     = image_tag Gravatar.new(present_user.email).image_url ssl: true, s: 242, d: 'retro'
@@ -14,7 +12,7 @@
         - if present_user.twitter.present?
           = link_to "https://twitter.com/#{present_user.twitter}", class: 'btn btn-primary' do
             = icon 'twitter', '', class: 'fa-2x'
-        - if present_user.try(:github)
+        - if present_user.github.present?
           = link_to "https://github.com/#{present_user.github}", class: 'btn btn-default' do
             = icon 'github', '', class: 'fa-2x'
         - if present_user.url.present?

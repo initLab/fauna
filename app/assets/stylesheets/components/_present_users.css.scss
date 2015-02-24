@@ -1,6 +1,5 @@
 .present_user {
     @extend .col-sm-3;
-    @extend .col-lg-2;
     @extend .center-block;
 
     @media (max-width: $screen-xs-max) {
