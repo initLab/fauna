@@ -1,0 +1,14 @@
+.new_network_device_container, .network_device_container {
+    @extend .col-sm-4;
+
+    .form-actions {
+        input[type=submit] {
+            @extend .btn;
+            @extend .btn-primary;
+        }
+
+        a {
+            @extend .btn;
+        }
+    }
+}

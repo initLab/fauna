@@ -43,6 +43,8 @@ bg:
       network_device:
         owner: Собственик
         mac_address: MAC адрес
+        description: Описание
+        use_for_presence: Използвай за определяне кога съм в Лаба
       phone_number:
         phone_number: Телефонен номер
   mailers:
@@ -74,6 +76,7 @@ bg:
       accounting: Счетоводство
       management: Управление
       members_fee: Членски внос
+      network_devices: Мрежови устройства
     registrations:
       sign_up: Регистрация
       sign_me_up: Регистрирай ме
@@ -106,3 +109,8 @@ bg:
       did_not_receive_unlock_instructions: Не сте получили инструкции за отключване?
       resend_unlock_instructions: Изпращане на инструкции за отключване
       resend: Изпрати
+    network_devices:
+      are_you_sure: Сигурни ли Сте, че искате да изтриете това мрежово устройство?
+      network_devices: Мрежови устройства
+      network_device: Мрежово устройство
+      new_network_device: Ново мрежово устройство

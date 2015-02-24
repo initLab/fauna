@@ -1,0 +1,12 @@
+= simple_form_for [:user, network_device], remote: !network_device.new_record? do |f|
+  .panel-body
+    .form-inputs
+      = f.input :description
+      = f.input :mac_address
+      = f.input :use_for_presence
+  .panel-footer.text-center
+    .form-actions
+      .btn-group
+        = f.button :submit
+        - unless network_device.new_record?
+          = link_to icon(:trash), user_network_device_path(network_device), method: :delete, class: 'btn-danger', data: {confirm: t('views.network_devices.are_you_sure')}

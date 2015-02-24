@@ -1,0 +1,5 @@
+.network_device_container id="network-device-#{network_device.id}"
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title = t('views.network_devices.network_device')
+    = render partial: 'form', locals: {network_device: network_device}

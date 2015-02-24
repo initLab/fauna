@@ -19,6 +19,13 @@ bg:
         gpg_fingerprint: Отпечатък на GPG ключ с или без интервали
         phone_numbers:
           phone_number: телефонен номер с или без код за държава
+      network_device:
+        description: име на хост или кратка подсказка
+  helpers:
+    submit:
+      network_device:
+        create: "Създай"
+        update: "Промени"
     # Examples
     # labels:
     #   defaults:
