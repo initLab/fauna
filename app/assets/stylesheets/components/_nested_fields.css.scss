@@ -1,0 +1,29 @@
+.remove_nested_fields {
+    @extend .btn;
+    @extend .btn-danger;
+    @extend .btn-link;
+
+    color: $btn-danger-color;
+
+    &:hover, &:active, &:visited, &:focus {
+        color: $btn-danger-color;
+    }
+}
+
+.add_nested_fields_container {
+    @extend .text-center;
+}
+
+.form-horizontal .add_nested_fields {
+    @extend .col-sm-offset-3;
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .btn-link;
+    @extend .btn-sm;
+
+    color: $btn-primary-color;
+
+    &:hover, &:active, &:visited, &:focus {
+        color: $btn-primary-color;
+    }
+}

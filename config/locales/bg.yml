@@ -20,9 +20,12 @@ bg:
           attributes:
             mac_address:
               invalid: трябва да бъде валиден MAC адрес
+        phone_number:
+          improbable_phone: трябва да е валиден телефонен номер
     models:
       user: Лабър
       network_device: Мрежово устройство
+      phone_number: Телефонен номер
     attributes:
       user:
         name: Име
@@ -40,6 +43,8 @@ bg:
       network_device:
         owner: Собственик
         mac_address: MAC адрес
+      phone_number:
+        phone_number: Телефонен номер
   mailers:
     unlocks:
       hello: "Здравейте, %{name}!"
@@ -81,6 +86,7 @@ bg:
       unhappy: Не Сте щастливи?
       cancel_my_account: Изтрий акаунта ми
       are_you_sure: Сигурни ли Сте, че искате да изтриете регистрацията си?
+      add_phone_number: Добави телефонен номер
     passwords:
       forgotten_password: Забравена парола
       send_instructions: Изпрати инструкции

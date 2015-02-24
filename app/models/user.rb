@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
 
   has_many :network_devices, foreign_key: :owner_id, dependent: :destroy
+  has_many :phone_numbers, foreign_key: :owner_id, dependent: :destroy
 
   validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A[a-z0-9_\-]+\z/i}, presence: true
   validates :twitter, format: {with: /\A[A-Za-z0-9_]{1,15}\z/}, allow_blank: true
@@ -15,6 +16,8 @@ class User < ActiveRecord::Base
   validates :github, format: {with: /\A[a-z][a-z-]{,38}\z/i }, allow_blank: true
   validates :jabber, format: {with: /\A[^@]+@[^@]+\z/ }, allow_blank: true
   validates :gpg_fingerprint, format: {with: /\A[0-9a-f]{4}( ?)([0-9a-f]{4}\1){4}\1{0,2}([0-9a-f]{4}\1){4}[0-9a-f]{4}\z/i }, allow_blank: true
+
+  accepts_nested_attributes_for :phone_numbers, update_only: true, allow_destroy: true, reject_if: :all_blank
 
   attr_accessor :login
   after_validation :normalize_gpg_fingerprint

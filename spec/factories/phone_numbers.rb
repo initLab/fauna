@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :phone_number do
     owner
-    phone_number { Faker::PhoneNumber.phone_number }
+    sequence(:phone_number) { |n| "088123456#{n}" }
   end
 end

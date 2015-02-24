@@ -95,12 +95,19 @@ describe User do
 
     before do
       create :network_device, owner: user
+      create :phone_number, owner: user
     end
 
-    it 'destroys dependent Computers' do
+    it 'destroys dependent NetworkDevices' do
       network_device = user.network_devices.first
       user.destroy
       expect { NetworkDevice.find network_device.id }.to raise_error ActiveRecord::RecordNotFound
+    end
+
+    it 'destroys dependent PhoneNumbers' do
+      phone_number = user.phone_numbers.first
+      user.destroy
+      expect { PhoneNumber.find phone_number.id }.to raise_error ActiveRecord::RecordNotFound
     end
   end
 
