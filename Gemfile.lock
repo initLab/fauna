@@ -177,6 +177,7 @@ GEM
     minitest (5.5.1)
     multi_json (1.10.1)
     nenv (0.2.0)
+    nested_form (0.3.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -358,6 +359,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari
+  nested_form
   pg
   phony_rails
   pry

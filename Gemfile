@@ -59,6 +59,7 @@ gem 'gravatar-ultimate'
 
 # Use simple form for form building
 gem 'simple_form'
+gem 'nested_form'
 
 # Use Kaminari for pagination
 gem 'kaminari'
