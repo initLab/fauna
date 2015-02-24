@@ -117,6 +117,7 @@ bg:
     users:
       whos_in_the_lab: Кой е в initLab
       people_at_about:
-        one: "%{count} лабър към"
-        other: "%{count} лабъри към"
+        zero: "%{count} човека към"
+        one: "%{count} човек към"
+        other: "%{count} души към"
       everybodys_gone: Всички ги е хванала липсата
