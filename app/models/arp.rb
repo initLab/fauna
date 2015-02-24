@@ -18,7 +18,7 @@ class Arp
   attr_reader :mac_address, :ip_address, :interface
 
   def initialize(ip_address, interface, mac_address)
-    @mac_address = mac_address.upcase.gsub(/[:-]/, '')
+    @mac_address = mac_address.downcase.gsub(/[:-]/, '').scan(/../).join(':')
     @ip_address = ip_address
     @interface = interface
   end
