@@ -114,3 +114,9 @@ bg:
       network_devices: Мрежови устройства
       network_device: Мрежово устройство
       new_network_device: Ново мрежово устройство
+    users:
+      whos_in_the_lab: Кой е в initLab
+      people_at_about:
+        one: "%{count} лабър към"
+        other: "%{count} лабъри към"
+      everybodys_gone: Всички ги е хванала липсата
