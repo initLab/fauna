@@ -11,31 +11,32 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         li class="#{'active' if current_page?(users_present_path) || current_page?(root_path)}"
           = link_to users_present_path do
             = icon 'street-view', t('views.navigation.presence')
-        li
-          = link_to '#' do
-            = icon 'unlock', t('views.navigation.door_access')
-        li.dropdown
-          = link_to "#", class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
-            = icon 'users', t('views.navigation.labbers')
-            b.caret<
-          ul.dropdown-menu
-            li
-              = link_to t('views.navigation.management'), fauna_users_path
-            li
-              = link_to t('views.navigation.members_fee'), '#'
-        li.dropdown
-          = link_to '#', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
-            = icon 'flask', t('views.navigation.lab')
-            b.caret<
-          ul.dropdown-menu
-            li
-              = link_to t('views.navigation.access'), '#'
-            li
-              = link_to t('views.navigation.library'), '#'
-            li
-              = link_to t('views.navigation.inventory'), '#'
-            li
-              = link_to t('views.navigation.accounting'), '#'
+        - if false
+          li
+            = link_to '#' do
+              = icon 'unlock', t('views.navigation.door_access')
+          li.dropdown
+            = link_to "#", class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
+              = icon 'users', t('views.navigation.labbers')
+              b.caret<
+            ul.dropdown-menu
+              li
+                = link_to t('views.navigation.management'), fauna_users_path
+              li
+                = link_to t('views.navigation.members_fee'), '#'
+          li.dropdown
+            = link_to '#', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
+              = icon 'flask', t('views.navigation.lab')
+              b.caret<
+            ul.dropdown-menu
+              li
+                = link_to t('views.navigation.access'), '#'
+              li
+                = link_to t('views.navigation.library'), '#'
+              li
+                = link_to t('views.navigation.inventory'), '#'
+              li
+                = link_to t('views.navigation.accounting'), '#'
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li.dropdown class="#{'active' if current_page?(edit_user_registration_path) || current_page?(user_network_devices_path)}"

@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :fauna do
-    resources :users, only: [:index, :edit, :update, :show, :destroy]
-  end
+  # namespace :fauna do
+  #   resources :users, only: [:index, :edit, :update, :show, :destroy]
+  # end
 
   devise_for :users
   get "users/present"
