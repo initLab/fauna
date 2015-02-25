@@ -71,7 +71,7 @@ Rails.application.configure do
   config.action_mailer.default_options = {from: 'initLab Fauna <fauna@initlab.org>'}
 
   # Use localhost when sending emails in development
-  config.action_mailer.default_url_options = {host: 'fauna.initlab.org'}
+  config.action_mailer.default_url_options = {host: 'https://fauna.initlab.org'}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
