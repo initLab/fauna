@@ -67,6 +67,9 @@ gem 'kaminari'
 # Use rolify for authorization
 gem 'rolify'
 
+# GPG Signing
+gem 'mail-gpg'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
