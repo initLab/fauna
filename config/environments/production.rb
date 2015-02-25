@@ -67,6 +67,9 @@ Rails.application.configure do
   # Use sendmail for delivering email
   config.action_mailer.delivery_method = :sendmail
 
+  # Make sure we have a nice From: header
+  config.action_mailer.default_options = {from: 'initLab Fauna <fauna@initlab.org>'}
+
   # Use localhost when sending emails in development
   config.action_mailer.default_url_options = {host: 'fauna.initlab.org'}
 
