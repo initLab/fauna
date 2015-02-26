@@ -7,7 +7,11 @@ class Arp
   end
 
   def self.present_users
-    all.map(&:owner).uniq.compact
+    User.joins(:network_devices)
+        .where(network_devices: {
+                 mac_address: all.map(&:mac_address),
+                 use_for_presence: true})
+        .group('users.id')
   end
 
   def self.mac_by_ip_address(ip_address)
@@ -21,9 +25,5 @@ class Arp
     @mac_address = mac_address.downcase.gsub(/[:-]/, '').scan(/../).join(':')
     @ip_address = ip_address
     @interface = interface
-  end
-
-  def owner
-    NetworkDevice.find_or_initialize_by(mac_address: @mac_address, use_for_presence: true).owner
   end
 end
