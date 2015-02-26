@@ -12,7 +12,7 @@ section.container
         .form-inputs
           .avatar_box
             .edit_gravatar
-              = image_tag Gravatar.new(resource.email).image_url(ssl: true, s: 128, d: 'retro')
+              = image_tag resource.picture(128)
               span.overlay
                 | Avatar by
                 =< link_to 'Gravatar', 'https://gravatar.com'

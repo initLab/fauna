@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
     write_attribute :twitter, handle.gsub(/\A@/,'') if handle
   end
 
+  def picture(size = 128)
+    Gravatar.new(email).image_url ssl: true, s: size, d: 'retro'
+  end
+
   private
 
   def normalize_gpg_fingerprint

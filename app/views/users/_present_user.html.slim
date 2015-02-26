@@ -2,7 +2,7 @@
   .clearfix
 .present_user
   .thumbnail
-    = image_tag Gravatar.new(present_user.email).image_url ssl: true, s: 242, d: 'retro'
+    = image_tag present_user.picture(242)
     .caption
       h5
         = present_user.name
