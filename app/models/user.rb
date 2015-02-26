@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
 
+  rolify
+
   has_many :network_devices, foreign_key: :owner_id, dependent: :destroy
   has_many :phone_numbers, foreign_key: :owner_id, dependent: :destroy
 
