@@ -7,7 +7,9 @@ class UsersController < ApplicationController
 
   private
     def set_access_control_headers
-      response.headers['Access-Control-Allow-Origin'] = '*'
-      response.headers['Access-Control-Request-Method'] = '*'
+      if request.format.json?
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Request-Method'] = '*'
+      end
     end
 end
