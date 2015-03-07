@@ -169,6 +169,7 @@ describe User do
       expect(build(:user, github: '!foobar')).to have_error_on :github
       expect(build(:user, github: 'foobar')).to_not have_error_on :github
       expect(build(:user, github: 'foobar-')).to_not have_error_on :github
+      expect(build(:user, github: 'foobar123')).to_not have_error_on :github
     end
 
     it 'cannot begin with a dash' do
