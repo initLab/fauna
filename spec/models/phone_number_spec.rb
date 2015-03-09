@@ -20,5 +20,10 @@ describe PhoneNumber do
     it 'must be present' do
       expect(build(:phone_number, phone_number: nil)).to have_error_on :phone_number
     end
+
+    it 'must be stored in a normalized form in the database' do
+      phone_number = create :phone_number, phone_number: '0883444555'
+      expect(PhoneNumber.find(phone_number.id).phone_number).to eq '+359883444555'
+    end
   end
 end
