@@ -3,13 +3,13 @@
     @extend .col-md-offset-4;
     @extend .col-sm-6;
     @extend .col-sm-offset-3;
+}
 
-    input[type=submit] {
-        @extend .btn;
-        @extend .btn-primary;
-        @extend .btn-lg;
-        @extend .btn-block;
-    }
+input[type=submit] {
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .btn-lg;
+    @extend .btn-block;
 }
 
 .account_form {
@@ -17,13 +17,6 @@
     @extend .col-md-offset-1;
     @extend .col-lg-8;
     @extend .col-lg-offset-2;
-
-    input[type=submit] {
-        @extend .btn;
-        @extend .btn-primary;
-        @extend .btn-lg;
-        @extend .btn-block;
-    }
 }
 
 .form-horizontal {
