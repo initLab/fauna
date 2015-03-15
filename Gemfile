@@ -71,6 +71,9 @@ gem 'authority'
 # GPG Signing
 gem 'mail-gpg'
 
+# HTTP requests
+gem 'httparty'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'

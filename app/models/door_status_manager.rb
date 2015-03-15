@@ -1,0 +1,2 @@
+module DoorStatusManager
+end
