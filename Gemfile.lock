@@ -94,7 +94,7 @@ GEM
       execjs
     coffee-script-source (1.9.1)
     colorize (0.7.5)
-    countries (0.11.0)
+    countries (0.11.2)
       currencies (~> 0.4.2)
       i18n_data (~> 0.6.0)
     currencies (0.4.2)
@@ -151,7 +151,7 @@ GEM
     hirb (0.7.3)
     hitimes (1.2.2)
     i18n (0.7.0)
-    i18n_data (0.6.0)
+    i18n_data (0.6.2)
     jbuilder (2.2.11)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
