@@ -28,6 +28,9 @@ section.container
           = f.input :password, autocomplete: "off", hint: t('views.registrations.leave_blank_if_you_do_not_want_to_change'), required: false
           = f.input :password_confirmation, required: false
 
+          = f.input :pin, as: :password, autocomplete: "off", required: false
+          = f.input :pin_confirmation, as: :password, required: false
+
           #phone_numbers
             = f.simple_fields_for :phone_numbers do |phone_numbers_form|
               = phone_numbers_form.input :phone_number do

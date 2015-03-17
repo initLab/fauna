@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
                                                            :twitter, :privacy,
                                                            :github, :jabber,
                                                            :gpg_fingerprint,
+                                                           :pin, :pin_confirmation,
                                                            phone_numbers_attributes: [
                                                              :_destroy,
                                                              :id,

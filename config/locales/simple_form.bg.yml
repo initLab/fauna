@@ -17,6 +17,7 @@ bg:
         url: URL, започващ с „http://“ или „https://“
         jabber: Jabber акаунт във формат „username@domain.com“
         gpg_fingerprint: Отпечатък на GPG ключ с или без интервали
+        pin: използва се за отключване на вратата и трябва да е 6-цифрено число; оставете празно, ако не искате да го променяте
         phone_numbers:
           phone_number: телефонен номер с или без код за държава
       network_device:

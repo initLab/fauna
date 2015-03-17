@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates :github, format: {with: /\A[a-z0-9][a-z0-9-]{,38}\z/i}, allow_blank: true
   validates :jabber, format: {with: /\A[^@]+@[^@]+\z/}, allow_blank: true
   validates :gpg_fingerprint, format: {with: /\A[0-9a-f]{4}( ?)([0-9a-f]{4}\1){4}\1{0,2}([0-9a-f]{4}\1){4}[0-9a-f]{4}\z/i}, allow_blank: true
+  validates :pin, numericality: true, length: {is: 6}, allow_blank: true, confirmation: true
 
   accepts_nested_attributes_for :phone_numbers, update_only: true, allow_destroy: true, reject_if: :all_blank
 
@@ -40,6 +41,15 @@ class User < ActiveRecord::Base
 
   def picture(size = 128)
     Gravatar.new(email).image_url ssl: true, s: size, d: 'retro'
+  end
+
+  def pin=(pin)
+    @pin = pin
+    self.encrypted_pin = BCrypt::Password.create pin
+  end
+
+  def pin
+    @pin
   end
 
   private
