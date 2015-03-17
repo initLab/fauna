@@ -214,6 +214,41 @@ describe User do
     end
   end
 
+  describe '#pin' do
+    it 'should be private' do
+      expect { build(:user).pin }.to raise_error NoMethodError
+    end
+  end
+
+  describe '#pin=' do
+    it 'should set the value of encrypted_pin to a BCrypt::Password encrypted version of pin' do
+      user = build :user
+
+      expect(BCrypt::Password).to receive(:create).and_return(BCrypt::Password.new '$2a$10$eiD5w/oMitEM1kXoFmxWQOFlLCNZTAwV/IZOGo8UMIROvg0W4iXRy')
+
+      expect {user.pin = '123456'}.to change(user, :encrypted_pin)
+      expect(user.encrypted_pin).to eq '$2a$10$eiD5w/oMitEM1kXoFmxWQOFlLCNZTAwV/IZOGo8UMIROvg0W4iXRy'
+    end
+  end
+
+  describe 'pin' do
+    it 'can be nil' do
+      expect(build(:user, pin: nil)).to_not have_error_on :pin
+    end
+
+    it 'must be a 6-digit number when it\'s not nil' do
+      expect(build(:user, pin: 123456)).to_not have_error_on :pin
+      expect(build(:user, pin: 123)).to have_error_on :pin
+      expect(build(:user, pin: 1234567)).to have_error_on :pin
+      expect(build(:user, pin: 'abcdef')).to have_error_on :pin
+    end
+
+    it 'must check if confirmation matches' do
+      expect(build(:user, pin: 123456, pin_confirmation: 123456)).to_not have_error_on :pin_confirmation
+      expect(build(:user, pin: 123456, pin_confirmation: 12345)).to have_error_on :pin_confirmation
+    end
+  end
+
   describe '#email_md5' do
     it 'returns an md5 sum of the email' do
       user = build :user, email: 'foo@example.com'
