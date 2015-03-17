@@ -48,13 +48,13 @@ class User < ActiveRecord::Base
     self.encrypted_pin = BCrypt::Password.create pin
   end
 
+  def pin
+    @pin
+  end
+
   private
 
   def normalize_gpg_fingerprint
     self.gpg_fingerprint = gpg_fingerprint.gsub(' ', '').upcase.gsub(/([0-9a-f]{4})/i, '\1 ').strip if self.gpg_fingerprint.present?
-  end
-
-  def pin
-    @pin
   end
 end

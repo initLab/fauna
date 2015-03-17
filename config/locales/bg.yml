@@ -40,6 +40,8 @@ bg:
         jabber: Jabber акаунт
         picture: Снимка
         github: Github акаунт
+        pin: ПИН
+        pin_confirmation: Потвърждение на ПИН-а
       network_device:
         owner: Собственик
         mac_address: MAC адрес

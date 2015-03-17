@@ -215,8 +215,8 @@ describe User do
   end
 
   describe '#pin' do
-    it 'should be private' do
-      expect { build(:user).pin }.to raise_error NoMethodError
+    it 'should return the pin' do
+      expect(build(:user, pin: 123456).pin).to eq 123456
     end
   end
 
