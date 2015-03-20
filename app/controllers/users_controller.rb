@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @users = Arp.present_users
   end
 
+  def present_embeddable
+    head :gone
+  end
+
   private
     def set_access_control_headers
       if request.format.json?
