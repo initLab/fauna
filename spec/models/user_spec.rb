@@ -221,6 +221,12 @@ describe User do
   end
 
   describe '#pin=' do
+    it 'should not set the value of encrypted_pin whenever pin is blank or nil' do
+      user = build :user, encrypted_pin: '$2a$10$eiD5w/oMitEM1kXoFmxWQOFlLCNZTAwV/IZOGo8UMIROvg0W4iXRy'
+      expect {user.pin = ''}.to_not change(user, :encrypted_pin)
+      expect {user.pin = nil}.to_not change(user, :encrypted_pin)
+    end
+
     it 'should set the value of encrypted_pin to a BCrypt::Password encrypted version of pin' do
       user = build :user
 

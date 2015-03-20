@@ -44,8 +44,10 @@ class User < ActiveRecord::Base
   end
 
   def pin=(pin)
-    @pin = pin
-    self.encrypted_pin = BCrypt::Password.create pin
+    if pin.present?
+      @pin = pin
+      self.encrypted_pin = BCrypt::Password.create pin
+    end
   end
 
   def pin
