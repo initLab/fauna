@@ -118,8 +118,10 @@ bg:
       new_network_device: Ново мрежово устройство
     users:
       whos_in_the_lab: Кой е в initLab
-      people_at_about:
-        zero: "%{count} човека към"
-        one: "%{count} човек към"
-        other: "%{count} души към"
+      people_at_about_html:
+        zero: "%{count} лабъри към"
+        one: "%{count} лабър към"
+        few: "%{count}<sup>-ма</sup> лабъри към"
+        many: "%{count} лабъри към"
+        other: "%{count} лабъри към"
       everybodys_gone: Всички ги е хванала липсата
