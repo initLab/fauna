@@ -7,7 +7,7 @@ section.container
         = t 'views.users.whos_in_the_lab'
         .pull-right
           span.small
-            => t 'views.users.people_at_about', count: @users.count
+            => t 'views.users.people_at_about_html', count: @users.count
             time< datetime="#{Time.now.iso8601}" = Time.now.to_formatted_s(:time)
   .present_users
     - if @users.any?
