@@ -64,8 +64,9 @@ gem 'nested_form'
 # Use Kaminari for pagination
 gem 'kaminari'
 
-# Use rolify for authorization
+# Use rolify and authority for authorization
 gem 'rolify'
+gem 'authority'
 
 # GPG Signing
 gem 'mail-gpg'
