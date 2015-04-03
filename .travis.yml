@@ -10,4 +10,6 @@ script:
   - RAILS_ENV=test bin/setup
   - RAILS_ENV=test bundle exec rake --trace spec
 before_script:
+  - psql -c 'create database fauna_development;' -U postgres
+  - psql -c 'create database fauna_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
