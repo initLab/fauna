@@ -10,5 +10,9 @@ class Role < ActiveRecord::Base
 
   validates :name, inclusion: {in: Role::PREDEFINED_ROLES.map(&:to_s)}
 
+  def localized_name
+    I18n.t "roles.#{name}"
+  end
+
   scopify
 end
