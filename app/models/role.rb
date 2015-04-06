@@ -14,5 +14,9 @@ class Role < ActiveRecord::Base
     I18n.t "roles.#{name}"
   end
 
+  def self.predefined
+    PREDEFINED_ROLES.map { |name| Role.find_or_initialize_by name: name }
+  end
+
   scopify
 end

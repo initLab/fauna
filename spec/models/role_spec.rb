@@ -16,4 +16,13 @@ describe Role do
       expect(role.localized_name).to eq 'УС'
     end
   end
+
+  describe '::predefined' do
+    it 'returns instances of the predefined roles' do
+      predefined_roles = Role.predefined
+
+      expect(predefined_roles.first).to be_a Role
+      expect(predefined_roles.map(&:name)).to eq Role::PREDEFINED_ROLES.map(&:to_s)
+    end
+  end
 end
