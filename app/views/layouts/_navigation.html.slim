@@ -11,10 +11,7 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         li class="#{'active' if current_page?(users_present_path) || current_page?(root_path)}"
           = link_to users_present_path do
             = icon 'street-view', t('views.navigation.presence')
-        - if false
-          li
-            = link_to '#' do
-              = icon 'unlock', t('views.navigation.door_access')
+        - if user_signed_in? and current_user.can_update?(User)
           li.dropdown
             = link_to "#", class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
               = icon 'users', t('views.navigation.labbers')
@@ -24,6 +21,10 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
                 = link_to t('views.navigation.management'), fauna_users_path
               li
                 = link_to t('views.navigation.members_fee'), '#'
+        - if false
+          li
+            = link_to '#' do
+              = icon 'unlock', t('views.navigation.door_access')
           li.dropdown
             = link_to '#', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
               = icon 'flask', t('views.navigation.lab')

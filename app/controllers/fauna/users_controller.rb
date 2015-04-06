@@ -1,8 +1,10 @@
 module Fauna
   class UsersController < ApplicationController
-    # TODO: Add authentication and authorization
+    before_filter :authenticate_user!
+    authorize_actions_for User
+
     def index
-      @users = User.order(id: :desc).page(params[:page]).per(5)
+      @users = User.order(id: :desc).page params[:page]
     end
   end
 end

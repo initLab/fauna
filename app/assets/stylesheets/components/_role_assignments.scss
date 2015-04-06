@@ -1,0 +1,8 @@
+.role-assignments {
+    @extend .btn-group;
+    white-space: nowrap;
+    .btn {
+        float: none;
+        display: inline-block;
+    }
+}

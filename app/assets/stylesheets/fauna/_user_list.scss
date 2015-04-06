@@ -1,0 +1,11 @@
+.users {
+    table {
+        @extend .table;
+        @extend .table-striped;
+        @extend .table-hover;
+    }
+
+    .roles_column {
+        text-align: right;
+    }
+}

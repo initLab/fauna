@@ -23,9 +23,15 @@ bg:
         phone_number:
           improbable_phone: трябва да е валиден телефонен номер
     models:
-      user: Лабър
+      user:
+        zero: Лабъри
+        one: Лабър
+        few: Лабъри
+        many: Лабъри
+        other: Лабъри
       network_device: Мрежово устройство
       phone_number: Телефонен номер
+      role: Роля
     attributes:
       user:
         name: Име
@@ -42,6 +48,7 @@ bg:
         github: Github акаунт
         pin: ПИН
         pin_confirmation: Потвърждение на ПИН-а
+        roles: Роли
       network_device:
         owner: Собственик
         mac_address: MAC адрес
@@ -62,6 +69,10 @@ bg:
       someone_has_requested_a_link: Някой поиска линк за промяна на парола на акаунта Ви. Паролата може да бъде променена от линкът отдолу.
       if_you_did_not_request: Ако не желаете да смените паролата си, моля изтрийте това писмо.
       your_password_will_not_change: Паролата Ви няма да бъде променена, докато не кликнете горния линк и не въведете нова парола.
+  roles:
+    board_member: УС
+    trusted_member: Доверен член
+    member: Член
   views:
     navigation:
       view_edit: Преглед/редакция
