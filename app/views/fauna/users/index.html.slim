@@ -1,18 +1,18 @@
-- content_for(:title) {'Лабъри'}
+- content_for(:title) { User.model_name.human(count: 2) }
 section.container
   header.row
     .col-sm-12
       h2
-        | Лабъри
+        = User.model_name.human(count: 2)
   .users
     .row
       .col-sm-12
         table
           thead
             tr
-              th Име
-              th Email
-              th.roles_column Роли
+              th = User.human_attribute_name(:name)
+              th = User.human_attribute_name(:email)
+              th.roles_column = User.human_attribute_name(:roles)
           tbody#user_table
             = render @users
     .row
