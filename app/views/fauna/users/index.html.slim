@@ -7,15 +7,14 @@ section.container
   .users
     .row
       .col-sm-12
-        table.table.table-striped.table-hover
+        table
           thead
             tr
               th Име
               th Email
-              th Роли
-              th Действия
+              th.roles_column Роли
           tbody#user_table
             = render @users
     .row
-      .col-sm-4.col-sm-offset-4#pagination
+      .col-sm-4.col-sm-offset-4.text-center#pagination
         = paginate @users, remote: true
