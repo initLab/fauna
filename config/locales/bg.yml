@@ -65,6 +65,8 @@ bg:
       your_password_will_not_change: Паролата Ви няма да бъде променена, докато не кликнете горния линк и не въведете нова парола.
   roles:
     board_member: УС
+    trusted_member: Доверен член
+    member: Член
   views:
     navigation:
       view_edit: Преглед/редакция
