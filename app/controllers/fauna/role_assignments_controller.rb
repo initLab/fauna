@@ -6,18 +6,26 @@ module Fauna
     before_action :assign_user
 
     def create
-      if @user.add_role(role_params[:name]).persisted?
-        head :created
-      else
-        head :unprocessable_entity
+      respond_to do |format|
+        format.js do
+          if @user.add_role(role_params[:name]).persisted?
+            render :refresh, status: :created
+          else
+            head :unprocessable_entity
+          end
+        end
       end
     end
 
     def destroy
-      unless @user.remove_role(params[:role_name]).empty?
-        head :no_content
-      else
-        head :unprocessable_entity
+      respond_to do |format|
+        format.js do
+          unless @user.remove_role(params[:role_name]).empty?
+            render :refresh
+          else
+            head :unprocessable_entity
+          end
+        end
       end
     end
 

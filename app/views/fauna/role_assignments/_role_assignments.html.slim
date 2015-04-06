@@ -1,0 +1,8 @@
+.role-assignments id="role-assignments-#{user.id}"
+  - Role.predefined.each do |predefined_role|
+    - if user.has_role? predefined_role.name
+      = button_to role_assignment_fauna_user_role_assignments_path(user.id, predefined_role.name), method: :delete, remote: true, class: 'btn btn-sm btn-warning', data: {disable: true} do
+        = icon 'check-square-o', predefined_role.localized_name
+    - else
+      = button_to fauna_user_role_assignments_path(user.id, role: {name: predefined_role.name}), method: :post, remote: true, class: 'btn btn-sm', data: {disable: true} do
+        = icon 'square-o', predefined_role.localized_name
