@@ -16,3 +16,7 @@
 @import 'components/network_devices';
 @import 'components/role_assignments';
 @import 'fauna/user_list';
+
+html.turbolinks-progress-bar::before {
+    background-color: #ff9800 !important;
+}
