@@ -1,8 +1,8 @@
 class Arp
   def self.all
-    `ip neigh show`.split(/\n/).map do |entry|
+    `ip neigh show nud reachable`.split(/\n/).map do |entry|
       addresses = *entry.scan(/\A([0-9a-f:.]*?) dev ([a-z0-9.]*?) lladdr ([0-9a-f:].*?) .*\z/i).first
-      Arp.new(*addresses) if addresses.count == 3
+      Arp.new(*addresses)
     end.compact
   end
 
