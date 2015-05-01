@@ -1,4 +1,5 @@
 class Door::LogEntriesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_filter :authorize_client!
 
   def create
