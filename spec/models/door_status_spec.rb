@@ -23,7 +23,7 @@ describe DoorStatus do
 
   context 'when the door status couldn\'t be retreived' do
     before do
-      allow(backend).to receive(:status).and_raise(DoorStatusManager::Error)
+      allow(backend).to receive(:status).and_raise(StandardError)
     end
 
     describe '#door' do
@@ -32,7 +32,7 @@ describe DoorStatus do
       end
 
       it 'logs the unsuccessful attempt' do
-        expect(Rails.logger).to receive(:warn).with('Error retreiving door status.')
+        expect(Rails.logger).to receive(:warn).with("Error retreiving door status: StandardError")
         subject.door
       end
     end
@@ -43,7 +43,7 @@ describe DoorStatus do
       end
 
       it 'logs the unsuccessful attempt' do
-        expect(Rails.logger).to receive(:warn).with('Error retreiving door status.')
+        expect(Rails.logger).to receive(:warn).with("Error retreiving door status: StandardError")
         subject.door
       end
     end
