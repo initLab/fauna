@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :door do
+    resources :log_entries, only: [:create]
+  end
+
   devise_for :users
   get "users/present"
   get "users/present_embeddable"
