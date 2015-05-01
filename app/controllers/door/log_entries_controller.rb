@@ -21,7 +21,11 @@ class Door::LogEntriesController < ApplicationController
   # TODO: Move to token-based authentication when there is support for it in
   # Pesho
   def authorize_client!
-    ip = request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip
-    head :unauthorized unless ip == Rails.application.config.door_status_manager.host
+    ip = request.remote_ip
+
+    unless ip == Rails.application.config.door_status_manager.host
+      Rails.logger.warn "#{ip} is not authorized to perform this action."
+      head :unauthorized
+    end
   end
 end
