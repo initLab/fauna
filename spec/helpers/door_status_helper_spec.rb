@@ -12,7 +12,8 @@ describe DoorStatusHelper, type: :helper do
     end
 
     it 'caches the door status' do
-      expect(Rails.cache).to receive(:fetch).with('door_status', any_args).and_return(:locked)
+      lifetime = Rails.application.config.door_status_manager.cache_lifetime
+      expect(Rails.cache).to receive(:fetch).with('door_status', hash_including(expires_in: lifetime)).and_return(:locked)
       expect(helper.door_status).to eq :locked
     end
   end
