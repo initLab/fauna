@@ -11,7 +11,7 @@ module DoorStatusManager
     end
 
     def status
-      response = @client.get "#{@base_uri}/status", query: ['key', key]
+      response = @client.get("#{@base_uri}/status", query: {'key' => key})
 
       if response.ok?
         response.body
