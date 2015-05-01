@@ -12,11 +12,11 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
           = link_to '#' do
             - case door_status
             - when :locked
-              = icon 'lock', 'Заключено'
+              = icon 'lock', t('views.door_status.locked')
             - when :unlocked
-              = icon 'unlock', 'Отключено'
+              = icon 'unlock', t('views.door_status.unlocked')
             - else
-              = icon 'lock', 'Неясно'
+              = icon 'lock', t('views.door_status.unknown')
         li class="#{'active' if current_page?(users_present_path) || current_page?(root_path)}"
           = link_to users_present_path do
             = icon 'street-view', t('views.navigation.presence')
