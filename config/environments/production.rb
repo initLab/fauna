@@ -86,5 +86,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.door_status_manager_backend = DoorStatusManager::Pesho
+  config.door_status_manager_backend = DoorStatusManager::Pesho.new
 end

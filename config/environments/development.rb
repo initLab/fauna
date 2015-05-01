@@ -42,5 +42,5 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.door_status_manager_backend = DoorStatusManager::Dummy
+  config.door_status_manager_backend = DoorStatusManager::Dummy.new
 end

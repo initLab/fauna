@@ -72,7 +72,7 @@ gem 'authority'
 gem 'mail-gpg'
 
 # HTTP requests
-gem 'httparty'
+gem 'httpclient'
 
 group :development do
   # Use Capistrano for deployment
