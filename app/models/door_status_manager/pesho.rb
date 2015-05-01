@@ -3,7 +3,7 @@ require 'jsonclient'
 module DoorStatusManager
   class Pesho
     def initialize
-      @base_uri = Rails.application.config.door_status_manager.host
+      @base_uri = Rails.application.config.door_status_manager.url
       @client = JSONClient.new
       @client.connect_timeout = Rails.application.config.door_status_manager.timeout
       @client.send_timeout = Rails.application.config.door_status_manager.timeout
