@@ -261,4 +261,11 @@ describe User do
       expect(user.email_md5).to eq 'b48def645758b95537d4424c84d1a9ff'
     end
   end
+
+  describe '#to_s' do
+    it 'returns the user id, email and name' do
+      user = build(:user)
+      expect(user.to_s).to eq "User(id: #{user.id}, email: #{user.email}, name: #{user.name})"
+    end
+  end
 end

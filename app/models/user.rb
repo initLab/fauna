@@ -58,6 +58,10 @@ class User < ActiveRecord::Base
     @pin
   end
 
+  def to_s
+    "User(id: #{id}, email: #{email}, name: #{name})"
+  end
+
   private
 
   def normalize_gpg_fingerprint
