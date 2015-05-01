@@ -5,7 +5,7 @@ gem 'rails', '~> 4.2.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
-gem 'sprockets'
+gem 'sprockets', '~> 2.12'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -98,6 +98,8 @@ group :development do
   gem 'hirb'
 
   gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'quiet_assets'
 end
 
 # Use debugger
