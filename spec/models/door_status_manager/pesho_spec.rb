@@ -1,0 +1,50 @@
+require 'rails_helper'
+
+module DoorStatusManager
+  describe Pesho do
+    let(:client) { instance_double JSONClient }
+    let(:message) { instance_double HTTP::Message }
+
+    before do
+      allow(JSONClient).to receive(:new).and_return client
+      allow(client).to receive(:connect_timeout=)
+      allow(client).to receive(:send_timeout=)
+      allow(client).to receive(:receive_timeout=)
+      allow(client).to receive(:get).and_return(message)
+    end
+
+    it 'sets the correct time out for the HTTP connections' do
+      timeout = Rails.application.config.door_status_manager.timeout
+      expect(client).to receive(:connect_timeout=).with(timeout)
+      expect(client).to receive(:send_timeout=).with(timeout)
+      expect(client).to receive(:receive_timeout=).with(timeout)
+      DoorStatusManager::Pesho.new
+    end
+
+    context 'when the Pesho instance returns HTTP 200' do
+      before do
+        allow(message).to receive(:ok?).and_return(true)
+        allow(message).to receive(:body).and_return({'door' => 'closed', 'latch' => 'locked'})
+      end
+
+      describe '#status' do
+        it 'returns the hash that results from parsing the JSON response' do
+          expect(subject.status).to eq({"door" => "closed", "latch" => "locked"})
+        end
+      end
+    end
+
+    context 'when the Pesho instance does not return HTTP 200' do
+      before do
+        allow(message).to receive(:ok?).and_return(false)
+        allow(message).to receive(:status).and_return(500)
+      end
+
+      describe '#status' do
+        it 'raises a DoorStatusManager::Error' do
+          expect { subject.status }.to raise_error DoorStatusManager::Error
+        end
+      end
+    end
+  end
+end

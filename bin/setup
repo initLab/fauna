@@ -13,9 +13,12 @@ Dir.chdir APP_ROOT do
   puts "\n== Generating secret tokens =="
   unless File.exist?('config/secrets.yml')
     secrets = {
-      'development' => {'secret_key_base' => SecureRandom.hex(64)},
-      'test'        => {'secret_key_base' => SecureRandom.hex(64)},
-      'production'  => {'secret_key_base' => '<%= ENV["SECRET_KEY_BASE"] %>'}
+      'development' => {'secret_key_base' => SecureRandom.hex(64),
+                        'door_status_manager_key' => SecureRandom.hex(8)},
+      'test'        => {'secret_key_base' => SecureRandom.hex(64),
+                        'door_status_manager_key' => SecureRandom.hex(8)},
+      'production'  => {'secret_key_base' => '<%= ENV["SECRET_KEY_BASE"] %>',
+                        'door_status_manager_key' => SecureRandom.hex(8)}
     }
 
     File.open('config/secrets.yml', 'w') do |f|
@@ -34,6 +37,9 @@ Dir.chdir APP_ROOT do
   puts "\n== Removing old logs and tempfiles =="
   system 'rm -f log/*'
   system 'rm -rf tmp/cache/*'
+
+  puts "\n== Making sure the cache directory exists =="
+  system 'mkdir -p tmp/cache'
 
   puts "\n== Restarting application server =="
   system 'touch tmp/restart.txt'

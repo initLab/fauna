@@ -74,6 +74,10 @@ bg:
     trusted_member: Доверен член
     member: Член
   views:
+    door_status:
+      locked: Заключено
+      unlocked: Отключено
+      unknown: Неясно
     navigation:
       view_edit: Преглед/редакция
       sign_in: Вход
