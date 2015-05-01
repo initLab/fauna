@@ -8,16 +8,15 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
       = link_to 'Фауна', root_url, class: 'navbar-brand'
     .navbar-collapse.collapse.navbar-inverse-collapse
       ul.nav.navbar-nav
-        - cache('door_status', expires_in: 60.seconds) do
-          li
-            = link_to '#' do
-              - case DoorStatus.new.latch
-              - when :locked
-                = icon 'lock', 'Заключено'
-              - when :unlocked
-                = icon 'unlock', 'Отключено'
-              - else
-                = icon 'lock', 'Неясно'
+        li
+          = link_to '#' do
+            - case door_status
+            - when :locked
+              = icon 'lock', 'Заключено'
+            - when :unlocked
+              = icon 'unlock', 'Отключено'
+            - else
+              = icon 'lock', 'Неясно'
         li class="#{'active' if current_page?(users_present_path) || current_page?(root_path)}"
           = link_to users_present_path do
             = icon 'street-view', t('views.navigation.presence')
