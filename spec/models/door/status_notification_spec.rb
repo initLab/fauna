@@ -2,6 +2,8 @@ require 'rails_helper'
 
 module Door
   RSpec.describe StatusNotification, type: :model do
+    it_behaves_like 'loggable'
+
     it 'has a door attribute' do
       expect(build(:door_status_notification, door: 'foo').door).to eq 'foo'
     end
