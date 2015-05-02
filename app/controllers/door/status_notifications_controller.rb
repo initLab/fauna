@@ -1,11 +1,11 @@
-class Door::LogEntriesController < ApplicationController
+class Door::StatusNotificationsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_filter :authorize_client!
 
   def create
-    @log_entry = Door::LogEntry.new log_entry_params
+    @status_notification = Door::StatusNotification.new status_notification_params
 
-    if @log_entry.save
+    if @status_notification.save
       head :created
     else
       head :unprocessable_entity
@@ -14,7 +14,7 @@ class Door::LogEntriesController < ApplicationController
 
   private
 
-  def log_entry_params
+  def status_notification_params
     params.permit :door, :latch
   end
 

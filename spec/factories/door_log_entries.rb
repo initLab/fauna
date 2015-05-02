@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :door_log_entry, :class => 'Door::LogEntry' do
+  factory :door_status_notification, class: 'Door::StatusNotification' do
     door "Closed"
     latch "Locked"
   end

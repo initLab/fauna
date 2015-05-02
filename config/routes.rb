@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   namespace :door do
-    resources :log_entries, only: [:create]
+    resources :status_notifications, only: [:create]
   end
 
   devise_for :users

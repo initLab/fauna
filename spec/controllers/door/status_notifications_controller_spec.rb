@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 module Door
-  describe LogEntriesController, type: :controller do
+  describe StatusNotificationsController, type: :controller do
     describe 'POST #create' do
-      let(:log_entry) { build :door_log_entry }
+      let(:status_notification) { build :door_status_notification }
 
       context 'when sent from a trusted IP' do
         before do
@@ -11,11 +11,11 @@ module Door
         end
 
         it 'creates a new door log entry' do
-          expect { post :create, door: log_entry.door, latch: log_entry.latch }.to change(Door::LogEntry, :count).by(1)
+          expect { post :create, door: status_notification.door, latch: status_notification.latch }.to change(Door::StatusNotification, :count).by(1)
         end
 
         it 'returns HTTP 201 Created upon success' do
-          post :create, door: log_entry.door, latch: log_entry.latch
+          post :create, door: status_notification.door, latch: status_notification.latch
           expect(response).to be_created
         end
 
