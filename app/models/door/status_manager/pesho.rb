@@ -19,6 +19,26 @@ class Door::StatusManager::Pesho
     end
   end
 
+  def lock!
+    response = @client.post("#{@base_uri}/lock", query: {'key' => key})
+
+    if response.ok?
+      response.body
+    else
+      raise Door::StatusManager::UnexpectedResponseCodeError.new response.status
+    end
+  end
+
+  def unlock!
+    response = @client.post("#{@base_uri}/unlock", query: {'key' => key})
+
+    if response.ok?
+      response.body
+    else
+      raise Door::StatusManager::UnexpectedResponseCodeError.new response.status
+    end
+  end
+
   private
 
   def key

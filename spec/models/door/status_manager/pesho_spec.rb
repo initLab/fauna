@@ -10,6 +10,7 @@ describe Door::StatusManager::Pesho do
     allow(client).to receive(:send_timeout=)
     allow(client).to receive(:receive_timeout=)
     allow(client).to receive(:get).and_return(message)
+    allow(client).to receive(:post).and_return(message)
   end
 
   it 'sets the correct time out for the HTTP connections' do
@@ -23,12 +24,26 @@ describe Door::StatusManager::Pesho do
   context 'when the Pesho instance returns HTTP 200' do
     before do
       allow(message).to receive(:ok?).and_return(true)
-      allow(message).to receive(:body).and_return({'door' => 'closed', 'latch' => 'locked'})
     end
 
     describe '#status' do
       it 'returns the hash that results from parsing the JSON response' do
+        allow(message).to receive(:body).and_return({'door' => 'closed', 'latch' => 'locked'})
         expect(subject.status).to eq({"door" => "closed", "latch" => "locked"})
+      end
+    end
+
+    describe '#lock!' do
+      it 'returns the hash that results from parsing the JSON response' do
+        allow(message).to receive(:body).and_return({'door' => 'closed', 'latch' => 'locked'})
+        expect(subject.lock!).to eq({"door" => "closed", "latch" => "locked"})
+      end
+    end
+
+    describe '#unlock!' do
+      it 'returns the hash that results from parsing the JSON response' do
+        allow(message).to receive(:body).and_return({'door' => 'closed', 'latch' => 'unlocked'})
+        expect(subject.unlock!).to eq({"door" => "closed", "latch" => "unlocked"})
       end
     end
   end
@@ -42,6 +57,18 @@ describe Door::StatusManager::Pesho do
     describe '#status' do
       it 'raises a Door::StatusManager::Error' do
         expect { subject.status }.to raise_error Door::StatusManager::Error
+      end
+    end
+
+    describe '#lock!' do
+      it 'raises a Door::StatusManager::Error' do
+        expect { subject.lock! }.to raise_error Door::StatusManager::Error
+      end
+    end
+
+    describe '#unlock!' do
+      it 'raises a Door::StatusManager::Error' do
+        expect { subject.unlock! }.to raise_error Door::StatusManager::Error
       end
     end
   end
