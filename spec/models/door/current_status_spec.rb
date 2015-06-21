@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe DoorStatus do
+describe Door::CurrentStatus do
   let(:backend) { Rails.application.config.door_status_manager_backend }
 
   context 'when the door status is retreived successfuly' do

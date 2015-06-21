@@ -1,4 +1,4 @@
-class DoorStatus
+class Door::CurrentStatus
   def door
     status['door'].to_sym
   end
