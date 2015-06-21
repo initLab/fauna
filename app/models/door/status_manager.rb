@@ -1,0 +1,2 @@
+module Door::StatusManager
+end
