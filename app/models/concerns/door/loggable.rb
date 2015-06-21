@@ -1,16 +1,14 @@
-module Door
-  module Loggable
-    extend ActiveSupport::Concern
+module Door::Loggable
+  extend ActiveSupport::Concern
 
-    included do
-      has_one :log_entry, as: :loggable
-      before_create :associate_log_entry
-    end
+  included do
+    has_one :log_entry, as: :loggable
+    before_create :associate_log_entry
+  end
 
-    private
+  private
 
-    def associate_log_entry
-      self.log_entry = build_log_entry
-    end
+  def associate_log_entry
+    self.log_entry = build_log_entry
   end
 end
