@@ -5,10 +5,15 @@ class Door::Actions::Action < ActiveRecord::Base
 
   after_create :execute!
 
+  def backend_method
+    raise NotImplementedError.new("#{self.class}#backend_method not implemented.")
+  end
+
   private
 
   def execute!
-    raise NotImplementedError.new("#{self.class}#execute! not implemented.")
+    update execution_succeeded: status_manager.public_send(backend_method)
+    true
   end
 
   def status_manager
