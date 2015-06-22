@@ -1,6 +1,6 @@
 class Door::StatusManager::Buzzer
   def open!
-    Kernel.system 'openr1'
+    Kernel.system '/usr/local/sbin/openr1'
   end
 
   [:status, :lock!, :unlock!].each do |method_name|

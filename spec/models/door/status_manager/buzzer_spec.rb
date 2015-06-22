@@ -21,7 +21,7 @@ describe Door::StatusManager::Buzzer do
 
   describe '#open!' do
     it 'shells out to openr1' do
-      expect(Kernel).to receive(:system).with('openr1')
+      expect(Kernel).to receive(:system).with('/usr/local/sbin/openr1')
       subject.open!
     end
   end
