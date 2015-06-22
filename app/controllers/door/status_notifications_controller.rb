@@ -18,13 +18,13 @@ class Door::StatusNotificationsController < ApplicationController
     params.permit :door, :latch
   end
 
-  # TODO: Move to token-based authentication when there is support for it in
-  # Pesho
   def authorize_client!
+    provided_token = params[:token] || ''
+    required_token = Rails.application.secrets['door_notification_token']
     ip = request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip
 
-    unless ip == Rails.application.config.door_status_manager.host
-      Rails.logger.warn "#{ip} is not authorized to perform this action."
+    unless ActiveSupport::SecurityUtils.secure_compare provided_token, required_token
+      Rails.logger.warn "#{ip} is not authorized to perform this action (incorrect token)."
       head :unauthorized
     end
   end
