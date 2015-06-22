@@ -9,6 +9,14 @@ class Door::Actions::Action < ActiveRecord::Base
     raise NotImplementedError.new("#{self.class}#backend_method not implemented.")
   end
 
+  def self.from_name(name)
+    {
+      open: Door::Actions::Open,
+      lock: Door::Actions::Lock,
+      unlock: Door::Actions::Unlock
+    }[name.to_sym].try(:new)
+  end
+
   private
 
   def execute!
