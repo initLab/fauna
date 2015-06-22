@@ -39,5 +39,7 @@ module Fauna
         request_specs:    false
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
+
+    config.door_status_manager = ActiveSupport::OrderedOptions.new
   end
 end
