@@ -11,7 +11,7 @@ class Door::CurrentStatus
 
   def status
     begin
-      Rails.application.config.door_status_manager_backend.status
+      Rails.application.config.door_status_manager.backend.status
     rescue StandardError => e
       Rails.logger.warn "Error retreiving door status: #{e}"
       {'door' => 'unknown', 'latch' => 'unknown'}

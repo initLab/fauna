@@ -17,6 +17,6 @@ class Door::Actions::Action < ActiveRecord::Base
   end
 
   def status_manager
-    Rails.application.config.door_status_manager_backend
+    Rails.application.config.door_status_manager.backend
   end
 end

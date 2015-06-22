@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Door::Actions::Unlock, type: :model do
-  let(:backend) { Rails.application.config.door_status_manager_backend }
+  let(:backend) { Rails.application.config.door_status_manager.backend }
 
   it_behaves_like 'door action'
 

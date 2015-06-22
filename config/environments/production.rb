@@ -86,5 +86,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.door_status_manager_backend = Door::StatusManager::InitLab.new
+  config.door_status_manager_backend = Door::StatusManager::InitLab
 end
