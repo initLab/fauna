@@ -12,6 +12,8 @@ class Door::StatusesController < ApplicationController
 
     if @action.present?
       if @action.creatable_by? current_user
+        @action.initiator = current_user
+        @action.origin_information = "Remote Host: #{current_ip_address}"
         if @action.save
           flash[:notice] = I18n.t('views.door_status.action_executed_successfuly', action: @action)
           Rails.cache.delete('door_current_status')

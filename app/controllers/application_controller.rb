@@ -23,7 +23,11 @@ class ApplicationController < ActionController::Base
                                                            ]])
   end
 
+  def current_ip_address
+    request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip
+  end
+
   def current_mac_address
-    Arp.mac_by_ip_address(request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip)
+    Arp.mac_by_ip_address(current_ip_address)
   end
 end

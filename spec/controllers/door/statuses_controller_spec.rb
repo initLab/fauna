@@ -51,13 +51,15 @@ describe Door::StatusesController, type: :controller do
 
     describe 'when performed by an authorized user' do
       let(:action) { action = instance_double Door::Actions::Action }
-
+      let(:user) { create :trusted_member }
       before do
-        sign_in create :trusted_member
+        sign_in user
       end
 
       before :each do
         allow(action).to receive(:creatable_by?).and_return true
+        allow(action).to receive(:initiator=)
+        allow(action).to receive(:origin_information=)
         allow(action).to receive(:save)
         allow(Door::Actions::Action).to receive(:from_name).and_return(action)
       end
@@ -99,6 +101,13 @@ describe Door::StatusesController, type: :controller do
             patch :update, {status: {name: 'foo'}}
             expect(flash[:error]).to be_present
           end
+
+          it 'sets sets an initiator and origin information for the action' do
+            patch :update, {status: {name: 'foo'}}
+            expect(action).to have_received(:initiator=).with(user)
+            expect(action).to have_received(:origin_information=).with(/#{request.remote_ip}/)
+          end
+
         end
 
 
