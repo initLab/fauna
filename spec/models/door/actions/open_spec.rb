@@ -5,6 +5,12 @@ RSpec.describe Door::Actions::Open, type: :model do
 
   it_behaves_like 'door action'
 
+  describe 'authorization' do
+    it 'is creatable by plain users' do
+      expect(subject).to be_creatable_by create(:user)
+    end
+  end
+
   describe '#backend_method' do
     it 'returns :open!' do
       expect(subject.backend_method).to eq :open!

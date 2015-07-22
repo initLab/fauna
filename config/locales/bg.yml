@@ -23,6 +23,24 @@ bg:
         phone_number:
           improbable_phone: трябва да е валиден телефонен номер
     models:
+      door/actions/unlock:
+        zero: отключвания
+        one: отключване
+        few: отключвания
+        many: отключвания
+        other: отключвания
+      door/actions/open:
+        zero: отваряния
+        one: отваряне
+        few: отваряния
+        many: отваряния
+        other: отваряния
+      door/actions/lock:
+        zero: заключвания
+        one: заключване
+        few: заключвания
+        many: заключвания
+        other: заключвания
       user:
         zero: Лабъри
         one: Лабър
@@ -78,6 +96,15 @@ bg:
       locked: Заключено
       unlocked: Отключено
       unknown: Неясно
+      action_executed_successfuly: "Действието %{action} беше изпълнено успешно."
+      action_executed_unsuccessfuly: Действието не беше изпълнено успешно.
+      invalid_action: Посоченото действие не е валидно.
+      forbidden: Нямате право да извършите това действие.
+      management: Управление на вратата на Лаба
+      lock: заключи
+      unlock: отключи
+      open: отвори
+      log: журнал
     navigation:
       view_edit: Преглед/редакция
       sign_in: Вход

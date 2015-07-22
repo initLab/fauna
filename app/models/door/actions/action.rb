@@ -1,5 +1,6 @@
 class Door::Actions::Action < ActiveRecord::Base
   include Door::Loggable
+  include Authority::Abilities
 
   belongs_to :initiator, class_name: User
 
@@ -15,6 +16,10 @@ class Door::Actions::Action < ActiveRecord::Base
       lock: Door::Actions::Lock,
       unlock: Door::Actions::Unlock
     }[name.to_sym].try(:new)
+  end
+
+  def to_s
+    self.class.model_name.human
   end
 
   private

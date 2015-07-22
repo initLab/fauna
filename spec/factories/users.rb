@@ -17,6 +17,10 @@ FactoryGirl.define do
     factory :board_member do
       after(:create) { |user| user.add_role(:board_member) }
     end
+
+    factory :trusted_member do
+      after(:create) { |user| user.add_role(:trusted_member) }
+    end
   end
 
   factory :registration, class: User do

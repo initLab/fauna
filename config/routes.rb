@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   namespace :door do
+    resource :status, only: [:show, :update]
     resources :status_notifications, only: [:create]
   end
 
