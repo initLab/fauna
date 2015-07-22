@@ -9,7 +9,7 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
     .navbar-collapse.collapse.navbar-inverse-collapse
       ul.nav.navbar-nav
         li
-          = link_to '#' do
+          = link_to door_status_path do
             - case door_status
             - when :locked
               = icon 'lock', t('views.door_status.locked')
