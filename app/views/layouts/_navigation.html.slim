@@ -8,7 +8,7 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
       = link_to 'Фауна', root_url, class: 'navbar-brand'
     .navbar-collapse.collapse.navbar-inverse-collapse
       ul.nav.navbar-nav
-        li
+        li class="#{'active' if current_page?(door_status_path)}"
           = link_to door_status_path do
             - case door_status
             - when :locked
