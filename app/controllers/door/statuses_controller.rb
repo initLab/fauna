@@ -14,6 +14,7 @@ class Door::StatusesController < ApplicationController
       if @action.creatable_by? current_user
         if @action.save
           flash[:notice] = I18n.t('views.door_status.action_executed_successfuly', action: @action)
+          Rails.cache.delete('door_current_status')
         else
           flash[:error] = I18n.t('views.door_status.action_executed_unsuccessfuly')
         end

@@ -67,6 +67,11 @@ describe Door::StatusesController, type: :controller do
         expect(Door::Actions::Action).to have_received(:from_name).with 'foo'
       end
 
+      it 'clears the door_current_status cache entry' do
+        expect(Rails.cache).to receive(:delete).with('door_current_status')
+        patch :update, {status: {name: 'foo'}}
+      end
+
       it 'redirects to the referer' do
         patch :update, {status: {name: 'foo'}}
         expect(response).to redirect_to 'back'
