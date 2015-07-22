@@ -4,7 +4,7 @@ cache: bundler
 rvm:
   - 1.9.3
   - 2.0.0
-  - 2.1.5
+  - 2.1.6
   - 2.2.2
 script:
   - RAILS_ENV=test bin/setup
@@ -13,3 +13,4 @@ before_script:
   - psql -c 'create database fauna_development;' -U postgres
   - psql -c 'create database fauna_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+sudo: false
