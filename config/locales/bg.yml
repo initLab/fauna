@@ -168,4 +168,4 @@ bg:
         other: "%{count} лабъри към"
       everybodys_gone: Всички ги е хванала липсата
     roles:
-      are_you_sure: 'Сигуни ли сте?'
+      are_you_sure: 'Сигурни ли сте?'
