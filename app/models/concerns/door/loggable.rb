@@ -17,10 +17,11 @@ module Door::Loggable
   end
 
   def spam_irc
+    return true if ENV['RAILS_ENV'] == 'test'
     message = public_message
     if message.present?
       begin
-        Services::IrcSpammer.send_message message
+        IrcNotifierJob.perform_later message
       rescue Exception
       end
     end
