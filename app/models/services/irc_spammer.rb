@@ -4,7 +4,7 @@ require 'openssl'
 class Services::IrcSpammer
   def initialize
     # To be extracted if ever needed
-    @server, @port, @channel, @name = 'irc.ludost.net', 6697, '#test', 'cassie'
+    @server, @port, @channel, @name = 'irc.ludost.net', 6697, '#initLab', 'cassie'
   end
 
   def self.send_message(message)
@@ -48,7 +48,7 @@ class Services::IrcSpammer
 
   def irc
     @irc ||= begin
-               socket = TCPSocket.open('irc.ludost.net',6697)
+               socket = TCPSocket.open(@server, @port)
                ssl_context = OpenSSL::SSL::SSLContext.new()
                ssl_context.ssl_version = :TLSv1_2_client
                ssl_socket = OpenSSL::SSL::SSLSocket.new(socket, ssl_context)
