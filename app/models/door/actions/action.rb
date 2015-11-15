@@ -22,6 +22,20 @@ class Door::Actions::Action < ActiveRecord::Base
     self.class.model_name.human
   end
 
+  def public_message
+    initiator_name = 'Somebody'
+
+    if initiator.present?
+      if initiator.privacy
+        initiator_name = 'Somebody who does not wish to be named'
+      else
+        initiator_name = initiator.username
+      end
+    end
+
+    "#{initiator_name} #{self.class.model_name.human(locale: :en).downcase}ed the door"
+  end
+
   private
 
   def execute!
