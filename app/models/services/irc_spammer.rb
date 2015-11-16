@@ -25,7 +25,7 @@ class Services::IrcSpammer
       end
     end
 
-    irc.puts "PRIVMSG #{@channel} :#{message}"
+    irc.puts "NOTICE #{@channel} :#{message}"
     irc.puts "QUIT"
 
     irc.gets until irc.eof?
