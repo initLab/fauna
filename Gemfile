@@ -77,6 +77,7 @@ gem 'httpclient'
 # Asynchronous job execution
 gem 'delayed_job'
 gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development do
   # Use Capistrano for deployment
