@@ -87,4 +87,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.door_status_manager_backend = Door::StatusManager::InitLab
+
+  config.active_job.queue_adapter = :delayed_job
 end
