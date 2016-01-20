@@ -83,6 +83,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
+  gem 'capistrano-delayed-job'
 
   gem 'pry'
   gem 'pry-rails'
