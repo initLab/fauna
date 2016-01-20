@@ -74,6 +74,10 @@ gem 'mail-gpg'
 # HTTP requests
 gem 'httpclient'
 
+# Asynchronous job execution
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
