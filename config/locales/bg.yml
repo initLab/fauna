@@ -92,6 +92,14 @@ bg:
     trusted_member: Доверен член
     member: Член
   views:
+    lights:
+      management: Упдавление на осветлението
+      on: Включено
+      off: Изключено
+      unknown: Неясно
+      force_on: Включи ръчно
+      auto: Автоуправление
+      policy: "Политика на управление: %{policy}"
     door_status:
       locked: Заключено
       unlocked: Отключено
@@ -121,6 +129,7 @@ bg:
       management: Управление
       members_fee: Членски внос
       network_devices: Мрежови устройства
+      lights: Осветление
     registrations:
       sign_up: Регистрация
       sign_me_up: Регистрирай ме
