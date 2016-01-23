@@ -79,6 +79,9 @@ gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
 
+# SNMP Protocol handling
+gem 'snmp'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
