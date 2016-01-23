@@ -94,8 +94,8 @@ bg:
   views:
     lights:
       management: Упдавление на осветлението
-      on: Включено
-      off: Изключено
+      switched_on: Включено
+      switched_off: Изключено
       unknown: Неясно
       force_on: Включи ръчно
       auto: Автоуправление
