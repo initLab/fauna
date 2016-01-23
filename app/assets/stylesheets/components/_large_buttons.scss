@@ -24,6 +24,25 @@
 
 }
 
+.lights_status_indicator {
+    @extend .text-center;
+    font-size: 2em;
+    padding: 20px;
+    margin: 20px auto 0 auto;
+    span.fa-stack { font-size: 72pt; }
+
+    @media (max-width: $screen-sm-min) {
+    }
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+        span.fa-stack { font-size: 36pt; }
+    }
+
+    @media (min-width: $screen-lg-min) {
+        span.fa-stack { font-size: 72pt; }
+    }
+}
+
 .large_button_group {
     @extend .text-center;
     margin: 0 auto;
@@ -34,7 +53,7 @@
     }
 }
 
-.door_button {
+.lights_button, .door_button {
     @extend .btn;
     @extend .btn-primary;
     @extend .btn-lg;

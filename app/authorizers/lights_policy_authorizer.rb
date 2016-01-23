@@ -1,0 +1,2 @@
+class LightsPolicyAuthorizer < ApplicationAuthorizer
+end

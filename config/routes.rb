@@ -24,6 +24,14 @@ Rails.application.routes.draw do
     resources :status_notifications, only: [:create]
   end
 
+  namespace :lights do
+    resource :status, only: [:show] do
+      member do
+        resource :policy, only: [:update]
+      end
+    end
+  end
+
   devise_for :users
   get "users/present"
   get "users/present_embeddable"
