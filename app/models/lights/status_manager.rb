@@ -1,4 +1,4 @@
-class LightsManager
+class Lights::StatusManager
   TRIGGER = File.join '', 'tmp', 'lamptrigger'
   STATUS_OID = '1.3.6.1.4.1.19865.2.3.1.15.6.0'
   LIGHTS_CONTROLLER_IP = '192.168.232.4'
