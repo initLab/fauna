@@ -26,7 +26,12 @@ class LightsManager
 
   def self.snmp_status
     SNMP::Manager.open host: LIGHTS_CONTROLLER_IP do |manager|
-      manager.get_value STATUS_OID
+      begin
+        manager.get_value STATUS_OID
+      rescue SNMP::RequestTimeout => e
+        Rails.logger.warn "Error retreiving lights status: #{e}"
+        nil
+      end
     end
   end
 

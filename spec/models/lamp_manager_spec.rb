@@ -54,5 +54,22 @@ describe LightsManager do
 
       expect(LightsManager.status).to eq :unknown
     end
+
+    context 'when an exception arises while querying the controller' do
+      before do
+        snmp_manager = instance_double('SNMP::Manager')
+        allow(snmp_manager).to receive(:get_value).with(LightsManager::STATUS_OID).and_raise(SNMP::RequestTimeout)
+        allow(SNMP::Manager).to receive(:open).with(host: LightsManager::LIGHTS_CONTROLLER_IP).and_yield(snmp_manager)
+      end
+
+      it 'is :unknown' do
+        expect(LightsManager.status).to eq :unknown
+      end
+
+      it 'logs a warning' do
+        expect(Rails.logger).to receive(:warn).with("Error retreiving lights status: SNMP::RequestTimeout")
+        LightsManager.status
+      end
+    end
   end
 end
