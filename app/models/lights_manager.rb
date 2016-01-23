@@ -15,13 +15,17 @@ class LightsManager
   end
 
   def self.toggle_force_on
-    if File.exist? TRIGGER
+    if self.forced_on?
       File.delete TRIGGER
     else
       File.open TRIGGER, 'w' do |file|
         file.write '{P}~~~ kroci'
       end
     end
+  end
+
+  def self.forced_on?
+    File.exist? TRIGGER
   end
 
   def self.snmp_status

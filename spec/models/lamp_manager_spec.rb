@@ -1,6 +1,27 @@
 require 'rails_helper'
 
 describe LightsManager do
+  describe '::forced_on?' do
+    include FakeFS::SpecHelpers
+
+    before do
+      Dir.mkdir File.join('', 'tmp')
+    end
+
+    context 'when the force on trigger file is present' do
+      it 'is true' do
+        File.open(LightsManager::TRIGGER, 'w') { |file| file.write '{P}~~~ kroci' }
+        expect(LightsManager.forced_on?).to be_truthy
+      end
+    end
+
+    context 'when the force on trigger file is not present' do
+      it 'is false' do
+        expect(LightsManager.forced_on?).to be_falsy
+      end
+    end
+  end
+
   describe '::toggle_force_on' do
     include FakeFS::SpecHelpers
 
@@ -19,7 +40,7 @@ describe LightsManager do
       end
     end
 
-    context 'when the force on trigger file is present' do
+    context 'when the force on trigger file is not present' do
       it 'creates it' do
         expect(File.exist? LightsManager::TRIGGER).to be_falsy
 
