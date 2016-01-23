@@ -22,32 +22,44 @@ describe Lights::StatusManager do
     end
   end
 
-  describe '::toggle_force_on' do
+  describe '::auto!' do
+    include FakeFS::SpecHelpers
+
+    before do
+      Dir.mkdir File.join('', 'tmp')
+      File.open(Lights::StatusManager::TRIGGER, 'w') { |file| file.write '{P}~~~ kroci' }
+    end
+
+    it 'deletes the trigger file' do
+      expect(File.exist? Lights::StatusManager::TRIGGER).to be_truthy
+
+      Lights::StatusManager.auto!
+
+      expect(File.exist? Lights::StatusManager::TRIGGER).to be_falsy
+    end
+
+    it 'returns true' do
+      expect(Lights::StatusManager.auto!).to be_truthy
+    end
+  end
+
+  describe '::force_on!' do
     include FakeFS::SpecHelpers
 
     before do
       Dir.mkdir File.join('', 'tmp')
     end
 
-    context 'when the force on trigger file is present' do
-      it 'deletes it' do
-        File.open(Lights::StatusManager::TRIGGER, 'w') { |file| file.write '{P}~~~ kroci' }
-        expect(File.exist? Lights::StatusManager::TRIGGER).to be_truthy
+    it 'creates the trigger file' do
+      expect(File.exist? Lights::StatusManager::TRIGGER).to be_falsy
 
-        Lights::StatusManager.toggle_force_on
+      Lights::StatusManager.force_on!
 
-        expect(File.exist? Lights::StatusManager::TRIGGER).to be_falsy
-      end
+      expect(File.exist? Lights::StatusManager::TRIGGER).to be_truthy
     end
 
-    context 'when the force on trigger file is not present' do
-      it 'creates it' do
-        expect(File.exist? Lights::StatusManager::TRIGGER).to be_falsy
-
-        Lights::StatusManager.toggle_force_on
-
-        expect(File.exist? Lights::StatusManager::TRIGGER).to be_truthy
-      end
+    it 'returns true' do
+      expect(Lights::StatusManager.force_on!).to be_truthy
     end
   end
 

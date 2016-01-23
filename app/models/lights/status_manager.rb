@@ -14,14 +14,14 @@ class Lights::StatusManager
     end
   end
 
-  def self.toggle_force_on
-    if self.forced_on?
-      File.delete TRIGGER
-    else
-      File.open TRIGGER, 'w' do |file|
-        file.write '{P}~~~ kroci'
-      end
+  def self.force_on!
+    File.open TRIGGER, 'w' do |file|
+      file.write '{P}~~~ kroci'
     end
+  end
+
+  def self.auto!
+    File.delete TRIGGER
   end
 
   def self.forced_on?
