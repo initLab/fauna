@@ -175,11 +175,11 @@ en:
     users:
       whos_in_the_lab: Who is in initLab
       people_at_about_html:
-        zero: "%{count} labers at"
-        one: "%{count} laber at"
+        zero: "%{count} labbers at"
+        one: "%{count} labber at"
         few: "%{count} labbers at"
         many: "%{count} labbers at"
-        other: "%{count} labers at"
+        other: "%{count} labbers at"
       everybodys_gone: "Everyone's gone"
     roles:
       are_you_sure: 'Are you sure?'
