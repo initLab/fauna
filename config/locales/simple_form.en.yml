@@ -1,31 +1,26 @@
 en:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    'yes': 'Yes'
+    'no': 'No'
     required:
-      text: 'required'
+      text: 'mandatory field'
       mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "Please review the problems below:"
-    # Examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
-    # include_blanks:
-    #   defaults:
-    #     age: 'Rather not say'
-    # prompts:
-    #   defaults:
-    #     age: 'Select your age'
+      default_message: 'Please take a look at the indicated mistakes in the form:'
+    hints:
+      user:
+        github: username
+        twitter: username with optional "@"
+        url: URL beginning with http:// or https://
+        jabber: Jabber account in the "username@domain.com" format
+        gpg_fingerprint: GPG fingerprint with or without spaces
+        pin: it is used to unlock the door and must be a 6-digit number; leave empty if you do not want to change it
+        phone_numbers:
+          phone_number: phone number with optional country code
+      network_device:
+        description: hostname or short hint
+  helpers:
+    submit:
+      network_device:
+        create: "Create"
+        update: "Change"
