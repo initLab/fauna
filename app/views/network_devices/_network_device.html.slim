@@ -1,5 +1,7 @@
 .network_device_container id="network-device-#{network_device.id}"
   .panel.panel-primary
     .panel-heading
-      h3.panel-title = t('views.network_devices.network_device')
+      h3.panel-title
+        = t('views.network_devices.network_device')
+        = link_to icon(:times), user_network_device_path(network_device), method: :delete, class: 'pull-right btn btn-xs btn-danger', data: {confirm: t('views.network_devices.are_you_sure')}
     = render partial: 'form', locals: {network_device: network_device}
