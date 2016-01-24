@@ -4,8 +4,31 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
 
   protected
+
+  def self.default_url_options(options={})
+    if I18n.locale != I18n.default_locale
+      options.merge({locale: I18n.locale})
+    else
+      options
+    end
+  end
+
+  def requested_locale
+    if user_signed_in?
+      current_user.locale
+    else
+      if params[:locale].present? && I18n.available_locales.include?(params[:locale].to_sym)
+        params[:locale].to_sym
+      end
+    end
+  end
+
+  def set_locale
+    I18n.locale = requested_locale || I18n.default_locale
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up).push(*[:name, :username, :email])

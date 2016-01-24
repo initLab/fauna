@@ -52,6 +52,16 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
               li
                 = link_to t('views.navigation.accounting'), '#'
       ul.nav.navbar-nav.navbar-right
+        - unless user_signed_in?
+          li.dropdown
+            = link_to '#', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
+              => icon 'flag'
+              = {bg: "БГ", en: "EN"}[I18n.locale]
+              span.caret<
+            ul.dropdown-menu role="menu"
+              - I18n.available_locales.each do |locale|
+                li.text-center
+                  = link_to({bg: "БГ", en: "EN"}[locale], "?locale=#{locale}")
         - if user_signed_in?
           li.dropdown class="#{'active' if current_page?(edit_user_registration_path) || current_page?(user_network_devices_path)}"
             a.dropdown-toggle data-toggle="dropdown" href="#"
