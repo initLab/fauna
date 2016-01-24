@@ -6,6 +6,7 @@ class Lights::PoliciesController < ApplicationController
     @lights_policy = Lights::Policy.new lights_policy_params
 
     if @lights_policy.update
+      flash[:success] = I18n.t('views.lights.success')
       redirect_to :back
     else
       flash[:alert] = I18n.t('views.lights.an_error_occurred')

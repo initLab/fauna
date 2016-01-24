@@ -9,33 +9,49 @@ section.container
             i.fa.fa-sun-o.fa-stack-2x
             i.fa.fa-lightbulb-o.fa-stack-1x
           br
-          = t('views.lights.switched_on')
+          = t('views.lights.status')
+          |:
+          =< t('views.lights.switched_on')
         - when :off
           span.fa-stack
             i.fa.fa-circle.fa-stack-2x
             i.fa.fa-lightbulb-o.fa-stack-1x.fa-inverse
           br
-          = t('views.lights.switched_off')
+          = t('views.lights.status')
+          | :
+          =< t('views.lights.switched_off')
         - else
           span.fa-stack
             i.fa.fa-circle.fa-stack-2x
             i.fa.fa-question.fa-stack-1x.fa-inverse
           br
-          = t('views.lights.unknown')
+          = t('views.lights.status')
+          | :
+          =< t('views.lights.unknown')
         br
         - if @lights_forced_on
-          = t('views.lights.policy', policy: t('views.lights.force_on'))
+          = t('views.lights.policy')
+          |:
+          =<> icon('hand-paper-o')
+          = t('views.lights.force_on').mb_chars.downcase
         - else
           = t('views.lights.policy', policy: t('views.lights.auto'))
+          |:
+          =<> icon('clock-o')
+          = t('views.lights.auto').mb_chars.downcase
 
     .large_button_group
       - unless @lights_forced_on
         = button_to lights_policy_path(lights_policy: {policy: 'force_on'}), class: 'door_button btn-success', method: :patch do
-          = icon('toggle-on')
+          = icon('hand-paper-o')
+          br
+          span.small = t 'views.lights.change_policy_to'
           br
           span.small = t 'views.lights.force_on'
       - else
         = button_to lights_policy_path(lights_policy: {policy: 'auto'}), class: 'door_button btn-info', method: :patch do
           = icon('clock-o')
+          br
+          span.small = t 'views.lights.change_policy_to'
           br
           span.small = t 'views.lights.auto'

@@ -94,13 +94,16 @@ bg:
   views:
     lights:
       management: Упдавление на осветлението
-      switched_on: Включено
-      switched_off: Изключено
-      unknown: Неясно
-      force_on: Включи ръчно
+      switched_on: включено
+      switched_off: изключено
+      unknown: неясно
+      force_on: Винаги включено
       auto: Автоуправление
-      policy: "Политика на управление: %{policy}"
-      an_error_occurred: Възникна грешка при заявката за промяна на политиката
+      status: Състояние
+      change_policy_to: Избери режим
+      policy: Режим
+      an_error_occurred: Възникна грешка при заявката за промяна на режима
+      success: Режимът беше успешно променен
     door_status:
       locked: Заключено
       unlocked: Отключено
