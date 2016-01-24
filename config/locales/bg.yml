@@ -93,7 +93,7 @@ bg:
     member: Член
   views:
     lights:
-      management: Упдавление на осветлението
+      management: Управление на осветлението
       switched_on: включено
       switched_off: изключено
       unknown: неясно
