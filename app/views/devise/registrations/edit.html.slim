@@ -20,7 +20,7 @@ section.container
           = f.input :name, required: true
           = f.input :username, required: true
           = f.input :email, required: true
-
+          = f.input :locale, collection: I18n.available_locales, required: true
           - if devise_mapping.confirmable? && resource.pending_reconfirmation?
             p
               | Currently waiting confirmation for:

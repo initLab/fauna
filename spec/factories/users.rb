@@ -5,6 +5,7 @@ FactoryGirl.define do
     name { Faker::Name.name }
     sequence(:username) { |u| "username#{u}" }
     email { |u| Faker::Internet.email(u.name) }
+    locale { I18n.available_locales.first.to_s }
     twitter 'foobar'
     url { Faker::Internet.url }
     password Faker::Internet.password

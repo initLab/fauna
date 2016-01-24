@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up).push(*[:name, :username, :email])
     devise_parameter_sanitizer.for(:sign_in).push(*[:username])
     devise_parameter_sanitizer.for(:account_update).push(*[:name, :username,
-                                                           :email, :url,
+                                                           :email, :url, :locale,
                                                            :twitter, :privacy,
                                                            :github, :jabber,
                                                            :gpg_fingerprint,

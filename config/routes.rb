@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'registrations'}
   get "users/present"
   get "users/present_embeddable"
   root "users#present"

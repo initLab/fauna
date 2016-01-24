@@ -67,6 +67,7 @@ en:
         pin: PIN
         pin_confirmation: PIN confirmation
         roles: Roles
+        locale: Language
       network_device:
         owner: Owner
         mac_address: MAC address

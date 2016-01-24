@@ -67,6 +67,7 @@ bg:
         pin: ПИН
         pin_confirmation: Потвърждение на ПИН-а
         roles: Роли
+        locale: Език
       network_device:
         owner: Собственик
         mac_address: MAC адрес
