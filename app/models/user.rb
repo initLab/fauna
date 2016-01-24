@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   validates :jabber, format: {with: /\A[^@]+@[^@]+\z/}, allow_blank: true
   validates :gpg_fingerprint, format: {with: /\A[0-9a-f]{4}( ?)([0-9a-f]{4}\1){4}\1{0,2}([0-9a-f]{4}\1){4}[0-9a-f]{4}\z/i}, allow_blank: true
   validates :pin, numericality: true, length: {is: 6}, allow_blank: true, confirmation: true
-
+  validates :locale, presence: true, inclusion: {in: I18n.available_locales.map(&:to_s)}
   accepts_nested_attributes_for :phone_numbers, update_only: true, allow_destroy: true, reject_if: :all_blank
 
   attr_accessor :login
