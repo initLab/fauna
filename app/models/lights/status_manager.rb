@@ -7,8 +7,8 @@ class Lights::StatusManager
   LIGHTS_DAEMON_SOCKET = '/tmp/lamper'
 
   def self.notify_controller!
-    UNIXSocket.open LIGHTS_DAEMON_SOCKET do |socket|
-      socket.send '{P}~~~ kroci'
+    Socket::open(Socket::AF_UNIX, Socket::SOCK_DGRAM, 0) do |socket|
+      socket.send '{P}~~~ kroci}', 0, Socket.pack_sockaddr_un(LIGHTS_DAEMON_SOCKET)
     end
   end
 

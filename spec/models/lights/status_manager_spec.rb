@@ -4,9 +4,9 @@ require 'socket'
 describe Lights::StatusManager do
   describe '::notify_controller!' do
     it 'sends a ping to the controller socket' do
-      socket = instance_double('UNIXSocket')
-      expect(socket).to receive(:send).and_return 1
-      expect(UNIXSocket).to receive(:open).with(Lights::StatusManager::LIGHTS_DAEMON_SOCKET).and_yield socket
+      socket = instance_double('Socket')
+      expect(socket).to receive(:send).and_return 12
+      expect(Socket).to receive(:open).with(Socket::AF_UNIX, Socket::SOCK_DGRAM, 0).and_yield socket
 
       Lights::StatusManager.notify_controller!
     end
