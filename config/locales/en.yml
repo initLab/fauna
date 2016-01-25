@@ -36,11 +36,11 @@ en:
         many: opens
         other: opens
       door/actions/lock:
-        zero: lockings
-        one: locking
-        few: lockings
-        many: lockings
-        other: lockings
+        zero: locks
+        one: lock
+        few: locks
+        many: locks
+        other: locks
       user:
         zero: Lab members
         one: Lab member
