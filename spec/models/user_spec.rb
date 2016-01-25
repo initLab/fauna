@@ -24,15 +24,25 @@ describe User do
     let(:user) { create :user }
 
     it 'returns the user whose email is passed' do
-      expect(User.find_for_database_authentication login: user.email).not_to be_nil
+      expect(User.find_for_database_authentication login: user.email).to eq user
     end
 
     it 'returns the user whose username is passed' do
-      expect(User.find_for_database_authentication login: user.username).not_to be_nil
+      expect(User.find_for_database_authentication login: user.username).to eq user
     end
 
     it 'returns nil when the passed login does not exist' do
       expect(User.find_for_database_authentication login: "randomuser").to be_nil
+    end
+
+    it 'returns the user despite her login having heading/tralining whitespace' do
+      expect(User.find_for_database_authentication login: " #{user.email}").to eq user
+      expect(User.find_for_database_authentication login: " #{user.username}").to eq user
+    end
+
+    it 'returns the user despite of case differences in her login' do
+      expect(User.find_for_database_authentication login: " #{user.email.upcase}").to eq user
+      expect(User.find_for_database_authentication login: " #{user.username.upcase}").to eq user
     end
 
     context 'when there are users with no username' do
@@ -44,7 +54,7 @@ describe User do
       end
 
       it 'returns the legacy user when passed her email' do
-        expect(User.find_for_database_authentication login: legacy_users.first.email).not_to be_nil
+        expect(User.find_for_database_authentication login: legacy_users.first.email).to eq legacy_users.first
       end
 
       it 'returns nil when the login is nil' do
