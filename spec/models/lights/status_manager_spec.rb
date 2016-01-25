@@ -1,6 +1,17 @@
 require 'rails_helper'
+require 'socket'
 
 describe Lights::StatusManager do
+  describe '::notify_controller!' do
+    it 'sends a ping to the controller socket' do
+      socket = instance_double('UNIXSocket')
+      expect(socket).to receive(:send).and_return 1
+      expect(UNIXSocket).to receive(:open).with(Lights::StatusManager::LIGHTS_DAEMON_SOCKET).and_yield socket
+
+      Lights::StatusManager.notify_controller!
+    end
+  end
+
   describe '::forced_on?' do
     include FakeFS::SpecHelpers
 
@@ -28,6 +39,13 @@ describe Lights::StatusManager do
     before do
       Dir.mkdir File.join('', 'tmp')
       File.open(Lights::StatusManager::TRIGGER, 'w') { |file| file.write '{P}~~~ kroci' }
+      allow(Lights::StatusManager).to receive(:notify_controller!).and_return true
+    end
+
+    it 'pings the controller that there is a state change' do
+      expect(Lights::StatusManager).to receive(:notify_controller!).and_return true
+
+      Lights::StatusManager.auto!
     end
 
     it 'deletes the trigger file' do
@@ -48,6 +66,12 @@ describe Lights::StatusManager do
 
     before do
       Dir.mkdir File.join('', 'tmp')
+      allow(Lights::StatusManager).to receive(:notify_controller!).and_return true
+    end
+
+    it 'pings the controller that there is a state change' do
+      expect(Lights::StatusManager).to receive(:notify_controller!).and_return true
+      Lights::StatusManager.force_on!
     end
 
     it 'creates the trigger file' do
