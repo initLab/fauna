@@ -5,7 +5,8 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      = link_to 'Фауна', root_url, class: 'navbar-brand'
+      = link_to root_url, class: 'navbar-brand' do
+        = image_tag 'logo.svg', class: 'navbar-brand', alt: 'Fauna'
     .navbar-collapse.collapse.navbar-inverse-collapse
       ul.nav.navbar-nav
         li class="#{'active' if current_page?(door_status_path)}"
@@ -34,23 +35,10 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
                 = link_to t('views.navigation.management'), fauna_users_path
               li
                 = link_to t('views.navigation.members_fee'), '#'
-        - if false
-          li
-            = link_to '#' do
-              = icon 'unlock', t('views.navigation.door_access')
-          li.dropdown
-            = link_to '#', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
-              = icon 'flask', t('views.navigation.lab')
-              b.caret<
-            ul.dropdown-menu
-              li
-                = link_to t('views.navigation.access'), '#'
-              li
-                = link_to t('views.navigation.library'), '#'
-              li
-                = link_to t('views.navigation.inventory'), '#'
-              li
-                = link_to t('views.navigation.accounting'), '#'
+      / ul.text-center
+      /   li
+      /     = link_to root_url do
+      /       = image_tag 'logo.svg', style: 'height: 20px;'
       ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
           li.dropdown
