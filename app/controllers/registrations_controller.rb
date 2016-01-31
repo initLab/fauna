@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    resource.language = I18n.locale
+    resource.locale = I18n.locale
 
     resource.save
     yield resource if block_given?
