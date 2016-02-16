@@ -225,19 +225,19 @@ describe User do
   end
 
   describe '#pin' do
-    it 'should return the pin' do
+    it 'returns the pin' do
       expect(build(:user, pin: 123456).pin).to eq 123456
     end
   end
 
   describe '#pin=' do
-    it 'should not set the value of encrypted_pin whenever pin is blank or nil' do
+    it 'does not set the value of encrypted_pin whenever pin is blank or nil' do
       user = build :user, encrypted_pin: '$2a$10$eiD5w/oMitEM1kXoFmxWQOFlLCNZTAwV/IZOGo8UMIROvg0W4iXRy'
       expect {user.pin = ''}.to_not change(user, :encrypted_pin)
       expect {user.pin = nil}.to_not change(user, :encrypted_pin)
     end
 
-    it 'should set the value of encrypted_pin to a BCrypt::Password encrypted version of pin' do
+    it 'sets the value of encrypted_pin to a BCrypt::Password encrypted version of pin' do
       user = build :user
 
       expect(BCrypt::Password).to receive(:create).and_return(BCrypt::Password.new '$2a$10$eiD5w/oMitEM1kXoFmxWQOFlLCNZTAwV/IZOGo8UMIROvg0W4iXRy')
