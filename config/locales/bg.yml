@@ -183,3 +183,7 @@ bg:
       everybodys_gone: Всички ги е хванала липсата
     roles:
       are_you_sure: 'Сигурни ли сте?'
+    footer: 
+      license: 'init Lab Fauna е лицензирана под'
+      source_code: 'Изходният код е достъпен в'
+

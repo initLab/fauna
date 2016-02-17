@@ -183,3 +183,6 @@ en:
       everybodys_gone: "Everyone's gone"
     roles:
       are_you_sure: 'Are you sure?'
+    footer: 
+      license: 'init Lab Fauna is licensed under'
+      source_code: 'The source code is available in'
