@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.5.1'
+gem 'rails', '~> 4.2.5.2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
-gem 'sprockets', '~> 2.12'
+gem 'sprockets', '> 2.12'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -133,7 +133,7 @@ group :test, :development do
   gem 'capybara'
 
   # Database dumping
-  gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
+  gem 'yaml_db'
 
   # File system modification testing
   gem 'fakefs', require: 'fakefs/safe'
