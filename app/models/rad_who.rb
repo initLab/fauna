@@ -26,7 +26,7 @@ class RadWho
   end
 
   def present_users
-    present_known_users + present_unknown_users
+    present_known_and_visible_users + present_unknown_users
   end
 
   def present_unknown_users
@@ -50,6 +50,6 @@ class RadWho
   end
 
   def unknown_mac_addresses
-    mac_addresses - present_known_devices.pluck(:mac_address)
+    mac_addresses - present_known_devices.joins(:owner).where(users: {privacy: false}).pluck(:mac_address)
   end
 end

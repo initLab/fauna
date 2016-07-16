@@ -84,24 +84,37 @@ EOS
       expect(unknown_users.map(&:name)).to all eq('Mystery Labber')
     end
 
-    it 'the returned unknown users are all not stored in the database' do
+    it 'returns unknown user objects that are all not stored in the database' do
       expect(RadWho.new.present_unknown_users).to all be_new_record
     end
 
     it 'does not return unknown user entries for devices that are not to be used for presence detection' do
-      create(:network_device, mac_address: 'aa:bb:cc:dd:ee:ff', owner: create(:user, privacy: true))
+      create(:network_device, mac_address: 'aa:bb:cc:dd:ee:ff', use_for_presence: false)
       expect(RadWho).to receive(:radwho).and_return "0000000C-AA-BB-CC-DD-EE-FF\n"
       expect(RadWho.new.present_unknown_users).to be_empty
+    end
+
+    it 'includes users with a turned on privacy flag' do
+      create(:network_device, mac_address: 'aa:bb:cc:dd:ee:ff', owner: create(:user, privacy: true))
+      expect(RadWho).to receive(:radwho).and_return "0000000C-AA-BB-CC-DD-EE-FF\n"
+      expect(RadWho.new.present_unknown_users).to_not be_empty
     end
   end
 
   describe '#present_users' do
-    it 'returns a list of all users -- both known and unknown' do
-      allow(RadWho).to receive(:radwho).and_return sample_output
+    before { allow(RadWho).to receive(:radwho).and_return sample_output }
 
+    it 'returns a list of all users -- both known and unknown' do
       create :network_device, mac_address: 'aa:bb:cc:dd:ee:d8'
 
       expect(RadWho.new.present_users.count).to eq 3
+    end
+
+    it 'return the users with a privacy flag set as unknown' do
+      device = create :network_device, mac_address: 'aa:bb:cc:dd:ee:d8', owner: create(:user, privacy: true)
+
+      expect(RadWho.new.present_users.count).to eq 3
+      expect(RadWho.new.present_users).to_not include device.owner
     end
   end
 
