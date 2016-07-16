@@ -1,10 +1,14 @@
 class RadWho
+  MAC_REGEXP = /(?<mac>[0-9A-F]{2}(?<separator>[:-]?)([0-9A-F]{2}\k<separator>){4}[0-9A-F]{2})/i.freeze
+  RAW_ENTRY_REGEXP = /^.*?-#{MAC_REGEXP},(?<session>.*?),.*$/i.freeze
+  TRANSFORMED_ENTRY_REGEXP = /\A(?<session>.*?)-#{MAC_REGEXP}\z/i.freeze
+
   def initialize
     @radwho_output = RadWho.radwho
   end
 
   def self.radwho
-    `radwho -i -r -F /var/log/freeradius/radutmp `.gsub(/.*?-(.*?),(.*?),.*/, '\2-\1')
+    `radwho -i -r -F /var/log/freeradius/radutmp `.gsub(RAW_ENTRY_REGEXP, '\k<session>-\k<mac>')
   end
 
   def mac_addresses
@@ -13,7 +17,7 @@ class RadWho
 
   def sessions
     @sessions = valid_radwho_entries.map do |entry|
-      entry.scan(/\A(.*?)-([0-9A-F]{2}([:-]?)([0-9A-F]{2}\3){4}[0-9A-F]{2})\z/i)
+      entry.scan TRANSFORMED_ENTRY_REGEXP
       [$1, normalize_mac_address($2)]
     end.group_by(&:last).map do |mac, sessions|
       [mac, sessions.map(&:first)]
@@ -40,7 +44,7 @@ class RadWho
 
   def valid_radwho_entries
     @valid_radwho_entries ||= @radwho_output.split(/\n/).select do |entry|
-      entry =~ /\A(.*?)-([0-9A-F]{2}([:-]?)([0-9A-F]{2}\3){4}[0-9A-F]{2})\z/i
+      entry =~ TRANSFORMED_ENTRY_REGEXP
     end
   end
 
