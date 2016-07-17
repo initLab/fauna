@@ -1,0 +1,67 @@
+require 'json'
+
+class Font
+  def initialize(font)
+    @file_name = font['filename']
+    @name = font['name']
+    @full_name = font['fullName']
+    @post_script_name = font['postScriptName']
+    @style = font['style']
+    @weight = font['weight']
+  end
+
+  def base_name
+    File.basename(@file_name, ".*")
+  end
+
+  def subset_name
+    "#{base_name}.subset.ttf"
+  end
+
+  def subset!
+    system "pyftsubset2 #{@file_name} --unicodes=\"$( cat subset.txt | cut -d ' ' \
+            -f1 )\" --notdef-outline --name-IDs='*' --verbose --timing --hinting \
+            --output-file=#{subset_name}"
+
+  end
+
+  def convert!
+    system "woff2_compress #{subset_name}"
+    system "ttf2woff #{subset_name} #{base_name}.subset.woff"
+    system "ttf2eot #{subset_name} > #{base_name}.subset.eot"
+  end
+
+  def to_css
+    puts <<EOF
+
+@font-face {
+    font-family: '#{@name}';
+    src: font-url('akrobat/#{base_name}.subset.eot');
+    src: font-url('akrobat/#{base_name}.subset.eot?#iefix') format('embedded-opentype'),
+         local('#{@full_name}'), local('#{@post_script_name}'),
+         font-url('akrobat/#{base_name}.subset.woff2') format('woff2'),
+         font-url('akrobat/#{base_name}.subset.woff') format('woff'),
+         font-url('akrobat/#{base_name}.subset.ttf') format('truetype');
+    font-weight: #{@weight};
+    font-style: #{@style};
+}
+EOF
+  end
+
+end
+
+FONTS = JSON.parse(File.read('METADATA.json'))['fonts'].map { |f| Font.new f }
+
+task default: [:subset, :convert, :css]
+
+task :subset do
+  FONTS.each(&:subset!)
+end
+
+task :convert do
+  FONTS.each(&:convert!)
+end
+
+task :css do
+  puts FONTS.map(&:to_css)
+end
