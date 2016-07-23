@@ -25,7 +25,7 @@ describe SpaceApi do
   end
 
   describe '#api' do
-    it 'returns 13' do
+    it 'returns 0.13' do
       expect(SpaceApi.new.api).to eq '0.13'
     end
   end
@@ -33,26 +33,47 @@ describe SpaceApi do
   describe '#sensors' do
     let(:backend) { Rails.application.config.door_status_manager.backend }
 
-    context 'when there are people in the lab' do
-      it 'returns a hash containing people_present: {value: <number of people>}' do
-        allow(Presence).to receive(:present_users).and_return(create_list(:user, 2))
-        expect(SpaceApi.new.sensors[:present_users][:value]).to eq(2)
+    describe 'its entry with key people_now_present' do
+      it 'is an array' do
+        expect(SpaceApi.new.sensors[:people_now_present]).to be_an Array
       end
 
-      it 'returns a hash containing people_present: {names: <array of the names of the present people>}' do
-        present_users = create_list(:user, 2)
-        allow(Presence).to receive(:present_users).and_return(present_users)
-        expect(SpaceApi.new.sensors[:present_users][:names]).to eq(present_users.map(&:name))
+      it 'contains a single member' do
+        expect(SpaceApi.new.sensors[:people_now_present].count).to eq 1
+      end
+
+      it 'contains a member that is a hash with the name of the hackerspace in its entry with a key of location' do
+        stub_const "SPACEAPI_CONFIG", {space: 'foobar'}
+        expect(SpaceApi.new.sensors[:people_now_present][0][:location]).to eq 'foobar'
+      end
+    end
+
+    context 'when there are people in the lab' do
+      describe 'its entry with key people_now_present' do
+        it 'contains a member that is a hash with the current number of present people in its entry with a key of value' do
+          allow(Presence).to receive(:present_users).and_return(create_list(:user, 2))
+          expect(SpaceApi.new.sensors[:people_now_present][0][:value]).to eq 2
+        end
+
+        it 'contains a member that is a hash with the names of the present users in its entry with a key of names' do
+          present_people = create_list :user, 2
+          allow(Presence).to receive(:present_users).and_return(present_people)
+          expect(SpaceApi.new.sensors[:people_now_present][0][:names]).to eq(present_people.map(&:name))
+        end
       end
     end
 
     context 'when there are not people in the lab' do
-      it 'returns a hash containing people_present: {value: 0}' do
-        expect(SpaceApi.new.sensors[:present_users]).to eq({value: 0})
-      end
+      describe 'its entry with key people_now_present' do
+        it 'contains a member that is a hash with the current number of present people in its entry with a key of value' do
+          allow(Presence).to receive(:present_users).and_return([])
+          expect(SpaceApi.new.sensors[:people_now_present][0][:value]).to eq 0
+        end
 
-      it 'returns a hash containing a people_present hash that contains no names key' do
-        expect(SpaceApi.new.sensors[:present_users][:names]).to be_nil
+        it 'contains a member that is a hash that does not have an entry with a key of names' do
+          allow(Presence).to receive(:present_users).and_return([])
+          expect(SpaceApi.new.sensors[:people_now_present][0]).to_not have_key :names
+        end
       end
     end
 
@@ -61,8 +82,8 @@ describe SpaceApi do
         allow(backend).to receive(:status).and_return({"door" => "closed", "latch" => "locked"})
       end
 
-      it 'returns a hash containing door_locked: {value: true, location: "Front"}' do
-        expect(SpaceApi.new.sensors[:door_locked]).to eq({value: true, location: "Front"})
+      it 'returns a hash containing an entry with a key door_locked and value - an array containing {value: true, location: "Front"}' do
+        expect(SpaceApi.new.sensors[:door_locked]).to include({value: true, location: "Front"})
       end
     end
 
@@ -71,8 +92,8 @@ describe SpaceApi do
         allow(backend).to receive(:status).and_return({"door" => "closed", "latch" => "unlocked"})
       end
 
-      it 'returns a hash containing door_locked: {value: false, location: "Front"}' do
-        expect(SpaceApi.new.sensors[:door_locked]).to eq({value: false, location: "Front"})
+      it 'returns a hash containing an entry with a key door_locked and value - an array containing {value: false, location: "Front"}' do
+        expect(SpaceApi.new.sensors[:door_locked]).to include({value: false, location: "Front"})
       end
     end
 
@@ -81,7 +102,7 @@ describe SpaceApi do
         allow(backend).to receive(:status).and_return({"door" => "closed", "latch" => "unknown"})
       end
 
-      it 'returns a hash that does not contain a door_locked key' do
+      it 'returns a hash that does not contain an entry with a key of door_locked' do
         expect(SpaceApi.new.sensors[:door_locked]).to be_nil
       end
     end
@@ -96,7 +117,7 @@ describe SpaceApi do
       end
 
       it 'returns a hash that contains open: false' do
-        expect(SpaceApi.new.status[:open]).to be_falsy
+        expect(SpaceApi.new.state[:open]).to be_falsy
       end
     end
 
@@ -106,7 +127,7 @@ describe SpaceApi do
       end
 
       it 'returns a hash that contains open: true' do
-        expect(SpaceApi.new.status[:open]).to be_truthy
+        expect(SpaceApi.new.state[:open]).to be_truthy
       end
     end
 
@@ -116,7 +137,7 @@ describe SpaceApi do
       end
 
       it 'returns a hash that contains open: nil' do
-        expect(SpaceApi.new.status[:open]).to be_nil
+        expect(SpaceApi.new.state[:open]).to be_nil
       end
     end
   end
