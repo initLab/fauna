@@ -4,6 +4,7 @@ class SpaceApi < OpenStruct
 
   def initialize
     super SPACEAPI_CONFIG
+    self.api = '0.13'
     self.status = {open: hackerspace_open?}
     self.sensors = {}
     unless hackerspace_open?.nil?

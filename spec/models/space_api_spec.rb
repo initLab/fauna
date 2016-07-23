@@ -24,6 +24,12 @@ describe SpaceApi do
     end
   end
 
+  describe '#api' do
+    it 'returns 13' do
+      expect(SpaceApi.new.api).to eq '0.13'
+    end
+  end
+
   describe '#sensors' do
     let(:backend) { Rails.application.config.door_status_manager.backend }
 
