@@ -54,6 +54,8 @@
 @import 'components/large_buttons';
 @import 'fauna/user_list';
 @import 'components/header';
+@import 'components/page_actions';
+@import 'components/record_actions';
 
 html.turbolinks-progress-bar::before {
     background-color: #ff9800 !important;

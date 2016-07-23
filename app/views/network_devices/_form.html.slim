@@ -1,4 +1,7 @@
-= simple_form_for [:user, network_device], remote: !network_device.new_record? do |f|
+= simple_form_for [:user, @network_device] do |f|
+  header
+    legend
+      h3 = NetworkDevice.model_name.human
   .panel-body
     .form-inputs
       = f.input :description
@@ -7,4 +10,3 @@
   .panel-footer.text-center
     .form-actions
       = f.button :submit
-      - unless network_device.new_record?

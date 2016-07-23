@@ -1,7 +1,7 @@
-.network_device_container id="network-device-#{network_device.id}"
-  .panel.panel-primary
-    .panel-heading
-      h3.panel-title
-        = t('views.network_devices.network_device')
-        = link_to icon(:times), user_network_device_path(network_device), method: :delete, class: 'pull-right btn btn-xs btn-danger', data: {confirm: t('views.network_devices.are_you_sure')}
-    = render partial: 'form', locals: {network_device: network_device}
+tr
+  td = network_device.description
+  td = network_device.mac_address
+  td.text-right
+    .record-actions
+      => link_to icon(:pencil), edit_user_network_device_path(network_device), class: 'edit'
+      = link_to icon(:times), user_network_device_path(network_device), method: :delete, class: 'delete', data: {confirm: t('views.network_devices.are_you_sure')}

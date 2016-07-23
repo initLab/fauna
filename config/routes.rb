@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resource :user, only: [] do
-    resources :network_devices, only: [:index, :create, :update, :destroy]
+    resources :network_devices
   end
 
   authenticated do

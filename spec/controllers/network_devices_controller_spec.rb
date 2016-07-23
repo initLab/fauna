@@ -12,24 +12,10 @@ describe NetworkDevicesController, type: :controller do
       get 'index'
       expect(assigns(:network_devices)).to eq users_devices
     end
-
-    it 'assigns a new network device to @network_device' do
-      get 'index'
-      expect(assigns(:network_device)).to be_a(NetworkDevice)
-      expect(assigns(:network_device)).to be_new_record
-    end
   end
 
   describe 'POST #create' do
     let(:network_device_attributes) { build(:network_device).attributes }
-
-    it "assigns the user's devices to @network_devices" do
-      users_devices = create_list :network_device, 3, owner: user
-      others_devices = create_list :network_device, 3
-
-      post 'create', network_device: {foo: :bar}
-      expect(assigns(:network_devices)).to eq users_devices
-    end
 
     it 'assigns the new network device to @network_device' do
       post 'create', network_device: {foo: :bar}
@@ -54,8 +40,8 @@ describe NetworkDevicesController, type: :controller do
         post :create, network_device: network_device_attributes
       end
 
-      it 'renders the index template' do
-        expect(response).to render_template :index
+      it 'renders the new template' do
+        expect(response).to render_template :new
       end
 
       it 'returns an unprocessable entity status' do
@@ -66,11 +52,6 @@ describe NetworkDevicesController, type: :controller do
 
   describe 'PATCH #update' do
     let(:network_device) { create :network_device, owner: user }
-
-    it "assigns the user's devices to @network_devices" do
-      patch :update, format: :js, id: network_device.id, network_device: network_device.attributes
-      expect(assigns(:network_devices)).to eq [network_device]
-    end
 
     context 'when passed valid parameters' do
       it 'updates the specified network device' do
