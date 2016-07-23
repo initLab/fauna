@@ -41,7 +41,7 @@ Dir.chdir APP_ROOT do
   end
 
   puts "\n== Preparing database =="
-  system 'bundle exec rake db:create db:migrate'
+  system 'bundle exec rake db:create db:migrate db:test:prepare'
 
   puts "\n== Removing old logs and tempfiles =="
   system 'rm -f log/*'
