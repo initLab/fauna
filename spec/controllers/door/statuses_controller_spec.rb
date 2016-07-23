@@ -110,7 +110,6 @@ describe Door::StatusesController, type: :controller do
 
         end
 
-
         describe 'when the status can be saved' do
           before do
             allow(action).to receive(:save).and_return(true)
