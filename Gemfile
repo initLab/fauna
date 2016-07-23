@@ -85,6 +85,9 @@ gem 'snmp'
 # Database dumping
 gem 'yaml_db'
 
+# Admin interface
+gem 'activeadmin', github: 'activeadmin'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'

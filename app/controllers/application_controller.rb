@@ -53,4 +53,9 @@ class ApplicationController < ActionController::Base
   def current_mac_address
     Arp.mac_by_ip_address(current_ip_address)
   end
+
+  def authenticate_admin_user!
+    authenticate_user!
+    authorize_action_for current_user
+  end
 end

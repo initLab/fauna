@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
+
   resource :user, only: [] do
     resources :network_devices, only: [:index, :create, :update, :destroy]
   end
