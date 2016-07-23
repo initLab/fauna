@@ -1,5 +1,5 @@
 class SpaceApiController < ApplicationController
-  def spaceapi
+  def status
     @space_api = SpaceApi.new
   end
 end

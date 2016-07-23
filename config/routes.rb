@@ -32,7 +32,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'spaceapi', to: 'space_api#spaceapi'
+
+  get 'spaceapi/status', to: 'space_api#status'
 
   devise_for :users, controllers: {registrations: 'registrations'}
   get "users/present"
