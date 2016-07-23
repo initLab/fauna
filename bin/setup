@@ -3,6 +3,11 @@ require 'pathname'
 require 'yaml'
 require 'securerandom'
 
+def prompt(*args)
+  Kernel.print(*args)
+  STDIN.gets.chomp
+end
+
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 
 Dir.chdir APP_ROOT do
@@ -46,4 +51,30 @@ Dir.chdir APP_ROOT do
 
   puts "\n== Restarting application server =="
   system 'touch tmp/restart.txt'
+
+  # create user if not Travis
+  unless ENV["TRAVIS"]
+    email = prompt "email: "
+    username = prompt "username: "
+    password = prompt "password: "
+    name = prompt "name: "
+    locale = prompt "locale: "
+
+    puts "Loading the rails environment."
+    require APP_ROOT + 'config/environment'
+    puts "Loaded."
+
+    user = User.create!(
+      email: email,
+      username: username,
+      password: password,
+      name: name,
+      locale: locale
+    )
+
+    user.confirm
+    user.add_role :board_member
+
+    puts "Woohoo! User #{user.name} registered!"
+  end
 end
