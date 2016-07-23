@@ -22,10 +22,10 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
           = link_to users_present_path do
             = icon 'street-view', t('views.navigation.presence')
 
-				<!-- Libary -->
+        <!-- Libary -->
         li class="#{'active' if current_page?(books_library_homepage_path)}"
-					= link_to books_library_homepage_path do
-						= icon 'books-library', t('views.library')
+          = link_to books_library_homepage_path do
+            = icon 'books-library', t('views.library')
 
         - if user_signed_in? and current_user.can_update?(Lights::Policy)
           li class="#{'active' if current_page?(lights_status_path)}"

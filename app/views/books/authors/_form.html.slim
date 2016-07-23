@@ -1,17 +1,14 @@
 = link_to books_authors_path, class: ['btn', 'btn-success'] do
-	=> icon :users
-	= t('views.authors.list')
+  => icon :users
+  = t('views.authors.list')
 
 = simple_form_for [:books, @author] do |f|
-	header
-		legend
-			h3 
-	.panel-body
-		.form-inputs
-			= f.input :first_name
-			= f.input :last_name
-		.form-actions
-			= f.button :submit
-
-
-
+  header
+    legend
+      h3 
+  .panel-body
+    .form-inputs
+      = f.input :first_name
+      = f.input :last_name
+    .form-actions
+      = f.button :submit

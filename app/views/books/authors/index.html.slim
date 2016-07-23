@@ -1,19 +1,19 @@
 - content_for(:title) { t 'views.authors.list' }
 
 section.container
-	header.page-header
-		.page-actions
-			= link_to new_books_author_path, class: ['btn', 'btn-success'] do
-				=> icon :plus
-				= t('views.authors.new_author')
-		h2 = t 'views.authors.list'
-	.row
-		table.table.table-striped
-			thead
-				tr
-					th =t('activerecord.attributes.author.name')
-					th =t('activerecord.attributes.author.surname')
-					th
-				tbody
-					= render @authors
+  header.page-header
+    .page-actions
+      = link_to new_books_author_path, class: ['btn', 'btn-success'] do
+        => icon :plus
+        = t('views.authors.new_author')
+    h2 = t 'views.authors.list'
+  .row
+    table.table.table-striped
+      thead
+        tr
+          th =t('activerecord.attributes.author.name')
+          th =t('activerecord.attributes.author.surname')
+          th
+        tbody
+          = render @authors
 

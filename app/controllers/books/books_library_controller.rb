@@ -1,6 +1,6 @@
 module Books
-	class BooksLibraryController < ApplicationController
-		def homepage
-		end
-	end
+  class BooksLibraryController < ApplicationController
+    def homepage
+    end
+  end
 end

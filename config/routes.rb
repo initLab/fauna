@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
-	# Start Books section
-	namespace :books do
-		
-		# Homepage
-		get '/library', 
-			to: 'books_library#homepage', 
-			as: 'library_homepage'
+  # Start Books section
+  namespace :books do
+    
+    # Homepage
+    get '/library', 
+      to: 'books_library#homepage', 
+      as: 'library_homepage'
 
-		resources :authors
-	end
-	# End Books section
-	#
-	resource :user, only: [] do
-		resources :network_devices, only: [:index, :create, :update, :destroy]
-	end
+    resources :authors
+  end
+  # End Books section
+  #
+  resource :user, only: [] do
+    resources :network_devices, only: [:index, :create, :update, :destroy]
+  end
 
   authenticated do
     devise_scope :user do
