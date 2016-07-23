@@ -13,4 +13,4 @@ Installation
 Libs and Dependencies
 ------------
 
-Ruby version: `2.3`
+Ruby version: `2.2.3`
