@@ -82,6 +82,9 @@ gem 'daemons'
 # SNMP Protocol handling
 gem 'snmp'
 
+# Database dumping
+gem 'yaml_db'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
@@ -131,9 +134,6 @@ group :test, :development do
 
   # Do feature testing with capybara
   gem 'capybara'
-
-  # Database dumping
-  gem 'yaml_db'
 
   # File system modification testing
   gem 'fakefs', require: 'fakefs/safe'
