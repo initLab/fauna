@@ -8,7 +8,7 @@ class RadWho
   end
 
   def self.radwho
-    `radwho -i -r -F /var/log/freeradius/radutmp `.gsub(RAW_ENTRY_REGEXP, '\k<session>-\k<mac>') || ""
+    (`radwho -i -r -F /var/log/freeradius/radutmp ` || "").gsub(RAW_ENTRY_REGEXP, '\k<session>-\k<mac>')
   end
 
   def mac_addresses
