@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_access_control_headers, only: :present
 
   def present
-    @users = RadWho.new.present_users
+    @users = Presence.present_users
   end
 
   def present_embeddable

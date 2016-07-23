@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'spaceapi', to: 'space_api#spaceapi'
+
   devise_for :users, controllers: {registrations: 'registrations'}
   get "users/present"
   get "users/present_embeddable"
