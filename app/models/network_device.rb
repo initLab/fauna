@@ -1,6 +1,6 @@
 class NetworkDevice < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
-
+  
   validates :owner_id, presence: true
   validates :mac_address, presence: true
 

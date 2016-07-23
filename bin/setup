@@ -2,13 +2,19 @@
 require 'pathname'
 require 'yaml'
 require 'securerandom'
+require 'io/console'
+
+def prompt(*args)
+  Kernel.print(*args)
+  STDIN.gets.chomp
+end
 
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 
 Dir.chdir APP_ROOT do
   puts '== Installing dependencies =='
   system 'gem install bundler --conservative'
-  system 'bundle check || bundle install'
+  system 'bundle check > /dev/null || bundle install'
 
   puts "\n== Generating secret tokens =="
   unless File.exist?('config/secrets.yml')
@@ -35,7 +41,7 @@ Dir.chdir APP_ROOT do
   end
 
   puts "\n== Preparing database =="
-  system 'bundle exec rake db:create db:migrate'
+  system 'bundle exec rake db:create db:migrate db:test:prepare'
 
   puts "\n== Removing old logs and tempfiles =="
   system 'rm -f log/*'
@@ -46,4 +52,47 @@ Dir.chdir APP_ROOT do
 
   puts "\n== Restarting application server =="
   system 'touch tmp/restart.txt'
+
+  # create user if not Travis
+  unless ENV["TRAVIS"]
+    puts "\n== Registering a new user with administrative rights =="
+
+    loop do
+      email = prompt "email: "
+      username = prompt "username: "
+      print 'password: '
+      password = STDIN.noecho(&:gets)
+      print "\npassword confirmation: "
+      password_confirmation = STDIN.noecho(&:gets)
+      name = prompt "\nname: "
+
+      puts "Loading the rails environment."
+      require APP_ROOT + 'config/environment'
+      puts "Loaded."
+      I18n.locale = :en
+
+      user = User.new(email: email,
+                      username: username,
+                      password: password,
+                      password_confirmation: password_confirmation,
+                      name: name,
+                      locale: I18n.locale)
+
+      unless user.save
+        STDERR.puts "\nThe following errors arose during the creation of the user:\n\n"
+        user.errors.full_messages.each do |message|
+          STDERR.puts message
+        end
+        STDERR.puts "\nPlease try again.\n"
+        next
+      end
+
+      user.confirm
+      user.add_role :board_member
+
+      puts "Woohoo! User #{user.name} registered!"
+
+      break
+    end
+  end
 end

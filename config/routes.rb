@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # End Books section
   #
   resource :user, only: [] do
-    resources :network_devices, only: [:index, :create, :update, :destroy]
+    resources :network_devices
   end
 
   authenticated do

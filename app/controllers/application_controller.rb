@@ -31,9 +31,9 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up).push(*[:name, :username, :email])
-    devise_parameter_sanitizer.for(:sign_in).push(*[:username])
-    devise_parameter_sanitizer.for(:account_update).push(*[:name, :username,
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :username, :email])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :username,
                                                            :email, :url, :locale,
                                                            :twitter, :privacy,
                                                            :github, :jabber,

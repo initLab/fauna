@@ -95,6 +95,13 @@ bg:
     board_member: УС
     trusted_member: Доверен член
     member: Член
+  network_devices:
+    index:
+      new_network_device: Ново мрежово устройство
+    new:
+      add_network_device: Добавяне на ново мрежово устройство
+    form:
+      new_network_device: Ново мрежово устройство
   views:
     lights:
       management: Управление на осветлението

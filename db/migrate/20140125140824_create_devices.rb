@@ -5,7 +5,7 @@ class CreateDevices < ActiveRecord::Migration
       t.string :type
       t.string :value
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
