@@ -35,7 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :twitter
       t.boolean :privacy, null: false, default: false
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :users, :email,                :unique => true
