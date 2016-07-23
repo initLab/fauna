@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, :role_ids
 
   index do
     selectable_column
@@ -8,12 +8,14 @@ ActiveAdmin.register User do
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
+    column :roles_description do |u|
+      u.roles.map(&:name).join(', ')
+    end
     actions
   end
 
   filter :email
   filter :current_sign_in_at
-  filter :sign_in_count
   filter :created_at
 
   form do |f|
