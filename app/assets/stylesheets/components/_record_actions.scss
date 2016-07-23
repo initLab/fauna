@@ -1,0 +1,14 @@
+.record-actions {
+    @extend .btn-group;
+    a { @extend .btn; }
+    a.primary { @extend .btn-warning; }
+    a.edit { @extend .btn-warning; }
+    a.delete { @extend .btn-danger; }
+}
+
+td .record-actions {
+    @extend .btn-group-xs;
+    @extend .hidden-print;
+    justify-content: flex-end;
+    display: flex;
+}

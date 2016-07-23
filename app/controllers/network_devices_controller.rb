@@ -1,10 +1,13 @@
 class NetworkDevicesController < ApplicationController
   before_filter :authenticate_user!
-  before_action :assign_network_device, only: [:update, :destroy]
-  before_action :assign_network_devices, only: [:update, :create, :index]
+  before_action :assign_network_device, only: [:edit, :update, :destroy]
 
   def index
-    @network_device = NetworkDevice.new description: 'notebook', mac_address: current_mac_address
+    @network_devices = current_user.network_devices
+  end
+
+  def new
+    @network_device = NetworkDevice.new
   end
 
   def create
@@ -14,13 +17,18 @@ class NetworkDevicesController < ApplicationController
     if @network_device.save
       redirect_to user_network_devices_path
     else
-      render :index, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
+  def edit
+  end
+
   def update
-    unless @network_device.update(network_device_params)
-      render status: :unprocessable_entity
+    if @network_device.update(network_device_params)
+      redirect_to user_network_devices_path
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -37,9 +45,5 @@ class NetworkDevicesController < ApplicationController
 
   def assign_network_device
     @network_device = NetworkDevice.find params[:id]
-  end
-
-  def assign_network_devices
-    @network_devices = current_user.network_devices
   end
 end
