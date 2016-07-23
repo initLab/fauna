@@ -75,6 +75,9 @@ bg:
         use_for_presence: Използвай за определяне кога съм в Лаба
       phone_number:
         phone_number: Телефонен номер
+      author:
+        name: Име
+        surname: Фамилия
   mailers:
     unlocks:
       hello: "Здравейте, %{name}!"
@@ -119,6 +122,9 @@ bg:
       open: отвори
       log: журнал
     navigation:
+      view: Преглед
+      edit: Редакция
+      destroy: Изтриване
       view_edit: Преглед/редакция
       sign_in: Вход
       sign_out: Изход
@@ -135,6 +141,8 @@ bg:
       members_fee: Членски внос
       network_devices: Мрежови устройства
       lights: Осветление
+    dialogs:
+      conformation_message: Сигурен ли си ?
     registrations:
       sign_up: Регистрация
       sign_me_up: Регистрирай ме
@@ -186,4 +194,16 @@ bg:
     footer: 
       license: 'init Lab Fauna е лицензирана под'
       source_code: 'Изходният код е достъпен в'
+    authors:
+      list: Автори
+      author: Автор
+      new_author: Добави нов автор
+      success: Добавихте успешно автор към вашата база от данни
+      updated: Успешно успяхте да редактирате автор
+      destroyed: Успешно успяхте да премахнете автор
+    books:
+      list: Книги
+      book: Книга
+    library: Библиотека
+      
 

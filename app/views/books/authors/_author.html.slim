@@ -1,0 +1,8 @@
+- @authors.each do |author|
+	tr
+		td = author.first_name
+		td = author.last_name
+		td.text-right
+			.record-actions
+				=> link_to icon(:pencil), edit_books_author_path(author), class: 'edit'
+				= link_to icon(:times), books_author_path(author), method: :delete, class: 'delete', data: { confirm: t('views.dialogs.conformation_message') }

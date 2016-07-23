@@ -75,6 +75,9 @@ en:
         use_for_presence: "Use to determine when I'm in the Lab"
       phone_number:
         phone_number: Phone number
+      author:
+        name: Name
+        surname: Surname
   mailers:
     unlocks:
       hello: "Hello, %{name}!"
@@ -119,6 +122,9 @@ en:
       open: open
       log: log
     navigation:
+      view: Preview
+      edit: Edit
+      destroy: Destroy
       view_edit: View/edit
       sign_in: Login
       sign_out: Logout
@@ -135,6 +141,8 @@ en:
       members_fee: Membership fee
       network_devices: Network devices
       lights: Lights
+    dialogs:
+      conformation_message: Are you sure?
     registrations:
       sign_up: Registration
       sign_me_up: Sign me up
@@ -186,3 +194,14 @@ en:
     footer: 
       license: 'init Lab Fauna is licensed under'
       source_code: 'The source code is available in'
+    authors:
+      list: Authors
+      author: Author
+      new_author: Add a new author
+      success: Author was successfully created.
+      updated: Author was successfully updated.
+      destroyed: Author was successfully destroyed.
+    books:
+      list: Books
+      book: Book
+    library: Library
