@@ -30,7 +30,7 @@ class SpaceApi < OpenStruct
   end
 
   def add_people_now_present
-    present_people_reading = {location: SPACEAPI_CONFIG[:space],
+    present_people_reading = {location: SPACEAPI_CONFIG['space'],
                               value: Presence.present_users.count}
 
     if Presence.present_users.count > 0

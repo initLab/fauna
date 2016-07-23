@@ -43,7 +43,7 @@ describe SpaceApi do
       end
 
       it 'contains a member that is a hash with the name of the hackerspace in its entry with a key of location' do
-        stub_const "SPACEAPI_CONFIG", {space: 'foobar'}
+        stub_const "SPACEAPI_CONFIG", {'space' => 'foobar'}
         expect(SpaceApi.new.sensors[:people_now_present][0][:location]).to eq 'foobar'
       end
     end
