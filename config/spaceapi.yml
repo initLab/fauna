@@ -1,0 +1,32 @@
+space: init Lab
+logo: initlab-logo.png
+url: https://initlab.org
+location:
+  address: floor 2, 6 Rila str., Sofia, Bulgaria
+  lat: 42.70789247
+  lon: 23.32527086
+spacefed:
+  spacenet: false
+  spacesaml: false
+  spacephone: false
+contact:
+  irc: irc://irc.ludost.net/#initlab
+  twitter: '@initLab'
+  ml: members@initlab.org
+  issue_mail: us@initlab.org
+issue_report_channels: 
+  - issue_mail
+  - twitter
+feeds:
+  blog:
+    type: rss
+    url: https://initlab.org/feed/
+  wiki:
+    type: atom
+    url: http://wiki.initlab.org/api.php?hidebots=1&days=7&limit=50&action=feedrecentchanges&feedformat=atom
+  calendar:
+    type: ical
+    url: http://initlab.org/?ical=1
+projects: 
+  - http://wiki.initlab.org/index.php/Category:Project
+  - https://github.com/initLab/
