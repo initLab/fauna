@@ -8,7 +8,11 @@ class RadWho
   end
 
   def self.radwho
-    (`radwho -i -r -F /var/log/freeradius/radutmp ` || "").gsub(RAW_ENTRY_REGEXP, '\k<session>-\k<mac>')
+    if ENV['RAILS_ENV'] == 'production'
+      `radwho -i -r -F /var/log/freeradius/radutmp`.gsub(RAW_ENTRY_REGEXP, '\k<session>-\k<mac>')
+    else
+      ""
+    end
   end
 
   def mac_addresses
