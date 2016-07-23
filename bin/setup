@@ -2,6 +2,7 @@
 require 'pathname'
 require 'yaml'
 require 'securerandom'
+require 'io/console'
 
 def prompt(*args)
   Kernel.print(*args)
@@ -54,27 +55,44 @@ Dir.chdir APP_ROOT do
 
   # create user if not Travis
   unless ENV["TRAVIS"]
-    email = prompt "email: "
-    username = prompt "username: "
-    password = prompt "password: "
-    name = prompt "name: "
-    locale = prompt "locale: "
+    puts "\n== Registering a new user with administrative rights =="
 
-    puts "Loading the rails environment."
-    require APP_ROOT + 'config/environment'
-    puts "Loaded."
+    loop do
+      email = prompt "email: "
+      username = prompt "username: "
+      print 'password: '
+      password = STDIN.noecho(&:gets)
+      print "\npassword confirmation: "
+      password_confirmation = STDIN.noecho(&:gets)
+      name = prompt "\nname: "
 
-    user = User.create!(
-      email: email,
-      username: username,
-      password: password,
-      name: name,
-      locale: locale
-    )
+      puts "Loading the rails environment."
+      require APP_ROOT + 'config/environment'
+      puts "Loaded."
+      I18n.locale = :en
 
-    user.confirm
-    user.add_role :board_member
+      user = User.new(email: email,
+                      username: username,
+                      password: password,
+                      password_confirmation: password_confirmation,
+                      name: name,
+                      locale: I18n.locale)
 
-    puts "Woohoo! User #{user.name} registered!"
+      unless user.save
+        STDERR.puts "\nThe following errors arose during the creation of the user:\n\n"
+        user.errors.full_messages.each do |message|
+          STDERR.puts message
+        end
+        STDERR.puts "\nPlease try again.\n"
+        next
+      end
+
+      user.confirm
+      user.add_role :board_member
+
+      puts "Woohoo! User #{user.name} registered!"
+
+      break
+    end
   end
 end
