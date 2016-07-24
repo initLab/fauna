@@ -1,4 +1,4 @@
-// Paper 3.3.2
+// Paper 3.3.6
 // Bootswatch
 // -----------------------------------------------------
 
@@ -14,12 +14,13 @@
   }
 
   &-inverse {
-    .form-control {
-      color: #fff;
-      @include placeholder($navbar-inverse-link-color);
+    .navbar-form {
 
-      &[type=text] {
+      input[type=text],
+      input[type=password] {
+        color: #fff;
         @include box-shadow(inset 0 -1px 0 $navbar-inverse-link-color);
+        @include placeholder($navbar-inverse-link-color);
 
         &:focus {
           @include box-shadow(inset 0 -2px 0 #fff);
@@ -27,31 +28,29 @@
       }
     }
   }
-
-  &-nav > li > .dropdown-menu {
-    margin-top: 2px;
-  }
 }
 
 // Buttons ====================================================================
 
 @mixin btn($class,$bg){
   .btn-#{$class} {
-    @include gradient-radial($bg 80%, darken($bg, 6%) 81%);
-    background-size: 200%;
+    background-size: 200% 200%;
     background-position: 50%;
-    transition: background-size 2s;
 
-    &:hover {
-      background-size: 100%;
-      border-color: darken($bg, 6%);
+    &:focus {
+      background-color: $bg;
+    }
+
+    &:hover,
+    &:active:hover {
+      background-color: darken($bg, 6%);
     }
 
     &:active {
-      background-color: darken($bg, 6%);
-      @include gradient-radial(darken($bg, 6%) 10%, $bg 11%);
-      background-size: 1000%;
-      @include box-shadow(2px 2px 2px rgba(0,0,0,.3));
+      background-color: darken($bg, 12%);
+      @include gradient-radial(darken($bg, 12%) 10%, $bg 11%);
+      background-size: 1000% 1000%;
+      @include box-shadow(2px 2px 4px rgba(0,0,0,.3));
     }
   }
 }
@@ -62,26 +61,52 @@
 @include btn(info,$btn-info-bg);
 @include btn(warning,$btn-warning-bg);
 @include btn(danger,$btn-danger-bg);
+@include btn(link,#fff);
 
 .btn {
   text-transform: uppercase;
-  border-right: none;
-  border-bottom: none;
-  @include box-shadow(1px 1px 2px rgba(0,0,0,.3));
-  @include transition(all 0.2s);
+  border: none;
+  @include box-shadow(1px 1px 4px rgba(0,0,0,.3));
+  @include transition(all 0.4s);
 
   &-link {
+    border-radius: $btn-border-radius-base;
     @include box-shadow(none);
+    color: $btn-default-color;
 
     &:hover,
     &:focus {
-      color: $brand-primary;
+      @include box-shadow(none);
+      color: $btn-default-color;
       text-decoration: none;
     }
   }
 
-  &-default.disabled {
-    border: 1px solid $btn-default-border;
+  &-default {
+
+    &.disabled {
+      background-color: rgba(0, 0, 0, 0.1);
+      color: rgba(0, 0, 0, 0.4);
+      opacity: 1;
+    }
+  }
+}
+
+.btn-group {
+  .btn + .btn,
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
+    margin-left: 0;
+  }
+
+  &-vertical {
+    > .btn + .btn,
+    > .btn + .btn-group,
+    > .btn-group + .btn,
+    > .btn-group + .btn-group {
+      margin-top: 0;
+    }
   }
 }
 
@@ -90,7 +115,6 @@
 body {
   -webkit-font-smoothing: antialiased;
   letter-spacing: .1px;
-  text-rendering: optimizeLegibility;
 }
 
 p {
@@ -101,7 +125,6 @@ input,
 button {
   -webkit-font-smoothing: antialiased;
   letter-spacing: .1px;
-  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -109,6 +132,14 @@ a {
 }
 
 // Tables =====================================================================
+
+.table-hover {
+  > tbody > tr,
+  > tbody > tr > th,
+  > tbody > tr > td {
+    @include transition(all 0.2s);
+  }
+}
 
 // Forms ======================================================================
 
@@ -204,13 +235,20 @@ select.form-control {
   label {
     padding-left: 25px;
   }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-left: -25px;
+  }
 }
 
 input[type="radio"],
 .radio input[type="radio"],
 .radio-inline input[type="radio"] {
-  margin-top: 5px;
-  margin-left: -25px;
+  position: relative;
+  margin-top: 6px;
+  margin-right: 4px;
+  vertical-align: top;
   border: none;
   background-color: transparent;
   -webkit-appearance: none;
@@ -227,7 +265,6 @@ input[type="radio"],
     display: block;
     width: 18px;
     height: 18px;
-    margin-top: -3px;
     border-radius: 50%;
     @include transition(240ms);
   }
@@ -235,12 +272,14 @@ input[type="radio"],
   &:before {
     position: absolute;
     left: 0;
-    top: 0;
+    top: -3px;
     background-color: $brand-primary;
     @include scale(0);
   }
 
   &:after {
+    position: relative;
+    top: -3px;
     border: 2px solid $gray;
   }
 
@@ -265,14 +304,19 @@ input[type="radio"],
 input[type="checkbox"],
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
-  margin-left: -25px;
+  position: relative;
   border: none;
+  margin-bottom: -4px;
   -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
 
   &:focus {
     outline: none;
+  }
+
+  &:focus:after {
+    border-color: $brand-primary;
   }
 
   &:after {
@@ -317,29 +361,57 @@ input[type="checkbox"],
 }
 
 .has-warning {
-  input,
+  input:not([type=checkbox]),
   .form-control,
-  input:focus,
+  input.form-control[readonly],
+  input[type=text][readonly],
+  [type=text].form-control[readonly],
+  input:not([type=checkbox]):focus,
   .form-control:focus {
+    border-bottom: none;
     @include box-shadow(inset 0 -2px 0 $brand-warning);
   }
 }
 
 .has-error {
-  input,
+  input:not([type=checkbox]),
   .form-control,
-  input:focus,
+  input.form-control[readonly],
+  input[type=text][readonly],
+  [type=text].form-control[readonly],
+  input:not([type=checkbox]):focus,
   .form-control:focus {
+    border-bottom: none;
     @include box-shadow(inset 0 -2px 0 $brand-danger);
   }
 }
 
 .has-success {
-  input,
+  input:not([type=checkbox]),
   .form-control,
-  input:focus,
+  input.form-control[readonly],
+  input[type=text][readonly],
+  [type=text].form-control[readonly],
+  input:not([type=checkbox]):focus,
   .form-control:focus {
+    border-bottom: none;
     @include box-shadow(inset 0 -2px 0 $brand-success);
+  }
+}
+
+// Remove the Bootstrap feedback styles for input addons
+.input-group-addon {
+  .has-warning &, .has-error &, .has-success & {
+    color: $input-color;
+    border-color: $input-group-addon-border-color;
+    background-color: $input-group-addon-bg;
+  }
+}
+
+.form-group-lg {
+  select,
+  select.form-control {
+    line-height: 1.5;
   }
 }
 
@@ -382,8 +454,10 @@ input[type="checkbox"],
 
     & > li > a,
     & > li > a:hover,
+    & > li > a:focus,
     & > .active > a,
-    & > .active > a:hover {
+    & > .active > a:hover,
+    & > .active > a:focus {
       border: none;
     }
   }
@@ -394,6 +468,7 @@ input[type="checkbox"],
 }
 
 .dropdown-menu {
+  margin-top: 0;
   border: none;
   @include box-shadow(0 1px 4px rgba(0,0,0,.3));
 }
@@ -420,7 +495,7 @@ input[type="checkbox"],
     background-color: $brand-danger;
   }
 
-  a:not(.close),
+  a:not(.close):not(.btn),
   .alert-link {
     color: #fff;
     font-weight: bold;
@@ -432,7 +507,7 @@ input[type="checkbox"],
 }
 
 .badge {
-  padding: 3px 6px 5px;
+  padding: 4px 6px 4px;
 }
 
 .progress {
@@ -453,7 +528,7 @@ input[type="checkbox"],
     &:last-child {
       &:before {
         display: block;
-        content: 'div::before';
+        content: "";
         position: absolute;
         width: 100%;
         height: 100%;
@@ -490,6 +565,7 @@ input[type="checkbox"],
   font-weight: 300;
   line-height: 24px;
   opacity: 0.6;
+  @include transition(all 0.2s);
 
   &:hover {
     opacity: 1;
@@ -524,49 +600,17 @@ input[type="checkbox"],
   &-footer {
     border-top: none;
   }
-
-  &-success {
-    .panel-heading {
-      background-color: $brand-success;
-    }
-
-    .panel-title {
-      color: #fff;
-    }
-  }
-
-  &-info {
-    .panel-heading {
-      background-color: $brand-info;
-    }
-
-    .panel-title {
-      color: #fff;
-    }
-  }
-
-  &-warning {
-    .panel-heading {
-      background-color: $brand-warning;
-    }
-
-    .panel-title {
-      color: #fff;
-    }
-  }
-
-  &-danger {
-    .panel-heading {
-      background-color: $brand-danger;
-    }
-
-    .panel-title {
-      color: #fff;
-    }
-  }
 }
 
 .popover {
   border: none;
   @include box-shadow(0 1px 4px rgba(0,0,0,.3));
+}
+
+.carousel {
+  &-caption {
+    h1, h2, h3, h4, h5, h6 {
+      color: inherit;
+    }
+  }
 }
