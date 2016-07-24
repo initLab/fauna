@@ -16,14 +16,14 @@ module Fauna
         end
       end
 
-      it 'assigns the users to @users' do
+      it 'returns an HTTP 200 OK status code' do
         users = create_list :user, 3
         current_user = users.last
         current_user.add_role :board_member
         sign_in current_user
 
         get 'index'
-        expect(assigns(:users)).to match_array(users)
+        expect(response).to have_http_status(:ok)
       end
     end
   end

@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.6'
+gem 'rails', '~> 5.0.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
-gem 'sprockets', '> 2.12'
+gem 'sprockets'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -25,9 +25,6 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
-
-# Create decorators with Draper
-gem 'draper'
 
 # Use devise for authentication
 gem 'devise'
@@ -51,7 +48,6 @@ gem 'slim-rails'
 
 # Use the Bootstrap CSS framework and the FA icon font
 gem 'bootstrap-sass'
-gem 'bootstrap-sass-extras', github: 'doabit/bootstrap-sass-extras'
 gem 'font-awesome-sass'
 
 # Gravatar helper
@@ -110,7 +106,6 @@ group :development do
 
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'quiet_assets'
 
   gem 'web-console'
 end
