@@ -55,5 +55,3 @@ class SpaceApi < OpenStruct
     end
   end
 end
-
-# tsikov@gmail.com
