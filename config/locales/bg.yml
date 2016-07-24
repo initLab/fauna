@@ -99,6 +99,8 @@ bg:
       add_network_device: Добавяне на ново мрежово устройство
     form:
       new_network_device: Ново мрежово устройство
+    edit:
+      edit_network_device: Редакция на мрежово устройство
   views:
     lights:
       management: Управление на осветлението
@@ -190,7 +192,6 @@ bg:
       everybodys_gone: Всички ги е хванала липсата
     roles:
       are_you_sure: 'Сигурни ли сте?'
-    footer: 
+    footer:
       license: 'init Lab Fauna е лицензирана под'
       source_code: 'Изходният код е достъпен в'
-

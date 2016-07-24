@@ -1,12 +1,11 @@
-= simple_form_for [:user, @network_device] do |f|
-  header
-    legend
-      h3 = NetworkDevice.model_name.human
-  .panel-body
+.centered_form
+  = simple_form_for [:user, @network_device] do |f|
+    header
+      legend
+        h3 = NetworkDevice.model_name.human
     .form-inputs
       = f.input :description
       = f.input :mac_address
       = f.input :use_for_presence
-  .panel-footer.text-center
     .form-actions
       = f.button :submit
