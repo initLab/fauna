@@ -1,18 +1,23 @@
 - content_for(:title) { t 'views.network_devices.network_devices' }
+- content_for(:page_actions) do
+  = link_to new_user_network_device_path, class: ['btn', 'btn-primary'] do
+    => icon :plus
+    = t('.new_network_device')
 
 section.container
-  header.page-header
-    .page-actions
-      = link_to new_user_network_device_path, class: ['btn', 'btn-success'] do
-        => icon :plus
-        = t('.new_network_device')
-    h2 = t 'views.network_devices.network_devices'
   .row
-    table.table.table-striped
-      thead
-        tr
-          th = NetworkDevice.human_attribute_name :description
-          th = NetworkDevice.human_attribute_name :mac_address
-          th 
-      tbody
-        = render @network_devices
+    .col-xs-12
+      header.page-header
+        .page-actions
+          = yield :page_actions
+        h2 = t 'views.network_devices.network_devices'
+      table.record-table
+        thead
+          tr
+            th = NetworkDevice.human_attribute_name :description
+            th = NetworkDevice.human_attribute_name :mac_address
+            th
+        tbody
+          = render @network_devices
+      .mobile-page-actions
+        = yield :page_actions

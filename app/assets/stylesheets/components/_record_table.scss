@@ -1,0 +1,6 @@
+.record-table {
+    @extend .table;
+    @extend .table-striped;
+    @extend .table-hover;
+    tbody tr td { vertical-align: middle; }
+}

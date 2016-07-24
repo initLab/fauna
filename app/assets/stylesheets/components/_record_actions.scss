@@ -7,7 +7,6 @@
 }
 
 td .record-actions {
-    @extend .btn-group-xs;
     @extend .hidden-print;
     justify-content: flex-end;
     display: flex;
