@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe SpaceApiController, type: :controller do
   describe '#GET status' do
-    it 'renders the status json template' do
+    it 'returns json data' do
       get :status, format: :json
-      expect(response).to render_template('status')
+      expect(response.content_type).to eq('application/json')
     end
 
-    it 'assigns an instance of the SpaceApi object to @space_api' do
+    it 'returns an HTTP 200 OK status code' do
       get :status, format: :json
-      expect(assigns(:space_api)).to be_a SpaceApi
+      expect(response).to have_http_status(:ok)
     end
   end
 end

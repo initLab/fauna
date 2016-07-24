@@ -1,5 +1,5 @@
 class NetworkDevicesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :assign_network_device, only: [:edit, :update, :destroy]
 
   def index

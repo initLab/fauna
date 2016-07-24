@@ -12,16 +12,16 @@ module Door
 
       context 'when sent with a correct token' do
         it 'creates a new door log entry' do
-          expect { post :create, door: status_notification.door, latch: status_notification.latch, token: token }.to change(Door::StatusNotification, :count).by(1)
+          expect { post :create, params: {door: status_notification.door, latch: status_notification.latch, token: token} }.to change(Door::StatusNotification, :count).by(1)
         end
 
         it 'returns HTTP 201 Created upon success' do
-          post :create, door: status_notification.door, latch: status_notification.latch, token: token
+          post :create, params: {door: status_notification.door, latch: status_notification.latch, token: token}
           expect(response).to be_created
         end
 
         it 'returns HTTP 422 Unprocessable Entity when passed invalid params' do
-          post :create, door: 'foo', latch: 'bar', token: token
+          post :create, params: {door: 'foo', latch: 'bar', token: token}
           expect(response).to be_unprocessable
         end
       end
@@ -30,8 +30,8 @@ module Door
         let(:token) { 'foobar123' }
 
         it 'return HTTP 401 Unauthorized' do
-          post :create, door: 'foo', latch: 'bar', token: token
-          post :create, door: 'foo', latch: 'bar'
+          post :create, params: {door: 'foo', latch: 'bar', token: token}
+          post :create, params: {door: 'foo', latch: 'bar'}
 
           expect(response).to be_unauthorized
         end

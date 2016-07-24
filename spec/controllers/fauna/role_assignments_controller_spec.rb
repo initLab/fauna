@@ -18,14 +18,14 @@ module Fauna
         end
 
         it 'returns HTTP 401 Unauthorized when the current user is not authenticated' do
-          post :create, user_id: @user.id, role: {name: :board_member}, format: :js
-          expect(response).to be_unauthorized
+          post :create, params: {user_id: @user.id, role: {name: :board_member}}, format: :js
+          expect(response).to have_http_status(:unauthorized)
         end
 
         it 'returns HTTP 403 Forbidden when the current user is not authorized' do
           sign_in create :user
-          post :create, user_id: @user.id, role: {name: :board_member}, format: :js
-          expect(response).to be_forbidden
+          post :create, params: {user_id: @user.id, role: {name: :board_member}}, format: :js
+          expect(response).to have_http_status(:forbidden)
         end
 
       end
@@ -33,7 +33,7 @@ module Fauna
       context 'when a valid user and role are specified' do
         before(:each) do
           @user = create :user
-          post :create, user_id: @user.id, role: {name: :board_member}, format: :js
+          post :create, params: {user_id: @user.id, role: {name: :board_member}}, format: :js
         end
 
         it 'adds the specified role to the user' do
@@ -41,20 +41,20 @@ module Fauna
         end
 
         it 'returns an HTTP 201 Created' do
-          expect(response).to be_created
+          expect(response).to have_http_status(:created)
         end
       end
 
       it 'raises a Record Not Found error when the user does not exist' do
-        expect { post :create, user_id: 1337, role: :board_member, format: :js }.to raise_error ActiveRecord::RecordNotFound
+        expect { post :create, params: {user_id: 1337, role: :board_member}, format: :js }.to raise_error ActiveRecord::RecordNotFound
       end
 
       it 'returns an HTTP 422 Unprocessable Entity when the specified role name is invalid' do
         allow(User).to receive(:find).and_return(build :user)
 
-        post :create, user_id: 1337, role: {name: :foo}, format: :js
+        post :create, params: {user_id: 1337, role: {name: :foo}}, format: :js
 
-        expect(response).to be_unprocessable
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
 
@@ -74,21 +74,21 @@ module Fauna
         end
 
         it 'returns HTTP 401 Unauthorized when the current user is not signed in' do
-          delete :destroy, user_id: @user.id, role_name: :board_member, format: :js
-          expect(response).to be_unauthorized
+          delete :destroy, params: {user_id: @user.id, role_name: :board_member}, format: :js
+          expect(response).to have_http_status(:unauthorized)
         end
 
         it 'returns HTTP 403 Forbidden when the current user is not authorized' do
           sign_in create :user
-          delete :destroy, user_id: @user.id, role_name: :board_member, format: :js
-          expect(response).to be_forbidden
+          delete :destroy, params: {user_id: @user.id, role_name: :board_member}, format: :js
+          expect(response).to have_http_status(:forbidden)
         end
       end
 
       context 'when a valid user and role are specified' do
         before(:each) do
           @user = create :board_member
-          delete :destroy, user_id: @user.id, role_name: :board_member, format: :js
+          delete :destroy, params: {user_id: @user.id, role_name: :board_member}, format: :js
         end
 
         it 'removes the specified role from the user' do
@@ -96,24 +96,20 @@ module Fauna
         end
 
         it 'returns HTTP 200 OK' do
-          expect(response.code).to eq '200'
-        end
-
-        it 'renders the refresh template' do
-          expect(response).to render_template :refresh
+          expect(response).to have_http_status(:ok)
         end
       end
 
       it 'raises a Record Not Found error when the user does not exist' do
-        expect { delete :destroy, user_id: 1337, role_name: :board_member, format: :js }.to raise_error ActiveRecord::RecordNotFound
+        expect { delete :destroy, params: {user_id: 1337, role_name: :board_member}, format: :js }.to raise_error ActiveRecord::RecordNotFound
       end
 
       it 'returns an HTTP 422 Unprocessable Entity when the user does not have the specified role' do
         allow(User).to receive(:find).and_return(build :user)
 
-        delete :destroy, user_id: 1337, role_name: :foo, format: :js
+        delete :destroy, params: {user_id: 1337, role_name: :foo}, format: :js
 
-        expect(response).to be_unprocessable
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end

@@ -1,5 +1,5 @@
 class Door::StatusesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   include DoorStatusHelper
 
@@ -33,12 +33,12 @@ class Door::StatusesController < ApplicationController
 
   def update_error(message, args = {})
     flash[:error] = I18n.t(message, args)
-    redirect_to :back
+    redirect_back fallback_location: door_status_path
   end
 
   def update_success(message, args = {})
     flash[:notice] = I18n.t(message, args)
-    redirect_to :back
+    redirect_back fallback_location: door_status_path
   end
 
   def status_params

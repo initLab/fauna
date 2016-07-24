@@ -57,7 +57,7 @@ class RadWho
   end
 
   def present_known_users
-    User.joins(:network_devices).where(network_devices: {id: present_known_devices.where(use_for_presence: true)}).uniq
+    User.joins(:network_devices).where(network_devices: {id: present_known_devices.where(use_for_presence: true)}).distinct
   end
 
   def present_known_devices
