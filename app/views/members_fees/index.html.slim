@@ -1,0 +1,23 @@
+h1 Listing members_fees
+
+table
+  thead
+    tr
+      th User
+      th Month
+      th
+      th
+      th
+
+  tbody
+    - @members_fees.each do |members_fee|
+      tr
+        td = members_fee.user
+        td = members_fee.month
+        td = link_to 'Show', members_fee
+        td = link_to 'Edit', edit_members_fee_path(members_fee)
+        td = link_to 'Destroy', members_fee, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Members fee', new_members_fee_path

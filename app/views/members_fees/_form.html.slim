@@ -1,0 +1,9 @@
+= simple_form_for(@members_fee) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user
+    = f.input :month
+
+  .form-actions
+    = f.button :submit

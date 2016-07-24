@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong User:
+  = @members_fee.user
+p
+  strong Month:
+  = @members_fee.month
+
+= link_to 'Edit', edit_members_fee_path(@members_fee)
+'|
+= link_to 'Back', members_fees_path
