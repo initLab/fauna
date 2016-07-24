@@ -1,4 +1,4 @@
-class AddLockableFieldsToUsers < ActiveRecord::Migration
+class AddLockableFieldsToUsers < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :failed_attempts, :integer, default: 0, null: false
     add_column :users, :unlock_token, :string

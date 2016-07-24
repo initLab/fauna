@@ -1,4 +1,4 @@
-class MergeLogEntries < ActiveRecord::Migration
+class MergeLogEntries < ActiveRecord::Migration[4.2]
   class DoorLogEntry < ActiveRecord::Base
   end
 
