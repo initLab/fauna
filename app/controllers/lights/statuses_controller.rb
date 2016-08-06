@@ -3,7 +3,8 @@ class Lights::StatusesController < ApplicationController
   authorize_actions_for Lights::Policy
 
   def show
-    @lights_status = Lights::StatusManager.status
-    @lights_forced_on = Lights::StatusManager.forced_on?
+    @policy_manager = Rails.application.config.lights_policy_manager.new
+    @status = @policy_manager.status
+    @policy = @policy_manager.policy
   end
 end

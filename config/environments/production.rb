@@ -91,5 +91,7 @@ Rails.application.configure do
 
   config.door_status_manager_backend = Door::StatusManager::InitLab
 
+  config.lights_policy_manager = Lights::PolicyManager::InitLab
+
   config.active_job.queue_adapter = :delayed_job
 end
