@@ -95,10 +95,9 @@ en:
   views:
     lights:
       management: Lights control
-      switched_on: 'on'
-      switched_off: 'off'
-      unknown: unknown
-      force_on: Always on
+      on: 'on'
+      off: 'off'
+      always_on: Always on
       auto: Automatic
       status: State
       change_policy_to: Choose mode
