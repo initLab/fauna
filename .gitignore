@@ -35,3 +35,6 @@
 /erd.pdf
 /app/assets/stylesheets/.sass-cache/
 /app/assets/stylesheets/components/.sass-cache/
+
+# Ignore Vagrant files
+/.vagrant
