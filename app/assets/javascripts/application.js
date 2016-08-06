@@ -21,10 +21,8 @@
 //= require turbolinks
 
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
-    $(document).on('turbolinks:load', function() {
-        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-            console.log('ServiceWorker registration successful', registration);
-        }).catch(function(err) {
+    $(window).on('load', function() {
+        navigator.serviceWorker.register('/service-worker.js').catch(function(err) {
             console.error('ServiceWorker registration failed');
             console.error(err);
         });
