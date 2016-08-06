@@ -104,9 +104,9 @@ bg:
   views:
     lights:
       management: Управление на осветлението
-      on: включено
-      off: изключено
       always_on: Винаги включено
+      switched_on: включено
+      switched_off: изключено
       auto: Автоуправление
       status: Състояние
       change_policy_to: Избери режим

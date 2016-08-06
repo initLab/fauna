@@ -10,7 +10,7 @@ section.container
         br
         = t('views.lights.status')
         |:
-        =< t('views.lights.%s' % @status.to_s)
+        =< t('views.lights.switched_%s' % @status.to_s)
         br
         = t('views.lights.policy')
         |:
