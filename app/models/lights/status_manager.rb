@@ -53,5 +53,4 @@ class Lights::StatusManager
   end
 
   private_class_method :snmp_status
-  private_class_method :notify_controller!
 end

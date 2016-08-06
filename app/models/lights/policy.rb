@@ -4,13 +4,14 @@ class Lights::Policy
 
   def initialize(policy)
     @policy = policy[:policy]
+    @policy_manager = Rails.application.config.lights_policy_manager.new
   end
 
   def update
-    if @policy == 'force_on'
-      Lights::StatusManager.force_on!
+    if @policy == 'always_on'
+      @policy_manager.policy = :always_on
     elsif @policy == 'auto'
-      Lights::StatusManager.auto!
+      @policy_manager.policy = :auto
     else
       false
     end

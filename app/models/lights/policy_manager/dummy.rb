@@ -18,4 +18,8 @@ class Lights::PolicyManager::Dummy
   def policy
     @policy
   end
+
+  def self.notify_controller!
+    true
+  end
 end

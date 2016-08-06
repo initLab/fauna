@@ -25,7 +25,7 @@ class Lights::PolicyManager::InitLab
       raise ArgumentError.new "Invalid policy specified: %s" % new_policy
     end
 
-    notify_controller!
+    Lights::PolicyManager::InitLab.notify_controller!
   end
 
   def policy
@@ -33,6 +33,16 @@ class Lights::PolicyManager::InitLab
       :always_on
     else
       :auto
+    end
+  end
+
+  def self.notify_controller!
+    begin
+      Socket::open(Socket::AF_UNIX, Socket::SOCK_DGRAM, 0) do |socket|
+        socket.send '{P}~~~ kroci}', 0, Socket.pack_sockaddr_un(LIGHTS_DAEMON_SOCKET)
+      end
+    rescue StandardError
+      false
     end
   end
 
@@ -45,16 +55,6 @@ class Lights::PolicyManager::InitLab
       rescue SNMP::RequestTimeout => e
         raise Lights::PolicyManager::Error.new 'A request timeout occurred while querying the lights controller.'
       end
-    end
-  end
-
-  def notify_controller!
-    begin
-      Socket::open(Socket::AF_UNIX, Socket::SOCK_DGRAM, 0) do |socket|
-        socket.send '{P}~~~ kroci}', 0, Socket.pack_sockaddr_un(LIGHTS_DAEMON_SOCKET)
-      end
-    rescue StandardError
-      false
     end
   end
 end
