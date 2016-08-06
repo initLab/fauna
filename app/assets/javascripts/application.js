@@ -12,13 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/alert
 //= require bootstrap/transition
 //= require jquery_nested_form
 //= require_tree .
+//= require turbolinks
 
-Turbolinks.enableTransitionCache();
-Turbolinks.enableProgressBar();
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    $(document).on('turbolinks:load', function() {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+            console.log('ServiceWorker registration successful', registration);
+        }).catch(function(err) {
+            console.error('ServiceWorker registration failed');
+            console.error(err);
+        });
+    });
+}
