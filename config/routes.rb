@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
 
   get 'spaceapi/status', to: 'space_api#status'
+  
+  get 'manifest', to: 'web_app_manifest#manifest'
 
   devise_for :users, controllers: {registrations: 'registrations'}
   get "users/present"
