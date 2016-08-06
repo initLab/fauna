@@ -6,6 +6,7 @@ class SpaceApi < OpenStruct
     super SPACEAPI_CONFIG
     self.api = '0.13'
     set_hackerspace_state
+    set_lights_status
     add_front_door_status_if_known
     add_people_now_present
   end
@@ -44,6 +45,12 @@ class SpaceApi < OpenStruct
     self.state = {open: hackerspace_open?}
   end
 
+  def set_lights_status
+    return if lights_on?.nil?
+    add_sensor name: :ext_lights_on, data: {value: lights_on?,
+                                            location: 'Outside'}
+  end
+
   def hackerspace_open?
     case Door::CurrentStatus.new.latch
     when :unlocked
@@ -52,6 +59,18 @@ class SpaceApi < OpenStruct
       false
     else
       nil
+    end
+  end
+
+  def lights_on?
+    begin
+      case Rails.application.config.lights_policy_manager.new.status
+      when :on
+        true
+      when :off
+        false
+      end
+    rescue Lights::PolicyManager::Error
     end
   end
 end
