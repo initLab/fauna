@@ -2,19 +2,19 @@ require 'rails_helper'
 
 describe LightsPolicyAuthorizer do
   describe 'class' do
-    it 'lets trusted users create' do
+    it 'lets trusted users update' do
       user = create :trusted_member
-      expect(LightsPolicyAuthorizer).to be_creatable_by user
+      expect(LightsPolicyAuthorizer).to be_updatable_by user
     end
 
-    it 'lets board members create' do
+    it 'lets board members update' do
       user = create :board_member
-      expect(LightsPolicyAuthorizer).to be_creatable_by user
+      expect(LightsPolicyAuthorizer).to be_updatable_by user
     end
 
-    it 'doesn\'t let other users create' do
+    it 'doesn\'t let other users update' do
       user = create :user
-      expect(LightsPolicyAuthorizer).to_not be_creatable_by user
+      expect(LightsPolicyAuthorizer).to_not be_updatable_by user
     end
 
     it 'lets trusted users read' do
