@@ -4,17 +4,7 @@ class Lights::StatusManager
   TRIGGER = File.join '', 'tmp', 'lamptrigger'
   STATUS_OID = '1.3.6.1.4.1.19865.2.3.1.15.6.0'
   LIGHTS_CONTROLLER_IP = '192.168.232.4'
-  LIGHTS_DAEMON_SOCKET = '/tmp/lamper'
-
-  def self.notify_controller!
-    begin
-      Socket::open(Socket::AF_UNIX, Socket::SOCK_DGRAM, 0) do |socket|
-        socket.send '{P}~~~ kroci}', 0, Socket.pack_sockaddr_un(LIGHTS_DAEMON_SOCKET)
-      end
-    rescue StandardError
-      false
-    end
-  end
+  LIGHTS_DAEMON_SOCKET = File.join '', 'tmp', 'lamper'
 
   def self.status
     case snmp_status
@@ -52,5 +42,16 @@ class Lights::StatusManager
     end
   end
 
+  def self.notify_controller!
+    begin
+      Socket::open(Socket::AF_UNIX, Socket::SOCK_DGRAM, 0) do |socket|
+        socket.send '{P}~~~ kroci}', 0, Socket.pack_sockaddr_un(LIGHTS_DAEMON_SOCKET)
+      end
+    rescue StandardError
+      false
+    end
+  end
+
   private_class_method :snmp_status
+  private_class_method :notify_controller!
 end
