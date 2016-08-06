@@ -1,13 +1,13 @@
 doctype html
 
-html
+html lang="#{I18n.locale}"
   head
     meta charset="utf-8"
     title
       = content_for?(:title) ? "#{yield(:title)} | Fauna" : 'Fauna'
 
     meta name="viewport" content="width=device-width, initial-scale=1"
-	
+
     meta name="theme-color" content="#2196f3"
     meta name="msapplication-navbutton-color" content="#2196f3"
 
