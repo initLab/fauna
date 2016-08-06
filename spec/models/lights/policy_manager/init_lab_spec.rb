@@ -85,7 +85,7 @@ describe Lights::PolicyManager::InitLab do
       end
 
       it 'returns :always_on' do
-        expect(Lights::PolicyManager::InitLab.new.policy).to eq :always_on
+        expect(subject.policy).to eq :always_on
       end
 
       after :each do
