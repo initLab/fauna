@@ -85,6 +85,9 @@ gem 'snmp'
 # Database dumping
 gem 'yaml_db'
 
+# OAuth
+gem 'doorkeeper'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
