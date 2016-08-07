@@ -20,7 +20,7 @@ module Door::Loggable
     message = public_message
     if message.present?
       begin
-        IrcNotifierJob.perform_later message
+        IrcBotNotifierJob.perform_now message
       rescue Exception
       end
     end
