@@ -34,8 +34,8 @@ describe Lights::PolicyManager::InitLab do
     context 'when the lights are on' do
       it 'returns :on' do
         snmp_manager = instance_double('SNMP::Manager')
-        allow(snmp_manager).to receive(:get_value).with(Lights::StatusManager::STATUS_OID).and_return(SNMP::Integer.new(1))
-        allow(SNMP::Manager).to receive(:open).with(host: Lights::StatusManager::LIGHTS_CONTROLLER_IP).and_yield(snmp_manager)
+        allow(snmp_manager).to receive(:get_value).with(Lights::PolicyManager::InitLab::STATUS_OID).and_return(SNMP::Integer.new(1))
+        allow(SNMP::Manager).to receive(:open).with(host: Lights::PolicyManager::InitLab::LIGHTS_CONTROLLER_IP).and_yield(snmp_manager)
 
         expect(subject.status).to eq :on
       end
@@ -44,8 +44,8 @@ describe Lights::PolicyManager::InitLab do
     context 'when the lights are off' do
       it 'returns :off' do
         snmp_manager = instance_double('SNMP::Manager')
-        allow(snmp_manager).to receive(:get_value).with(Lights::StatusManager::STATUS_OID).and_return(SNMP::Integer.new(0))
-        allow(SNMP::Manager).to receive(:open).with(host: Lights::StatusManager::LIGHTS_CONTROLLER_IP).and_yield(snmp_manager)
+        allow(snmp_manager).to receive(:get_value).with(Lights::PolicyManager::InitLab::STATUS_OID).and_return(SNMP::Integer.new(0))
+        allow(SNMP::Manager).to receive(:open).with(host: Lights::PolicyManager::InitLab::LIGHTS_CONTROLLER_IP).and_yield(snmp_manager)
 
         expect(subject.status).to eq :off
       end
@@ -54,8 +54,8 @@ describe Lights::PolicyManager::InitLab do
     context 'when an exception arises while querying the controller' do
       before do
         snmp_manager = instance_double('SNMP::Manager')
-        allow(snmp_manager).to receive(:get_value).with(Lights::StatusManager::STATUS_OID).and_raise(SNMP::RequestTimeout)
-        allow(SNMP::Manager).to receive(:open).with(host: Lights::StatusManager::LIGHTS_CONTROLLER_IP).and_yield(snmp_manager)
+        allow(snmp_manager).to receive(:get_value).with(Lights::PolicyManager::InitLab::STATUS_OID).and_raise(SNMP::RequestTimeout)
+        allow(SNMP::Manager).to receive(:open).with(host: Lights::PolicyManager::InitLab::LIGHTS_CONTROLLER_IP).and_yield(snmp_manager)
       end
 
       it 'raises Lights::PolicyManager::Error' do
