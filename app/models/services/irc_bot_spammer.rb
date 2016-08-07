@@ -9,7 +9,7 @@ class Services::IrcBotSpammer
 
   def send(message)
     Socket.unix(IRC_BOT_SOCKET) do |socket|
-      socket.write "say #initlab #{message}\n"
+      socket.write "notice #initlab #{message}\n"
     end
   end
 end
