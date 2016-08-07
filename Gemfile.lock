@@ -108,9 +108,15 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    devise-doorkeeper (1.1.2)
+      devise
+      doorkeeper
+      rails
     devise-i18n (1.1.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    doorkeeper (4.1.0)
+      railties (>= 4.2)
     draper (2.1.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -365,7 +371,9 @@ DEPENDENCIES
   delayed_job
   delayed_job_active_record
   devise
+  devise-doorkeeper
   devise-i18n
+  doorkeeper
   draper
   factory_girl_rails
   fakefs

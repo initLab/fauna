@@ -1,8 +1,14 @@
 class SpaceApiController < ApplicationController
   before_action :set_access_control_headers, only: :status
+  before_action :authenticate_user!, only: :oauth_status
 
   def status
     @space_api = SpaceApi.new
+  end
+
+  def oauth_status
+    @space_api = SpaceApi.new
+    render :status
   end
 
     private

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   resource :user, only: [] do
     resources :network_devices
   end
@@ -32,9 +33,9 @@ Rails.application.routes.draw do
     end
   end
 
-
   get 'spaceapi/status', to: 'space_api#status'
-  
+  get 'spaceapi/oauth_status', to: 'space_api#oauth_status'
+
   get 'manifest', to: 'web_app_manifest#manifest'
 
   devise_for :users, controllers: {registrations: 'registrations'}
