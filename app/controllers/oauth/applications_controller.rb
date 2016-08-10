@@ -15,4 +15,10 @@ class Oauth::ApplicationsController < Doorkeeper::ApplicationsController
       render :new
     end
   end
+
+  private
+
+  def set_application
+    @application = current_user.oauth_applications.find(params[:id])
+  end
 end
