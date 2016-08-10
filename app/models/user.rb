@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :network_devices, foreign_key: :owner_id, dependent: :destroy
   has_many :phone_numbers, foreign_key: :owner_id, dependent: :destroy
+  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
 
   validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A[a-z0-9_\-]+\z/i}, presence: true
   validates :twitter, format: {with: /\A[A-Za-z0-9_]{1,15}\z/}, allow_blank: true
