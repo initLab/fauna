@@ -1,0 +1,108 @@
+bg:
+  activerecord:
+    attributes:
+      doorkeeper/application:
+        name: 'Име'
+        redirect_uri: 'URI за пренасочване'
+    errors:
+      models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              fragment_present: 'не може да сърържа фрагмент'
+              invalid_uri: 'трябва да бъде валиден URI.'
+              relative_uri: 'трябва да бъде абсолютен URI.'
+              secured_uri: 'трябва да бъде HTTPS/SSL URI.'
+  doorkeeper:
+    applications:
+      confirmations:
+        destroy: 'Сигурни ли сте?'
+      buttons:
+        edit: 'Редакция'
+        destroy: 'Премахване'
+        submit: 'Създай'
+        cancel: 'Откажи'
+        authorize: 'Упълномощи'
+      form:
+        error: 'Възникна грешка, проверете формуляра за грешки'
+      help:
+        redirect_uri: 'Използвайте един ред за всеки URI'
+        native_redirect_uri: 'Използвайте %{native_redirect_uri} за локални тестове'
+        scopes: 'Разделяйте обхватите с интервали. Оставете празно за да използвате обхватите по подразбиране.'
+      edit:
+        title: 'Редакция на приложение'
+      index:
+        title: 'Вашите приложения'
+        new: 'Ново приложение'
+        name: 'Име'
+        callback_url: 'URL за обратна връзка'
+      new:
+        title: 'Ново приложение'
+      show:
+        title: 'Приложение: %{name}'
+        application_id: 'ID на приложение'
+        secret: 'Тайна'
+        scopes: 'Обхвати'
+        callback_urls: 'URL-и за обратна връзка'
+        actions: 'Действия'
+    authorizations:
+      buttons:
+        authorize: 'Упълномощи'
+        deny: 'Откажи'
+      error:
+        title: 'Възникна грешка'
+      new:
+        title: 'Нужно е упълномощаване'
+        prompt: 'Упълномощаване на %{client_name} да използва акаунта ви?'
+        able_to: 'Това приложение ще може да'
+      show:
+        title: 'Код за упълномощаване'
+    authorized_applications:
+      confirmations:
+        revoke: 'Сигурни ли сте?'
+      buttons:
+        revoke: 'Отмени'
+      index:
+        title: 'Упълномощените ви приложения'
+        application: 'Приложение'
+        created_at: 'Създадено на'
+        date_format: '%Y-%m-%d %H:%M:%S'
+    errors:
+      messages:
+        invalid_request: 'На заявката ѝ липсва необходим параметър, съдържа неподдържана стойност на параметър или съдържа някаква друга грешка.'
+        invalid_redirect_uri: 'Посоченият URI за пренасочване не е валиден.'
+        unauthorized_client: 'Клиентът не е упълномощен да изпълни тази заявка чрез този метод.'
+        access_denied: 'Собственикът на ресурсът или сървърът за упълномощаване отхвърли заявката.'
+        invalid_scope: 'Обхватът на заявката е невалиден, непознат или грешен.'
+        server_error: 'Сървърът за упълномощаване срещна неочакван проблем, който му попречи да изпълни заявката.'
+        temporarily_unavailable: 'Сървърът за упълномощаване в момента не може да обработи заявката поради временно претоварване или техническа профилактика.'
+        credential_flow_not_configured: 'Потокът Resource Owner Password Credentials се провали поради това, че Doorkeeper.configure.resource_owner_from_credentials не е настроено.'
+        resource_owner_authenticator_not_configured: 'Откриването на собственик на ресурс се провали поради това, че Doorkeeper.configure.resource_owner_authenticator не е настроено.'
+        unsupported_response_type: 'Сървърът за упълномощяване на поддържа този тип отговор.'
+        invalid_client: 'Удостоверяването на самлоичността на клиента се провали поради това, че е непознат, не е изпратил удостоверение или методът на удостоверяване не се поддържа.'
+        invalid_grant: 'Предоставеното пълномощно не е валидно, изтекло е, отменено е, не съвпада с URI-ът за пренасочване, посочен в заявката за упълномощаване или е било издадено на друг клиент.'
+        unsupported_grant_type: 'Типът на пълномощното не се поддържа от сървъра за упълномощаване.'
+        invalid_resource_owner: 'Предоставеното удостоверение за самоличност на собственик на ресурс не е валидно или собственикът на ресурс на може да бъде открит'
+        invalid_token:
+          revoked: "Кодът за достъп беше отменен"
+          expired: "Кодът за достъп е с изтекъл срок на валидност"
+          unknown: "Кодът за достъп е невалиден"
+    flash:
+      applications:
+        create:
+          notice: 'Приложението беше създадено.'
+        destroy:
+          notice: 'Приложението беше заличено.'
+        update:
+          notice: 'Приложението беше обновено.'
+      authorized_applications:
+        destroy:
+          notice: 'Достъпът на приложението беше отменен.'
+    layouts:
+      admin:
+        nav:
+          oauth2_provider: 'OAuth2 доставчик'
+          applications: 'Приложения'
+          home: 'Начало'
+      application:
+        title: 'Необходимо е OAuth2 упълномощаване'

@@ -1,4 +1,4 @@
-bg:
+en:
   activerecord:
     attributes:
       doorkeeper/application:

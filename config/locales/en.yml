@@ -59,7 +59,7 @@ en:
         password: Password
         password_confirmation: Password confirmation
         current_password: Current password
-        privacy: "I don't want to be present in any public lists"
+        privacy: I don't want to be present in any public lists
         gpg_fingerprint: GPG key fingerprint
         jabber: Jabber/XMPP account
         picture: Photo
@@ -72,7 +72,7 @@ en:
         owner: Owner
         mac_address: MAC address
         description: Description
-        use_for_presence: "Use to determine when I'm in the Lab"
+        use_for_presence: Use to determine when I'm in the Lab
       phone_number:
         phone_number: Phone number
   mailers:
@@ -92,6 +92,15 @@ en:
     board_member: Council
     trusted_member: Trusted member
     member: Member
+  network_devices:
+    index:
+      new_network_device: New network device
+    new:
+      add_network_device: Add a new network device
+    form:
+      new_network_device: New network device
+    edit:
+      edit_network_device: Edit network device
   views:
     lights:
       management: Lights control
@@ -161,9 +170,9 @@ en:
     confirmations:
       resend_confirmation: Send cofirmation email
       resend: Send
-      did_not_receive_confirmation_instructions: "You haven't received confirmation instructions?"
+      did_not_receive_confirmation_instructions: You haven't received confirmation instructions?
     unlocks:
-      did_not_receive_unlock_instructions: "You haven't received unlocking instructions?"
+      did_not_receive_unlock_instructions: You haven't received unlocking instructions?
       resend_unlock_instructions: Send unlocking instructions
       resend: Send
     network_devices:
@@ -179,9 +188,9 @@ en:
         few: "%{count} labbers at"
         many: "%{count} labbers at"
         other: "%{count} labbers at"
-      everybodys_gone: "Everyone's gone"
+      everybodys_gone: Everyone's gone
     roles:
       are_you_sure: 'Are you sure?'
-    footer: 
+    footer:
       license: 'init Lab Fauna is licensed under'
       source_code: 'The source code is available in'
