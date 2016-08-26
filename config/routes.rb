@@ -40,6 +40,12 @@ Rails.application.routes.draw do
     namespace :door do
       resource :status, only: :show
     end
+
+    resources :users, only: [] do
+      collection do
+        get 'present'
+      end
+    end
   end
 
   get 'spaceapi/status', to: 'space_api#status'
