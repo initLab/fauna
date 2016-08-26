@@ -43,6 +43,9 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  # Disable caching in test
+  config.cache_store = :null_store
+
   config.door_status_manager_backend = Door::StatusManager::Dummy
 
   config.lights_policy_manager = Lights::PolicyManager::Dummy

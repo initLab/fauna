@@ -36,6 +36,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api, defaults: {format: 'json'} do
+    namespace :door do
+      resource :status, only: :show
+    end
+  end
+
   get 'spaceapi/status', to: 'space_api#status'
   get 'spaceapi/oauth_status', to: 'space_api#oauth_status'
 

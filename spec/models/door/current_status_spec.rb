@@ -19,6 +19,16 @@ describe Door::CurrentStatus do
         expect(subject.latch).to eq :locked
       end
     end
+
+    it 'caches the door status' do
+      lifetime = Rails.application.config.door_status_manager.cache_lifetime
+
+      expect(Rails.cache).to receive(:fetch).with('door_current_status',
+                                                  hash_including(expires_in: lifetime))
+                                            .and_return(backend.status)
+
+      subject.latch
+    end
   end
 
   context 'when the door status couldn\'t be retreived' do
