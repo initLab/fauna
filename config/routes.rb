@@ -41,6 +41,10 @@ Rails.application.routes.draw do
       resource :status, only: :show
     end
 
+    namespace :lights do
+      resource :status, only: :show
+    end
+
     resources :users, only: [] do
       collection do
         get 'present'
