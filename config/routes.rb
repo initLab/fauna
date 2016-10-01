@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     namespace :door do
       resource :status, only: :show
+      resources :actions, only: :create
     end
 
     namespace :lights do
