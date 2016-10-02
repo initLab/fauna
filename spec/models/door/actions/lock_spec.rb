@@ -6,8 +6,16 @@ RSpec.describe Door::Actions::Lock, type: :model do
   it_behaves_like 'door action'
 
   describe 'authorization' do
-    it 'is creatable by plain users' do
-      expect(subject).to be_creatable_by create(:user)
+    it 'is creatable by trusted members' do
+      expect(subject).to be_creatable_by create(:trusted_member)
+    end
+
+    it 'is creatable by board members' do
+      expect(subject).to be_creatable_by create(:board_member)
+    end
+
+    it 'is not creatable by plain users' do
+      expect(subject).to_not be_creatable_by create(:user)
     end
   end
 
