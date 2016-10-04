@@ -51,6 +51,8 @@ Rails.application.routes.draw do
         get 'present'
       end
     end
+
+    resource :current_user, only: :show
   end
 
   get 'spaceapi/status', to: 'space_api#status'
