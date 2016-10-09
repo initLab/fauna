@@ -7,10 +7,12 @@ class Arp
   end
 
   def self.present_users
-    User.joins(:network_devices).where(network_devices: {
-                                         mac_address: all.map(&:mac_address),
-                                         use_for_presence: true
-                                       }).uniq
+    User.joins(:network_devices)
+        .where(privacy: false)
+        .where(network_devices: {
+                 mac_address: all.map(&:mac_address),
+                 use_for_presence: true
+        }).uniq
   end
 
   def self.mac_by_ip_address(ip_address)
