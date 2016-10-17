@@ -1,6 +1,10 @@
 class Arp
   def self.all
-    `ip neigh show nud reachable`.split(/\n/).map do |entry|
+    # Make sure you set the following sysctl knobs to something sane or else
+    # your users will stay present forever:
+    # net.ipv4.neigh.default.gc_thresh1 = 10
+    # net.ipv6.neigh.default.gc_thresh1 = 20
+    `ip neigh show nud reachable nud stale`.split(/\n/).map do |entry|
       addresses = *entry.scan(/\A([0-9a-f:.]*?) dev ([a-z0-9.]*?) lladdr ([0-9a-f:].*?) .*\z/i).first
       Arp.new(*addresses)
     end.compact
