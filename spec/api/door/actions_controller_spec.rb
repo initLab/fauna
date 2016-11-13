@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe Api::Door::ActionsController, type: :controller do
-  before { skip("Awaiting implementation of PIN requirement") }
-
   describe 'POST #create' do
     describe 'authentication' do
       it 'redirects to the login page when the current user is not authenticated' do
