@@ -54,7 +54,7 @@ Dir.chdir APP_ROOT do
   system 'touch tmp/restart.txt'
 
   # create user if not Travis
-  unless ENV["TRAVIS"]
+  unless ENV["CI"] || ENV["TRAVIS"]
     puts "\n== Registering a new user with administrative rights =="
 
     loop do
