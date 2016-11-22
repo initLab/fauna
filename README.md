@@ -1,5 +1,5 @@
-initLab Management Automation System
-====================================
+init Lab Management Automation System
+=====================================
 
 A not so simple system for hackerspace management automation.
 

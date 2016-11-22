@@ -181,7 +181,7 @@ bg:
       network_device: Мрежово устройство
       new_network_device: Ново мрежово устройство
     users:
-      whos_in_the_lab: Кой е в initLab
+      whos_in_the_lab: Кой е в init Lab
       people_at_about_html:
         zero: "%{count} лабъри към"
         one: "%{count} лабър към"

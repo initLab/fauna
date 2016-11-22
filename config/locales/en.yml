@@ -181,7 +181,7 @@ en:
       network_device: Network device
       new_network_device: New network device
     users:
-      whos_in_the_lab: Who is in initLab
+      whos_in_the_lab: Who is in init Lab
       people_at_about_html:
         zero: "%{count} labbers at"
         one: "%{count} labber at"
