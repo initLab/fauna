@@ -89,6 +89,9 @@ gem 'yaml_db'
 gem 'doorkeeper'
 gem 'devise-doorkeeper'
 
+# Highcharts
+gem 'highcharts-rails'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
