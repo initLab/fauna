@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :sensors
+
   use_doorkeeper do
     controllers :applications => 'oauth/applications'
   end

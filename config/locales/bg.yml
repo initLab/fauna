@@ -146,6 +146,7 @@ bg:
       members_fee: Членски внос
       network_devices: Мрежови устройства
       lights: Осветление
+      sensors: Графики
     registrations:
       sign_up: Регистрация
       sign_me_up: Регистрирай ме

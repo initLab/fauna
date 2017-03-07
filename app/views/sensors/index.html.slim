@@ -1,0 +1,7 @@
+section.container
+  h2 = t 'views.dashboard.sensor_readings'
+  - %w(Temperature Humidity).each do |type|
+    .row
+      - SENSORS_CONFIG['thingspeak']['channel_ids'].each do |id|
+        .col-sm-4
+          div data-chart-type="#{type}" data-thingspeak-channel-id="#{id}" = t 'views.dashboard.loading'

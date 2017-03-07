@@ -146,6 +146,7 @@ en:
       members_fee: Membership fee
       network_devices: Network devices
       lights: Lights
+      sensors: Sensors
     registrations:
       sign_up: Registration
       sign_me_up: Sign me up
