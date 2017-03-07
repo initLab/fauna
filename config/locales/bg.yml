@@ -102,6 +102,9 @@ bg:
     edit:
       edit_network_device: Редакция на мрежово устройство
   views:
+    dashboard:
+      sensor_readings: Температура и влажност на въздуха
+      loading: Зареждане на данните...
     lights:
       management: Управление на осветлението
       always_on: Винаги включено

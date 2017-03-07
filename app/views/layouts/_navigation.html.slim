@@ -5,7 +5,7 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      = link_to root_url, class: 'navbar-brand' do
+      = link_to root_url, class: "navbar-brand #{'active' if current_page?(root_path)}" do
         = image_tag 'logo.svg', class: 'navbar-brand', alt: 'Fauna'
     .navbar-collapse.collapse.navbar-inverse-collapse
       ul.nav.navbar-nav
@@ -18,7 +18,7 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
               = icon 'unlock', t('views.door_status.unlocked')
             - else
               = icon 'lock', t('views.door_status.unknown')
-        li class="#{'active' if current_page?(users_present_path) || current_page?(root_path)}"
+        li class="#{'active' if current_page?(users_present_path)}"
           = link_to users_present_path do
             = icon 'street-view', t('views.navigation.presence')
         - if user_signed_in? and current_user.can_update?(Lights::Policy)

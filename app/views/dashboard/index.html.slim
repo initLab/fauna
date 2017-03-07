@@ -1,0 +1,28 @@
+- content_for(:title) { t 'views.users.whos_in_the_lab' }
+
+section.container
+  header.row
+    .col-sm-12
+      h2
+        = t 'views.users.whos_in_the_lab'
+        .pull-right
+          span.small
+            => t 'views.users.people_at_about_html', count: @users.count
+            time< datetime="#{Time.now.iso8601}" = Time.now.to_formatted_s(:time)
+  .present_users
+    - if @users.any?
+      .row
+        = render partial: 'present_user', collection: @users
+    - else
+      .row
+        .no_users
+          = icon 'frown-o'
+          h5 = t 'views.users.everybodys_gone'
+  h3 = t 'views.dashboard.sensor_readings'
+  - %w(Temperature Humidity).each do |type|
+    .row
+      - %w(222701 222702 132452).each do |id|
+        .col-sm-4
+          div data-chart-type="#{type}" data-thingspeak-channel-id="#{id}" = t 'views.dashboard.loading'
+    .row
+      br

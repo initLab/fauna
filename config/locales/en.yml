@@ -102,6 +102,9 @@ en:
     edit:
       edit_network_device: Edit network device
   views:
+    dashboard:
+      sensor_readings: Temperature and humidity readings
+      loading: Loading data...
     lights:
       management: Lights control
       always_on: Always on
