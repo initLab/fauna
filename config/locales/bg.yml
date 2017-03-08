@@ -103,7 +103,7 @@ bg:
       edit_network_device: Редакция на мрежово устройство
   views:
     dashboard:
-      sensor_readings: Температура и влажност на въздуха
+      sensor_readings: Температура на въздуха
       loading: Зареждане на данните...
     lights:
       management: Управление на осветлението
@@ -195,6 +195,8 @@ bg:
       everybodys_gone: Всички ги е хванала липсата
     roles:
       are_you_sure: 'Сигурни ли сте?'
+    sensors:
+      temperature_humidity: Температура и влажност на въздуха
     footer:
       license: 'init Lab Fauna е лицензирана под'
       source_code: 'Изходният код е достъпен в'

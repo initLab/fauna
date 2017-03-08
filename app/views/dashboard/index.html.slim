@@ -19,10 +19,7 @@ section.container
           = icon 'frown-o'
           h5 = t 'views.users.everybodys_gone'
   h3 = t 'views.dashboard.sensor_readings'
-  - %w(Temperature Humidity).each do |type|
-    .row
-      - SENSORS_CONFIG['thingspeak']['channel_ids'].each do |id|
-        .col-sm-4
-          div data-chart-type="#{type}" data-thingspeak-channel-id="#{id}" = t 'views.dashboard.loading'
-    .row
-      br
+  .row
+    - @sensor_ids.each do |id|
+      .col-sm-4
+        div data-label-type="Temperature" data-thingspeak-channel-id="#{id}" = t 'views.dashboard.loading'

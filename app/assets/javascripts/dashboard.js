@@ -1,57 +1,25 @@
-Highcharts.setOptions({
-    credits: false,
-    global: {
-        useUTC: false
-    }
-});
-
 (function() {
     var units = {
         'Temperature': ['°C', 1],
         'Humidity': ['%', 1]
     };
 
-    var maxMissingPeriod = 75000; // 75 sec
-
-    function makeChartParams(chart) {
-        var unit = units[chart.type];
-
-        return {
-            chart: {
-                height: 250,
-                backgroundColor: 'transparent'
-            },
-            title: {
-                text: chart.name
-            },
-            xAxis: {
-                type: 'datetime'
-            },
-            yAxis: {
-                title: {
-                    text: chart.type + ' (' + unit[0] + ')'
-                },
-                tickInterval: 0.1,
-                plotLines: [{
-                    color: '#aaa',
-                    width: 2,
-                    value: 0
-                }]
-            },
-            tooltip: {
-                valueDecimals: unit[1],
-                valueSuffix: unit[0],
-                xDateFormat: '%A, %b %e, %H:%M:%S'
-            },
-            legend: {
-                enabled: false
-            },
-            series: chart.series
-        };
-    }
+    var template = $('<div />').addClass('panel panel-primary').append(
+        $('<div />').addClass('panel-heading').append(
+            $('<div />').addClass('row').append(
+                $('<div />').addClass('col-xs-3').append(
+                    $('<i />').addClass('fa fa-thermometer-half fa-5x')
+                ),
+                $('<div />').addClass('col-xs-9 text-right').append(
+                    $('<div />').addClass('huge placeholder-value'),
+                    $('<div />').addClass('placeholder-description')
+                )
+            )
+        )
+    );
 
     function requestsDone(elements) {
-        var charts = {};
+        var values = {};
         var responses = Array.prototype.slice.call(arguments, 1);
 
         $.each(responses, function () {
@@ -65,66 +33,31 @@ Highcharts.setOptions({
                     continue;
                 }
 
-                var fieldName = response.channel['field' + i];
+                var fieldKey = 'field' + i;
+                var fieldName = response.channel[fieldKey];
                 var typePos = fieldName.indexOf(':');
-                var chartType, location;
+                var dataType, location;
 
                 if (typePos > -1) {
-                    chartType = fieldName.substr(0, typePos);
+                    dataType = fieldName.substr(0, typePos);
                     location = fieldName.substr(typePos + 1);
                 }
                 else {
-                    chartType = fieldName;
+                    dataType = fieldName;
                     location = '[unknown]';
                 }
 
-                if (!(chartType in charts)) {
-                    charts[chartType] = {};
+                if (!(dataType in values)) {
+                    values[dataType] = {};
                 }
 
-                var data = [];
-                var lastTs = 0;
+                //var name = (response.channel.description || response.channel.name) + ': ' + location;
+                var name = location;
 
-                $.each(response.feeds, function () {
-                    var value = this['field' + i];
-
-                    if (typeof value !== 'string' || !value.length) {
-                        return;
-                    }
-
-                    var ts = Date.parse(this.created_at);
-
-                    if (lastTs === 0) {
-                        lastTs = ts;
-                    }
-
-                    var nextTsLimit = lastTs + maxMissingPeriod;
-
-                    if (ts > nextTsLimit) {
-                        data.push([nextTsLimit, null]);
-                    }
-
-                    value = parseFloat(value);
-
-                    lastTs = ts;
-
-                    data.push([ts, value]);
-                });
-
-                var name = (response.channel.description || response.channel.name) + ': ' + location;
-
-                if (!data.length) {
-                    console.warn('skipped field "' + name + '" in "' + chartType + '" - no data');
-                    continue;
-                }
-
-                charts[chartType][response.channel.id] = {
-                    type: chartType,
+                values[dataType][response.channel.id] = {
+                    type: dataType,
                     name: name,
-                    series: [{
-                        name: chartType,
-                        data: data
-                    }]
+                    value: response.feeds.length ? parseFloat(response.feeds[0][fieldKey]) : null
                 };
             }
         });
@@ -132,22 +65,25 @@ Highcharts.setOptions({
         elements.each(function() {
             var $this = $(this);
 
-            var type = $this.data('chart-type');
+            var type = $this.data('label-type');
             var chanId = $this.data('thingspeak-channel-id');
 
-            if (!(type in charts) || !(chanId in charts[type])) {
+            if (!(type in values) || !(chanId in values[type])) {
                 return;
             }
 
-            var chart = charts[type][chanId];
-
-            $this.highcharts(makeChartParams(chart));
+            var data = values[type][chanId];
+            var unit = units[data.type];
+            var value = data.value ? (data.value.toFixed(unit[1]) + unit[0]) : 'No data';
+            var box = template.clone().find('.placeholder-value').text(value).end()
+                .find('.placeholder-description').text(data.name).end();
+            $this.replaceWith(box);
         });
     }
 
     $(document).on({
         'turbolinks:load': function() {
-            var elements = $('[data-chart-type][data-thingspeak-channel-id]');
+            var elements = $('[data-label-type][data-thingspeak-channel-id]');
 
             if (elements.length === 0) {
                 return;
@@ -165,7 +101,7 @@ Highcharts.setOptions({
                 requests.push($.getJSON(
                     'https://api.thingspeak.com/channels/' +
                     chanId +
-                    '/feed.json?days=1&results=120'
+                    '/feed.json?days=1&results=1'
                 ));
             });
 
@@ -178,12 +114,6 @@ Highcharts.setOptions({
 
                 args.unshift(elements);
                 requestsDone.apply(window, args);
-            });
-        },
-        'turbolinks:before-cache': function() {
-            $('[data-highcharts-chart]').each(function() {
-                var $this = $(this);
-                $this.highcharts().destroy();
             });
         }
     });
