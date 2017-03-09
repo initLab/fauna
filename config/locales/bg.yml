@@ -102,6 +102,9 @@ bg:
     edit:
       edit_network_device: Редакция на мрежово устройство
   views:
+    dashboard:
+      sensor_readings: Температура на въздуха
+      loading: Зареждане на данните...
     lights:
       management: Управление на осветлението
       always_on: Винаги включено
@@ -143,6 +146,7 @@ bg:
       members_fee: Членски внос
       network_devices: Мрежови устройства
       lights: Осветление
+      sensors: Графики
     registrations:
       sign_up: Регистрация
       sign_me_up: Регистрирай ме
@@ -191,6 +195,8 @@ bg:
       everybodys_gone: Всички ги е хванала липсата
     roles:
       are_you_sure: 'Сигурни ли сте?'
+    sensors:
+      temperature_humidity: Температура и влажност на въздуха
     footer:
       license: 'init Lab Fauna е лицензирана под'
       source_code: 'Изходният код е достъпен в'

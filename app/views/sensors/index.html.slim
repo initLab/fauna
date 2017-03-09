@@ -1,0 +1,9 @@
+section.container
+  h2 = t 'views.sensors.temperature_humidity'
+  - %w(Temperature Humidity).each do |type|
+    .row
+      - @sensor_ids.each do |id|
+        .col-sm-4
+          div data-chart-type="#{type}" data-thingspeak-channel-id="#{id}" = t 'views.dashboard.loading'
+    .row
+      br

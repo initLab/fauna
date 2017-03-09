@@ -102,6 +102,9 @@ en:
     edit:
       edit_network_device: Edit network device
   views:
+    dashboard:
+      sensor_readings: Temperature readings
+      loading: Loading data...
     lights:
       management: Lights control
       always_on: Always on
@@ -143,6 +146,7 @@ en:
       members_fee: Membership fee
       network_devices: Network devices
       lights: Lights
+      sensors: Sensors
     registrations:
       sign_up: Registration
       sign_me_up: Sign me up
@@ -191,6 +195,8 @@ en:
       everybodys_gone: Everyone's gone
     roles:
       are_you_sure: 'Are you sure?'
+    sensors:
+      temperature_humidity: Temperature and humidity readings
     footer:
       license: 'init Lab Fauna is licensed under'
       source_code: 'The source code is available in'

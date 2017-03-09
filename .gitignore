@@ -38,3 +38,6 @@
 
 # Ignore Vagrant files
 /.vagrant
+
+# Ignore RubyMine config
+/.idea
