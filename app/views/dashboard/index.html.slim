@@ -12,7 +12,7 @@ section.container
   .present_users
     - if @users.any?
       .row
-        = render partial: 'present_user', collection: @users
+        = render partial: '/users/present_user', collection: @users
     - else
       .row
         .no_users
