@@ -194,7 +194,7 @@ en:
         other: "%{count} labbers at"
       everybodys_gone: Everyone's gone
     roles:
-      are_you_sure: 'Are you sure?'
+      are_you_sure: 'Are you shnur?'
     sensors:
       temperature_humidity: Temperature and humidity readings
     footer:
