@@ -13,5 +13,6 @@ before_script:
   - psql -c 'create database fauna_development;' -U postgres
   - psql -c 'create database fauna_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+  - gem update bundler
 sudo: true
 dist: trusty
