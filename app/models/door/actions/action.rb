@@ -2,7 +2,7 @@ class Door::Actions::Action < ActiveRecord::Base
   include Door::Loggable
   include Authority::Abilities
 
-  belongs_to :initiator, class_name: User
+  belongs_to :initiator, class_name: 'User'
 
   after_create :execute!
 
