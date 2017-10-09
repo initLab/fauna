@@ -1,5 +1,5 @@
 class MergeLogEntries < ActiveRecord::Migration[4.2]
-  class DoorLogEntry < ActiveRecord::Base
+  class DoorLogEntry < ApplicationRecord
   end
 
   def up

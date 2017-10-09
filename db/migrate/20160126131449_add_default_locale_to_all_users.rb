@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
 end
 
 class AddDefaultLocaleToAllUsers < ActiveRecord::Migration[4.2]

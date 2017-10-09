@@ -1,4 +1,4 @@
-class Door::Actions::Action < ActiveRecord::Base
+class Door::Actions::Action < ApplicationRecord
   include Door::Loggable
   include Authority::Abilities
 

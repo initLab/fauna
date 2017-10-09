@@ -1,5 +1,5 @@
 module Door
-  class StatusNotification < ActiveRecord::Base
+  class StatusNotification < ApplicationRecord
     self.table_name_prefix = 'door_'
 
     include Loggable
