@@ -6,10 +6,6 @@ class Door::Actions::Action < ApplicationRecord
 
   after_create :execute!
 
-  def backend_method
-    raise NotImplementedError.new("#{self.class}#backend_method not implemented.")
-  end
-
   def self.from_name(name)
     {
       open: Door::Actions::Open,
@@ -39,7 +35,7 @@ class Door::Actions::Action < ApplicationRecord
   private
 
   def execute!
-    update execution_succeeded: status_manager.public_send(backend_method)
+    update execution_succeeded: status_manager.public_send(self.backend_method)
     true
   end
 

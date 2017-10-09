@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Door::Actions::Action, type: :model do
+  subject(:action_instance) {Door::Actions::Action.new initiator: create(:user)}
   it 'raises a NotImplementedError when created' do
-    expect { subject.save }.to raise_error NotImplementedError
+    expect { action_instance.save }.to raise_error NoMethodError
   end
 
   describe '::from_name' do
