@@ -52,6 +52,8 @@ gem 'font-awesome-sass'
 
 # Gravatar helper
 gem 'gravatar-ultimate'
+# Add Ruby 2.4.0 support
+gem 'xmlrpc', platforms: :ruby_24
 
 # Use simple form for form building
 gem 'simple_form'
@@ -141,6 +143,8 @@ group :test, :development do
 
   # File system modification testing
   gem 'fakefs', require: 'fakefs/safe'
+
+  gem 'byebug'
 end
 
 group :production do
