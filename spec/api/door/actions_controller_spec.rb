@@ -4,7 +4,7 @@ describe Api::Door::ActionsController, type: :controller do
   describe 'POST #create' do
     describe 'authentication' do
       it 'redirects to the login page when the current user is not authenticated' do
-        post :create, {door_action: {name: 'foo'}}
+        post :create, params: {door_action: {name: 'foo'}}
         expect(response).to redirect_to(new_user_session_path)
       end
 
@@ -14,13 +14,13 @@ describe Api::Door::ActionsController, type: :controller do
         allow(action).to receive(:creatable_by?).and_return(false)
         allow(Door::Actions::Action).to receive(:from_name).and_return action
 
-        post :create, {door_action: {name: 'foo'}}
+        post :create, params: {door_action: {name: 'foo'}}
         expect(response).to have_http_status(:forbidden)
       end
     end
 
     describe 'when performed by an authorized user' do
-      let(:action) { action = instance_double Door::Actions::Action }
+      let(:action) { instance_double Door::Actions::Action }
       let(:user) { create :trusted_member }
       before do
         sign_in user
@@ -35,7 +35,7 @@ describe Api::Door::ActionsController, type: :controller do
       end
 
       it 'creates an Action instance from the door_action[name] parameter' do
-        post :create, {door_action: {name: 'foo'}}
+        post :create, params: {door_action: {name: 'foo'}}
         expect(Door::Actions::Action).to have_received(:from_name).with 'foo'
       end
 
@@ -45,7 +45,7 @@ describe Api::Door::ActionsController, type: :controller do
         end
 
         it 'returns HTTP 422 Unprocessable Entity' do
-          post :create, {door_action: {name: 'foo'}}
+          post :create, params: {door_action: {name: 'foo'}}
           expect(response).to have_http_status(:unprocessable_entity)
         end
 
@@ -53,7 +53,7 @@ describe Api::Door::ActionsController, type: :controller do
 
       describe 'when the status name is valid' do
         it 'saves the action' do
-          post :create, {door_action: {name: 'foo'}}
+          post :create, params: {door_action: {name: 'foo'}}
           expect(action).to have_received :save
         end
 
@@ -63,12 +63,12 @@ describe Api::Door::ActionsController, type: :controller do
           end
 
           it 'returns HTTP 422 Unprocessable Entity' do
-            post :create, {door_action: {name: 'foo'}}
+            post :create, params: {door_action: {name: 'foo'}}
             expect(response).to have_http_status(:unprocessable_entity)
           end
 
           it 'sets sets an initiator and origin information for the action' do
-            post :create, {door_action: {name: 'foo'}}
+            post :create, params: {door_action: {name: 'foo'}}
             expect(action).to have_received(:initiator=).with(user)
             expect(action).to have_received(:origin_information=).with(/#{request.remote_ip}/)
           end
@@ -82,11 +82,11 @@ describe Api::Door::ActionsController, type: :controller do
 
           it 'clears the door_current_status cache entry' do
             expect(Rails.cache).to receive(:delete).with('door_current_status')
-            post :create, {door_action: {name: 'foo'}}
+            post :create, params: {door_action: {name: 'foo'}}
           end
 
           it 'returns HTTP 422 Unprocessiable entiry' do
-            post :create, {door_action: {name: 'foo'}}
+            post :create, params: {door_action: {name: 'foo'}}
             expect(response).to have_http_status(:no_content)
           end
         end

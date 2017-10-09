@@ -24,7 +24,7 @@ describe Lights::PoliciesController, type: :controller do
 
       it 'redirects to the previous page' do
         request.env['HTTP_REFERER'] = 'back'
-        patch :update, lights_policy: {policy:'always_on'}
+        patch :update, params: {lights_policy: {policy:'always_on'}}
         expect(response).to redirect_to 'back'
       end
     end

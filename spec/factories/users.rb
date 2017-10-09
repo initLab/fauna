@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :user, aliases: [:owner] do
     name { Faker::Name.name }
     sequence(:username) { |u| "username#{u}" }
-    email { |u| Faker::Internet.email(u.name) }
+    email { Faker::Internet.email }
     locale { I18n.available_locales.first.to_s }
     twitter 'foobar'
     url { Faker::Internet.url }

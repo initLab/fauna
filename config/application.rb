@@ -22,9 +22,6 @@ module Fauna
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :bg
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
-
     config.action_view.field_error_proc = Proc.new do |html_tag, instance|
       html_tag
     end
