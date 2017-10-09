@@ -1,4 +1,4 @@
-class AddGpgFingerprintToUsers < ActiveRecord::Migration
+class AddGpgFingerprintToUsers < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :gpg_fingerprint, :string
   end

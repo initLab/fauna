@@ -18,11 +18,6 @@ describe Door::StatusesController, type: :controller do
         get :show
         expect(response).to be_success
       end
-
-      it 'assigns the current status' do
-        get :show
-        expect(assigns(:current_status)).to_not be_nil
-      end
     end
   end
 
@@ -33,7 +28,7 @@ describe Door::StatusesController, type: :controller do
 
     describe 'authentication' do
       it 'redirects to the login page when the current user is not authenticated' do
-        patch :update, {status: {name: 'foo'}}
+        patch :update, params: {status: {name: 'foo'}}
         expect(response).to redirect_to(new_user_session_path)
       end
 
@@ -43,14 +38,14 @@ describe Door::StatusesController, type: :controller do
         allow(action).to receive(:creatable_by?).and_return(false)
         allow(Door::Actions::Action).to receive(:from_name).and_return action
 
-        patch :update, {status: {name: 'foo'}}
+        patch :update, params: {status: {name: 'foo'}}
         expect(response).to redirect_to('back')
         expect(flash[:error]).to be_present
       end
     end
 
     describe 'when performed by an authorized user' do
-      let(:action) { action = instance_double Door::Actions::Action }
+      let(:action) { instance_double Door::Actions::Action }
       let(:user) { create :trusted_member }
       before do
         sign_in user
@@ -65,12 +60,12 @@ describe Door::StatusesController, type: :controller do
       end
 
       it 'creates an Action instance from the status[name] parameter' do
-        patch :update, {status: {name: 'foo'}}
+        patch :update, params: {status: {name: 'foo'}}
         expect(Door::Actions::Action).to have_received(:from_name).with 'foo'
       end
 
       it 'redirects to the referer' do
-        patch :update, {status: {name: 'foo'}}
+        patch :update, params: {status: {name: 'foo'}}
         expect(response).to redirect_to 'back'
       end
 
@@ -80,7 +75,7 @@ describe Door::StatusesController, type: :controller do
         end
 
         it 'sets an error flash' do
-          patch :update, {status: {name: 'foo'}}
+          patch :update, params: {status: {name: 'foo'}}
           expect(flash[:error]).to be_present
         end
 
@@ -88,7 +83,7 @@ describe Door::StatusesController, type: :controller do
 
       describe 'when the status name is valid' do
         it 'saves the action' do
-          patch :update, {status: {name: 'foo'}}
+          patch :update, params: {status: {name: 'foo'}}
           expect(action).to have_received :save
         end
 
@@ -98,12 +93,12 @@ describe Door::StatusesController, type: :controller do
           end
 
           it 'sets an error flash' do
-            patch :update, {status: {name: 'foo'}}
+            patch :update, params: {status: {name: 'foo'}}
             expect(flash[:error]).to be_present
           end
 
           it 'sets sets an initiator and origin information for the action' do
-            patch :update, {status: {name: 'foo'}}
+            patch :update, params: {status: {name: 'foo'}}
             expect(action).to have_received(:initiator=).with(user)
             expect(action).to have_received(:origin_information=).with(/#{request.remote_ip}/)
           end
@@ -116,13 +111,13 @@ describe Door::StatusesController, type: :controller do
           end
 
           it 'sets a notice flash' do
-            patch :update, {status: {name: 'foo'}}
+            patch :update, params: {status: {name: 'foo'}}
             expect(flash[:notice]).to be_present
           end
 
           it 'clears the door_current_status cache entry' do
             expect(Rails.cache).to receive(:delete).with('door_current_status')
-            patch :update, {status: {name: 'foo'}}
+            patch :update, params: {status: {name: 'foo'}}
           end
         end
       end

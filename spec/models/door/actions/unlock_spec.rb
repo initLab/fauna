@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe Door::Actions::Unlock, type: :model do
   let(:backend) { Rails.application.config.door_status_manager.backend }
 
-  it_behaves_like 'door action'
+  it_behaves_like 'door action' do
+    subject {Door::Actions::Unlock.new(initiator: create(:board_member))}
+  end
+
 
   describe 'authorization' do
     it 'is creatable by trusted members' do

@@ -1,6 +1,6 @@
 class Door::StatusNotificationsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_filter :authorize_client!
+  before_action :authorize_client!
 
   def create
     @status_notification = Door::StatusNotification.new status_notification_params

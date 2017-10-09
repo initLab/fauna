@@ -1,6 +1,6 @@
 require 'digest/md5'
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   rolify
   include Authority::Abilities
   include Authority::UserAbilities

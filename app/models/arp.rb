@@ -16,7 +16,7 @@ class Arp
         .where(network_devices: {
                  mac_address: all.map(&:mac_address),
                  use_for_presence: true
-        }).uniq
+        }).distinct
   end
 
   def self.mac_by_ip_address(ip_address)

@@ -1,5 +1,5 @@
 class Api::Door::ActionsController < Api::ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def create
     @action = ::Door::Actions::Action.from_name door_action_params[:name]

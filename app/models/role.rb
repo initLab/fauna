@@ -1,8 +1,8 @@
-class Role < ActiveRecord::Base
+class Role < ApplicationRecord
   PREDEFINED_ROLES = [:board_member, :trusted_member, :member].freeze
 
   has_and_belongs_to_many :users, join_table: :users_roles
-  belongs_to :resource, polymorphic: true
+  belongs_to :resource, polymorphic: true, optional: true
 
   validates :resource_type,
             inclusion: {in: Rolify.resource_types},

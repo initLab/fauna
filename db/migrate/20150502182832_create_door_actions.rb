@@ -1,4 +1,4 @@
-class CreateDoorActions < ActiveRecord::Migration
+class CreateDoorActions < ActiveRecord::Migration[4.2]
   def change
     create_table :door_actions do |t|
       t.string :type

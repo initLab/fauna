@@ -1,13 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.8'
-# Add Ruby 2.4.0 support
-gem 'xmlrpc', platforms: :ruby_24
+gem 'rails', '~> 5.1.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
-gem 'sprockets', '> 2.12'
+gem 'sprockets'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -27,9 +25,6 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
-
-# Create decorators with Draper
-gem 'draper'
 
 # Use devise for authentication
 gem 'devise'
@@ -53,11 +48,12 @@ gem 'slim-rails'
 
 # Use the Bootstrap CSS framework and the FA icon font
 gem 'bootstrap-sass'
-gem 'bootstrap-sass-extras', github: 'doabit/bootstrap-sass-extras'
 gem 'font-awesome-sass'
 
 # Gravatar helper
 gem 'gravatar-ultimate'
+# Add Ruby 2.4.0 support
+gem 'xmlrpc', platforms: :ruby_24
 
 # Use simple form for form building
 gem 'simple_form'
@@ -119,7 +115,6 @@ group :development do
 
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'quiet_assets'
 
   gem 'web-console'
 end
@@ -148,6 +143,8 @@ group :test, :development do
 
   # File system modification testing
   gem 'fakefs', require: 'fakefs/safe'
+
+  gem 'byebug'
 end
 
 group :production do

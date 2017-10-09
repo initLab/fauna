@@ -11,14 +11,14 @@ describe Devise::SessionsController do
 
       describe 'when there is no stored location' do
         it 'redirects to the user profile path' do
-          expect(post(:create, user: {login: user.username, password: user.password})).to redirect_to edit_user_registration_path
+          expect(post(:create, params: {user: {login: user.username, password: user.password}})).to redirect_to edit_user_registration_path
         end
       end
 
       describe 'when there is a stored location' do
         it 'redirects to the stored path' do
           session["user_return_to"] = '/some-path'
-          expect(post(:create, user: {login: user.username, password: user.password})).to redirect_to '/some-path'
+          expect(post(:create, params: {user: {login: user.username, password: user.password}})).to redirect_to '/some-path'
         end
       end
     end

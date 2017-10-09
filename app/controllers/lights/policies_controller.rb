@@ -1,5 +1,5 @@
 class Lights::PoliciesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   authorize_actions_for Lights::Policy
 
   def update
@@ -7,10 +7,10 @@ class Lights::PoliciesController < ApplicationController
 
     if @lights_policy.update
       flash[:success] = I18n.t('views.lights.success')
-      redirect_to :back
+      redirect_back fallback_location: lights_status_path
     else
       flash[:alert] = I18n.t('views.lights.an_error_occurred')
-      redirect_to :back
+      redirect_to fallback_location: lights_status_path
     end
   end
 
