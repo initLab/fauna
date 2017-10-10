@@ -7,7 +7,6 @@ RSpec.describe Door::Actions::Unlock, type: :model do
     subject {Door::Actions::Unlock.new(initiator: create(:board_member))}
   end
 
-
   describe 'authorization' do
     it 'is creatable by trusted members' do
       expect(subject).to be_creatable_by create(:trusted_member)
