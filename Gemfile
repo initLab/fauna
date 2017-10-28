@@ -90,6 +90,9 @@ gem 'devise-doorkeeper'
 # Highcharts
 gem 'highcharts-rails'
 
+# Time Zone info
+gem 'tzinfo-data'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
