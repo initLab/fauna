@@ -344,6 +344,8 @@ GEM
     turbolinks-source (5.0.3)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2017.3)
+      tzinfo (>= 1.0.0)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
@@ -424,6 +426,7 @@ DEPENDENCIES
   sprockets
   sqlite3
   turbolinks
+  tzinfo-data
   uglifier
   web-console
   xmlrpc
