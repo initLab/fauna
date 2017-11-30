@@ -29,7 +29,7 @@ class Door::Actions::Action < ApplicationRecord
       end
     end
 
-    "#{initiator_name} #{self.class.model_name.human(locale: :en).downcase}ed the door"
+    "#{initiator_name} requested the door be #{self.class.model_name.human(locale: :en).downcase}ed"
   end
 
   private
