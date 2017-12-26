@@ -5,7 +5,7 @@ class Arp
     # net.ipv4.neigh.default.gc_thresh1 = 10
     # net.ipv6.neigh.default.gc_thresh1 = 20
     `ip neigh show nud reachable nud stale`.split(/\n/).map do |entry|
-      addresses = *entry.scan(/\A([0-9a-f:.]*?) dev ([a-z0-9.]*?) lladdr ([0-9a-f:].*?) .*\z/i).first
+      addresses = *entry.scan(/\A([0-9a-f:.]*?) dev ([a-z0-9.\-]*?) lladdr ([0-9a-f:].*?) .*\z/i).first
       Arp.new(*addresses)
     end.compact
   end
