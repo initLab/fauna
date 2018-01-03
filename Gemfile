@@ -53,7 +53,7 @@ gem 'font-awesome-sass'
 # Gravatar helper
 gem 'gravatar-ultimate'
 # Add Ruby 2.4.0 support
-gem 'xmlrpc', platforms: :ruby_24
+gem 'xmlrpc', platforms: [:ruby_24, :ruby_25]
 
 # Use simple form for form building
 gem 'simple_form'
@@ -127,8 +127,8 @@ group :test, :development do
   # RSpec for testing
   gem 'rspec-rails'
 
-  # Use factory girl instead of fixtures
-  gem 'factory_girl_rails'
+  # Use factory bot instead of fixtures
+  gem 'factory_bot_rails'
 
   # Used for creating fake names, emails, etc.
   gem 'faker'

@@ -38,7 +38,7 @@ module Fauna
         routing_specs:    true,
         controller_specs: true,
         request_specs:    false
-      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
 
     config.door_status_manager = ActiveSupport::OrderedOptions.new

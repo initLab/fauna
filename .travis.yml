@@ -3,8 +3,9 @@ bundler_args: --without development --deployment --jobs=3 --retry=10
 cache: bundler
 rvm:
   - 2.2
-  - 2.3.3
-  - 2.4.2
+  - 2.3.6
+  - 2.4.3
+  - 2.5.0
 before_install:
   - gem update bundler
 script:
@@ -14,5 +15,5 @@ before_script:
   - psql -c 'create database fauna_development;' -U postgres
   - psql -c 'create database fauna_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
-sudo: true
+sudo: false
 dist: trusty
