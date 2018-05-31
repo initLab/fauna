@@ -18,7 +18,6 @@
 //= require bootstrap/transition
 //= require jquery_nested_form
 //= require turbolinks
-//= require highcharts
 //= require_tree .
 
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
