@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.10.2'
+lock '3.11.0'
 
 set :application, 'fauna'
 set :repo_url, 'https://github.com/initLab/fauna.git'
