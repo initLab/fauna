@@ -12,7 +12,7 @@ spacefed:
 contact:
   irc: irc://irc.ludost.net/#initlab
   twitter: '@initLab'
-  ml: members@initlab.org
+  ml: yo@initlab.org
   issue_mail: us@initlab.org
 issue_report_channels:
   - issue_mail
@@ -23,10 +23,10 @@ feeds:
     url: https://initlab.org/feed/
   wiki:
     type: atom
-    url: http://wiki.initlab.org/api.php?hidebots=1&days=7&limit=50&action=feedrecentchanges&feedformat=atom
+    url: https://wiki.initlab.org/api.php?hidebots=1&days=7&limit=50&action=feedrecentchanges&feedformat=atom
   calendar:
     type: ical
-    url: http://initlab.org/?ical=1
+    url: https://initlab.org/?ical=1
 projects:
-  - http://wiki.initlab.org/index.php/Category:Project
+  - https://wiki.initlab.org/index.php/Category:Project
   - https://github.com/initLab/
