@@ -53,7 +53,7 @@ gem 'font-awesome-sass', '~> 4.0'
 # Gravatar helper
 gem 'gravatar-ultimate'
 # Add Ruby 2.4.0 support
-gem 'xmlrpc', platforms: [:ruby_24, :ruby_25]
+gem 'xmlrpc'
 
 # Use simple form for form building
 gem 'simple_form'
@@ -107,9 +107,6 @@ group :development do
   # Deploy to a puma  server
   gem 'capistrano3-puma'
 
-  # Use SQLite for development
-  gem 'sqlite3'
-
   # Goodies for prettier printing of records in the console
   gem 'awesome_print'
   gem 'hirb'
@@ -124,6 +121,9 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :test, :development do
+  # Use SQLite for development
+  gem 'sqlite3', '~> 1.3.6'
+
   # RSpec for testing
   gem 'rspec-rails'
 
