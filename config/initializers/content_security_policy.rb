@@ -7,12 +7,10 @@
 Rails.application.config.content_security_policy do |policy|
   policy.default_src     :self
   policy.font_src        :self
-  policy.img_src         :self, :https # TODO: Remove this once all gravatars are cached locally in the app
+  policy.img_src         :self, :data, :https # TODO: Remove this once all gravatars are cached locally in the app
   policy.object_src      :none
   policy.script_src      :self, :unsafe_eval # TODO: Remove this once all use of js.erb templaces is removed
   policy.style_src       :self
-  policy.require_sri_for :script, :style;
-
 
   # Specify URI for violation reports
   # policy.report_uri "/csp-violation-report-endpoint"

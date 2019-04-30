@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+//= require jquery3
+//= require rails-ujs
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/alert
