@@ -13,9 +13,11 @@ html lang="#{I18n.locale}"
 
     = render partial: 'layouts/icons'
 
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true, 'nonce' => content_security_policy_nonce, 'integrity' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true, 'nonce' => content_security_policy_nonce, 'integrity' => true
     = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', :media => 'all', 'data-turbolinks-track' => true, :nonce => content_security_policy_nonce, :integrity => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true, :nonce => content_security_policy_nonce, :integrity => true
 
     link rel="manifest" href="manifest.json"
   body
