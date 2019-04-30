@@ -16,7 +16,7 @@
 //= require bootstrap/collapse
 //= require bootstrap/alert
 //= require bootstrap/transition
-//= require jquery_nested_form
+//= require cocoon
 //= require turbolinks
 //= require_tree .
 

@@ -1,0 +1,5 @@
+.nested-fields
+  = f.input :phone_number do
+    .input-group
+      = f.input_field :phone_number, class: 'form-control', value: f.object.phone_number.try(:phony_formatted, format: :international)
+      = link_to_remove_association '&times;'.html_safe, f, class: 'input-group-addon btn btn-danger'

@@ -1,19 +1,8 @@
-.remove_nested_fields {
-    @extend .btn;
-    @extend .btn-danger;
-
-    color: $btn-primary-color;
-
-    &:hover, &:active, &:visited, &:focus {
-        color: $btn-primary-color;
-    }
-}
-
 .add_nested_fields_container {
     @extend .text-center;
 }
 
-.form-horizontal .add_nested_fields {
+.form-horizontal .add_fields {
     @extend .col-sm-offset-3;
     @extend .btn;
     @extend .btn-primary;

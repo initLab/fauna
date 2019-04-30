@@ -58,7 +58,7 @@ gem 'xmlrpc'
 
 # Use simple form for form building
 gem 'simple_form'
-gem 'nested_form'
+gem 'cocoon'
 
 # Use Kaminari for pagination
 gem 'kaminari'

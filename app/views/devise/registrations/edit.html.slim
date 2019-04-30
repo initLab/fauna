@@ -3,7 +3,7 @@
 section.container
   .row
     .account_form
-      = simple_nested_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :horizontal_form, html: { method: :put, class: 'form-horizontal' }) do |f|
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :horizontal_form, html: { method: :put, class: 'form-horizontal' }) do |f|
         header
           legend
             h3 = t('views.registrations.edit_account')
@@ -34,13 +34,10 @@ section.container
 
           #phone_numbers
             = f.simple_fields_for :phone_numbers do |phone_numbers_form|
-              = phone_numbers_form.input :phone_number do
-                .input-group
-                  = phone_numbers_form.input_field :phone_number, class: 'form-control', value: phone_numbers_form.object.phone_number.try(:phony_formatted, format: :international)
-                  = phone_numbers_form.link_to_remove '&times;'.html_safe, class: 'input-group-addon'
+              = render 'phone_number_fields', f: phone_numbers_form
 
           .add_nested_fields_container
-            = f.link_to_add t('views.registrations.add_phone_number'), :phone_numbers, role: 'button', data: {target: '#phone_numbers'}
+            = link_to_add_association t('views.registrations.add_phone_number'), f, :phone_numbers, role: 'button', data: {'association-insertion-node' => '#phone_numbers', 'association-insertion-method' => 'append'}
 
           = f.input :github
           = f.input :twitter
