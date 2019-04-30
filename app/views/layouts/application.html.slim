@@ -19,7 +19,7 @@ html lang="#{I18n.locale}"
     = stylesheet_link_tag 'application', :media => 'all', 'data-turbolinks-track' => 'reload', :nonce => content_security_policy_nonce, :integrity => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload', :nonce => content_security_policy_nonce, :integrity => true
 
-    link rel="manifest" href="manifest.json"
+    link rel="manifest" href="/manifest.json"
   body
     = render partial: 'layouts/navigation'
     = render partial: 'layouts/flash'
