@@ -17,7 +17,6 @@
 //= require bootstrap/alert
 //= require bootstrap/transition
 //= require cocoon
-//= require turbolinks
 //= require_tree .
 
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
