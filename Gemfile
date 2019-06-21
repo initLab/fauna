@@ -81,7 +81,7 @@ gem 'snmp'
 gem 'yaml_db'
 
 # OAuth
-gem 'doorkeeper'
+gem 'doorkeeper', '> 1.0beta'
 gem 'devise-doorkeeper'
 
 # Highcharts
