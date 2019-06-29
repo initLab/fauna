@@ -17,4 +17,4 @@ RUN ./bin/setup
 
 EXPOSE 3000
 
-CMD ["bin/rails", "s", "puma", "-e", "development", "-p", "3000", "-b", "0.0.0.0"]
+CMD ["bin/rails", "s", "-b", "0.0.0.0"]
