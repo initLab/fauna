@@ -139,6 +139,7 @@ group :test, :development do
 
   # Do feature testing with capybara
   gem 'capybara'
+  gem "selenium-webdriver"
 
   # File system modification testing
   gem 'fakefs', require: 'fakefs/safe'
