@@ -6,7 +6,7 @@ Doorkeeper.configure do
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-    authenticate_user!
+    current_user || warden.authenticate!(scope: :user)
   end
 
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
@@ -15,7 +15,7 @@ Doorkeeper.configure do
   # every time somebody will try to access the admin web interface.
   #
   admin_authenticator do
-    authenticate_user!
+    current_user || warden.authenticate!(scope: :user)
   end
 
   # If you are planning to use Doorkeeper in Rails 5 API-only application, then you might
@@ -169,7 +169,7 @@ Doorkeeper.configure do
   # not in configuration, i.e. `default_scopes` or `optional_scopes`.
   # (disabled by default)
   #
-  # enforce_configured_scopes
+  enforce_configured_scopes
 
   # Change the way client credentials are retrieved from the request object.
   # By default it retrieves first from the `HTTP_AUTHORIZATION` header, then
