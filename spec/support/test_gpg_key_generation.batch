@@ -1,0 +1,9 @@
+     Key-Type: RSA
+     Subkey-Type: RSA
+     Name-Real: Fauna Test Key DO NOT USE
+     Name-Comment: DO NOT USE
+     Name-Email: fauna@example.com
+     Expire-Date: 1d
+     #%no-protection
+     %no-ask-passphrase
+     %commit

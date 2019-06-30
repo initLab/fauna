@@ -1,15 +1,24 @@
 language: ruby
+dist: xenial
 cache: bundler
 rvm:
   - 2.6
+env:
+  - GNUPGHOME=/tmp/fauna_fake_gpg_home RAILS_ENV=test
 script:
-  - RAILS_ENV=test bin/setup
   - RAILS_ENV=test bundle exec rake --trace spec
 before_script:
   - psql -c 'create database fauna_development;' -U postgres
   - psql -c 'create database fauna_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+  - mkdir $GNUPGHOME
+  - gpg -K
+  - gpg --gen-key --batch spec/support/test_gpg_key_generation.batch
+  - bin/setup
 addons:
+  chrome: stable
   apt:
     packages:
       - chromium-chromedriver
+services:
+  - postgresql
