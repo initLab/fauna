@@ -7,7 +7,7 @@ feature 'Managing OAuth applications' do
     visit oauth_applications_path
     click_on 'Ново приложение', match: :first
     fill_in 'Име', with: 'Test App'
-    fill_in 'URI за пренасочване', with: 'urn:ietf:wg:oauth:2.0:oob'
+    fill_in 'УРИ за обратна връзка', with: 'urn:ietf:wg:oauth:2.0:oob'
     click_on 'Създай'
   end
 
@@ -25,7 +25,7 @@ feature 'Managing OAuth applications' do
     sign_in_with_the_new_account
     create_a_new_oauth_application
 
-    click_on 'Редакция', match: :first
+    click_on 'Промени', match: :first
     fill_in 'Име', with: 'Test App 2'
     click_on 'Обнови'
 
@@ -51,7 +51,7 @@ feature 'Managing OAuth applications' do
     sign_in_with_the_new_account
     create_a_new_oauth_application
 
-    click_on 'Премахване', match: :first
+    click_on 'Премахни', match: :first
     expect(page).to have_text('Приложението беше заличено.')
     expect(page).to_not have_text('Test App')
   end
