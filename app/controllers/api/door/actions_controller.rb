@@ -1,5 +1,5 @@
 class Api::Door::ActionsController < Api::ApplicationController
-  before_action :authenticate_user!
+  before_action -> { doorkeeper_authorize! :door_handle_control, :door_latch_control }
 
   def create
     @action = ::Door::Actions::Action.from_name door_action_params[:name]

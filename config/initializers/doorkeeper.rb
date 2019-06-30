@@ -153,7 +153,8 @@ Doorkeeper.configure do
   # https://doorkeeper.gitbook.io/guides/ruby-on-rails/scopes
   #
   default_scopes  :public
-  optional_scopes :email, :door_control, :door_latch_control
+  optional_scopes :door_handle_control, :door_latch_control,
+                  :account_data_read, :accout_data_write
 
   # Define scopes_by_grant_type to restrict only certain scopes for grant_type
   # By default, all the scopes will be available for all the grant types.

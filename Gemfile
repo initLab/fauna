@@ -83,7 +83,6 @@ gem 'yaml_db'
 
 # OAuth
 gem 'doorkeeper', '> 1.0beta'
-gem 'devise-doorkeeper'
 
 # Highcharts
 gem 'highcharts-rails'
