@@ -1,0 +1,17 @@
+.centered_form
+  = simple_form_for @application, url: doorkeeper_submit_path(@application) do |f|
+    header
+      legend
+        h3 = @application.class.model_name.human
+    .form-inputs
+      = f.input :name
+      - uri_hint = []
+      - if true || Doorkeeper.configuration.allow_blank_redirect_uri?(application)
+        - uri_hint << t('doorkeeper.applications.help.blank_redirect_uri')
+      - if Doorkeeper.configuration.native_redirect_uri
+        - uri_hint << t('doorkeeper.applications.help.native_redirect_uri', native_redirect_uri: content_tag(:code) { Doorkeeper.configuration.native_redirect_uri }).html_safe
+      = f.input :redirect_uri, placeholder: t('doorkeeper.applications.help.redirect_uri'), hint: uri_hint.join(' ').html_safe
+      = f.input :confidential, hint: t('doorkeeper.applications.help.confidential')
+      = f.input :scopes, hint: t('doorkeeper.applications.help.scopes')
+    .form-actions
+      = f.button :submit

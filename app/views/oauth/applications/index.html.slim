@@ -1,0 +1,23 @@
+- content_for(:title) { t 'doorkeeper.applications.index.title' }
+- content_for(:page_actions) do
+  = link_to new_oauth_application_path, class: ['btn', 'btn-primary'] do
+    => icon :plus
+    = t('doorkeeper.applications.index.new')
+
+section.container
+  .row
+    .col-xs-12
+      header.page-header
+        .page-actions
+          = yield :page_actions
+        h2 = t('doorkeeper.applications.index.title')
+      table.record-table
+        thead
+          tr
+            th = t('doorkeeper.applications.index.name')
+            th = t('doorkeeper.applications.index.callback_url')
+            th
+        tbody
+          = render partial: 'application', collection: @applications
+      .mobile-page-actions
+        = yield :page_actions

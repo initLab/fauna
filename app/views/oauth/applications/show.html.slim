@@ -1,0 +1,53 @@
+- content_for(:title) { t('doorkeeper.applications.show.title', name: @application.name) }
+- content_for(:page_actions) do
+  = link_to edit_oauth_application_path(@application), class: ['btn', 'btn-primary'] do
+    => icon(:pencil)
+    = t('doorkeeper.applications.buttons.edit')
+  = link_to oauth_application_path(@application), method: :delete, class: ['btn', 'btn-danger'], data: {confirm: t('doorkeeper.applications.confirmations.destroy')} do
+    => icon(:times)
+    = t('doorkeeper.applications.buttons.destroy')
+
+section.container
+  .row
+    .col-xs-12
+      header.page-header
+        .page-actions
+          = yield :page_actions
+        h2 = t('doorkeeper.applications.show.title', name: @application.name)
+      h5
+        = t('doorkeeper.applications.show.application_id')
+        | :
+      p
+        code = @application.uid
+
+      h5
+        = t('doorkeeper.applications.show.secret')
+        | :
+      p
+        code = @application.secret
+
+      h5
+        = t('doorkeeper.applications.show.scopes')
+        | :
+      p
+        code = @application.scopes
+
+      h5
+        = t('doorkeeper.applications.show.confidential')
+        | :
+      p
+        code = @application.confidential
+
+      h5
+        = t('doorkeeper.applications.show.callback_urls')
+        | :
+      table.table.table-striped
+        .tbody
+          - @application.redirect_uri.split.each do |uri|
+            tr
+              td
+                code = uri
+              td.text-right
+                = link_to t('doorkeeper.applications.buttons.authorize'), oauth_authorization_path(client_id: @application.uid, redirect_uri: uri, response_type: 'code', scope: @application.scopes), class: 'btn btn-sm btn-success', target: '_blank'
+      .mobile-page-actions
+        = yield :page_actions

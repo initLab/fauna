@@ -5,7 +5,7 @@ require "rails_helper"
 feature 'Managing OAuth applications' do
   def create_a_new_oauth_application
     visit oauth_applications_path
-    click_on 'Ново приложение'
+    click_on 'Ново приложение', match: :first
     fill_in 'Име', with: 'Test App'
     fill_in 'URI за пренасочване', with: 'urn:ietf:wg:oauth:2.0:oob'
     click_on 'Създай'
@@ -25,9 +25,9 @@ feature 'Managing OAuth applications' do
     sign_in_with_the_new_account
     create_a_new_oauth_application
 
-    click_on 'Редакция'
+    click_on 'Редакция', match: :first
     fill_in 'Име', with: 'Test App 2'
-    click_on 'Създай'
+    click_on 'Обнови'
 
     expect(page).to have_text('Приложението беше обновено.')
     expect(page).to have_text('Приложение: Test App 2')
@@ -51,7 +51,7 @@ feature 'Managing OAuth applications' do
     sign_in_with_the_new_account
     create_a_new_oauth_application
 
-    click_on 'Премахване'
+    click_on 'Премахване', match: :first
     expect(page).to have_text('Приложението беше заличено.')
     expect(page).to_not have_text('Test App')
   end

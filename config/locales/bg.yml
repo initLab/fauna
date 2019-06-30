@@ -23,6 +23,12 @@ bg:
         phone_number:
           improbable_phone: трябва да е валиден телефонен номер
     models:
+      doorkeeper/application:
+        zero: OAuth приложения
+        one: OAuth приложение
+        few: OAuth приложения
+        many: OAuth приложения
+        other: OAuth приложения
       door/actions/unlock:
         zero: отключвания
         one: отключване

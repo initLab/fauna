@@ -1,0 +1,9 @@
+tr id="application_#{application.id}"
+  td.align-middle
+    = link_to application.name, oauth_application_path(application)
+  td.align-middle
+    = application.redirect_uri
+  td.text-right
+    .record-actions
+      => link_to icon(:pencil), edit_oauth_application_path(application), class: 'edit', title: t('doorkeeper.applications.buttons.edit')
+      = link_to icon(:times), oauth_application_path(application), method: :delete, class: 'delete', data: {confirm: t('doorkeeper.applications.confirmations.destroy')}, title: t('doorkeeper.applications.buttons.destroy')
