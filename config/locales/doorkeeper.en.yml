@@ -21,6 +21,12 @@ en:
               not_match_configured: "doesn't match configured on the server."
 
   doorkeeper:
+    scopes:
+      public: Access to any publicly accessible data
+      door_handle_control: Open the door when it's unlocked
+      door_latch_control: Unlock and lock the front door
+      account_data_read: Read all of your account data
+      account_data_write: Update your account data
     applications:
       confirmations:
         destroy: 'Are you sure?'

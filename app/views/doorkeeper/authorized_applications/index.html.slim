@@ -1,0 +1,15 @@
+- content_for(:title) { t('doorkeeper.authorized_applications.index.title') }
+
+section.container
+  .row
+    .col-xs-12
+      header.page-header
+        h2 = t('doorkeeper.authorized_applications.index.title')
+      table.record-table
+        thead
+          tr
+            th = t('doorkeeper.authorized_applications.index.application')
+            th = t('doorkeeper.authorized_applications.index.created_at')
+            th
+        tbody
+          = render partial: 'application', collection: @applications

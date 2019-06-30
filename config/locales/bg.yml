@@ -153,6 +153,8 @@ bg:
       network_devices: Мрежови устройства
       lights: Осветление
       sensors: Графики
+      oauth_application_management: OAuth интеграция
+      oauth_token_management: Упълномощени приложения
     registrations:
       sign_up: Регистрация
       sign_me_up: Регистрирай ме

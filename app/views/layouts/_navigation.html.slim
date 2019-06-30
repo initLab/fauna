@@ -60,6 +60,10 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
                 = link_to t('views.navigation.view_edit'), edit_user_registration_path
               li
                 = link_to t('views.navigation.network_devices'), user_network_devices_path
+              li
+                = link_to t('views.navigation.oauth_application_management'),  oauth_applications_path
+              li
+                = link_to t('views.navigation.oauth_token_management'),  oauth_authorized_applications_path
               li.divider
               li
                 = link_to t('views.navigation.sign_out'), destroy_user_session_path, method: :delete

@@ -43,5 +43,9 @@ module Fauna
     end
 
     config.door_status_manager = ActiveSupport::OrderedOptions.new
+
+    config.to_prepare do
+      Doorkeeper::AuthorizedApplicationsController.layout "application"
+    end
   end
 end

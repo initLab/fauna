@@ -154,7 +154,7 @@ Doorkeeper.configure do
   #
   default_scopes  :public
   optional_scopes :door_handle_control, :door_latch_control,
-                  :account_data_read, :accout_data_write
+                  :account_data_read, :account_data_write
 
   # Define scopes_by_grant_type to restrict only certain scopes for grant_type
   # By default, all the scopes will be available for all the grant types.

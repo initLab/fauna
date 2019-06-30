@@ -1,0 +1,6 @@
+tr
+  td = application.name
+  td = l application.created_at, format: :long
+  td.text-right
+    .record-actions
+      = link_to icon(:times), oauth_authorized_application_path(application), method: :delete, class: 'delete', data: {confirm: t('doorkeeper.authorized_applications.confirmations.revoke')}, title: t('doorkeeper.authorized_applications.buttons.revoke')

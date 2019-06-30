@@ -20,6 +20,12 @@ bg:
             scopes:
               not_match_configured: "не съвпада с конфигурираното на сървъра"
   doorkeeper:
+    scopes:
+      public: Достъпва публични данни
+      door_handle_control: Отваря входната врата, когато е отключена
+      door_latch_control: Отключва и заключва на входната врата
+      account_data_read: Чете всички данни от акаунта ви
+      account_data_write: Променя всички данни от акаунта ви
     applications:
       confirmations:
         destroy: 'Сигурни ли сте?'

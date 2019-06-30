@@ -147,6 +147,8 @@ en:
       network_devices: Network devices
       lights: Lights
       sensors: Sensors
+      oauth_application_management: OAuth integration
+      oauth_token_management: Authorized applications
     registrations:
       sign_up: Registration
       sign_me_up: Sign me up
