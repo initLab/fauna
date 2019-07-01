@@ -41,7 +41,7 @@ class RadWho
   end
 
   def present_known_and_visible_users
-    present_known_users.where(privacy: false)
+    present_known_users.where(announce_my_presence: true)
   end
 
   private
@@ -65,7 +65,7 @@ class RadWho
   end
 
   def unknown_mac_addresses
-    mac_addresses - present_known_devices.joins(:owner).where(users: {privacy: false}).pluck(:mac_address)
+    mac_addresses - present_known_devices.joins(:owner).where(users: {announce_my_presence: true}).pluck(:mac_address)
   end
 
   def normalize_mac_address(mac_address)

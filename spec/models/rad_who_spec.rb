@@ -67,7 +67,7 @@ EOS
     end
 
     it 'does not list users that have stated they don\'t want to be visible' do
-      device = create(:network_device, mac_address: 'aa:bb:cc:dd:ee:ff', owner: create(:user, privacy: true))
+      device = create(:network_device, mac_address: 'aa:bb:cc:dd:ee:ff', owner: create(:user, announce_my_presence: false))
       expect(RadWho).to receive(:radwho).and_return "0000000C-AA-BB-CC-DD-EE-FF\n"
       radwho = RadWho.new
       expect(radwho.present_known_and_visible_users).to_not include(device.owner)
@@ -94,8 +94,8 @@ EOS
       expect(RadWho.new.present_unknown_users).to be_empty
     end
 
-    it 'includes users with a turned on privacy flag' do
-      create(:network_device, mac_address: 'aa:bb:cc:dd:ee:ff', owner: create(:user, privacy: true))
+    it 'includes users with a turned off announce_my_presence flag' do
+      create(:network_device, mac_address: 'aa:bb:cc:dd:ee:ff', owner: create(:user, announce_my_presence: false))
       expect(RadWho).to receive(:radwho).and_return "0000000C-AA-BB-CC-DD-EE-FF\n"
       expect(RadWho.new.present_unknown_users).to_not be_empty
     end
@@ -110,8 +110,8 @@ EOS
       expect(RadWho.new.present_users.count).to eq 3
     end
 
-    it 'return the users with a privacy flag set as unknown' do
-      device = create :network_device, mac_address: 'aa:bb:cc:dd:ee:d8', owner: create(:user, privacy: true)
+    it 'return the users with an announce_my_presence flag unset as unknown' do
+      device = create :network_device, mac_address: 'aa:bb:cc:dd:ee:d8', owner: create(:user, announce_my_presence: false)
 
       expect(RadWho.new.present_users.count).to eq 3
       expect(RadWho.new.present_users).to_not include device.owner
