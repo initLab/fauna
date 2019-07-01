@@ -22,10 +22,10 @@ class Door::Actions::Action < ApplicationRecord
     initiator_name = 'Somebody'
 
     if initiator.present?
-      if initiator.privacy
-        initiator_name = 'Somebody who does not wish to be named'
-      else
+      if initiator.announce_my_presence
         initiator_name = initiator.username
+      else
+        initiator_name = 'Somebody who does not wish to be named'
       end
     end
 

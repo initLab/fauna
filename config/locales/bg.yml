@@ -65,7 +65,7 @@ bg:
         password: Парола
         password_confirmation: Потвърждение на паролата
         current_password: Текуща парола
-        privacy: Не искам да присъствам в публични списъци
+        announce_my_presence: Показвай името ми, когато съм в Лаба и когато отварям вратата
         gpg_fingerprint: Отпечатък на GPG ключ
         jabber: Jabber акаунт
         picture: Снимка
@@ -168,6 +168,16 @@ bg:
       cancel_my_account: Изтрий акаунта ми
       are_you_sure: Сигурни ли Сте, че искате да изтриете регистрацията си?
       add_phone_number: Добави телефонен номер
+      announce_my_presence_explanation: |
+        Ако изберете тази отметка, вашето име, потребителско име, аватар и
+        публични данни от профила (сайт, Github, Twitter) ще са видими на
+        началната страница на Fauna. Вашето потребителско име ще бъде изпращано
+        в Twitter, IRC и Telegram, когато отключвате, заключвате или отваряте
+        входната врата.
+        Ако не я изберете, ще бъдете показван като Mystery Labber, а действията
+        Ви свързани с входната врата пак ще се изпращат, но вместо с името ви,
+        ще пише Someone who does not wish to be named, unlocked/locked/opened
+        the door."
     passwords:
       forgotten_password: Забравена парола
       send_instructions: Изпрати инструкции

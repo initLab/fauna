@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :username,
                                                            :email, :url, :locale,
-                                                           :twitter, :privacy,
+                                                           :twitter, :announce_my_presence,
                                                            :github, :jabber,
                                                            :gpg_fingerprint,
                                                            :pin, :pin_confirmation,

@@ -12,7 +12,7 @@ class Arp
 
   def self.present_users
     User.joins(:network_devices)
-        .where(privacy: false)
+        .where(announce_my_presence: true)
         .where(network_devices: {
                  mac_address: all.map(&:mac_address),
                  use_for_presence: true
