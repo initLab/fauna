@@ -59,7 +59,7 @@ en:
         password: Password
         password_confirmation: Password confirmation
         current_password: Current password
-        privacy: I don't want to be present in any public lists
+        privacy: Show my name when I'm at the Lab and when I open the door
         gpg_fingerprint: GPG key fingerprint
         jabber: Jabber/XMPP account
         picture: Photo
@@ -162,6 +162,7 @@ en:
       cancel_my_account: Cancel my account
       are_you_sure: Are you sure that you want to delete your registration?
       add_phone_number: Add phone number
+      privacy_explanation: If you select this option, your name, username, avatar and public profile information (website, github, twitter) would be visible on the Fauna homepage. Your username would be sent to Twitter, IRC and Telegram every time you unlock, lock or open the front door.<br>If you don't select this option, you would be shown as Mystery labber and your actions on the front door would still be published, but instead of showing your username, the text would say Someone who does not wish to be named, unlocked/locked/opened the door.
     passwords:
       forgotten_password: Forgotten password
       send_instructions: Send instructions

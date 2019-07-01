@@ -45,6 +45,7 @@ section.container
           = f.input :jabber
           = f.input :gpg_fingerprint
           = f.input :privacy
+		  = t('views.registrations.privacy_explanation')
 
           = f.input :current_password, hint: t('views.registrations.we_need_your_current_password'), required: true, wrapper_html: {class: 'has-warning'}
 
