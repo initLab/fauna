@@ -3,13 +3,44 @@ require 'pathname'
 require 'yaml'
 require 'securerandom'
 require 'io/console'
-
+require 'optparse'
+require 'byebug'
 def prompt(*args)
   Kernel.print(*args)
   STDIN.gets.chomp
 end
 
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
+
+def in_ci?
+  ENV["CI"] || ENV["TRAVIS"]
+end
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: setup [options]"
+
+  opts.on('-e', '--e-mail EMAIL', 'E-mail address') do |email|
+    options[:email] = email
+  end
+
+  opts.on('-u', '--username USERNAME', 'Username') do |username|
+    options[:username] = username
+  end
+
+  opts.on('-n', '--name NAME', 'Name') do |name|
+    options[:name] = name
+  end
+
+  opts.on('-p', '--password PASSWORD', 'Password') do |password|
+    options[:password] = password
+  end
+end.parse!
+
+if in_ci? && [:email, :username, :name, :password].any? { |paramter| !options.keys.include?(paramter) }
+  fail 'Please specify email, username, name and password'
+end
 
 Dir.chdir APP_ROOT do
   puts '== Installing dependencies =='
@@ -54,45 +85,56 @@ Dir.chdir APP_ROOT do
   system 'touch tmp/restart.txt'
 
   # create user if not Travis
-  unless ENV["CI"] || ENV["TRAVIS"]
-    puts "\n== Registering a new user with administrative rights =="
+  puts "\n== Registering a new user with administrative rights =="
 
-    loop do
-      email = prompt "email: "
-      username = prompt "username: "
-      print 'password: '
-      password = STDIN.noecho(&:gets)
-      print "\npassword confirmation: "
-      password_confirmation = STDIN.noecho(&:gets)
-      name = prompt "\nname: "
+  loop do
+    if !in_ci?
+      options[:email] = prompt "email: " unless options[:email]
+      options[:username] = prompt "username: " unless options[:username]
+      unless options[:password]
+        print 'password: '
+        options[:password] = STDIN.noecho(&:gets)
+      end
+      unless options[:password_confirmation]
+        print "\npassword confirmation: "
+        password_confirmation = STDIN.noecho(&:gets)
+      end
+      options[:name] = prompt "\nname: " unless options[:name]
+    end
 
-      puts "Loading the rails environment."
-      require APP_ROOT + 'config/environment'
-      puts "Loaded."
-      I18n.locale = :en
+    puts "Loading the rails environment."
+    require APP_ROOT + 'config/environment'
+    puts "Loaded."
+    I18n.locale = :en
 
-      user = User.new(email: email,
-                      username: username,
-                      password: password,
-                      password_confirmation: password_confirmation,
-                      name: name,
-                      locale: I18n.locale)
+    user = User.new(email: options[:email],
+                    username: options[:username],
+                    password: options[:password],
+                    password_confirmation: password_confirmation,
+                    name: options[:name],
+                    locale: I18n.locale)
 
-      unless user.save
-        STDERR.puts "\nThe following errors arose during the creation of the user:\n\n"
-        user.errors.full_messages.each do |message|
-          STDERR.puts message
-        end
-        STDERR.puts "\nPlease try again.\n"
-        next
+    unless user.save
+      STDERR.puts "\nThe following errors arose during the creation of the user:\n\n"
+      user.errors.full_messages.each do |message|
+        STDERR.puts message
       end
 
-      user.confirm
-      user.add_role :board_member
+      STDERR.puts "\nPlease try again.\n"
 
-      puts "Woohoo! User #{user.name} registered!"
-
-      break
+      if in_ci?
+        fail
+      else
+        options = {}
+        next
+      end
     end
+
+    user.confirm
+    user.add_role :board_member
+
+    puts "Woohoo! User #{user.name} registered!"
+
+    break
   end
 end
