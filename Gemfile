@@ -84,7 +84,7 @@ gem 'yaml_db'
 
 # OAuth
 gem 'doorkeeper', '> 1.0beta'
-gem 'doorkeeper-i18n', github: 'initLab/doorkeeper-i18n', branch: 'bulgarian'
+gem 'doorkeeper-i18n', github: 'initLabdoorkeeper-gem/doorkeeper-i18n', branch: 'bulgarian'
 
 # Highcharts
 gem 'highcharts-rails'
