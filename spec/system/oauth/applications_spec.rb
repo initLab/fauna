@@ -52,7 +52,7 @@ feature 'Managing OAuth applications' do
     create_a_new_oauth_application
 
     click_on 'Премахни', match: :first
-    expect(page).to have_text('Приложението беше заличено.')
+    expect(page).to have_text('Приложението беше премахнато.')
     expect(page).to_not have_text('Test App')
   end
 end
