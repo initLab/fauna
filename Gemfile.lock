@@ -1,7 +1,6 @@
 GIT
-  remote: https://github.com/initLab/doorkeeper-i18n.git
-  revision: 30ca3161fafb59a077c9749df3912047fdcccd51
-  branch: bulgarian
+  remote: https://github.com/doorkeeper-gem/doorkeeper-i18n.git
+  revision: b6181be407e7360c8c686eb29538bb0c5ed78045
   specs:
     doorkeeper-i18n (5.0.2)
 
