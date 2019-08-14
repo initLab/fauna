@@ -14,7 +14,7 @@ before_script:
   - mkdir $GNUPGHOME
   - gpg -K
   - gpg --gen-key --batch spec/support/test_gpg_key_generation.batch
-  - bin/setup
+  - bin/setup -u travis -e travis@example.com -n travis -p foobarbaz
 addons:
   chrome: stable
   apt:
