@@ -4,7 +4,7 @@ require 'yaml'
 require 'securerandom'
 require 'io/console'
 require 'optparse'
-require 'byebug'
+
 def prompt(*args)
   Kernel.print(*args)
   STDIN.gets.chomp
