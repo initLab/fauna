@@ -146,7 +146,7 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    gpgme (2.0.18)
+    gpgme (2.0.20)
       mini_portile2 (~> 2.3)
     gravatar-ultimate (2.0.0)
       activesupport (>= 2.3.14)
@@ -450,4 +450,4 @@ DEPENDENCIES
   yaml_db
 
 BUNDLED WITH
-   1.17.3
+   2.1.4
