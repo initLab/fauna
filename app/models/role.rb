@@ -1,5 +1,5 @@
 class Role < ApplicationRecord
-  PREDEFINED_ROLES = [:board_member, :trusted_member, :member].freeze
+  PREDEFINED_ROLES = [:board_member, :trusted_member, :member, :'3d'].freeze
 
   has_and_belongs_to_many :users, join_table: :users_roles
   belongs_to :resource, polymorphic: true, optional: true
