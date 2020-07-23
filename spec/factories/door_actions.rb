@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :door_action, class: 'Door::Action' do
+  factory :door_action, class: 'Door::Actions::Action' do
     association :initiator, factory: :board_member
     origin_information { "IP: 127.0.0.1" }
 

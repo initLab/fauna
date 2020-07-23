@@ -7,7 +7,7 @@ gem 'bootsnap'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
-gem 'sprockets'
+gem 'sprockets', '< 4'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -84,7 +84,7 @@ gem 'yaml_db'
 
 # OAuth
 gem 'doorkeeper', '> 1.0beta'
-gem 'doorkeeper-i18n', github: 'doorkeeper-gem/doorkeeper-i18n'
+gem 'doorkeeper-i18n'
 
 # Highcharts
 gem 'highcharts-rails'
