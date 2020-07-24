@@ -18,7 +18,6 @@ before_script:
 after_script:
   - cat log/test.log
 addons:
-  chrome: stable
   apt:
     packages:
       - chromium-chromedriver

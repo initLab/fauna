@@ -4,6 +4,6 @@
      Name-Comment: DO NOT USE
      Name-Email: fauna@example.com
      Expire-Date: 1d
-     #%no-protection
+     %no-protection
      %no-ask-passphrase
      %commit
