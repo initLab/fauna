@@ -1,0 +1,25 @@
+grafana:
+  temperature:
+    dashboard:
+      id: 000000008
+      name: temperatures
+    panels:
+      - 4
+      - 5
+      - 10
+  humidity:
+    dashboard:
+      id: 000000009
+      name: humidity
+    panels:
+      - 4
+      - 5
+      - 10
+mqtt:
+  sensors:
+    - label: Outside
+      topic: sensor-outside-espurna/temperature
+    - label: Lecture room
+      topic: sensor-lecture-room-espurna/temperature
+    - label: Ruby room
+      topic: sensor-ruby-room-espurna/temperature

@@ -215,7 +215,9 @@ bg:
     roles:
       are_you_sure: 'Сигурни ли сте?'
     sensors:
-      temperature_humidity: Температура и влажност на въздуха
+      title: Показания на сензорите
+      temperature: Температура
+      humidity: Относителна влажност
     footer:
       license: 'init Lab Fauna е лицензирана под'
       source_code: 'Изходният код е достъпен в'

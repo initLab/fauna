@@ -7,11 +7,11 @@
 Rails.application.config.content_security_policy do |policy|
   policy.base_uri        :self
   policy.default_src     :none
-  policy.connect_src     :self
+  policy.connect_src     :self, 'wss://spitfire.initlab.org:8083/'
   policy.font_src        :self
-  policy.img_src         :self, :data, :https # TODO: Remove this once all gravatars are cached locally in the app
+  policy.img_src         :self, :data, :https, 'http://stats.initlab.org/' # TODO: Remove this once all gravatars are cached locally in the app
   policy.object_src      :none
-  policy.script_src      :self, :unsafe_eval # TODO: Remove this once all use of js.erb templaces is removed
+  policy.script_src      :self, :unsafe_eval, 'https://unpkg.com/' # TODO: Remove this once all use of js.erb templaces is removed
   policy.style_src       :self
   policy.manifest_src    :self
 
