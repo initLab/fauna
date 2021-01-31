@@ -61,9 +61,12 @@ Rails.application.routes.draw do
   get 'manifest', to: 'web_app_manifest#manifest'
 
   devise_for :users, controllers: {registrations: 'registrations'}
+  get "dashboard/index"
   get "users/present"
   get "users/present_embeddable"
-  root "users#present"
+  root "dashboard#index"
+
+  resources :sensors, only: [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

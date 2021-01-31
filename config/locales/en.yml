@@ -208,7 +208,9 @@ en:
     roles:
       are_you_sure: 'Are you shnur?'
     sensors:
-      temperature_humidity: Temperature and humidity readings
+      title: Sensor readings
+      temperature: Temperature
+      humidity: Humidity
     footer:
       license: 'init Lab Fauna is licensed under'
       source_code: 'The source code is available in'

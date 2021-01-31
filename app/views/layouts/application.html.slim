@@ -17,6 +17,7 @@ html lang="#{I18n.locale}"
     = csp_meta_tag
 
     = stylesheet_link_tag 'application', :media => 'all', 'data-turbolinks-track' => 'reload', :nonce => content_security_policy_nonce, :integrity => true
+    = javascript_include_tag 'https://unpkg.com/mqtt/dist/mqtt.min.js'
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload', :nonce => content_security_policy_nonce, :integrity => true
 
     link rel="manifest" href="/manifest.json"
