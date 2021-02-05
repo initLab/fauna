@@ -7,5 +7,5 @@ section.container
     .row
       - @grafana[type]['panels'].each do |panelId|
         .col-sm-4
-          a href="http://stats.initlab.org/d/#{@grafana[type]['dashboard']['id']}/temperature" target="_blank"
-            img.grafana-chart src="http://stats.initlab.org/render/d-solo/#{@grafana[type]['dashboard']['id']}/#{@grafana[type]['dashboard']['name']}?orgId=1&panelId=#{panelId}&width=350&height=200&tz=Europe%2FSofia" alt=""
+          a href="https://stats.initlab.org/d/#{@grafana[type]['dashboard']['id']}/temperature" target="_blank"
+            img.grafana-chart src="https://stats.initlab.org/render/d-solo/#{@grafana[type]['dashboard']['id']}/#{@grafana[type]['dashboard']['name']}?orgId=1&panelId=#{panelId}&width=350&height=200&tz=Europe%2FSofia" alt=""

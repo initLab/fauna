@@ -1,10 +1,10 @@
 $(function() {
-    var units = {
+    const units = {
         'Temperature': ['°C', 1],
         'Humidity': ['%', 1]
     };
 
-    var template = $('<div />').addClass('panel panel-primary').append(
+    const template = $('<div />').addClass('panel panel-primary').append(
         $('<div />').addClass('panel-heading').append(
             $('<div />').addClass('row').append(
                 $('<div />').addClass('col-xs-3').append(
@@ -18,19 +18,19 @@ $(function() {
         )
     );
 
-    var elements = $('[data-label-type][data-mqtt-topic]');
+    const elements = $('[data-label-type][data-mqtt-topic]');
 
     if (elements.length === 0) {
         return;
     }
 
-    var topics = elements.map(function () {
+    const topics = elements.map(function () {
         return $(this).data('mqtt-topic');
     }).get().filter(function (value, index, self) {
         return self.indexOf(value) === index;
     });
 
-    var mqttClient = mqtt.connect('wss://spitfire.initlab.org:8083/mqtt');
+    const mqttClient = mqtt.connect('wss://spitfire.initlab.org:8083/mqtt');
 
     mqttClient.on('connect', function () {
         topics.forEach(function (topic) {
@@ -38,20 +38,22 @@ $(function() {
         });
     });
 
-    mqttClient.on('message', function(topic, data) {
-        console.log(topic, data.toString());
+    mqttClient.on('message', function(topic, data, message) {
+        if (message.retain) {
+            return;
+        }
 
-        var element = $('[data-mqtt-topic="' + topic + '"]');
+        const element = $('[data-mqtt-topic="' + topic + '"]');
 
         if (element.length === 0) {
             return;
         }
 
-        var type = element.data('label-type');
-        var label = element.data('label');
-        var unit = units[type];
-        var value = data ? (parseFloat(data.toString()).toFixed(unit[1]) + unit[0]) : 'No data';
-        var box = template.clone().find('.placeholder-value').text(value).end()
+        const type = element.data('label-type');
+        const label = element.data('label');
+        const unit = units[type];
+        const value = data ? (parseFloat(data.toString()).toFixed(unit[1]) + unit[0]) : 'No data';
+        const box = template.clone().find('.placeholder-value').text(value).end()
             .find('.placeholder-description').text(label).end();
         element.empty().append(box);
     });
