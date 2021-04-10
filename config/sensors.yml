@@ -1,7 +1,7 @@
 grafana:
   temperature:
     dashboard:
-      id: 000000008
+      id: C-7GPzXMk
       name: temperatures
     panels:
       - 4
@@ -9,7 +9,7 @@ grafana:
       - 10
   humidity:
     dashboard:
-      id: 000000009
+      id: d19kszuGk
       name: humidity
     panels:
       - 4
@@ -17,9 +17,9 @@ grafana:
       - 10
 mqtt:
   sensors:
-    - label: Outside
-      topic: sensor-outside-espurna/temperature
-    - label: Lecture room
-      topic: sensor-lecture-room-espurna/temperature
-    - label: Ruby room
-      topic: sensor-ruby-room-espurna/temperature
+    - label: Big room
+      topic: sensors-xiaomi-ble/big-room/temperature
+    - label: Small room
+      topic: sensors-xiaomi-ble/small-room/temperature
+    - label: Kitchen
+      topic: sensors-xiaomi-ble/kitchen/temperature
