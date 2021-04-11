@@ -39,9 +39,13 @@ $(function() {
     });
 
     mqttClient.on('message', function(topic, data, message) {
-        if (message.retain) {
-            return;
-        }
+        // Xiaomi BLE devices send data rarely (10 min), unlike the Espurna-based devices,
+        // which can send data every 6 secs. It would be a better idea to just show the retained
+        // measurements on page load, instead of waiting for a fresh one.
+        //
+        // if (message.retain) {
+        //     return;
+        // }
 
         const element = $('[data-mqtt-topic="' + topic + '"]');
 
