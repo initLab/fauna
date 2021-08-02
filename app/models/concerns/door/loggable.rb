@@ -4,7 +4,7 @@ module Door::Loggable
   included do
     has_one :log_entry, as: :loggable
     before_create :associate_log_entry
-    #after_create :spam_irc
+    after_create :spam_irc
   end
 
   def public_message
