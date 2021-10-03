@@ -2,9 +2,9 @@ space: init Lab
 logo: initlab-logo.png
 url: https://initlab.org
 location:
-  address: floor 2, 6 Rila str., Sofia, Bulgaria
-  lat: 42.70789247
-  lon: 23.32527086
+  address: floor 3, 64A, Tsar Asen Str., Sofia, Bulgaria
+  lat: 42.6879500
+  lon: 23.3169100
 spacefed:
   spacenet: false
   spacesaml: false
