@@ -118,7 +118,7 @@ end
 
 group :test, :development do
   # Use SQLite for development
-  gem 'sqlite3', '~> 1.3.6'
+  gem 'sqlite3'
 
   # RSpec for testing
   gem 'rspec-rails'
