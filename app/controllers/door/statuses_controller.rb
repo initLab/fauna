@@ -32,12 +32,12 @@ class Door::StatusesController < ApplicationController
   private
 
   def update_error(message, args = {})
-    flash[:error] = I18n.t(message, args)
+    flash[:error] = t(message, **args)
     redirect_back fallback_location: door_status_path
   end
 
   def update_success(message, args = {})
-    flash[:notice] = I18n.t(message, args)
+    flash[:notice] = t(message, **args)
     redirect_back fallback_location: door_status_path
   end
 

@@ -16,7 +16,7 @@ describe Door::StatusesController, type: :controller do
 
       it 'returns HTTP Success' do
         get :show
-        expect(response).to be_success
+        expect(response.status).to eq 200
       end
     end
   end
