@@ -84,6 +84,7 @@ gem 'doorkeeper', '> 1.0beta'
 gem 'doorkeeper-i18n'
 
 gem 'net-smtp', require: false
+gem 'matrix'
 
 group :development do
   # Use Capistrano for deployment

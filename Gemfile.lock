@@ -196,6 +196,7 @@ GEM
       gpgme (~> 2.0, >= 2.0.2)
       mail (~> 2.5, >= 2.5.3)
     marcel (1.0.2)
+    matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
@@ -417,6 +418,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mail-gpg
+  matrix
   net-smtp
   pg
   phony_rails
