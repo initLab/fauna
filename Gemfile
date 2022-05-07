@@ -92,6 +92,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
+  gem 'net-ssh', '7.0.0.beta1'
 
   gem 'pry'
   gem 'pry-rails'
