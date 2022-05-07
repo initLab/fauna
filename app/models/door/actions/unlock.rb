@@ -1,7 +1,11 @@
-class Door::Actions::Unlock < Door::Actions::Action
-  self.authorizer_name = 'DoorLatchAuthorizer'
+module Door
+  module Actions
+    class Unlock < Door::Actions::Action
+      self.authorizer_name = 'DoorLatchAuthorizer'
 
-  def backend_method
-    :unlock!
+      def backend_method
+        :unlock!
+      end
+    end
   end
 end

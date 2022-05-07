@@ -1,2 +1,4 @@
-module Door::StatusManager
+module Door
+  module StatusManager
+  end
 end

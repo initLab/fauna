@@ -1,5 +1,7 @@
-module Door::StatusManager
-  class Error < StandardError; end
+module Door
+  module StatusManager
+    class Error < StandardError; end
 
-  class UnexpectedResponseCodeError < Error; end
+    class UnexpectedResponseCodeError < Error; end
+  end
 end

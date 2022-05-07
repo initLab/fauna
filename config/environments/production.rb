@@ -1,5 +1,10 @@
 require "active_support/core_ext/integer/time"
 
+require_relative "../../app/models/door/status_manager/buzzer"
+require_relative "../../app/models/door/status_manager/pesho"
+require_relative "../../app/models/door/status_manager/init_lab"
+require_relative "../../app/models/lights/policy_manager/init_lab"
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
