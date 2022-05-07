@@ -83,6 +83,8 @@ gem 'yaml_db'
 gem 'doorkeeper', '> 1.0beta'
 gem 'doorkeeper-i18n'
 
+gem 'net-smtp', require: false
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
