@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.4.8'
 gem 'bootsnap'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
-gem 'sprockets', '< 4'
+gem 'sprockets'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
