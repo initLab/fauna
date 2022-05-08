@@ -36,7 +36,6 @@ describe Api::Door::ActionsController, type: :controller do
       let(:user) { create :trusted_member }
 
       before :each do
-        allow(action).to receive(:creatable_by?).and_return true
         allow(action).to receive(:initiator=)
         allow(action).to receive(:origin_information=)
         allow(action).to receive(:save)

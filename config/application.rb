@@ -46,5 +46,7 @@ module Fauna
     config.to_prepare do
       Doorkeeper::AuthorizedApplicationsController.layout "application"
     end
+
+    config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
   end
 end

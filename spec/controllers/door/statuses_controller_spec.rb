@@ -34,9 +34,7 @@ describe Door::StatusesController, type: :controller do
 
       it 'redirects to the referer with an error message when the current user is not authorized' do
         sign_in create :user
-        action = double Door::Actions::Action
-        allow(action).to receive(:creatable_by?).and_return(false)
-        allow(Door::Actions::Action).to receive(:from_name).and_return action
+        allow(Door::Actions::Action).to receive(:from_name).and_return(double(Door::Actions::Action))
 
         patch :update, params: {status: {name: 'foo'}}
         expect(response).to redirect_to('back')
@@ -52,7 +50,6 @@ describe Door::StatusesController, type: :controller do
       end
 
       before :each do
-        allow(action).to receive(:creatable_by?).and_return true
         allow(action).to receive(:initiator=)
         allow(action).to receive(:origin_information=)
         allow(action).to receive(:save)

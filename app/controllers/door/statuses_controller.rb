@@ -14,9 +14,7 @@ class Door::StatusesController < ApplicationController
       return update_error('views.door_status.invalid_action')
     end
 
-    if not @action.creatable_by? current_user
-      return update_error('views.door_status.forbidden')
-    end
+    authorize :door_manipulation
 
     @action.initiator = current_user
     @action.origin_information = "Remote Host: #{current_ip_address}"
@@ -27,6 +25,8 @@ class Door::StatusesController < ApplicationController
     else
       update_error('views.door_status.action_executed_unsuccessfuly')
     end
+  rescue Pundit::NotAuthorizedError
+    update_error('views.door_status.forbidden')
   end
 
   private

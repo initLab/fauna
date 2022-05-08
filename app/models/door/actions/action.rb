@@ -2,7 +2,6 @@ module Door
   module Actions
     class Action < ApplicationRecord
       include Door::Loggable
-      include Authority::Abilities
 
       belongs_to :initiator, class_name: 'User'
 

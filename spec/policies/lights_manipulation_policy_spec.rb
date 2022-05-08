@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe DoorLockManagementPolicy do
+describe LightsManipulationPolicy do
   context 'given the user is a board member' do
     let(:board_member) { instance_double(User) }
     subject { described_class.new board_member, double }
@@ -11,6 +11,7 @@ describe DoorLockManagementPolicy do
     end
 
     it { is_expected.to permit(:create) }
+    it { is_expected.to permit(:show) }
   end
 
   context 'given the user is a trusted member' do
@@ -23,6 +24,7 @@ describe DoorLockManagementPolicy do
     end
 
     it { is_expected.to permit(:create) }
+    it { is_expected.to permit(:show) }
   end
 
   context 'given the user is a regular user' do
@@ -34,13 +36,14 @@ describe DoorLockManagementPolicy do
       allow(regular_user).to receive(:has_role?).with(:trusted_member).and_return(false)
     end
 
-
     it { is_expected.not_to permit(:create) }
+    it { is_expected.not_to permit(:show) }
   end
 
   context 'given the user has not signed in' do
     subject { described_class.new nil, double }
 
     it { is_expected.not_to permit(:create) }
+    it { is_expected.not_to permit(:show) }
   end
 end

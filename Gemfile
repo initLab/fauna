@@ -59,7 +59,6 @@ gem 'kaminari'
 
 # Use rolify and authority for authorization
 gem 'rolify'
-gem 'authority'
 gem 'pundit'
 
 # GPG Signing

@@ -70,8 +70,6 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
-    authority (3.3.0)
-      activesupport (>= 3.0.0)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     awesome_print (1.9.2)
@@ -429,7 +427,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  authority
   awesome_print
   better_errors
   binding_of_caller

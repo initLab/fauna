@@ -1,11 +1,12 @@
 module Fauna
   class RoleAssignmentsController < ApplicationController
     before_action :authenticate_user!
-    authorize_actions_for User
 
     before_action :assign_user
 
     def create
+      authorize :role_assignment
+
       respond_to do |format|
         format.js do
           if @user.add_role(role_params[:name]).persisted?
@@ -15,9 +16,13 @@ module Fauna
           end
         end
       end
+    rescue Pundit::NotAuthorizedError
+      head :forbidden
     end
 
     def destroy
+      authorize :role_assignment
+
       respond_to do |format|
         format.js do
           unless @user.remove_role(params[:role_name]).empty?
@@ -27,6 +32,8 @@ module Fauna
           end
         end
       end
+    rescue Pundit::NotAuthorizedError
+      head :forbidden
     end
 
     private

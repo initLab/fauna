@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationPolicy
   attr_reader :user, :record
 
@@ -7,43 +9,47 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    user && user.has_role?(:board_member)
   end
 
   def show?
-    false
+    index?
   end
 
   def create?
-    false
+    index?
   end
 
   def new?
-    create?
+    index?
   end
 
   def update?
-    false
+    index?
   end
 
   def edit?
-    update?
+    index?
   end
 
   def destroy?
-    false
+    index?
   end
 
   class Scope
-    attr_reader :user, :scope
-
     def initialize(user, scope)
+      raise Pundit::NotAuthorizedError, "must be logged in" unless user
+
       @user = user
       @scope = scope
     end
 
     def resolve
-      scope.all
+      raise NotImplementedError, "You must define #resolve in #{self.class}"
     end
+
+    private
+
+    attr_reader :user, :scope
   end
 end

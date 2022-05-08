@@ -2,8 +2,6 @@ require 'digest/md5'
 
 class User < ApplicationRecord
   rolify
-  include Authority::Abilities
-  include Authority::UserAbilities
 
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable

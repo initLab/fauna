@@ -1,8 +1,5 @@
 module Lights
   class Policy
-    include Authority::Abilities
-    self.authorizer_name = 'LightsPolicyAuthorizer'
-
     def initialize(policy)
       @policy = policy[:policy]
       @policy_manager = Rails.application.config.lights_policy_manager.new

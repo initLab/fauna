@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe DoorHandleManipulationPolicy do
+describe DoorManipulationPolicy do
   context 'given the user is a board member' do
     let(:board_member) { instance_double(User) }
     subject { described_class.new board_member, double }

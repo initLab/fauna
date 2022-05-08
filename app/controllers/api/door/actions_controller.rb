@@ -11,9 +11,7 @@ class Api::Door::ActionsController < Api::ApplicationController
       return head :unprocessable_entity
     end
 
-    if not @action.creatable_by? current_resource_owner
-      return head :forbidden
-    end
+    authorize :door_manipulation
 
     @action.initiator = current_resource_owner
     @action.origin_information = "Remote Host: #{current_ip_address}"
@@ -24,6 +22,8 @@ class Api::Door::ActionsController < Api::ApplicationController
     else
       head :unprocessable_entity
     end
+  rescue Pundit::NotAuthorizedError
+    head :forbidden
   end
 
   def door_action_params
