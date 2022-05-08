@@ -96,7 +96,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new('fauna'))
-  
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
@@ -108,5 +108,5 @@ Rails.application.configure do
 
   config.door_status_manager_backend = Door::StatusManager::InitLab
 
-  config.lights_policy_manager = Lights::PolicyManager::InitLab
+  config.lights_policy_manager = Lights::PolicyManager::Dummy
 end
