@@ -21,10 +21,6 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         li class="#{'active' if current_page?(users_present_path)}"
           = link_to users_present_path do
             = icon 'street-view', t('views.navigation.presence')
-        - if user_signed_in? and LightsManipulationPolicy.new(current_user, nil).show?
-          li class="#{'active' if current_page?(lights_status_path)}"
-            = link_to lights_status_path do
-              = icon 'lightbulb-o', t('views.navigation.lights')
         li class="#{'active' if current_page?(sensors_path)}"
           = link_to sensors_path do
             = icon 'line-chart', t('views.navigation.sensors')

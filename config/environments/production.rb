@@ -3,7 +3,6 @@ require "active_support/core_ext/integer/time"
 require_relative "../../app/models/door/status_manager/buzzer"
 require_relative "../../app/models/door/status_manager/pesho"
 require_relative "../../app/models/door/status_manager/init_lab"
-require_relative "../../app/models/lights/policy_manager/dummy"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -107,6 +106,4 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.door_status_manager_backend = Door::StatusManager::InitLab
-
-  config.lights_policy_manager = Lights::PolicyManager::Dummy
 end

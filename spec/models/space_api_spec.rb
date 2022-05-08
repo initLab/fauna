@@ -32,8 +32,6 @@ describe SpaceApi do
 
   describe '#sensors' do
     let(:backend) { Rails.application.config.door_status_manager.backend }
-    let(:lights_manager) { Rails.application.config.lights_policy_manager }
-
     describe 'its entry with key people_now_present' do
       it 'is an array' do
         expect(SpaceApi.new.sensors[:people_now_present]).to be_an Array
@@ -105,12 +103,6 @@ describe SpaceApi do
 
       it 'returns a hash that does not contain an entry with a key of door_locked' do
         expect(SpaceApi.new.sensors[:door_locked]).to be_nil
-      end
-    end
-
-    context 'when the lights are on' do
-      it 'returns a hash containing an entry with a key ext_lights_on and value - an array containing {value: true, location: "Outside"}' do
-        expect(SpaceApi.new.sensors[:ext_lights_on]).to include({value: true, location: "Outside"})
       end
     end
   end

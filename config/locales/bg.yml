@@ -112,17 +112,6 @@ bg:
     dashboard:
       sensor_readings: Температура на въздуха
       loading: Зареждане на данните...
-    lights:
-      management: Управление на осветлението
-      always_on: Винаги включено
-      switched_on: включено
-      switched_off: изключено
-      auto: Автоуправление
-      status: Състояние
-      change_policy_to: Избери режим
-      policy: Режим
-      an_error_occurred: Възникна грешка при заявката за промяна на режима
-      success: Режимът беше успешно променен
     door_status:
       locked: Заключено
       unlocked: Отключено
@@ -152,7 +141,6 @@ bg:
       management: Управление
       members_fee: Членски внос
       network_devices: Мрежови устройства
-      lights: Осветление
       sensors: Графики
       oauth_application_management: OAuth интеграция
       oauth_token_management: Упълномощени приложения

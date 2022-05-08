@@ -106,17 +106,6 @@ en:
     dashboard:
       sensor_readings: Temperature readings
       loading: Loading data...
-    lights:
-      management: Lights control
-      always_on: Always on
-      switched_on: 'on'
-      switched_off: 'off'
-      auto: Automatic
-      status: State
-      change_policy_to: Choose mode
-      policy: Mode
-      an_error_occurred: An error occurred during the mode change request.
-      success: Mode was changed successfully.
     door_status:
       locked: Locked
       unlocked: Unlocked
@@ -146,7 +135,6 @@ en:
       management: Management
       members_fee: Membership fee
       network_devices: Network devices
-      lights: Lights
       sensors: Sensors
       oauth_application_management: OAuth integration
       oauth_token_management: Authorized applications

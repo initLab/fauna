@@ -3,7 +3,6 @@ module Door
     self.table_name_prefix = 'door_'
 
     include Loggable
-    include ::LightsControllerNotifying
 
     validates :door, presence: true, inclusion: {in: ['Open', 'Closed']}
     validates :latch, presence: true, inclusion: {in: ['Unlocked', 'Locked']}

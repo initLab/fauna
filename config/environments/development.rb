@@ -1,7 +1,6 @@
 require "active_support/core_ext/integer/time"
 
 require_relative "../../app/models/door/status_manager/dummy"
-require_relative "../../app/models/lights/policy_manager/dummy"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -74,6 +73,4 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.door_status_manager_backend = Door::StatusManager::Dummy
-
-  config.lights_policy_manager = Lights::PolicyManager::Dummy
 end

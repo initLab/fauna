@@ -28,22 +28,10 @@ Rails.application.routes.draw do
     resources :status_notifications, only: [:create]
   end
 
-  namespace :lights do
-    resource :status, only: [:show] do
-      member do
-        resource :policy, only: [:update]
-      end
-    end
-  end
-
   namespace :api, defaults: {format: 'json'} do
     namespace :door do
       resource :status, only: :show
       resources :actions, only: :create
-    end
-
-    namespace :lights do
-      resource :status, only: :show
     end
 
     resources :users, only: [] do

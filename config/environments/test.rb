@@ -1,6 +1,5 @@
 require "active_support/core_ext/integer/time"
 require_relative "../../app/models/door/status_manager/dummy"
-require_relative "../../app/models/lights/policy_manager/dummy"
 
 # The test environment is used exclusively to run your application's
 # test suite. You never need to work with it otherwise. Remember that
@@ -64,6 +63,4 @@ Rails.application.configure do
   # config.action_view.annotate_rendered_view_with_filenames = true
 
   config.door_status_manager_backend = Door::StatusManager::Dummy
-
-  config.lights_policy_manager = Lights::PolicyManager::Dummy
 end
