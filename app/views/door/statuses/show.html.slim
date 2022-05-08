@@ -17,17 +17,17 @@ section.container
           br
           = t('views.door_status.unknown')
     .large_button_group
-      - if current_user.can_create?(Door::Actions::Open) and (door_status == :unlocked || door_status == :unknown)
+      - if door_status == :unlocked || door_status == :unknown
         = button_to door_status_path(status: {name: :open}), class: 'door_button btn-success', method: :patch do
           = icon('sign-in')
           br
           span.small = t 'views.door_status.open'
-      - if current_user.can_create?(Door::Actions::Unlock) and (door_status == :locked || door_status == :unknown)
+      - if door_status == :locked || door_status == :unknown
         = button_to door_status_path(status: {name: :unlock}), class: 'door_button btn-danger', method: :patch do
           = icon('unlock')
           br
           span.small = t 'views.door_status.unlock'
-      - if current_user.can_create?(Door::Actions::Lock) and (door_status == :unlocked || door_status == :unknown)
+      - if door_status == :unlocked || door_status == :unknown
         = button_to door_status_path(status: {name: :lock}), class: 'door_button btn-info', method: :patch do
           = icon('lock')
           br
