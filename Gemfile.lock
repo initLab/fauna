@@ -244,7 +244,7 @@ GEM
       timeout
     net-ssh (7.0.0.beta1)
     nio4r (2.5.8)
-    nokogiri (1.13.5)
+    nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     notiffany (0.1.3)
