@@ -6,7 +6,6 @@ class SpaceApi < OpenStruct
     super SPACEAPI_CONFIG
     self.api = '0.13'
     set_hackerspace_state
-    add_front_door_status_if_known
     add_people_now_present
   end
 
@@ -23,12 +22,6 @@ class SpaceApi < OpenStruct
     self.sensors[name] << data
   end
 
-  def add_front_door_status_if_known
-    return if hackerspace_open?.nil?
-    add_sensor name: :door_locked, data: {value: !hackerspace_open?,
-                                          location: 'Front'}
-  end
-
   def add_people_now_present
     present_people_reading = {location: SPACEAPI_CONFIG['space'],
                               value: Presence.present_users.count}
@@ -41,17 +34,6 @@ class SpaceApi < OpenStruct
   end
 
   def set_hackerspace_state
-    self.state = {open: hackerspace_open?}
-  end
-
-  def hackerspace_open?
-    case Door::CurrentStatus.new.latch
-    when :unlocked
-      true
-    when :locked
-      false
-    else
-      nil
-    end
+    self.state = {open: false} # TODO: Implement this
   end
 end

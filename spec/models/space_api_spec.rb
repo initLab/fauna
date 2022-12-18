@@ -31,7 +31,6 @@ describe SpaceApi do
   end
 
   describe '#sensors' do
-    let(:backend) { Rails.application.config.door_status_manager.backend }
     describe 'its entry with key people_now_present' do
       it 'is an array' do
         expect(SpaceApi.new.sensors[:people_now_present]).to be_an Array
@@ -73,70 +72,6 @@ describe SpaceApi do
           allow(Presence).to receive(:present_users).and_return([])
           expect(SpaceApi.new.sensors[:people_now_present][0]).to_not have_key :names
         end
-      end
-    end
-
-    context 'when the door is locked' do
-      before do
-        allow(backend).to receive(:status).and_return({"door" => "closed", "latch" => "locked"})
-      end
-
-      it 'returns a hash containing an entry with a key door_locked and value - an array containing {value: true, location: "Front"}' do
-        expect(SpaceApi.new.sensors[:door_locked]).to include({value: true, location: "Front"})
-      end
-    end
-
-    context 'when the door is unlocked' do
-      before do
-        allow(backend).to receive(:status).and_return({"door" => "closed", "latch" => "unlocked"})
-      end
-
-      it 'returns a hash containing an entry with a key door_locked and value - an array containing {value: false, location: "Front"}' do
-        expect(SpaceApi.new.sensors[:door_locked]).to include({value: false, location: "Front"})
-      end
-    end
-
-    context 'when the door is in an unknown state' do
-      before do
-        allow(backend).to receive(:status).and_return({"door" => "closed", "latch" => "unknown"})
-      end
-
-      it 'returns a hash that does not contain an entry with a key of door_locked' do
-        expect(SpaceApi.new.sensors[:door_locked]).to be_nil
-      end
-    end
-  end
-
-  describe '#state' do
-    let(:backend) { Rails.application.config.door_status_manager.backend }
-
-    context 'when the door is locked' do
-      before do
-        allow(backend).to receive(:status).and_return({"door" => "closed", "latch" => "locked"})
-      end
-
-      it 'returns a hash that contains open: false' do
-        expect(SpaceApi.new.state[:open]).to be_falsy
-      end
-    end
-
-    context 'when the door is unlocked' do
-      before do
-        allow(backend).to receive(:status).and_return({"door" => "closed", "latch" => "unlocked"})
-      end
-
-      it 'returns a hash that contains open: true' do
-        expect(SpaceApi.new.state[:open]).to be_truthy
-      end
-    end
-
-    context 'when the door is in an unknown state' do
-      before do
-        allow(backend).to receive(:status).and_return({"door" => "closed", "latch" => "unknown"})
-      end
-
-      it 'returns a hash that contains open: nil' do
-        expect(SpaceApi.new.state[:open]).to be_nil
       end
     end
   end

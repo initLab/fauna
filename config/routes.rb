@@ -29,11 +29,6 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: 'json'} do
-    namespace :door do
-      resource :status, only: :show
-      resources :actions, only: :create
-    end
-
     resources :users, only: [] do
       collection do
         get 'present'
