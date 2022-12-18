@@ -41,8 +41,6 @@ module Fauna
       g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
 
-    config.door_status_manager = ActiveSupport::OrderedOptions.new
-
     config.to_prepare do
       Doorkeeper::AuthorizedApplicationsController.layout "application"
     end
