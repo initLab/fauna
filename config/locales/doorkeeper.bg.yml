@@ -6,7 +6,6 @@ bg:
   doorkeeper:
     scopes:
       public: Достъпва публични данни
-      door_handle_control: Отваря входната врата, когато е отключена
-      door_latch_control: Отключва и заключва на входната врата
+      door_control: Заключване/отключване/отваряне на врати
       account_data_read: Чете всички данни от акаунта ви
       account_data_write: Променя всички данни от акаунта ви

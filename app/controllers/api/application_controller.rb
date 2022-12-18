@@ -10,4 +10,6 @@ class Api::ApplicationController < ::ApplicationController
   def pundit_user
     current_resource_owner
   end
+
+  helper_method :current_resource_owner
 end

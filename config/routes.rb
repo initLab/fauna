@@ -37,6 +37,12 @@ Rails.application.routes.draw do
     end
 
     resource :current_user, only: :show
+
+    resources :doors, only: [:index] do
+      post :open
+      post :lock
+      post :unlock
+    end
   end
 
   get 'spaceapi/status', to: 'space_api#status'
