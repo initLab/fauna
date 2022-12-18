@@ -1,0 +1,25 @@
+- content_for(:title) { t 'views.door_status.management' }
+section.container
+  .row
+    - @doors.each do |door|
+      .col-xs-12
+        .panel.panel-primary
+          .panel-heading
+            = door.human_name
+          .panel-body
+            .large_button_group
+              - if door.supported_actions.include?(:open)
+                = button_to door_open_path(door.id), class: 'door_button btn-success', method: :post do
+                  = icon('sign-in')
+                  br
+                  span.small = t 'views.door_status.open'
+              - if door.supported_actions.include?(:unlock)
+                = button_to door_unlock_path(door.id), class: 'door_button btn-danger', method: :post do
+                  = icon('unlock')
+                  br
+                  span.small = t 'views.door_status.unlock'
+              - if door.supported_actions.include?(:lock)
+                = button_to door_lock_path(door.id), class: 'door_button btn-info', method: :post do
+                  = icon('lock')
+                  br
+                  span.small = t 'views.door_status.lock'

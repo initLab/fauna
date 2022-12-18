@@ -57,7 +57,7 @@ gem 'cocoon'
 # Use Kaminari for pagination
 gem 'kaminari'
 
-# Use rolify and authority for authorization
+# Use rolify and pundit for authorization
 gem 'rolify'
 gem 'pundit'
 

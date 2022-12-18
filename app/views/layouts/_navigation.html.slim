@@ -9,15 +9,9 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         = image_tag 'logo.svg', class: 'navbar-brand', alt: 'Fauna'
     .navbar-collapse.collapse.navbar-inverse-collapse
       ul.nav.navbar-nav
-        li class="#{'active' if current_page?(door_status_path)}"
-          = link_to door_status_path do
-            - case door_status
-            - when :locked
-              = icon 'lock', t('views.door_status.locked')
-            - when :unlocked
-              = icon 'unlock', t('views.door_status.unlocked')
-            - else
-              = icon 'lock', t('views.door_status.unknown')
+        li class="#{'active' if current_page?(doors_path)}"
+          = link_to doors_path do
+            = icon 'lock', t('views.access')
         li class="#{'active' if current_page?(users_present_path)}"
           = link_to users_present_path do
             = icon 'street-view', t('views.navigation.presence')

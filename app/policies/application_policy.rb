@@ -9,7 +9,7 @@ class ApplicationPolicy
   end
 
   def index?
-    user && user.has_role?(:board_member)
+    user&.has_role?(:board_member)
   end
 
   def show?

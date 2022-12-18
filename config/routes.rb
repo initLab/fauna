@@ -23,9 +23,10 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :door do
-    resource :status, only: [:show, :update]
-    resources :status_notifications, only: [:create]
+  resources :doors, only: [:index] do
+    post :open
+    post :lock
+    post :unlock
   end
 
   namespace :api, defaults: {format: 'json'} do
