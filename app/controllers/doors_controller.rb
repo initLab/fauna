@@ -29,11 +29,13 @@ class DoorsController < ApplicationController
   end
 
   def perform_door_action(action)
-    if @door.perform_action(action)
-      redirect_back fallback_location: :index
-    else
-      raise
-    end
+    @door.perform_action(action)
+
+    flash.notice = I18n.t("views.doors.action_executed_successfully")
+  rescue
+    flash.error = I18n.t("views.doors.action_executed_unsuccessfully")
+  ensure
+    redirect_back_or_to({action: :index})
   end
 
   def append_audit_log_entry

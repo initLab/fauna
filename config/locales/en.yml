@@ -106,12 +106,12 @@ en:
     dashboard:
       sensor_readings: Temperature readings
       loading: Loading data...
-    door_status:
+    doors:
       locked: Locked
       unlocked: Unlocked
       unknown: Unknown
-      action_executed_successfuly: "Action %{action} was completed successfully."
-      action_executed_unsuccessfuly: The action was not completed successfully.
+      action_executed_successfully: "Action was completed successfully."
+      action_executed_unsuccessfully: The action was not completed successfully.
       invalid_action: The specified action is invalid.
       forbidden: You do not have permission to perform this action.
       management: Lab door control
@@ -119,6 +119,7 @@ en:
       unlock: unlock
       open: open
       log: log
+      no_actions_supported: You don't have the necessary rights to control this door
     navigation:
       view_edit: View/edit
       sign_in: Login
@@ -126,7 +127,7 @@ en:
       account: Account
       lab: Lab
       labbers: Labbers
-      door_access: Open door
+      door_access: Open doors
       presence: Presence
       access: Access
       library: Library

@@ -11,7 +11,7 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
       ul.nav.navbar-nav
         li class="#{'active' if current_page?(doors_path)}"
           = link_to doors_path do
-            = icon 'lock', t('views.access')
+            = icon 'lock', t('views.navigation.door_access')
         li class="#{'active' if current_page?(users_present_path)}"
           = link_to users_present_path do
             = icon 'street-view', t('views.navigation.presence')

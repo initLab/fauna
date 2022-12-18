@@ -34,6 +34,10 @@ class AccessControl::Door
     @action_permissions.keys
   end
 
+  def supported_actions_for(*roles)
+    supported_actions.select { |action| permitted_roles_for(action).any? { |role| roles.include?(role) } }
+  end
+
   def perform_action(action)
     raise(ArgumentError, "Door does not support action: #{action.inspect}") unless @action_permissions.key?(action)
 
