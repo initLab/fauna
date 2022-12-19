@@ -1,0 +1,18 @@
+default:
+  example_door:
+    human_name:
+      en: Example Door
+      bg: Примерна Врата
+    controller:
+      klass: Dummy
+    actions:
+      open:
+        roles:
+          - board_member
+          - trusted_member
+
+development:
+  <<: *default
+
+test:
+  <<: *default

@@ -32,8 +32,9 @@ class DoorsController < ApplicationController
     @door.perform_action(action)
 
     flash.notice = I18n.t("views.doors.action_executed_successfully")
-  rescue
-    flash.error = I18n.t("views.doors.action_executed_unsuccessfully")
+  rescue => e
+    Rails.logger.error(e)
+    flash.alert = I18n.t("views.doors.action_executed_unsuccessfully")
   ensure
     redirect_back_or_to({action: :index})
   end

@@ -65,6 +65,11 @@ Dir.chdir APP_ROOT do
     system 'cp config/database.yml.example config/database.yml'
   end
 
+  puts "\n== Setting up the door configuration =="
+  unless File.exist?('config/doors.yml')
+    system 'cp config/doors.yml.example config/doors.yml'
+  end
+
   puts "\n== Preparing database =="
   system 'bundle exec rake db:create db:migrate db:test:prepare'
 

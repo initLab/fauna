@@ -41,7 +41,7 @@ class AccessControl::Door
   def perform_action(action)
     raise(ArgumentError, "Door does not support action: #{action.inspect}") unless @action_permissions.key?(action)
 
-    @controller.public_send(action)
+    @controller.call(action)
   end
 
   def permitted_roles_for(action)
