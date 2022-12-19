@@ -88,7 +88,7 @@ group :development do
   gem "capistrano-rails"
   gem "capistrano-bundler"
   gem "capistrano-rbenv"
-  gem "net-ssh", "7.0.0.beta1"
+  gem "net-ssh"
 
   gem "pry"
   gem "pry-rails"
@@ -98,7 +98,7 @@ group :development do
   gem "guard-rspec"
 
   # Deploy to a puma  server
-  gem "capistrano3-puma"
+  gem "capistrano3-puma", "~> 5"
 
   # Goodies for prettier printing of records in the console
   gem "awesome_print"
