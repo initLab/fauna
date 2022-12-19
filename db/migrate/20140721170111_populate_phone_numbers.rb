@@ -4,6 +4,6 @@ class PopulatePhoneNumbers < ActiveRecord::Migration[4.2]
   end
 
   def down
-    execute 'INSERT INTO objects SELECT * FROM phone_numbers;'
+    execute "INSERT INTO objects SELECT * FROM phone_numbers;"
   end
 end

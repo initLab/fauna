@@ -25,20 +25,20 @@ module Fauna
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :bg
 
-    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+    config.action_view.field_error_proc = proc do |html_tag, instance|
       html_tag
     end
 
     # Tweak what's getting generated
     config.generators do |g|
       g.test_framework :rspec,
-        fixtures:         true,
-        view_specs:       false,
-        helper_specs:     false,
-        routing_specs:    true,
+        fixtures: true,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: true,
         controller_specs: true,
-        request_specs:    false
-      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+        request_specs: false
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
     config.to_prepare do

@@ -1,0 +1,7 @@
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: fauna_test
+  host: localhost
+  username: postgres
+  password: postgres

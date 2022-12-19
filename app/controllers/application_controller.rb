@@ -8,9 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
 
-  protected
-
-  def self.default_url_options(options={})
+  def self.default_url_options(options = {})
     if I18n.locale != I18n.default_locale
       options.merge({locale: I18n.locale})
     else
@@ -18,13 +16,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  protected
+
   def requested_locale
     if user_signed_in?
       current_user.locale
-    else
-      if params[:locale].present? && I18n.available_locales.include?(params[:locale].to_sym)
-        params[:locale].to_sym
-      end
+    elsif params[:locale].present? && I18n.available_locales.include?(params[:locale].to_sym)
+      params[:locale].to_sym
     end
   end
 
@@ -36,20 +34,20 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :username, :email])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :username,
-                                                           :email, :url, :locale,
-                                                           :twitter, :announce_my_presence,
-                                                           :github, :jabber,
-                                                           :gpg_fingerprint,
-                                                           :pin, :pin_confirmation,
-                                                           phone_numbers_attributes: [
-                                                             :_destroy,
-                                                             :id,
-                                                             :phone_number
-                                                           ]])
+      :email, :url, :locale,
+      :twitter, :announce_my_presence,
+      :github, :jabber,
+      :gpg_fingerprint,
+      :pin, :pin_confirmation,
+      phone_numbers_attributes: [
+        :_destroy,
+        :id,
+        :phone_number
+      ]])
   end
 
   def current_ip_address
-    request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip
+    request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip
   end
 
   def current_mac_address

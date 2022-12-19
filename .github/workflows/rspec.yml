@@ -1,0 +1,93 @@
+name: "Ruby on Rails CI"
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    name: rspec
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: fauna_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+          bundler-cache: true
+      - name: Install PostgreSQL
+        run: sudo apt-get -yqq install libpq-dev
+      # - name: Run yarn commands
+      #   run: |
+      #     yarn install
+      #     yarn build
+      #     yarn build:css
+      - name: Configure Doors
+        run: cp config/doors.yml.example config/doors.yml
+      - name: Configure Database
+        run: cp config/database.yml.ci config/database.yml
+      - name: Setup Database
+        env:
+          RAILS_ENV: test
+        run: bundle exec bin/rails db:schema:load
+      - name: Set up GPG
+        env:
+          GNUPGHOME: tmp/fauna_fake_gpg_home
+        run: mkdir tmp/fauna_fake_gpg_home && gpg -K && gpg --gen-key --batch spec/support/test_gpg_key_generation.batch
+
+      - name: Set up test user
+        env:
+          RAILS_ENV: test
+          GNUPGHOME: tmp/fauna_fake_gpg_home
+        run: bundle exec bin/setup -u admin -e admin@example.com -n admin -p foobarbaz
+
+      - name: Build and test with rspec
+        env:
+          GNUPGHOME: tmp/fauna_fake_gpg_home
+          RAILS_ENV: test
+        run: bundle exec rspec
+
+      - name: Archive test failure screenshots
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: screenshots
+          path: tmp/capybara
+
+      - name: Archive detailed Simplecov Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: coverage/index.html
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+          bundler-cache: true
+      # Add or replace any other lints here
+      - name: Security audit dependencies
+        run: bundle exec bundler-audit --update
+      - name: Security audit application code
+        run: bundle exec brakeman -q -w2
+      - name: Lint Ruby files
+        run: bundle exec standardrb --parallel

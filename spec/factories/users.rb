@@ -6,14 +6,14 @@ FactoryBot.define do
     sequence(:username) { |u| "username#{u}" }
     email { Faker::Internet.email }
     locale { I18n.available_locales.first.to_s }
-    twitter { 'foobar' }
+    twitter { "foobar" }
     url { Faker::Internet.url }
     password { Faker::Internet.password }
     password_confirmation { |u| u.password }
     confirmed_at { Time.now }
-    github { 'foobar' }
-    jabber { 'foo@bar.com' }
-    gpg_fingerprint { 'AAAA AAAA AAAA AAAA AAAA  AAAA AAAA AAAA AAAA AAAA' }
+    github { "foobar" }
+    jabber { "foo@bar.com" }
+    gpg_fingerprint { "AAAA AAAA AAAA AAAA AAAA  AAAA AAAA AAAA AAAA AAAA" }
 
     factory :board_member do
       after(:create) { |user| user.add_role(:board_member) }

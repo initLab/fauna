@@ -12,8 +12,8 @@ class MergeLogEntries < ActiveRecord::Migration[4.2]
 
     DoorLogEntry.find_each do |log_entry|
       LogEntry.create!({
-        loggable_id:   log_entry.loggable_id,
-        loggable_type: log_entry.loggable_type,
+        loggable_id: log_entry.loggable_id,
+        loggable_type: log_entry.loggable_type
       })
     end
 
@@ -35,8 +35,8 @@ class MergeLogEntries < ActiveRecord::Migration[4.2]
 
     LogEntry.find_each do |log_entry|
       DoorLogEntry.create!({
-        loggable_id:   log_entry.loggable_id,
-        loggable_type: log_entry.loggable_type,
+        loggable_id: log_entry.loggable_id,
+        loggable_type: log_entry.loggable_type
       })
     end
 

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   use_doorkeeper do
-    controllers :applications => 'oauth/applications'
+    controllers applications: "oauth/applications"
   end
 
   resource :user, only: [] do
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   authenticated do
     devise_scope :user do
-      get 'users/edit' => 'devise/registrations#edit', as: :user_root
+      get "users/edit" => "devise/registrations#edit", :as => :user_root
     end
   end
 
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :edit, :update, :show, :destroy] do
       resources :role_assignments, only: [:create] do
         collection do
-          delete ':role_name', action: 'destroy', as: 'role_assignment'
+          delete ":role_name", action: "destroy", as: "role_assignment"
         end
       end
     end
@@ -29,10 +29,10 @@ Rails.application.routes.draw do
     post :unlock
   end
 
-  namespace :api, defaults: {format: 'json'} do
+  namespace :api, defaults: {format: "json"} do
     resources :users, only: [] do
       collection do
-        get 'present'
+        get "present"
       end
     end
 
@@ -45,12 +45,12 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'spaceapi/status', to: 'space_api#status'
-  get 'spaceapi/oauth_status', to: 'space_api#oauth_status'
+  get "spaceapi/status", to: "space_api#status"
+  get "spaceapi/oauth_status", to: "space_api#oauth_status"
 
-  get 'manifest', to: 'web_app_manifest#manifest'
+  get "manifest", to: "web_app_manifest#manifest"
 
-  devise_for :users, controllers: {registrations: 'registrations'}
+  devise_for :users, controllers: {registrations: "registrations"}
   get "dashboard/index"
   get "users/present"
   get "users/present_embeddable"

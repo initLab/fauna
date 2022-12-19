@@ -4,7 +4,7 @@ class SpaceApi < OpenStruct
 
   def initialize
     super SPACEAPI_CONFIG
-    self.api = '0.13'
+    self.api = "0.13"
     set_hackerspace_state
     add_people_now_present
   end
@@ -23,7 +23,7 @@ class SpaceApi < OpenStruct
   end
 
   def add_people_now_present
-    present_people_reading = {location: SPACEAPI_CONFIG['space'],
+    present_people_reading = {location: SPACEAPI_CONFIG["space"],
                               value: Presence.present_users.count}
 
     if Presence.present_users.count > 0

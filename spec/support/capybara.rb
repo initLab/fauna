@@ -1,5 +1,6 @@
-require 'capybara/rspec'
-require_relative 'helpers/general_system_spec_helpers'
+require "capybara/rspec"
+require "capybara-screenshot/rspec"
+require_relative "helpers/general_system_spec_helpers"
 
 Capybara.default_max_wait_time = 5
 Capybara.asset_host = "http://localhost:3000"

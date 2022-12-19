@@ -1,7 +1,7 @@
-require 'socket'
+require "socket"
 
 class Services::IrcBotSpammer
-  IRC_BOT_SOCKET = File.join '', 'tmp', 'ircbot.sock'
+  IRC_BOT_SOCKET = File.join "", "tmp", "ircbot.sock"
 
   def self.send_message(message)
     new.send message

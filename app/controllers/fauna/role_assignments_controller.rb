@@ -25,10 +25,10 @@ module Fauna
 
       respond_to do |format|
         format.js do
-          unless @user.remove_role(params[:role_name]).empty?
-            render :refresh
-          else
+          if @user.remove_role(params[:role_name]).empty?
             head :unprocessable_entity
+          else
+            render :refresh
           end
         end
       end

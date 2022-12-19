@@ -1,10 +1,10 @@
-require 'socket'
-require 'openssl'
+require "socket"
+require "openssl"
 
 class Services::IrcSpammer
   def initialize
     # To be extracted if ever needed
-    @server, @port, @channel, @name = 'irc.ludost.net', 6697, '#initLab', 'cassie'
+    @server, @port, @channel, @name = "irc.ludost.net", 6697, "#initLab", "cassie"
   end
 
   def self.send_message(message)
@@ -31,30 +31,30 @@ class Services::IrcSpammer
     irc.gets until irc.eof?
     irc.close
   rescue SocketError => boom
-    if boom.to_s =~ /getaddrinfo: Name or service not known/
-      raise 'Invalid host'
-    elsif boom.to_s =~ /getaddrinfo: Servname not supported for ai_socktype/
-      raise 'Invalid port'
+    if /getaddrinfo: Name or service not known/.match?(boom.to_s)
+      raise "Invalid host"
+    elsif /getaddrinfo: Servname not supported for ai_socktype/.match?(boom.to_s)
+      raise "Invalid port"
     else
       raise
     end
   rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
-    raise 'Invalid host'
+    raise "Invalid host"
   rescue OpenSSL::SSL::SSLError
-    raise 'Host does not support SSL'
+    raise "Host does not support SSL"
   end
 
   private
 
   def irc
     @irc ||= begin
-               socket = TCPSocket.open(@server, @port)
-               ssl_context = OpenSSL::SSL::SSLContext.new()
-               ssl_context.ssl_version = :TLSv1_2_client
-               ssl_socket = OpenSSL::SSL::SSLSocket.new(socket, ssl_context)
-               ssl_socket.sync_close = true
-               ssl_socket.connect
-               ssl_socket
-             end
+      socket = TCPSocket.open(@server, @port)
+      ssl_context = OpenSSL::SSL::SSLContext.new
+      ssl_context.ssl_version = :TLSv1_2_client
+      ssl_socket = OpenSSL::SSL::SSLSocket.new(socket, ssl_context)
+      ssl_socket.sync_close = true
+      ssl_socket.connect
+      ssl_socket
+    end
   end
 end
