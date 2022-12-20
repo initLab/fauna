@@ -68,6 +68,10 @@ Rails.application.configure do
 
   # Use sendmail for delivering email
   config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = {
+    location: "/usr/sbin/sendmail",
+    arguments: %w[-i]
+  }
 
   # Make sure we have a nice From: header
   config.action_mailer.default_options = {from: "initLab Fauna <fauna@initlab.org>"}
