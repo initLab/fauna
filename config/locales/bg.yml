@@ -99,6 +99,8 @@ bg:
     trusted_member: Доверен член
     member: Член
     3d: 3D
+    tenant: Наемател
+    landlord: Хазяин
   network_devices:
     index:
       new_network_device: Ново мрежово устройство

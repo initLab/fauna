@@ -93,6 +93,8 @@ en:
     trusted_member: Trusted member
     member: Member
     3d: 3D
+    tenant: Tenant
+    landlord: Landlord
   network_devices:
     index:
       new_network_device: New network device

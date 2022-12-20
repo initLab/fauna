@@ -15,6 +15,3 @@ section.container
               th.roles_column = User.human_attribute_name(:roles)
           tbody#user_table
             = render @users
-    .row
-      .col-sm-12.text-center#pagination
-        = paginate @users, remote: true

@@ -3,7 +3,7 @@ module Fauna
     before_action :authenticate_user!
 
     def index
-      @users = User.order(id: :desc).page params[:page]
+      @users = User.order(id: :desc)
       authorize @users
     rescue Pundit::NotAuthorizedError
       head :forbidden
