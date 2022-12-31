@@ -14,7 +14,7 @@ class AccessControl::Door
       @controller =
         AccessControl::DoorControllers
           .const_get(controller_config[:klass])
-          .new(**controller_config[:options])
+          .new(**(controller_config[:options] || {}))
     end
   end
 
