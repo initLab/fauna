@@ -10,6 +10,59 @@ default: &default
         roles:
           - board_member
           - trusted_member
+  example_door_2:
+    human_name:
+      en: Example Door 2
+      bg: Примерна Врата 2
+    controller:
+      klass: ShellScript
+      options:
+        script: '/tmp/foo.sh'
+    actions:
+      open:
+        roles:
+          - board_member
+          - trusted_member
+  example_door_3:
+    human_name:
+      en: Example Door 3
+      bg: Примерна врата 3
+    controller:
+      klass: Netcontrol
+      options:
+        host: 192.168.1.2
+        port: 80
+        username: admin
+        password: password
+        actions:
+          lock:
+            port: "08"
+            value: "01"
+          unlock:
+            port: "09"
+            value: "01"
+          open:
+            port: "0A"
+            value: "01"
+    actions:
+      lock:
+        roles:
+          - board_member
+          - trusted_member
+          - landlord
+          - tenant
+      unlock:
+        roles:
+          - board_member
+          - trusted_member
+          - landlord
+          - tenant
+      open:
+        roles:
+          - board_member
+          - trusted_member
+          - landlord
+          - tenant
 
 development:
   <<: *default
