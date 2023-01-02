@@ -82,6 +82,9 @@ gem "doorkeeper-i18n"
 gem "net-smtp", require: false
 gem "matrix"
 
+# CORS
+gem "rack-cors"
+
 group :development do
   # Use Capistrano for deployment
   gem "capistrano"
