@@ -169,7 +169,7 @@ GEM
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     formatador (1.1.0)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     gpgme (2.0.22)
       mini_portile2 (~> 2.7)
