@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_08_143457) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_21_190249) do
   create_table "audit_log_entries", force: :cascade do |t|
     t.string "type"
     t.integer "user_id"
@@ -81,6 +81,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_143457) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "revoked_at", precision: nil
     t.string "scopes"
+    t.string "code_challenge"
+    t.string "code_challenge_method"
     t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
   end
 
