@@ -4,6 +4,6 @@ class RemoveForeignKeys < ActiveRecord::Migration[4.2]
   end
 
   def up
-    remove_foreign_key "objects", name: "objects_userid_fk"
+    remove_foreign_key "objects", name: "objects_userid_fk" if foreign_key_exists? "objects", "objects_userid_fk"
   end
 end
