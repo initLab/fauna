@@ -1,4 +1,4 @@
-FROM ruby:2.6.3-stretch
+FROM ruby:3.1.2-buster
 
 RUN apt-get update && apt-get install -qq -y build-essential nodejs libpq-dev postgresql-client sqlite --fix-missing --no-install-recommends
 
@@ -13,7 +13,6 @@ WORKDIR $APP_HOME
 
 # RUN pwd && ls -l && ls -l config
 ENV CI development
-RUN ./bin/setup
 
 EXPOSE 3000
 

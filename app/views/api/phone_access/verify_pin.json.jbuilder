@@ -1,0 +1,1 @@
+json.pin @valid
