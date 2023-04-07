@@ -43,6 +43,13 @@ Rails.application.routes.draw do
       post :lock
       post :unlock
     end
+
+    resource :phone_access, only: [], controller: "phone_access" do
+      collection do
+        post "phone_number_token"
+        post "verify_pin"
+      end
+    end
   end
 
   get "spaceapi/status", to: "space_api#status"
