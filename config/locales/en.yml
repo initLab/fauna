@@ -105,8 +105,8 @@ en:
     edit:
       edit_network_device: Edit network device
   views:
-    dashboard:
-      loading: Loading data...
+    deprecated:
+      message: This application is now deprecated. Please use
     doors:
       locked: Locked
       unlocked: Unlocked
@@ -129,7 +129,6 @@ en:
       lab: Lab
       labbers: Labbers
       door_access: Open doors
-      presence: Presence
       access: Access
       library: Library
       inventory: Inventory
@@ -185,15 +184,6 @@ en:
       network_devices: Network devices
       network_device: Network device
       new_network_device: New network device
-    users:
-      whos_in_the_lab: Who is in init Lab
-      people_at_about_html:
-        zero: "%{count} labbers at"
-        one: "%{count} labber at"
-        few: "%{count} labbers at"
-        many: "%{count} labbers at"
-        other: "%{count} labbers at"
-      everybodys_gone: Everyone's gone
     roles:
       are_you_sure: 'Are you shnur?'
     footer:

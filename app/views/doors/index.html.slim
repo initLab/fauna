@@ -1,6 +1,8 @@
 - content_for(:title) { t 'views.doors.management' }
 section.container
   .row
+    .col-xs-12
+      = render partial: 'layouts/deprecated'
     - @doors.each do |door|
       .col-xs-12
         .panel.panel-primary

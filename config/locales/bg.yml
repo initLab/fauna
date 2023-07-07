@@ -111,8 +111,8 @@ bg:
     edit:
       edit_network_device: Редакция на мрежово устройство
   views:
-    dashboard:
-      loading: Зареждане на данните...
+    deprecated:
+      message: Това приложение вече не се поддържа. Моля ползвайте
     doors:
       locked: Заключено
       unlocked: Отключено
@@ -135,7 +135,6 @@ bg:
       lab: Лаб
       labbers: Лабъри
       door_access: Отваряне на врати
-      presence: Присъствие
       access: Достъп
       library: Библиотека
       inventory: Инвентар
@@ -192,15 +191,6 @@ bg:
       network_devices: Мрежови устройства
       network_device: Мрежово устройство
       new_network_device: Ново мрежово устройство
-    users:
-      whos_in_the_lab: Кой е в init Lab
-      people_at_about_html:
-        zero: "%{count} лабъри към"
-        one: "%{count} лабър към"
-        few: "%{count}<sup>-ма</sup> лабъри към"
-        many: "%{count} лабъри към"
-        other: "%{count} лабъри към"
-      everybodys_gone: Всички ги е хванала липсата
     roles:
       are_you_sure: 'Сигурни ли сте?'
     footer:
