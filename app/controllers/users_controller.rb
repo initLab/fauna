@@ -5,10 +5,6 @@ class UsersController < ApplicationController
     @users = Presence.present_users
   end
 
-  def present_embeddable
-    head :gone
-  end
-
   private
 
   def set_access_control_headers
