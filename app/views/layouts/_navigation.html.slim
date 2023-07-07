@@ -13,13 +13,9 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
           = link_to doors_path do
             = icon 'lock', t('views.navigation.door_access')
         - if user_signed_in? and UserPolicy.new(current_user, nil).index?
-          li.dropdown
-            = link_to "#", class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
+          li class="#{'active' if current_page?(fauna_users_path)}"
+            = link_to fauna_users_path do
               = icon 'users', t('views.navigation.labbers')
-              b.caret<
-            ul.dropdown-menu
-              li
-                = link_to t('views.navigation.management'), fauna_users_path
       ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
           li.dropdown
