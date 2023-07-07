@@ -15,9 +15,6 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         li class="#{'active' if current_page?(users_present_path)}"
           = link_to users_present_path do
             = icon 'street-view', t('views.navigation.presence')
-        li class="#{'active' if current_page?(sensors_path)}"
-          = link_to sensors_path do
-            = icon 'line-chart', t('views.navigation.sensors')
         - if user_signed_in? and UserPolicy.new(current_user, nil).index?
           li.dropdown
             = link_to "#", class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
