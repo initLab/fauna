@@ -60,7 +60,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations"}
   get "dashboard/index"
   get "users/present"
-  get "users/present_embeddable"
   root "dashboard#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
