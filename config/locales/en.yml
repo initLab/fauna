@@ -126,15 +126,8 @@ en:
       sign_in: Login
       sign_out: Logout
       account: Account
-      lab: Lab
       labbers: Labbers
       door_access: Open doors
-      access: Access
-      library: Library
-      inventory: Inventory
-      accounting: Accounting
-      management: Management
-      members_fee: Membership fee
       network_devices: Network devices
       oauth_application_management: OAuth integration
       oauth_token_management: Authorized applications
