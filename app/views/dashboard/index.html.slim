@@ -18,8 +18,3 @@ section.container
         .no_users
           = icon 'frown-o'
           h5 = t 'views.users.everybodys_gone'
-  h3 = t 'views.dashboard.sensor_readings'
-  .row
-    - @mqtt_sensors.each do |sensor|
-      .col-sm-4
-        div data-label-type="Temperature" data-label="#{sensor['label']}" data-mqtt-topic="#{sensor['topic']}" = t 'views.dashboard.loading'

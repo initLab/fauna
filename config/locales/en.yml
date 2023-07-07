@@ -106,7 +106,6 @@ en:
       edit_network_device: Edit network device
   views:
     dashboard:
-      sensor_readings: Temperature readings
       loading: Loading data...
     doors:
       locked: Locked
@@ -138,7 +137,6 @@ en:
       management: Management
       members_fee: Membership fee
       network_devices: Network devices
-      sensors: Sensors
       oauth_application_management: OAuth integration
       oauth_token_management: Authorized applications
     registrations:
@@ -198,10 +196,6 @@ en:
       everybodys_gone: Everyone's gone
     roles:
       are_you_sure: 'Are you shnur?'
-    sensors:
-      title: Sensor readings
-      temperature: Temperature
-      humidity: Humidity
     footer:
       license: 'init Lab Fauna is licensed under'
       source_code: 'The source code is available in'

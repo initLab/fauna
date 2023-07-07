@@ -112,7 +112,6 @@ bg:
       edit_network_device: Редакция на мрежово устройство
   views:
     dashboard:
-      sensor_readings: Температура на въздуха
       loading: Зареждане на данните...
     doors:
       locked: Заключено
@@ -144,7 +143,6 @@ bg:
       management: Управление
       members_fee: Членски внос
       network_devices: Мрежови устройства
-      sensors: Графики
       oauth_application_management: OAuth интеграция
       oauth_token_management: Упълномощени приложения
     registrations:
@@ -205,10 +203,6 @@ bg:
       everybodys_gone: Всички ги е хванала липсата
     roles:
       are_you_sure: 'Сигурни ли сте?'
-    sensors:
-      title: Показания на сензорите
-      temperature: Температура
-      humidity: Относителна влажност
     footer:
       license: 'init Lab Fauna е лицензирана под'
       source_code: 'Изходният код е достъпен в'
