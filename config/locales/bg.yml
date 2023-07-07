@@ -132,15 +132,8 @@ bg:
       sign_in: Вход
       sign_out: Изход
       account: Акаунт
-      lab: Лаб
       labbers: Лабъри
       door_access: Отваряне на врати
-      access: Достъп
-      library: Библиотека
-      inventory: Инвентар
-      accounting: Счетоводство
-      management: Управление
-      members_fee: Членски внос
       network_devices: Мрежови устройства
       oauth_application_management: OAuth интеграция
       oauth_token_management: Упълномощени приложения
