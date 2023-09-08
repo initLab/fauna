@@ -4,7 +4,17 @@ bg:
       doorkeeper/application:
         confidential: 'Поверително'
   doorkeeper:
+    authorizations:
+      buttons:
+        authorize: Потвърди
+        deny: Откажи
+      new:
+        title: Вход в системата
+        prompt: Потвърдете активация на приложението %{client_name}.
+        able_to: Приложението ще има достъп до
     scopes:
-      public: Достъпва публични данни
-      account_data_read: Чете всички данни от акаунта ви
+      account_data_read: Профил в init Lab Fauna
       door_control: Заключване/отключване/отваряне на врати
+    layouts:
+      application:
+        title: Вход в OAuth2 приложение
