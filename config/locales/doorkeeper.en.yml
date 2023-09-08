@@ -1,6 +1,5 @@
   doorkeeper:
     scopes:
       public: Access to any publicly accessible data
-      door_control: Lock/Unlock/Open doors
       account_data_read: Read all of your account data
-      account_data_write: Update your account data
+      door_control: Lock/Unlock/Open doors
