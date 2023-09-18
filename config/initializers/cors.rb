@@ -8,5 +8,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     resource "/oauth/token",
       headers: :any,
       methods: [:post]
+    resource "/oauth/revoke",
+      headers: :any,
+      methods: [:post]
   end
 end
