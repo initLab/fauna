@@ -36,7 +36,7 @@ feature "Managing OAuth applications" do
     sign_in_with_the_new_account
     create_a_new_oauth_application
 
-    new_window = window_opened_by { click_on "Потвърди" }
+    new_window = window_opened_by { click_on "Упълномощи" }
 
     within_window new_window do
       click_on "Потвърди"
