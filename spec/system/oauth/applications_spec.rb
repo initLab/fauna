@@ -36,10 +36,10 @@ feature "Managing OAuth applications" do
     sign_in_with_the_new_account
     create_a_new_oauth_application
 
-    new_window = window_opened_by { click_on "Упълномощи" }
+    new_window = window_opened_by { click_on "Потвърди" }
 
     within_window new_window do
-      click_on "Упълномощи"
+      click_on "Потвърди"
       expect(page).to have_text("Код за упълномощаване:")
     end
   end
