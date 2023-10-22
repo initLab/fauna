@@ -23,11 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :doors, only: [:index] do
-    post :open
-    post :lock
-    post :unlock
-  end
+  resources :doors, only: :index
 
   namespace :api, defaults: {format: "json"} do
     resources :users, only: [] do
@@ -37,12 +33,6 @@ Rails.application.routes.draw do
     end
 
     resource :current_user, only: :show
-
-    resources :doors, only: [:index] do
-      post :open
-      post :lock
-      post :unlock
-    end
 
     resource :phone_access, only: [], controller: "phone_access" do
       collection do

@@ -38,8 +38,6 @@ jobs:
       #     yarn install
       #     yarn build
       #     yarn build:css
-      - name: Configure Doors
-        run: cp config/doors.yml.example config/doors.yml
       - name: Configure Database
         run: cp config/database.yml.ci config/database.yml
       - name: Setup Database

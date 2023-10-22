@@ -46,7 +46,5 @@ module Fauna
     end
 
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
-
-    config.x.doors = config_for(:doors)
   end
 end

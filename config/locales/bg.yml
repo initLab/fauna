@@ -29,24 +29,6 @@ bg:
         few: OAuth приложения
         many: OAuth приложения
         other: OAuth приложения
-      door/actions/unlock:
-        zero: отключвания
-        one: отключване
-        few: отключвания
-        many: отключвания
-        other: отключвания
-      door/actions/open:
-        zero: отваряния
-        one: отваряне
-        few: отваряния
-        many: отваряния
-        other: отваряния
-      door/actions/lock:
-        zero: заключвания
-        one: заключване
-        few: заключвания
-        many: заключвания
-        other: заключвания
       user:
         zero: Лабъри
         one: Лабър

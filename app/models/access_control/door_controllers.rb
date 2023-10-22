@@ -1,1 +1,0 @@
-module AccessControl::DoorControllers; end

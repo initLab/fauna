@@ -23,24 +23,6 @@ en:
         phone_number:
           improbable_phone: must be a valid phone number
     models:
-      door/actions/unlock:
-        zero: unlocks
-        one: unlock
-        few: unlocks
-        many: unlocks
-        other: unlocks
-      door/actions/open:
-        zero: opens
-        one: open
-        few: opens
-        many: opens
-        other: opens
-      door/actions/lock:
-        zero: locks
-        one: lock
-        few: locks
-        many: locks
-        other: locks
       user:
         zero: Lab members
         one: Lab member

@@ -23,7 +23,6 @@
 # Ignore sensitive information
 /config/database.yml
 /config/secrets.yml
-/config/doors.yml
 
 # Ignore simplecov's output
 /coverage

@@ -33,27 +33,3 @@
         form { display: inline-block; }
     }
 }
-
-.door_button {
-    @extend .btn;
-    @extend .btn-primary;
-    @extend .btn-lg;
-
-    @media (max-width: $screen-sm-min) {
-        width: 250px;
-        margin-top: 20px;
-    }
-
-    @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
-        width: 350px;
-        i.fa { font-size: 36pt; }
-        margin-top: 30px;
-    }
-
-    @media (min-width: $screen-lg-min) {
-        width: 200px;
-        height: 200px;
-        i.fa { font-size: 72pt; }
-        margin: 10px;
-    }
-}
