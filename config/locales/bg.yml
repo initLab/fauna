@@ -95,27 +95,12 @@ bg:
   views:
     deprecated:
       message: Това приложение вече не се поддържа. Моля ползвайте
-    doors:
-      locked: Заключено
-      unlocked: Отключено
-      unknown: Неясно
-      action_executed_successfully: "Действието беше изпълнено успешно."
-      action_executed_unsuccessfully: Действието не беше изпълнено успешно.
-      invalid_action: Посоченото действие не е валидно.
-      forbidden: Нямате право да извършите това действие.
-      management: Управление на вратата на Лаба
-      lock: заключи
-      unlock: отключи
-      open: отвори
-      log: журнал
-      no_actions_supported: Нямате права за управление на тази врата
     navigation:
       view_edit: Преглед/редакция
       sign_in: Вход
       sign_out: Изход
       account: Акаунт
       labbers: Лабъри
-      door_access: Отваряне на врати
       network_devices: Мрежови устройства
       oauth_application_management: OAuth интеграция
       oauth_token_management: Упълномощени приложения

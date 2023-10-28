@@ -89,27 +89,12 @@ en:
   views:
     deprecated:
       message: This application is now deprecated. Please use
-    doors:
-      locked: Locked
-      unlocked: Unlocked
-      unknown: Unknown
-      action_executed_successfully: "Action was completed successfully."
-      action_executed_unsuccessfully: The action was not completed successfully.
-      invalid_action: The specified action is invalid.
-      forbidden: You do not have permission to perform this action.
-      management: Lab door control
-      lock: lock
-      unlock: unlock
-      open: open
-      log: log
-      no_actions_supported: You don't have the necessary rights to control this door
     navigation:
       view_edit: View/edit
       sign_in: Login
       sign_out: Logout
       account: Account
       labbers: Labbers
-      door_access: Open doors
       network_devices: Network devices
       oauth_application_management: OAuth integration
       oauth_token_management: Authorized applications
