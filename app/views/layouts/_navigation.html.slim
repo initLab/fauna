@@ -9,9 +9,6 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         = image_tag 'logo.svg', class: 'navbar-brand', alt: 'Fauna'
     .navbar-collapse.collapse.navbar-inverse-collapse
       ul.nav.navbar-nav
-        li class="#{'active' if current_page?(doors_path)}"
-          = link_to doors_path do
-            = icon 'lock', t('views.navigation.door_access')
         - if user_signed_in? and UserPolicy.new(current_user, nil).index?
           li class="#{'active' if current_page?(fauna_users_path)}"
             = link_to fauna_users_path do
