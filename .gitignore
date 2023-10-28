@@ -40,3 +40,6 @@
 
 # Ignore RubyMine config
 /.idea
+
+# Ignore Ruby installations
+/vendor/bundle/ruby/
