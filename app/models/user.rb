@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A[a-z0-9_-]+\z/i}, presence: true
   validates :twitter, format: {with: /\A[A-Za-z0-9_]{1,15}\z/}, allow_blank: true
-  validates :url, format: {with: /\A(http|https):\/\/[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/ix}, allow_blank: true
+  validates :url, format: {with: /\A(http|https):\/\/[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z-]{2,63}(:[0-9]{1,5})?(\/.*)?\z/ix}, allow_blank: true
   validates :name, presence: true
   validates :github, format: {with: /\A[a-z0-9][a-z0-9-]{,38}\z/i}, allow_blank: true
   validates :jabber, format: {with: /\A[^@]+@[^@]+\z/}, allow_blank: true
