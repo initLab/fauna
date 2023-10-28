@@ -24,7 +24,7 @@ class Api::PhoneAccessController < Api::ApplicationController
       application: Doorkeeper::Application.find(phone_app_id),
       resource_owner: @user.id,
       expires_in: 600,
-      scopes: "door_control account_data_read"
+      scopes: "account_data_read"
     )
   end
 

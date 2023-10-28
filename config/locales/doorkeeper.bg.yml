@@ -14,7 +14,6 @@ bg:
         able_to: Приложението ще има достъп до
     scopes:
       account_data_read: Профил в init Lab Fauna
-      door_control: Заключване/отключване/отваряне на врати
     layouts:
       application:
         title: Вход в OAuth2 приложение
