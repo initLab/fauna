@@ -74,7 +74,7 @@ en:
     board_member: Council
     trusted_member: Trusted member
     member: Member
-    3d: 3D
+    infra: Infra
     tenant: Tenant
     landlord: Landlord
   network_devices:

@@ -80,7 +80,7 @@ bg:
     board_member: УС
     trusted_member: Доверен член
     member: Член
-    3d: 3D
+    infra: Инфра
     tenant: Наемател
     landlord: Хазяин
   network_devices:
