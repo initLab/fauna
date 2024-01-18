@@ -11,6 +11,7 @@ section.container
           thead
             tr
               th = User.human_attribute_name(:name)
+              th = User.human_attribute_name(:username)
               th = User.human_attribute_name(:email)
               th.roles_column = User.human_attribute_name(:roles)
           tbody#user_table

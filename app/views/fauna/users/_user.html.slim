@@ -1,5 +1,6 @@
 tr
   td = user.name
+  td = user.username
   td = user.email
   td.roles_column
     = render partial: '/fauna/role_assignments/role_assignments', locals: {user: user}
