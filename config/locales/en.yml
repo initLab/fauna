@@ -112,7 +112,7 @@ en:
       are_you_sure: Are you sure that you want to delete your registration?
       add_phone_number: Add phone number
       announce_my_presence_explanation: |
-        If you select this option, your name, username, avatar and public
+        If you select this option, your username, avatar and public
         profile information (website, Github, Twitter) will be visible on the
         Fauna homepage. Your username will be sent to Twitter, IRC and Telegram
         every time you unlock, lock or open any of the doors or switch the lights.
