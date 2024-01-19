@@ -3,7 +3,7 @@ class SpaceApi < OpenStruct
   include ActionView::Helpers::AssetUrlHelper
 
   def initialize
-    super SPACEAPI_CONFIG
+    super(SPACEAPI_CONFIG)
     self.api = "0.13"
     set_hackerspace_state
     add_people_now_present
