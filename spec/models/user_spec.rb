@@ -238,10 +238,10 @@ describe User do
       expect(build(:user, pin: nil)).to_not have_error_on :pin
     end
 
-    it "must be a 6-digit number when it's not nil" do
+    it "must be a number with 6 or more digits when it's not nil" do
       expect(build(:user, pin: 123456)).to_not have_error_on :pin
+      expect(build(:user, pin: 1234567890)).to_not have_error_on :pin
       expect(build(:user, pin: 123)).to have_error_on :pin
-      expect(build(:user, pin: 1234567)).to have_error_on :pin
       expect(build(:user, pin: "abcdef")).to have_error_on :pin
     end
 

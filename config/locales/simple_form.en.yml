@@ -14,7 +14,7 @@ en:
         url: URL beginning with http:// or https://
         jabber: Jabber account in the "username@domain.com" format
         gpg_fingerprint: GPG fingerprint with or without spaces
-        pin: it is used to lock/unlock the doors and must be a 6-digit number; leave empty if you do not want to change it
+        pin: it is used to lock/unlock the doors and must be a number with at least 6 digits; leave empty if you do not want to change it
         phone_numbers:
           phone_number: phone number with optional country code
       network_device:
