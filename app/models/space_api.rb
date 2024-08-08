@@ -27,7 +27,7 @@ class SpaceApi < OpenStruct
                               value: Presence.present_users.count}
 
     if Presence.present_users.count > 0
-      present_people_reading[:names] = Presence.present_users.map(&:name)
+      present_people_reading[:names] = Presence.present_users.map(&:username)
     end
 
     add_sensor name: :people_now_present, data: present_people_reading
