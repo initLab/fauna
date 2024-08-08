@@ -56,7 +56,7 @@ describe SpaceApi do
         it "contains a member that is a hash with the names of the present users in its entry with a key of names" do
           present_people = create_list :user, 2
           allow(Presence).to receive(:present_users).and_return(present_people)
-          expect(SpaceApi.new.sensors[:people_now_present][0][:names]).to eq(present_people.map(&:name))
+          expect(SpaceApi.new.sensors[:people_now_present][0][:names]).to eq(present_people.map(&:username))
         end
       end
     end
