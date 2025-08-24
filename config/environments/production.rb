@@ -66,15 +66,25 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  # Use sendmail for delivering email
-  config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.sendmail_settings = {
-    location: "/usr/sbin/sendmail",
-    arguments: %w[-i]
+  # SMTP is default
+  # config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: ENV["SMTP_ADDRESS"],
+    port: 465,
+    user_name: ENV["SMTP_USER_NAME"],
+    password: ENV["SMTP_PASSWORD"],
+    ssl: true,
   }
 
+  # Use sendmail for delivering email
+  # config.action_mailer.delivery_method = :sendmail
+  # config.action_mailer.sendmail_settings = {
+  #   location: "/usr/sbin/sendmail",
+  #   arguments: %w[-i]
+  # }
+
   # Make sure we have a nice From: header
-  config.action_mailer.default_options = {from: "initLab Fauna <fauna@initlab.org>"}
+  config.action_mailer.default_options = {from: "init Lab Fauna <fauna@mail.initlab.org>"}
 
   # Use localhost when sending emails in development
   config.action_mailer.default_url_options = {host: "https://fauna.initlab.org"}
