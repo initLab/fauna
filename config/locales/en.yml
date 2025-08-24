@@ -7,7 +7,7 @@ en:
             username:
               invalid: can contain only letters, digits, "_" and "-"
             twitter:
-              invalid: must be a valid twitter account
+              invalid: must be a valid X account
             url:
               invalid: must be a valid http(s) address
             jabber:
@@ -36,6 +36,7 @@ en:
       user:
         name: Name
         url: Site
+        twitter: X
         username: Username
         login: Username or email
         password: Password
@@ -113,7 +114,7 @@ en:
       add_phone_number: Add phone number
       announce_my_presence_explanation: |
         If you select this option, your username, avatar and public
-        profile information (website, Github, Twitter) will be visible on the
+        profile information (website, Github, X) will be visible on the
         Fauna homepage. Your username will be sent to Twitter, IRC and Telegram
         every time you unlock, lock or open any of the doors or switch the lights.
         If you don't select this option, you will be shown as Mystery Labber and
