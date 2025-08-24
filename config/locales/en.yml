@@ -115,7 +115,7 @@ en:
       announce_my_presence_explanation: |
         If you select this option, your username, avatar and public
         profile information (website, Github, X) will be visible on the
-        Fauna homepage. Your username will be sent to Twitter, IRC and Telegram
+        Fauna homepage. Your username will be sent to IRC and Discord
         every time you unlock, lock or open any of the doors or switch the lights.
         If you don't select this option, you will be shown as Mystery Labber and
         your actions on any of the devices will still be published, but instead of

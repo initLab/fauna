@@ -16,7 +16,6 @@ contact:
   issue_mail: us@initlab.org
 issue_report_channels:
   - issue_mail
-  - twitter
 feeds:
   blog:
     type: rss
