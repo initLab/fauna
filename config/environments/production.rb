@@ -69,10 +69,10 @@ Rails.application.configure do
   # SMTP is default
   # config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: ENV["SMTP_ADDRESS"],
+    address: Rails.application.secrets.SMTP_ADDRESS,
     port: 465,
-    user_name: ENV["SMTP_USER_NAME"],
-    password: ENV["SMTP_PASSWORD"],
+    user_name: Rails.application.secrets.SMTP_USER_NAME,
+    password: Rails.application.secrets.SMTP_PASSWORD,
     ssl: true,
   }
 
