@@ -41,6 +41,8 @@ bg:
     attributes:
       user:
         name: Име
+        first_name: Собствено име
+        last_name: Фамилия
         url: Сайт
         twitter: X
         username: Потребителско име

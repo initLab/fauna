@@ -146,7 +146,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_190249) do
     t.datetime "last_sign_in_at", precision: nil
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.string "url"
     t.string "twitter"
     t.boolean "announce_my_presence", default: false, null: false

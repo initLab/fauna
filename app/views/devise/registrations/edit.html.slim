@@ -17,7 +17,8 @@ section.container
                 | Avatar by
                 =< link_to 'Gravatar', 'https://gravatar.com'
 
-          = f.input :name, required: true
+          = f.input :first_name, required: true
+          = f.input :last_name, required: true
           = f.input :username, required: true
           = f.input :email, required: true
           = f.input :locale, collection: I18n.available_locales, required: true

@@ -2,7 +2,8 @@
 
 FactoryBot.define do
   factory :user, aliases: [:owner] do
-    name { Faker::Name.name }
+    first_name { Faker::Name.name }
+    last_name { Faker::Name.name }
     sequence(:username) { |u| "username#{u}" }
     email { Faker::Internet.email }
     locale { I18n.available_locales.first.to_s }
@@ -25,7 +26,8 @@ FactoryBot.define do
   end
 
   factory :registration, class: User do
-    name { Faker::Name.name }
+    first_name { Faker::Name.name }
+    last_name { Faker::Name.name }
     sequence(:username) { |u| "username#{u}" }
     email { |u| Faker::Internet.email(u.username) }
     password { Faker::Internet.password }

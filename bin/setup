@@ -29,8 +29,12 @@ OptionParser.new do |opts|
     options[:username] = username
   end
 
-  opts.on('-n', '--name NAME', 'Name') do |name|
-    options[:name] = name
+  opts.on('-f', '--firstname FIRST_NAME', 'First name') do |first_name|
+    options[:first_name] = first_name
+  end
+
+  opts.on('-l', '--lastname LAST_NAME', 'Last name') do |last_name|
+    options[:last_name] = last_name
   end
 
   opts.on('-p', '--password PASSWORD', 'Password') do |password|
@@ -93,7 +97,8 @@ Dir.chdir APP_ROOT do
         print "\npassword confirmation: "
         password_confirmation = STDIN.noecho(&:gets)
       end
-      options[:name] = prompt "\nname: " unless options[:name]
+      options[:first_name] = prompt "\nfirst name: " unless options[:first_name]
+      options[:last_name] = prompt "\nlast name: " unless options[:last_name]
     end
 
     puts "Loading the rails environment."

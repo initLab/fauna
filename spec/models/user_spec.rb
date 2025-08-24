@@ -13,9 +13,15 @@ describe User do
     expect(build(:user)).to be_a Devise::Models::Lockable
   end
 
-  describe "name" do
+  describe "first_name" do
     it "must be present" do
-      expect(build(:user, name: nil)).to have_error_on :name
+      expect(build(:user, first_name: nil)).to have_error_on :first_name
+    end
+  end
+
+  describe "last_name" do
+    it "must be present" do
+      expect(build(:user, last_name: nil)).to have_error_on :last_name
     end
   end
 

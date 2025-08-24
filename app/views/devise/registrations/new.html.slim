@@ -9,7 +9,8 @@ section.container
         = f.error_notification
         .form-inputs
           = f.input :username, required: true, autofocus: true
-          = f.input :name, required: true, autofocus: true
+          = f.input :first_name, required: true, autofocus: true
+          = f.input :last_name, required: true, autofocus: true
           = f.input :email, required: true, autofocus: true
           = f.input :password, required: true, hint: (t("views.registrations.minimum_characters", minimum: @minimum_password_length) if @validatable)
           = f.input :password_confirmation, required: true

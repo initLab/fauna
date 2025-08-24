@@ -35,6 +35,8 @@ en:
     attributes:
       user:
         name: Name
+        first_name: First name
+        last_name: Last name
         url: Site
         twitter: X
         username: Username
