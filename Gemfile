@@ -86,13 +86,6 @@ gem "matrix"
 gem "rack-cors"
 
 group :development do
-  # Use Capistrano for deployment
-  gem "capistrano"
-  gem "capistrano-rails"
-  gem "capistrano-bundler"
-  gem "capistrano-rbenv"
-  gem "net-ssh"
-
   gem "pry"
   gem "pry-rails"
   gem "pry-doc"
