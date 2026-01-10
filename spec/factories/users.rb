@@ -14,7 +14,6 @@ FactoryBot.define do
     confirmed_at { Time.now }
     github { "foobar" }
     jabber { "foo@bar.com" }
-    gpg_fingerprint { "AAAA AAAA AAAA AAAA AAAA  AAAA AAAA AAAA AAAA AAAA" }
 
     factory :board_member do
       after(:create) { |user| user.add_role(:board_member) }

@@ -14,8 +14,6 @@ bg:
               invalid: трябва да съдържа „@“ точно веднъж
             github:
               invalid: трябва да съдържа по-малко от 40 латински букви, цифри или „-“ и да не започва с „-“
-            gpg_fingerprint:
-              invalid: трябва да съдържа точно 40 цифри или латински букви от „A“ до „F“
         network_device:
           attributes:
             mac_address:
@@ -51,7 +49,6 @@ bg:
         password_confirmation: Потвърждение на паролата
         current_password: Текуща парола
         announce_my_presence: Показвай името ми, когато съм в Лаба и когато отварям вратата
-        gpg_fingerprint: Отпечатък на GPG ключ
         jabber: Jabber акаунт
         picture: Снимка
         github: Github акаунт

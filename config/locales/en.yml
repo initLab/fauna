@@ -14,8 +14,6 @@ en:
               invalid: must contain "@" exactly once
             github:
               invalid: must contain less than 40 latin letters, numbers, or "-", and not begin with a "-"
-            gpg_fingerprint:
-              invalid: must to contain exactly 40 digits or the latin leters from "A" to "F"
         network_device:
           attributes:
             mac_address:
@@ -45,7 +43,6 @@ en:
         password_confirmation: Password confirmation
         current_password: Current password
         announce_my_presence: Show my name when I'm at the Lab and when I open the doors
-        gpg_fingerprint: GPG key fingerprint
         jabber: Jabber/XMPP account
         picture: Photo
         github: Github account

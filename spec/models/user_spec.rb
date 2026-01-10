@@ -196,26 +196,6 @@ describe User do
     end
   end
 
-  describe "GPG key fingerprint" do
-    it "can be nil" do
-      expect(build(:user, gpg_fingerprint: nil)).to_not have_error_on :gpg_fingerprint
-    end
-
-    it "must contain 40 hex case insensitive digits separated with any number of spaces" do
-      expect(build(:user, gpg_fingerprint: "a" * 40)).to_not have_error_on :gpg_fingerprint
-      expect(build(:user, gpg_fingerprint: "A" * 40)).to_not have_error_on :gpg_fingerprint
-      expect(build(:user, gpg_fingerprint: "aaaa aaaa aaaa aaaa aaaa  aaaa aaaa aaaa aaaa aaaa")).to_not have_error_on :gpg_fingerprint
-      expect(build(:user, gpg_fingerprint: "AAAA AAAA AAAA AAAA AAAA AAAA AAAA AAAA AAAA AAAA")).to_not have_error_on :gpg_fingerprint
-
-      expect(build(:user, gpg_fingerprint: "z" * 40)).to have_error_on :gpg_fingerprint
-      expect(build(:user, gpg_fingerprint: "a" * 39)).to have_error_on :gpg_fingerprint
-    end
-
-    it "stores the gpg fingerprint upcased and properly delimited with spaces" do
-      expect(create(:user, gpg_fingerprint: "a" * 40).gpg_fingerprint).to eq "AAAA AAAA AAAA AAAA AAAA AAAA AAAA AAAA AAAA AAAA"
-    end
-  end
-
   describe "#pin" do
     it "returns the pin" do
       expect(build(:user, pin: 123456).pin).to eq 123456

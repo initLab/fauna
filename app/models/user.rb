@@ -20,13 +20,11 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :github, format: {with: /\A[a-z0-9][a-z0-9-]{,38}\z/i}, allow_blank: true
   validates :jabber, format: {with: /\A[^@]+@[^@]+\z/}, allow_blank: true
-  validates :gpg_fingerprint, format: {with: /\A[0-9a-f]{4}( ?)([0-9a-f]{4}\1){4}\1{0,2}([0-9a-f]{4}\1){4}[0-9a-f]{4}\z/i}, allow_blank: true
   validates :pin, numericality: true, length: {minimum: 6}, allow_blank: true, confirmation: true
   validates :locale, presence: true, inclusion: {in: I18n.available_locales.map(&:to_s)}
   accepts_nested_attributes_for :phone_numbers, update_only: true, allow_destroy: true, reject_if: :all_blank
 
   attr_accessor :login
-  after_validation :normalize_gpg_fingerprint
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -63,11 +61,5 @@ class User < ApplicationRecord
 
   def to_s
     "User(id: #{id}, email: #{email}, name: #{name})"
-  end
-
-  private
-
-  def normalize_gpg_fingerprint
-    self.gpg_fingerprint = gpg_fingerprint.delete(" ").upcase.gsub(/([0-9a-f]{4})/i, '\1 ').strip if gpg_fingerprint.present?
   end
 end
