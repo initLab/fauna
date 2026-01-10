@@ -37,7 +37,6 @@ class ApplicationController < ActionController::Base
       :email, :url, :locale,
       :twitter, :announce_my_presence,
       :github, :jabber,
-      :gpg_fingerprint,
       :pin, :pin_confirmation,
       phone_numbers_attributes: [
         :_destroy,

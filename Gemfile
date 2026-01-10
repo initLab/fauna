@@ -61,9 +61,6 @@ gem "kaminari"
 gem "rolify"
 gem "pundit"
 
-# GPG Signing
-gem "mail-gpg"
-
 # Asynchronous job execution
 gem "delayed_job"
 gem "delayed_job_active_record"
