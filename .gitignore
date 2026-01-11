@@ -43,3 +43,6 @@
 
 # Ignore Ruby installations
 /vendor/bundle/ruby/
+
+# Ignore precompiled assets
+/public/assets/

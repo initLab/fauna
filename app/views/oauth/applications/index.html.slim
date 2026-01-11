@@ -1,7 +1,7 @@
 - content_for(:title) { t 'doorkeeper.applications.index.title' }
 - content_for(:page_actions) do
   = link_to new_oauth_application_path, class: ['btn', 'btn-primary'] do
-    => icon :plus
+    => icon('fa-solid', :plus)
     = t('doorkeeper.applications.index.new')
 
 section.container

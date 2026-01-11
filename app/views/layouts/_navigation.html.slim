@@ -12,12 +12,13 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         - if user_signed_in? and UserPolicy.new(current_user, nil).index?
           li class="#{'active' if current_page?(fauna_users_path)}"
             = link_to fauna_users_path do
-              = icon 'users', t('views.navigation.labbers')
+              => icon('fa-solid', :users)
+              = t('views.navigation.labbers')
       ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
           li.dropdown
             = link_to '#', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
-              => icon 'flag'
+              => icon('fa-solid', :flag)
               = {bg: "БГ", en: "EN"}[I18n.locale]
               span.caret<
             ul.dropdown-menu role="menu"
@@ -27,7 +28,8 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         - if user_signed_in?
           li.dropdown class="#{'active' if current_page?(edit_user_registration_path) || current_page?(user_network_devices_path)}"
             a.dropdown-toggle data-toggle="dropdown" href="#"
-              = icon 'user', t('views.navigation.account')
+              => icon('fa-solid', :user)
+              = t('views.navigation.account')
               b.caret<
             ul.dropdown-menu
               li
@@ -44,4 +46,5 @@ nav class="navbar navbar-static-top #{content_for?(:nav_color) ? yield(:nav_colo
         - else
           li class="#{'active' if controller_name == 'sessions'}"
             = link_to new_user_session_path do
-              = icon 'sign-in', t('views.navigation.sign_in')
+              => icon('fa-solid', 'sign-in') 
+              = t('views.navigation.sign_in')
