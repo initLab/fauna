@@ -1,12 +1,8 @@
 class Role < ApplicationRecord
-  PREDEFINED_ROLES = [:board_member, :trusted_member, :member, :infra, :tenant, :landlord].freeze
+  PREDEFINED_ROLES = %i[board_member trusted_member member infra tenant landlord].freeze
 
-  has_and_belongs_to_many :users, join_table: :users_roles
-  belongs_to :resource, polymorphic: true, optional: true
-
-  validates :resource_type,
-    inclusion: {in: Rolify.resource_types},
-    allow_nil: true
+  has_many :user_roles
+  has_many :users, through: :user_roles
 
   validates :name, inclusion: {in: Role::PREDEFINED_ROLES.map(&:to_s)}
 
@@ -17,6 +13,4 @@ class Role < ApplicationRecord
   def self.predefined
     PREDEFINED_ROLES.map { |name| Role.find_or_initialize_by name: name }
   end
-
-  scopify
 end
