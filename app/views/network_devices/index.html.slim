@@ -1,7 +1,7 @@
 - content_for(:title) { t 'views.network_devices.network_devices' }
 - content_for(:page_actions) do
   = link_to new_user_network_device_path, class: ['btn', 'btn-primary'] do
-    => icon :plus
+    => icon('fa-solid', :plus)
     = t('.new_network_device')
 
 section.container

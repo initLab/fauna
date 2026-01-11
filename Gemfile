@@ -2,12 +2,12 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 7.0.8"
+gem "rails", "~> 8.1.1"
 gem "bootsnap"
 
 # Use SCSS for stylesheets
-gem "sass-rails"
 gem "sprockets"
+gem 'dartsass-sprockets'
 
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier"
@@ -43,7 +43,7 @@ gem "slim-rails"
 
 # Use the Bootstrap CSS framework and the FA icon font
 gem "bootstrap-sass"
-gem "font-awesome-sass", "~> 4.0"
+gem "font-awesome-sass", :github => 'sunbirddcim/font-awesome-sass'
 
 # Gravatar helper
 gem "gravatar-ultimate"
@@ -83,23 +83,6 @@ gem "matrix"
 gem "rack-cors"
 
 group :development do
-  gem "pry"
-  gem "pry-rails"
-  gem "pry-doc"
-
-  # Continuous testing with Guard
-  gem "guard-rspec"
-
-  # Deploy to a puma  server
-  gem "capistrano3-puma", "~> 5"
-
-  # Goodies for prettier printing of records in the console
-  gem "awesome_print"
-  gem "hirb"
-
-  gem "better_errors"
-  gem "binding_of_caller"
-
   gem "web-console"
 end
 

@@ -3,8 +3,8 @@
   <td><%= application.redirect_uri %></td>
   <td class="text-right">
     <div class="record-actions">
-      <%= link_to icon(:pencil), edit_oauth_application_path(application), class: 'edit', alt: t('doorkeeper.applications.buttons.edit') %>
-      <%= link_to icon(:times), oauth_application_path(application), method: :delete, class: 'delete', data: {confirm: t('doorkeeper.applications.confirmations.destroy')} %>
+      <%= link_to icon('fa-solid', :pencil), edit_oauth_application_path(application), class: 'edit', alt: t('doorkeeper.applications.buttons.edit') %>
+      <%= link_to icon('fa-solid', :times), oauth_application_path(application), method: :delete, class: 'delete', data: {confirm: t('doorkeeper.applications.confirmations.destroy')} %>
     </div>
   </td>
 </tr>
