@@ -58,7 +58,6 @@ gem "cocoon"
 gem "kaminari"
 
 # Use rolify and pundit for authorization
-gem "rolify"
 gem "pundit"
 
 # Asynchronous job execution

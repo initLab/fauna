@@ -1,17 +1,18 @@
-require "digest/md5"
+require 'digest/md5'
 
 class User < ApplicationRecord
-  rolify
-
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
     :recoverable, :rememberable, :trackable, :validatable, :doorkeeper,
     authentication_keys: [:login]
 
+  has_many :user_roles
+  has_many :roles, through: :user_roles
+
   has_many :network_devices, foreign_key: :owner_id, dependent: :destroy
   has_many :phone_numbers, foreign_key: :owner_id, dependent: :destroy
-  has_many :oauth_applications, class_name: "Doorkeeper::Application", as: :owner
+  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
 
   validates :username, uniqueness: {case_sensitive: false}, presence: true
   validates :twitter, format: {with: /\A[A-Za-z0-9_]{1,15}\z/}, allow_blank: true
@@ -30,8 +31,26 @@ class User < ApplicationRecord
     conditions = warden_conditions.dup
 
     if (login = conditions.delete(:login))
-      where(conditions).where(["lower(username) = :value OR lower(email) = :value", {value: login.downcase.strip}]).first
+      where(conditions).where(['lower(username) = :value OR lower(email) = :value', {value: login.downcase.strip}]).first
     end
+  end
+
+  def has_role?(role)
+    self.roles.exists?(name: role)
+  end
+
+  def add_role(role_name)
+    role = Role.find_by(name: role_name)
+
+    self.user_roles.find_or_create_by(role_id: role.id, end_time: nil)
+    self.roles.reload
+  end
+
+  def remove_role(role_name)
+    role = Role.find_by(name: role_name)
+
+    self.user_roles.find_by(role_id: role.id).update(end_time: Time.current)
+    self.roles.reload
   end
 
   def email_md5
@@ -39,15 +58,15 @@ class User < ApplicationRecord
   end
 
   def name
-    [first_name, last_name].compact.join(" ").strip
+    [first_name, last_name].compact.join(' ').strip
   end
 
   def twitter=(handle)
-    write_attribute :twitter, handle.gsub(/\A@/, "") if handle
+    write_attribute :twitter, handle.gsub(/\A@/, '') if handle
   end
 
   def picture(size = 128)
-    Gravatar.new(email).image_url ssl: true, s: size, d: "retro"
+    Gravatar.new(email).image_url ssl: true, s: size, d: 'retro'
   end
 
   def pin=(pin)
