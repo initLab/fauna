@@ -44,6 +44,7 @@ gem "slim-rails"
 # Use the Bootstrap CSS framework and the FA icon font
 gem "bootstrap"
 gem "font-awesome-sass", :github => 'sunbirddcim/font-awesome-sass'
+gem "bootswatch", :github => "thomaspark/bootswatch"
 
 # Gravatar helper
 gem "gravatar-ultimate"

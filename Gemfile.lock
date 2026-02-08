@@ -4,6 +4,12 @@ GIT
   specs:
     font-awesome-sass (6.5.2.pre.sunbird.pre.1)
 
+GIT
+  remote: https://github.com/thomaspark/bootswatch.git
+  revision: 149996ddaa93db10c6fc05145e3ab98872718c5b
+  specs:
+    bootswatch (5.3.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -435,6 +441,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap
+  bootswatch!
   brakeman
   bundler-audit
   byebug
