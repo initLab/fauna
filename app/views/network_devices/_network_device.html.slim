@@ -3,5 +3,5 @@ tr
   td = network_device.mac_address
   td.text-right
     .record-actions
-      => link_to icon(:pencil), edit_user_network_device_path(network_device), class: 'edit'
-      = link_to icon(:times), user_network_device_path(network_device), method: :delete, class: 'delete', data: {confirm: t('views.network_devices.are_you_sure')}
+      => link_to icon('fa-solid', :pencil), edit_user_network_device_path(network_device), class: 'edit'
+      = link_to icon('fa-solid', :times), user_network_device_path(network_device), method: :delete, class: 'delete', data: {confirm: t('views.network_devices.are_you_sure')}

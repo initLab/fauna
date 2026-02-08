@@ -12,10 +12,8 @@
 //
 //= require jquery3
 //= require rails-ujs
-//= require bootstrap/dropdown
-//= require bootstrap/collapse
-//= require bootstrap/alert
-//= require bootstrap/transition
+//= require popper
+//= require bootstrap
 //= require cocoon
 //= require_tree .
 

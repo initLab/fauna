@@ -1,5 +1,11 @@
+@use 'sass:map';
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+
+
 .current_status_indicator {
-    @extend .thumbnail;
+    //@extend .thumbnail;
     @extend .text-center;
     width: 350px;
     font-size: 2em;
@@ -7,16 +13,16 @@
     margin: 20px auto 0 auto;
     i.fa { font-size: 72pt; }
 
-    @media (max-width: $screen-sm-min) {
+    @include media-breakpoint-only(xs) {
         width: 250px;
     }
 
-    @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+    @include media-breakpoint-only(sm) {
         width: 350px;
         i.fa { font-size: 36pt; }
     }
 
-    @media (min-width: $screen-lg-min) {
+    @include media-breakpoint-up(lg) {
         width: 200px;
         height: 200px;
         i.fa { font-size: 72pt; }
@@ -29,7 +35,7 @@
     margin: 0 auto;
     padding: 20px;
 
-    @media (min-width: $screen-md-max) {
+    @include media-breakpoint-up(lg) {
         form { display: inline-block; }
     }
 }

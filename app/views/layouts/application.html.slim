@@ -21,8 +21,9 @@ html lang="#{I18n.locale}"
 
     link rel="manifest" href="/manifest.json"
   body
-    = render partial: 'layouts/navigation'
-    = render partial: 'layouts/flash'
-    main
+    header
+      = render partial: 'layouts/navigation'
+    main.mt-4
+      = render partial: 'layouts/flash'
       == yield
     = render partial: 'layouts/footer'

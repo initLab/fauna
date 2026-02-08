@@ -1,0 +1,12 @@
+.timed-roles id="timed-roles-#{user.id}"
+  button.btn.btn-sm.btn-primary[type='button' data-bs-toggle='modal' data-bs-target="#modal-timed-roles-#{user.id}"]
+    = icon('fa-solid', 'calendar')
+
+  .modal.fade[tabindex="-1" id="modal-timed-roles-#{user.id}" role="dialog" aria-hidden="true"]
+    .modal-dialog[role="document"]
+      .modal-content
+        .modal-header
+          h5.modal-title = "#{User.human_attribute_name(:roles)} - #{user.name}"
+          button.btn-close[data-bs-dismiss="modal" aria-bs-label="Close"]
+        .modal-body
+          p kur

@@ -1,9 +1,14 @@
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+@import 'bootstrap';
+
 .add_nested_fields_container {
     @extend .text-center;
 }
 
 .form-horizontal .add_fields {
-    @extend .col-sm-offset-3;
+    @extend .offset-sm-3;
     @extend .btn;
     @extend .btn-primary;
     @extend .btn-sm;

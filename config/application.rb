@@ -46,5 +46,7 @@ module Fauna
     end
 
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
+
+    config.sass.quiet_deps = true
   end
 end

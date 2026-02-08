@@ -42,7 +42,7 @@ gem "phony_rails"
 gem "slim-rails"
 
 # Use the Bootstrap CSS framework and the FA icon font
-gem "bootstrap-sass"
+gem "bootstrap"
 gem "font-awesome-sass", :github => 'sunbirddcim/font-awesome-sass'
 
 # Gravatar helper

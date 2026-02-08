@@ -1,16 +1,19 @@
-.navbar-brand {
-    margin: 0 !important;
-    padding: 0;
-
-    img {
-        padding: 5px 0px;
-        @media (max-width: $screen-sm-min) {
-            padding: 5px;
-        }
-
-    }
-
-  &.active {
-    background-color: #0c7cd5;
-  }
-}
+//@import 'bootstrap/functions';
+//@import 'bootstrap/variables';
+//@import 'bootstrap/mixins';
+//
+//.navbar-brand {
+//    margin: 0 !important;
+//    padding: 0;
+//
+//    img {
+//        padding: 5px 0;
+//        @include media-breakpoint-up(sm) {
+//          padding: 5px;
+//        }
+//    }
+//
+//  &.active {
+//    background-color: #0c7cd5;
+//  }
+//}
