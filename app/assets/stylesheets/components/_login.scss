@@ -1,28 +1,33 @@
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+@import 'bootstrap';
+
 .centered_form {
     @extend .col-md-4;
-    @extend .col-md-offset-4;
+    @extend .offset-md-4;
     @extend .col-sm-6;
-    @extend .col-sm-offset-3;
+    @extend .offset-sm-3;
 }
 
 input[type=submit] {
     @extend .btn;
     @extend .btn-primary;
     @extend .btn-lg;
-    @extend .btn-block;
+    //@extend .btn-block;
 }
 
 .account_form {
     @extend .col-md-10;
-    @extend .col-md-offset-1;
+    @extend .offset-md-1;
     @extend .col-lg-8;
-    @extend .col-lg-offset-2;
+    @extend .offset-lg-2;
 }
 
 .form-horizontal {
     div.boolean {
         padding: 10px;
-        @extend .col-sm-offset-3;
+        @extend .offset-sm-3;
     }
 }
 
@@ -32,7 +37,7 @@ input[type=submit] {
 }
 
 .edit_gravatar {
-    @extend .img-thumbnail;
+    //@extend .img-thumbnail;
 
     position: relative;
 

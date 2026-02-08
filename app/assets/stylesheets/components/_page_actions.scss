@@ -1,13 +1,18 @@
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+@import 'bootstrap';
+
 .page-actions {
     float: right;
-    @extend .hidden-xs;
+    @extend .d-none;
+    @extend .d-sm-block;
 }
 
 .mobile-page-actions {
-    @extend .hidden-sm;
-    @extend .visible-xs;
+    @extend .d-block;
+    @extend .d-sm-none;
     a {
         @extend .btn-lg;
-        @extend .btn-block;
     }
 }
