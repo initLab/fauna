@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   namespace :fauna do
     resources :users, only: [:index, :edit, :update, :show, :destroy] do
-      resources :role_assignments, only: [:create] do
+      resources :role_assignments, only: [:index, :new, :create] do
         collection do
           delete ":role_name", action: "destroy", as: "role_assignment"
         end

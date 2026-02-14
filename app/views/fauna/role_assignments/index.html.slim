@@ -1,0 +1,65 @@
+- content_for(:title) { "#{User.human_attribute_name(:roles)} - #{@user.name}" }
+- content_for(:page_actions) do
+  = link_to new_fauna_user_role_assignment_path, class: ['btn', 'btn-success'] do
+    => icon('fa-solid', :plus)
+    = t('views.roles.add')
+
+section.container
+  header.row
+    .col-sm-12
+      header.page-header
+        .page-actions
+          = yield :page_actions
+        h2 = "#{User.human_attribute_name(:roles)} - #{@user.name}"
+  .row
+    .col-sm-12
+      h4 = t('views.roles.current')
+      table.table.table-hover.table-sm.m-2
+        thead
+          tr
+            th[scope='col'] = UserRole.human_attribute_name(:role)
+            th[scope='col'] = UserRole.human_attribute_name(:start_time)
+            th[scope='col'] = UserRole.human_attribute_name(:end_time)
+            th
+
+        tbody
+          - @user.user_roles.order(end_time: :desc).each do |ur|
+            tr
+              td = ur.role.localized_name
+              td = ur.start_time
+              td = ur.end_time
+              td
+                button.btn.btn-danger.btn-sm.m-0
+                  = t('views.roles.deactivate')
+      hr
+      h4 = t 'views.roles.future'
+      table.table.table-hover.table-sm.m-2
+        thead
+          tr
+            th = UserRole.human_attribute_name(:role)
+            th = UserRole.human_attribute_name(:start_time)
+            th = UserRole.human_attribute_name(:end_time)
+            th
+        tbody
+        - @user.user_roles.unscoped.future.order(end_time: :desc).each do |ur|
+          tr
+            td = ur.role.localized_name
+            td = ur.start_time
+            td = ur.end_time
+            td
+              button.btn.btn-danger.btn-sm
+                = t('views.roles.cancel')
+      hr
+      h4 = t('views.roles.expired')
+      table.table.table-hover.table-sm.m-2
+        thead
+          tr
+            th = UserRole.human_attribute_name(:role)
+            th = UserRole.human_attribute_name(:start_time)
+            th = UserRole.human_attribute_name(:end_time)
+
+        - @user.user_roles.unscoped.expired.order(end_time: :desc).each do |ur|
+          tr
+            td = ur.role.localized_name
+            td = ur.start_time
+            td = ur.end_time

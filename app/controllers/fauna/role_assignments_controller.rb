@@ -4,6 +4,14 @@ module Fauna
 
     before_action :assign_user
 
+    def index
+      authorize :role_assignment
+    end
+
+    def new
+      authorize :role_assignment
+    end
+
     def create
       authorize :role_assignment
 

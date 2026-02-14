@@ -5,4 +5,8 @@ tr
   td.roles_column
     = render partial: '/fauna/role_assignments/role_assignments', locals: {user: user}
   td.temporary_roles
-    = render partial: '/fauna/role_assignments/temporary_roles', locals: {user: user}
+    = link_to fauna_user_role_assignments_path(user.id), :class => 'btn btn-sm btn-primary' do
+      = icon('fa-solid', 'calendar')
+    / button.btn.btn-sm.btn-primary[type='button' data-bs-toggle='modal' data-bs-target="#modal-timed-roles-#{user.id}"]
+      = icon('fa-solid', 'calendar')
+    / = render partial: '/fauna/role_assignments/temporary_roles', locals: {user: user}
