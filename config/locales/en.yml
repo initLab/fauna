@@ -57,6 +57,11 @@ en:
         use_for_presence: Use to determine when I'm in the Lab
       phone_number:
         phone_number: Phone number
+      user_role:
+        user: User
+        role: Role
+        start_time: From
+        end_time: Until
   mailers:
     unlocks:
       hello: "Hello, %{name}!"
@@ -146,6 +151,8 @@ en:
       new_network_device: New network device
     roles:
       are_you_sure: 'Are you shnur?'
+      active: 'Active'
+      inactive: 'Inactive'
     footer:
       license: 'init Lab Fauna is licensed under'
       source_code: 'The source code is available in'

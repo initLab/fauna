@@ -63,6 +63,11 @@ bg:
         use_for_presence: Използвай за определяне кога съм в Лаба
       phone_number:
         phone_number: Телефонен номер
+      user_role:
+        user: Потребител
+        role: Роля
+        start_time: Начало
+        end_time: Край
   mailers:
     unlocks:
       hello: "Здравейте, %{name}!"
@@ -153,6 +158,14 @@ bg:
       new_network_device: Ново мрежово устройство
     roles:
       are_you_sure: 'Сигурни ли сте?'
+      add: 'Добави достъп'
+      active: 'Активна'
+      inactive: 'Неактивна'
+      expired: 'Изтекли'
+      current: 'Активни'
+      future: 'Бъдещи'
+      deactivate: 'Деактивирай'
+      cancel: 'Откажи'
     footer:
       license: 'init Lab Fauna е лицензирана под'
       source_code: 'Изходният код е достъпен в'
