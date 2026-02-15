@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 Rails.application.routes.draw do
   use_doorkeeper do
-    controllers applications: "oauth/applications"
+    controllers applications: 'oauth/applications'
   end
 
   resource :user, only: [] do
@@ -9,45 +10,42 @@ Rails.application.routes.draw do
 
   authenticated do
     devise_scope :user do
-      get "users/edit" => "devise/registrations#edit", :as => :user_root
+      get 'users/edit' => 'devise/registrations#edit', :as => :user_root
     end
   end
 
   namespace :fauna do
-    resources :users, only: [:index, :edit, :update, :show, :destroy] do
-      resources :role_assignments, only: [:index, :new, :create] do
-        collection do
-          delete ":role_name", action: "destroy", as: "role_assignment"
-        end
+    resources :users, only: %i[index edit update show destroy] do
+      resources :role_assignments, only: %i[index new create destroy] do
       end
     end
   end
 
-  namespace :api, defaults: {format: "json"} do
+  namespace :api, defaults: {format: 'json'} do
     resources :users, only: [] do
       collection do
-        get "present"
+        get 'present'
       end
     end
 
     resource :current_user, only: :show
 
-    resource :phone_access, only: [], controller: "phone_access" do
+    resource :phone_access, only: [], controller: 'phone_access' do
       collection do
-        post "phone_number_token"
-        post "verify_pin"
+        post 'phone_number_token'
+        post 'verify_pin'
       end
     end
   end
 
-  get "spaceapi/status", to: "space_api#status"
-  get "spaceapi/oauth_status", to: "space_api#oauth_status"
+  get 'spaceapi/status', to: 'space_api#status'
+  get 'spaceapi/oauth_status', to: 'space_api#oauth_status'
 
-  get "manifest", to: "web_app_manifest#manifest"
+  get 'manifest', to: 'web_app_manifest#manifest'
 
-  devise_for :users, controllers: {registrations: "registrations"}
-  get "dashboard/index"
-  root "dashboard#index"
+  devise_for :users, controllers: {registrations: 'registrations'}
+  get 'dashboard/index'
+  root 'dashboard#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
