@@ -1,13 +1,16 @@
-.role-assignments id="role-assignments-#{user.id}"
+.role-assignments.btn-group id="role-assignments-#{user.id}" role="group"
   - Role.predefined.each do |predefined_role|
     - if user.has_role? predefined_role.name
-      = link_to role_assignment_fauna_user_role_assignments_path(user.id, predefined_role.name), method: :delete, remote: true, class: 'btn btn-sm btn-warning', data: {disable: true, confirm: t('views.roles.are_you_sure')} do
+      / TODO: hidden form here
+      / = button_to fauna_user_role_assignments_path(user_id: user.id, id: predefined_role.id), method: :delete, remote: true, class: 'btn btn-sm btn-warning', data: {disable: true, confirm: t('views.roles.are_you_sure')} do
+      button.btn.btn-sm.btn-warning
         => icon('fa-solid', 'check-square-o')
         = predefined_role.localized_name
         - if user.user_roles.find_by(role: predefined_role.id).end_time != nil
           =< icon('fa-solid', 'calendar', html_options: {title: user.user_roles.find_by(role: predefined_role.id).end_time })
     - else
-      = link_to fauna_user_role_assignments_path(user.id, role: {name: predefined_role.name}), method: :post, remote: true, class: 'btn btn-sm btn-default', data: {disable: true, confirm: t('views.roles.are_you_sure')} do
+      / = link_to fauna_user_role_assignments_path(user.id, role: {name: predefined_role.name}), method: :post, remote: true, class: 'btn btn-sm btn-default', data: {disable: true, confirm: t('views.roles.are_you_sure')} do
+      button.btn.btn-sm.btn-default.disabled
         => icon('fa-solid', 'square-o')
         = predefined_role.localized_name
         - if user.user_roles.unscoped.future.find_by(role: predefined_role.id)
