@@ -8,7 +8,7 @@ class RadWho
   end
 
   def self.radwho
-    if Rails.env.production?
+    if Rails.env.production? and File.file?('/var/log/freeradius/radutmp')
       `radwho -i -r -F /var/log/freeradius/radutmp`.gsub(RAW_ENTRY_REGEXP, '\k<session>-\k<mac>')
     else
       ""
