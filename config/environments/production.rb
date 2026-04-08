@@ -44,7 +44,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+#  config.force_ssl = true
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
@@ -69,10 +69,10 @@ Rails.application.configure do
   # SMTP is default
   # config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: Rails.application.secrets.SMTP_ADDRESS,
+    address: Rails.application.credentials.smtp.host,
     port: 465,
-    user_name: Rails.application.secrets.SMTP_USER_NAME,
-    password: Rails.application.secrets.SMTP_PASSWORD,
+    user_name: Rails.application.credentials.smtp.user,
+    password: Rails.application.credentials.smtp.password,
     ssl: true,
   }
 
