@@ -51,6 +51,9 @@ gem "gravatar-ultimate"
 # Add Ruby 2.4.0 support
 gem "xmlrpc"
 
+# SpaceApi
+gem 'ostruct'
+
 # Use simple form for form building
 gem "simple_form"
 gem "cocoon"
