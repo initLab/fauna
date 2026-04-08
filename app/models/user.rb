@@ -51,7 +51,7 @@ class User < ApplicationRecord
   def remove_role(role, start_time = nil)
     user_role = UserRole.unscoped.find_by(user_id: id, role_id: role.id, start_time: start_time)
     user_role ||= UserRole.find_by(user_id: id, role_id: role.id)
-    user_role.deactivate
+    user_role&.deactivate
   end
 
   def email_md5
