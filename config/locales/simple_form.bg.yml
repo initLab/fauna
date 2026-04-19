@@ -26,6 +26,8 @@ bg:
       network_device:
         create: "Създай"
         update: "Промени"
+      user_role:
+        create: "Добави достъп"
     # Examples
     # labels:
     #   defaults:

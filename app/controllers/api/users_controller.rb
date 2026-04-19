@@ -1,8 +1,10 @@
-class Api::UsersController < Api::ApplicationController
+module Api
+  class UsersController < Api::ApplicationController
   wrap_parameters format: [:json]
   include Api::PublicApiExposingController
 
   def present
     @users = Presence.present_users
+  end
   end
 end
