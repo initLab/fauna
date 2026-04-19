@@ -25,7 +25,7 @@ module Fauna
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :bg
 
-    config.action_view.field_error_proc = proc do |html_tag, instance|
+    config.action_view.field_error_proc = proc do |html_tag, _instance|
       html_tag
     end
 

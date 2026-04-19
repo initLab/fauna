@@ -1,6 +1,6 @@
 - content_for(:title) { t 'views.sessions.sign_in_heading' }
 section.container
-  .row
+  .row.standalone-form
     .centered_form
       = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         header
@@ -14,3 +14,4 @@ section.container
         .form-actions
           = f.button :submit, t('views.sessions.sign_in')
       = render "devise/shared/links"
+f

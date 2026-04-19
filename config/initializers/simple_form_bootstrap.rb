@@ -19,7 +19,7 @@ SimpleForm.setup do |config|
   config.boolean_label_class = 'form-check-label'
 
   # How the label text should be generated altogether with the required text.
-  config.label_text = lambda { |label, required, explicit_label| "#{label} #{required}" }
+  config.label_text = ->(label, required, _explicit_label) { "#{label} #{required}" }
 
   # Define the way to render check boxes / radio buttons with labels.
   config.boolean_style = :inline
@@ -32,7 +32,7 @@ SimpleForm.setup do |config|
   config.include_default_input_wrapper_class = false
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'alert alert-danger'
+  config.error_notification_class = 'card card-body border-danger text-danger md-6 mb-1'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
