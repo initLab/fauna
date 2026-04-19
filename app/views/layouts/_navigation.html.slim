@@ -1,17 +1,16 @@
 nav class="py-0 navbar navbar-expand-lg #{content_for?(:nav_color) ? yield(:nav_color) : 'navbar-dark bg-primary'}"
   .container
     = link_to root_url, class: "navbar-brand", active: false do
-      = image_tag 'logo.svg', class: 'logo', height: '47px', alt: 'Fauna'
+      = image_tag 'initlab-logo.svg', class: 'logo', height: '47px', alt: 'Fauna'
     button.navbar-toggler data-target="#navbar-collapse" data-toggle="collapse" type="button"
       span.navbar-toggler-icon
 
     .navbar-collapse.collapse#navbar-collapse
       .navbar-nav.flex-grow-1
         - if user_signed_in? and UserPolicy.new(current_user, nil).index?
-          a.nav-link
-            = link_to fauna_users_path, class: "nav-link #{'active' if current_page?(fauna_users_path)}" do
-              => icon('fa-solid', :users)
-              = t('views.navigation.labbers')
+          = link_to fauna_users_path, class: "nav-link #{'active' if current_page?(fauna_users_path)}" do
+            => icon('fa-solid', :users)
+            = t('views.navigation.labbers')
       .navbar-nav.navbar-right
         - unless user_signed_in?
           .nav-item.dropdown
