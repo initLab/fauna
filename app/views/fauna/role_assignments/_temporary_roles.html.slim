@@ -48,7 +48,7 @@
               div.d-table-cell.px-2.font-weight-bold
                 = UserRole.human_attribute_name(:end_time)
 
-            - user.user_roles.unscoped.future.order(end_time: :desc).each do |ur|
+            - user.user_roles.future.order(end_time: :desc).each do |ur|
               div.d-table-row
                 div.d-table-cell.px-2
                   = ur.role.localized_name
@@ -72,7 +72,7 @@
               div.d-table-cell.px-2.font-weight-bold
                 = UserRole.human_attribute_name(:end_time)
 
-            - user.user_roles.unscoped.expired.order(end_time: :desc).each do |ur|
+            - user.user_roles.expired.order(end_time: :desc).each do |ur|
               div.d-table-row
                 div.d-table-cell.px-2
                   = ur.role.localized_name

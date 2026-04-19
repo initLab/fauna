@@ -19,7 +19,8 @@ class User < ApplicationRecord
   validates :username, uniqueness: { case_sensitive: false }, presence: true
   validates :twitter, format: { with: /\A[A-Za-z0-9_]{1,15}\z/ }, allow_blank: true
   validates :url,
-            format: { with: %r{\A(http|https)://[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z-]{2,63}(:[0-9]{1,5})?(/.*)?\z}ix }, allow_blank: true
+            format: { with: %r{\A(http|https)://[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z-]{2,63}(:[0-9]{1,5})?(/.*)?\z}ix },
+            allow_blank: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :github, format: { with: /\A[a-z0-9][a-z0-9-]{,38}\z/i }, allow_blank: true
@@ -39,7 +40,7 @@ class User < ApplicationRecord
                              { value: login.downcase.strip }]).first
   end
 
-  def has_role?(role)
+  def role?(role)
     roles.exists?(name: role)
   end
 
@@ -52,10 +53,6 @@ class User < ApplicationRecord
     user_role = UserRole.unscoped.find_by(user_id: id, role_id: role.id, start_time: start_time)
     user_role ||= UserRole.find_by(user_id: id, role_id: role.id)
     user_role&.deactivate
-  end
-
-  def email_md5
-    Digest::MD5.hexdigest email
   end
 
   def name
