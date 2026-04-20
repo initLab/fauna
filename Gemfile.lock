@@ -368,6 +368,7 @@ GEM
       google-protobuf (~> 4.31)
     sassc-embedded (1.80.8)
       sass-embedded (~> 1.80)
+    sd_notify (0.1.1)
     sdoc (2.6.5)
       rdoc (>= 5.0)
     securerandom (0.4.1)
@@ -495,6 +496,7 @@ DEPENDENCIES
   rails (~> 8.1.1)
   rails-i18n
   rspec-rails
+  sd_notify
   sdoc
   selenium-webdriver
   simple_form

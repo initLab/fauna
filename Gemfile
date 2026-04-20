@@ -131,4 +131,6 @@ group :production do
   gem "pg"
 
   gem "puma"
+
+  gem "sd_notify"
 end
