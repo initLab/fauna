@@ -1,4 +1,7 @@
 ---
+
+inherit_from: .rubocop_todo.yml
+
 plugins:
   - rubocop-rails
   - rubocop-rspec
@@ -29,6 +32,5 @@ RSpec/ExampleLength:
 Style/Documentation:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - '**/*.jbuilder'
+Rails/OutputSafety:
+  Enabled: false

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
@@ -10,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def self.default_url_options(options = {})
     if I18n.locale != I18n.default_locale
-      options.merge({locale: I18n.locale})
+      options.merge({ locale: I18n.locale })
     else
       options
     end
@@ -31,22 +33,20 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :username, :email])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:username, :email])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :username,
-      :email, :url, :locale,
-      :twitter, :announce_my_presence,
-      :github, :jabber,
-      :pin, :pin_confirmation,
-      phone_numbers_attributes: [
-        :_destroy,
-        :id,
-        :phone_number
-      ]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name username email])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[username email])
+    devise_parameter_sanitizer.permit(:account_update, keys: [
+                                        :first_name, :last_name, :username,
+                                        :email, :url, :locale,
+                                        :twitter, :announce_my_presence,
+                                        :github, :jabber,
+                                        :pin, :pin_confirmation,
+                                        { phone_numbers_attributes: %i[_destroy id phone_number] }
+                                      ])
   end
 
   def current_ip_address
-    request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip
+    request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip
   end
 
   def current_mac_address

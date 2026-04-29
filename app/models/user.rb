@@ -68,7 +68,7 @@ class User < ApplicationRecord
   end
 
   def pin=(pin)
-    return unless pin.present?
+    return if pin.blank?
 
     @pin = pin
     self.encrypted_pin = BCrypt::Password.create pin

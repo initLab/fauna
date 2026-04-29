@@ -1,0 +1,22 @@
+Lint/MixedRegexpCaptureTypes:
+  Exclude:
+    - 'app/models/rad_who.rb'
+
+Style/MultilineBlockChain:
+  Exclude:
+    - 'app/models/rad_who.rb'
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/api/phone_access_controller.rb'
+    - 'app/controllers/registrations_controller.rb'

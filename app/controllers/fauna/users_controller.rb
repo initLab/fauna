@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Fauna
   class UsersController < ApplicationController
     before_action :authenticate_user!

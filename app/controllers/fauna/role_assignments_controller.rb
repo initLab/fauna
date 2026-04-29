@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Fauna
   class RoleAssignmentsController < ApplicationController
     before_action :authenticate_user!
@@ -20,7 +21,6 @@ module Fauna
       else
         render :new, status: :unprocessable_content
       end
-
     rescue Pundit::NotAuthorizedError
       head :forbidden
     end

@@ -1,2 +1,6 @@
-class AuditLog::ControllerAction < AuditLog::Entry
+# frozen_string_literal: true
+
+module AuditLog
+  class ControllerAction < AuditLog::Entry
+  end
 end
