@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SpaceApiController < ApplicationController
   before_action :set_access_control_headers, only: :status
   before_action :authenticate_user!, only: :oauth_status
@@ -14,8 +16,8 @@ class SpaceApiController < ApplicationController
   private
 
   def set_access_control_headers
-    if request.format.json?
-      response.headers["Access-Control-Allow-Origin"] = "*"
-    end
+    return unless request.format.json?
+
+    response.headers['Access-Control-Allow-Origin'] = '*'
   end
 end

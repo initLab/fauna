@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RadWho
   MAC_REGEXP = /(?<mac>[0-9A-F]{2}(?<separator>[:-]?)([0-9A-F]{2}\k<separator>){4}[0-9A-F]{2})/i
   RAW_ENTRY_REGEXP = /^.*?-#{MAC_REGEXP},(?<session>.*?),.*$/i
@@ -8,10 +10,10 @@ class RadWho
   end
 
   def self.radwho
-    if Rails.env.production? and File.file?('/var/log/freeradius/radutmp')
+    if Rails.env.production? && File.file?('/var/log/freeradius/radutmp')
       `radwho -i -r -F /var/log/freeradius/radutmp`.gsub(RAW_ENTRY_REGEXP, '\k<session>-\k<mac>')
     else
-      ""
+      ''
     end
   end
 
@@ -22,10 +24,10 @@ class RadWho
   def sessions
     @sessions = valid_radwho_entries.map do |entry|
       entry.scan TRANSFORMED_ENTRY_REGEXP
-      [$1, normalize_mac_address($2)]
-    end.group_by(&:last).map do |mac, sessions|
-      [mac, sessions.map(&:first)]
-    end.to_h
+      [::Regexp.last_match(1), normalize_mac_address(::Regexp.last_match(2))]
+    end.group_by(&:last).transform_values do |sessions|
+      sessions.map(&:first)
+    end
   end
 
   def present_users
@@ -35,9 +37,9 @@ class RadWho
   def present_unknown_users
     unknown_mac_addresses.map do |mac_address|
       User.new email: email_for_unknown_user(mac_address),
-               username: "mystery_user",
-               first_name: "Mystery",
-               last_name: "Labber"
+               username: 'mystery_user',
+               first_name: 'Mystery',
+               last_name: 'Labber'
     end
   end
 
@@ -54,7 +56,7 @@ class RadWho
   end
 
   def email_for_unknown_user(mac_address)
-    (sessions[mac_address].first || ("a".."z").to_a.sample(8).join) + "@example.com"
+    "#{sessions[mac_address].first || ('a'..'z').to_a.sample(8).join}@example.com"
   end
 
   def present_known_users
@@ -70,6 +72,6 @@ class RadWho
   end
 
   def normalize_mac_address(mac_address)
-    mac_address.downcase.gsub(/[:-]/, "").scan(/../).join(":")
+    mac_address.downcase.gsub(/[:-]/, '').scan(/../).join(':')
   end
 end

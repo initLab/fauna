@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Arp
   def self.all
     # Make sure you set the following sysctl knobs to something sane or else
@@ -12,22 +14,22 @@ class Arp
 
   def self.present_users
     User.joins(:network_devices)
-      .where(announce_my_presence: true)
-      .where(network_devices: {
-        mac_address: all.map(&:mac_address),
-        use_for_presence: true
-      }).distinct
+        .where(announce_my_presence: true)
+        .where(network_devices: {
+                 mac_address: all.map(&:mac_address),
+                 use_for_presence: true
+               }).distinct
   end
 
   def self.mac_by_ip_address(ip_address)
     matching_entry = all.find { |entry| entry.ip_address == ip_address }
-    matching_entry.mac_address if matching_entry.present?
+    matching_entry.presence&.mac_address
   end
 
   attr_reader :mac_address, :ip_address, :interface
 
   def initialize(ip_address, interface, mac_address)
-    @mac_address = mac_address.downcase.gsub(/[:-]/, "").scan(/../).join(":")
+    @mac_address = mac_address.downcase.gsub(/[:-]/, '').scan(/../).join(':')
     @ip_address = ip_address
     @interface = interface
   end

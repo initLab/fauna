@@ -1,17 +1,21 @@
-require "active_support/concern"
+# frozen_string_literal: true
 
-module Api::PublicApiExposingController
-  extend ActiveSupport::Concern
+require 'active_support/concern'
 
-  included do
-    before_action :set_access_control_headers
-  end
+module Api
+  module PublicApiExposingController
+    extend ActiveSupport::Concern
 
-  private
+    included do
+      before_action :set_access_control_headers
+    end
 
-  def set_access_control_headers
-    if request.format.json?
-      response.headers["Access-Control-Allow-Origin"] = "*"
+    private
+
+    def set_access_control_headers
+      return unless request.format.json?
+
+      response.headers['Access-Control-Allow-Origin'] = '*'
     end
   end
 end

@@ -9,12 +9,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :doorkeeper,
          authentication_keys: [:login]
 
-  has_many :user_roles
+  has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
 
-  has_many :network_devices, foreign_key: :owner_id, dependent: :destroy
-  has_many :phone_numbers, foreign_key: :owner_id, dependent: :destroy
-  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
+  has_many :network_devices, foreign_key: :owner_id, dependent: :destroy, inverse_of: :owner
+  has_many :phone_numbers, foreign_key: :owner_id, dependent: :destroy, inverse_of: :owner
+  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner, dependent: :restrict_with_error
 
   validates :username, uniqueness: { case_sensitive: false }, presence: true
   validates :twitter, format: { with: /\A[A-Za-z0-9_]{1,15}\z/ }, allow_blank: true

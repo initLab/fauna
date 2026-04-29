@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class NetworkDevicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :assign_network_device, only: [:edit, :update, :destroy]
+  before_action :assign_network_device, only: %i[edit update destroy]
 
   def index
     @network_devices = current_user.network_devices
@@ -21,8 +23,7 @@ class NetworkDevicesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @network_device.update(network_device_params)
