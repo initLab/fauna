@@ -157,7 +157,7 @@ GEM
     doorkeeper-i18n (5.2.8)
       doorkeeper (>= 5.2)
     drb (2.2.3)
-    erb (6.0.2)
+    erb (6.0.4)
     erubi (1.13.1)
     execjs (2.10.1)
     factory_bot (6.5.6)
