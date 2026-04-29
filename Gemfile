@@ -1,91 +1,91 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 8.1.1"
-gem "bootsnap"
+gem 'bootsnap'
+gem 'rails', '~> 8.1.1'
 
 # Use SCSS for stylesheets
-gem "sprockets"
 gem 'dartsass-sprockets'
+gem 'sprockets'
 
 # Use Uglifier as compressor for JavaScript assets
-gem "uglifier"
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem "coffee-rails"
+gem 'coffee-rails'
 
 # Use jquery as the JavaScript library
-gem "jquery-rails"
+gem 'jquery-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder"
+gem 'jbuilder'
 
 # Use devise for authentication
-gem "devise"
-gem "devise-i18n"
+gem 'devise'
+gem 'devise-i18n'
 
 # Rails i18n
-gem "rails-i18n"
+gem 'rails-i18n'
 
 # bundle exec rake doc:rails generates the API under doc/api.
-gem "sdoc", require: false, group: :doc
+gem 'sdoc', require: false, group: :doc
 
 # Spring speeds up development by keeping your application running in the
 # background. Read more: https://github.com/rails/spring
-gem "spring", group: :development
+gem 'spring', group: :development
 
 # Phone number validation
-gem "phony_rails"
+gem 'phony_rails'
 
 # Slim templating engine
-gem "slim-rails"
+gem 'slim-rails'
 
 # Use the Bootstrap CSS framework and the FA icon font
-gem "bootstrap"
-gem "font-awesome-sass", :github => 'sunbirddcim/font-awesome-sass'
+gem 'bootstrap'
+gem 'font-awesome-sass', github: 'sunbirddcim/font-awesome-sass'
 
 # Gravatar helper
-gem "gravatar-ultimate"
+gem 'gravatar-ultimate'
 # Add Ruby 2.4.0 support
-gem "xmlrpc"
+gem 'xmlrpc'
 
 # SpaceApi
 gem 'ostruct'
 
 # Use simple form for form building
-gem "simple_form"
-gem "cocoon"
+gem 'cocoon'
+gem 'simple_form'
 
 # Use Kaminari for pagination
-gem "kaminari"
+gem 'kaminari'
 
 # Use rolify and pundit for authorization
-gem "pundit"
+gem 'pundit'
 
 # Asynchronous job execution
-gem "delayed_job"
-gem "delayed_job_active_record"
-gem "daemons"
+gem 'daemons'
+gem 'delayed_job'
+gem 'delayed_job_active_record'
 
 # SNMP Protocol handling
-gem "snmp"
+gem 'snmp'
 
 # Database dumping
-gem "yaml_db"
+gem 'yaml_db'
 
 # OAuth
-gem "doorkeeper", "> 1.0beta"
-gem "doorkeeper-i18n"
+gem 'doorkeeper', '> 1.0beta'
+gem 'doorkeeper-i18n'
 
-gem "net-smtp", require: false
-gem "matrix"
+gem 'matrix'
+gem 'net-smtp', require: false
 
 # CORS
-gem "rack-cors"
+gem 'rack-cors'
 
 group :development do
-  gem "web-console"
+  gem 'web-console'
 end
 
 # Use debugger
@@ -93,43 +93,46 @@ end
 
 group :test, :development do
   # Use SQLite for development
-  gem "sqlite3"
+  gem 'sqlite3'
 
   # RSpec for testing
-  gem "rspec-rails"
+  gem 'rspec-rails'
 
   # Use factory bot instead of fixtures
-  gem "factory_bot_rails"
+  gem 'factory_bot_rails'
 
   # Used for creating fake names, emails, etc.
-  gem "faker"
+  gem 'faker'
 
   # Use Spring for RSpec
-  gem "spring-commands-rspec"
+  gem 'spring-commands-rspec'
 
   # Simplecov for code coverage statistics
-  gem "simplecov"
+  gem 'simplecov'
 
   # Do feature testing with capybara
-  gem "capybara"
-  gem "capybara-screenshot"
-  gem "selenium-webdriver"
+  gem 'capybara'
 
   # File system modification testing
-  gem "fakefs", require: "fakefs/safe"
+  gem 'fakefs', require: 'fakefs/safe'
 
-  gem "byebug"
+  gem 'byebug'
 
-  gem "brakeman"
-  gem "bundler-audit"
-  gem "standard"
+  gem 'bundler-audit'
+  gem 'rubocop', require: false
+  gem 'rubocop-capybara', require: false
+  gem 'rubocop-factory_bot', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec_rails', require: false
 end
 
 group :production do
   # Use postgresql as the database for Active Record in production
-  gem "pg"
+  gem 'pg'
 
-  gem "puma"
+  gem 'puma'
 
-  gem "sd_notify"
+  gem 'sd_notify'
 end

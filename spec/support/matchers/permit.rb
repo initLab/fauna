@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 RSpec::Matchers.define :permit do |expected|
-  method_name = (expected.to_s + "?").to_sym
+  method_name = "#{expected}?".to_sym
 
   description do
     "permit the #{expected} action"

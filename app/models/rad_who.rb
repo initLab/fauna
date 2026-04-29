@@ -35,8 +35,9 @@ class RadWho
   def present_unknown_users
     unknown_mac_addresses.map do |mac_address|
       User.new email: email_for_unknown_user(mac_address),
-        username: "mystery_user",
-        name: "Mystery Labber"
+               username: "mystery_user",
+               first_name: "Mystery",
+               last_name: "Labber"
     end
   end
 
@@ -57,7 +58,7 @@ class RadWho
   end
 
   def present_known_users
-    User.joins(:network_devices).where(network_devices: {id: present_known_devices.where(use_for_presence: true)}).distinct
+    User.joins(:network_devices).where(network_devices: { id: present_known_devices.where(use_for_presence: true) }).distinct
   end
 
   def present_known_devices
@@ -65,7 +66,7 @@ class RadWho
   end
 
   def unknown_mac_addresses
-    mac_addresses - present_known_devices.joins(:owner).where(users: {announce_my_presence: true}).pluck(:mac_address)
+    mac_addresses - present_known_devices.joins(:owner).where(users: { announce_my_presence: true }).pluck(:mac_address)
   end
 
   def normalize_mac_address(mac_address)

@@ -1,0 +1,34 @@
+---
+plugins:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rake
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rspec_rails
+
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 3.2
+  NewCops: disable
+  Exclude:
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - '**/*.jbuilder'

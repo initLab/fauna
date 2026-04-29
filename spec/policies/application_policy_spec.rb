@@ -1,24 +1,20 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-describe ApplicationPolicy do
-  subject { described_class.new instance_double(User), double(:anything) }
+require 'rails_helper'
 
-  context "when applied to a normal user" do
-    before do
-      expect(subject.user).to receive(:has_role?).with(:board_member).and_return(false)
-    end
+describe ApplicationPolicy, type: :helper do
+  context 'when applied to a normal user' do
+    subject { described_class.new (create :trusted_member), instance_double(ApplicationController) }
 
-    [:create, :show, :update, :destroy, :index].each do |action|
+    %i[create show update destroy index].each do |action|
       it { is_expected.not_to permit(action) }
     end
   end
 
-  context "when applied to a board member" do
-    before do
-      expect(subject.user).to receive(:has_role?).with(:board_member).and_return(true)
-    end
+  context 'when applied to a board member' do
+    subject { described_class.new (create :board_member), instance_double(ApplicationController) }
 
-    [:create, :show, :update, :destroy, :index].each do |action|
+    %i[create show update destroy index].each do |action|
       it { is_expected.to permit(action) }
     end
   end

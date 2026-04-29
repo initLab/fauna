@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   # Include the FactoryBot methods
   config.include FactoryBot::Syntax::Methods
