@@ -1,56 +1,95 @@
 - content_for(:title) { t 'views.registrations.edit_account' }
 
 section.container
-  .row
-    .account_form
-      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :horizontal_form, html: { method: :put, class: 'form-horizontal' }) do |f|
+  .row.justify-content-center
+    .col-12
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
         header
           legend
             h3 = t('views.registrations.edit_account')
         = f.error_notification
 
-        .form-inputs
-          .avatar_box
-            .edit_gravatar
-              = image_tag resource.picture(128)
-              span.overlay
-                | Avatar by
-                =< link_to 'Gravatar', 'https://gravatar.com'
+        h4 = t('views.registrations.personal_data')
+        .row
+          .col-6
+            .row
+              .col-12
+              .col-6
+                = f.input :first_name, required: true
+              .col-6
+                = f.input :last_name, required: true
+              .col-12
+                = f.input :username, required: true
+              .col-12
+                = f.input :email, required: true
+                - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                  p
+                    | Currently waiting confirmation for:
+                    =< resource.unconfirmed_email
+          .col-md-3
+          .col-6.col-md-3
+            .row
+              = f.input :locale, collection: I18n.available_locales, required: true, class: ''
+            .row
+              .row.edit_gravatar
+                .col.d-flex.justify-content-center
+                  = image_tag resource.picture(192)
+              .row
+                .col.d-flex.justify-content-center
+                  span.overlay
+                    | Avatar by
+                    =< link_to 'Gravatar', 'https://gravatar.com'
 
-          = f.input :first_name, required: true
-          = f.input :last_name, required: true
-          = f.input :username, required: true
-          = f.input :email, required: true
-          = f.input :locale, collection: I18n.available_locales, required: true
-          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-            p
-              | Currently waiting confirmation for:
-              =< resource.unconfirmed_email
+        .row
+          .col
+            = f.input :announce_my_presence, hint: t('views.registrations.announce_my_presence_explanation')
 
-          = f.input :password, autocomplete: "off", hint: t('views.registrations.leave_blank_if_you_do_not_want_to_change'), required: false
-          = f.input :password_confirmation, required: false
+        .row
+          .col-6
+            = f.input :password, autocomplete: "off", hint: t('views.registrations.leave_blank_if_you_do_not_want_to_change'), required: false
+          .col-6
+            = f.input :password_confirmation, required: false
 
-          = f.input :pin, as: :password, autocomplete: "off", required: false
-          = f.input :pin_confirmation, as: :password, required: false
+        hr
+        h4 = t('views.registrations.phones')
+        .row
+          .col-6
+            .row
+              = f.input :pin, as: :password, autocomplete: "off", required: false
+              = f.input :pin_confirmation, as: :password, required: false
+              .col-12.d-grid
+                = link_to_add_association t('views.registrations.add_phone_number'), f, :phone_numbers, role: 'button', class: 'btn btn-primary', data: {'association-insertion-node' => '#phone_numbers', 'association-insertion-method' => 'append'}
 
-          #phone_numbers
+          .col-6#phone_numbers
             = f.simple_fields_for :phone_numbers do |phone_numbers_form|
               = render 'phone_number_fields', f: phone_numbers_form
 
-          .add_nested_fields_container
-            = link_to_add_association t('views.registrations.add_phone_number'), f, :phone_numbers, role: 'button', data: {'association-insertion-node' => '#phone_numbers', 'association-insertion-method' => 'append'}
+            .add_nested_fields_container.mb-3
 
-          = f.input :github
-          = f.input :twitter
-          = f.input :url
-          = f.input :jabber
-          = f.input :announce_my_presence, hint: t('views.registrations.announce_my_presence_explanation')
+        hr
+        h4 = t('views.registrations.socials')
 
-          = f.input :current_password, hint: t('views.registrations.we_need_your_current_password'), required: true, wrapper_html: {class: 'has-warning'}
+        .row
+          .col-3
+            = f.input :github
+          .col-3
+            = f.input :url
+          .col-3
+            = f.input :twitter
+          .col-3
+            = f.input :jabber
 
-        .form-actions
-          = f.button :submit, t('views.registrations.update')
-      .clearfix
-      h4
-        = t('views.registrations.unhappy')
-        = link_to t('views.registrations.cancel_my_account'), registration_path(resource_name), data: { confirm: t('views.registrations.are_you_sure') }, method: :delete, class: 'btn btn-danger pull-right'
+        hr
+
+        .row.align-items-end
+          .col-6
+            = f.input :current_password, hint: t('views.registrations.we_need_your_current_password'), required: true, wrapper_html: {class: 'has-warning'}
+            .form-actions.d-grid.g-2
+              = f.button :submit, t('views.registrations.update')
+          .col-3
+          .col-3
+            .row
+              = t('views.registrations.unhappy')
+              = link_to t('views.registrations.cancel_my_account'), registration_path(resource_name), data: { confirm: t('views.registrations.are_you_sure') }, method: :delete, class: 'btn btn-danger'
+        .clearfix
+
