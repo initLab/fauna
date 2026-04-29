@@ -125,6 +125,9 @@ en:
         your actions on any of the devices will still be published, but instead of
         showing your username, the text will say Someone who does not wish to be
         named, unlocked/locked/opened the door, etc.
+      personal_data: "Personal Data"
+      phones: "Phone Access"
+      socials: "Social Networks"
     passwords:
       forgotten_password: Forgotten password
       send_instructions: Send instructions

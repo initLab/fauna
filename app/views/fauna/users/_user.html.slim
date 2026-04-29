@@ -3,13 +3,13 @@ tr
   td = user.username
   td = user.email
   td.d-flex
-    ul.list-group.list-group-horizontal-md.align-items-center.border-primary
+    ul.list-group.list-group-horizontal-md.align-items-center.border-primary.small
       - Role.predefined.each do |predefined_role|
         - if user.role? predefined_role.name
           / TODO: hidden form here
           / = button_to fauna_user_role_assignments_path(user_id: user.id, id: predefined_role.id), method: :delete, remote: true, class: 'btn btn-sm btn-warning', data: {disable: true, confirm: t('views.roles.are_you_sure')} do
           / button.btn.btn-sm.btn-warning.disabled
-          li.list-group-item.list-group-item-success.px-2
+          li.list-group-item.list-group-item-success.px-1
             - if user.user_roles.find_by(role: predefined_role.id)&.end_time.nil?
               => icon('fa-solid', 'square-check')
             - else
@@ -19,17 +19,17 @@ tr
         - elsif user.user_roles.future.find_by(role: predefined_role.id)
           / = link_to fauna_user_role_assignments_path(user.id, role: {name: predefined_role.name}), method: :post, remote: true, class: 'btn btn-sm btn-default', data: {disable: true, confirm: t('views.roles.are_you_sure')} do
           / button.btn.btn-sm.btn-default.disabled
-          li.list-group-item.list-group-item-warning.px-2
+          li.list-group-item.list-group-item-warning.px-1
             => icon('fa-regular', 'calendar', html_options: { title: user.user_roles.unscoped.future.find_by(role: predefined_role.id).end_time })
             = predefined_role.localized_name
         - else
-          li.list-group-item.px-2
+          li.list-group-item.px-1
             => icon('fa-regular', 'square-minus')
             = predefined_role.localized_name
     .d-inline.m-2
       = link_to fauna_user_role_assignments_path(user.id), :class => 'btn btn-primary btn-sm' do
         => icon('fa-solid', 'calendar')
-        = t 'views.navigation.view_edit'
+    /    = t 'views.navigation.view_edit'
     / button.btn.btn-sm.btn-primary[type='button' data-bs-toggle='modal' data-bs-target="#modal-timed-roles-#{user.id}"]
       = icon('fa-solid', 'calendar')
     / = render partial: '/fauna/role_assignments/temporary_roles', locals: {user: user}

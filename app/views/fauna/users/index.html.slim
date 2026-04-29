@@ -7,12 +7,12 @@ section.container
   .users
     .row
       .col-sm-12
-        table
+        table.table.table-hover.table-sm.m-2.table-responsive
           thead
             tr
-              th = User.human_attribute_name(:name)
-              th = User.human_attribute_name(:username)
-              th = User.human_attribute_name(:email)
-              th = User.human_attribute_name(:roles)
+              th.col-2[scope='col'] = User.human_attribute_name(:name)
+              th.col-2[scope='col'] = User.human_attribute_name(:username)
+              th.col-2[scope='col'] = User.human_attribute_name(:email)
+              th.col-6[scope='col'] = User.human_attribute_name(:roles)
           tbody#user_table
             = render @users

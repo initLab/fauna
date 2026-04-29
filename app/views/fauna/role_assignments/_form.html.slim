@@ -4,7 +4,7 @@
     = f.select :role, Role.all.map { |r| [r.localized_name.to_s, r.id] }, {}, { required: true, selected: nil, class: 'form-select' }
   .col-4
     = f.label :start_time, class: 'form-label fw-bold'
-    = f.datetime_field :start_time, as: :date, html5: true, class: 'form-control'
+    = f.datetime_field :start_time, as: :date, html5: true, class: 'form-control', value: Time.current
   .col-4
     = f.label :end_time, class: 'form-label fw-bold'
     = f.datetime_field :end_time, as: :date, html5: true, class: 'form-control'

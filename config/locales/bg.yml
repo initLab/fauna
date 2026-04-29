@@ -132,6 +132,9 @@ bg:
         Ви свързани с устройствата пак ще се изпращат, но вместо с името ви,
         ще пише Someone who does not wish to be named, unlocked/locked/opened
         the door. и т.н.
+      personal_data: "Лични данни"
+      phones: "Достъп чрез телефон"
+      socials: "Социални мрежи"
     passwords:
       forgotten_password: Забравена парола
       send_instructions: Изпрати инструкции
