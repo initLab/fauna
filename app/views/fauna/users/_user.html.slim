@@ -13,23 +13,23 @@ tr
             - if user.user_roles.find_by(role: predefined_role.id)&.end_time.nil?
               => icon('fa-solid', 'square-check')
             - else
-              => icon('fa-solid', 'calendar', html_options: { title: user.user_roles.find_by(role: predefined_role.id)&.end_time })
+              => icon('fa-solid', :calendar, html_options: { title: user.user_roles.find_by(role: predefined_role.id)&.end_time })
             = predefined_role.localized_name
 
         - elsif user.user_roles.future.find_by(role: predefined_role.id)
           / = link_to fauna_user_role_assignments_path(user.id, role: {name: predefined_role.name}), method: :post, remote: true, class: 'btn btn-sm btn-default', data: {disable: true, confirm: t('views.roles.are_you_sure')} do
           / button.btn.btn-sm.btn-default.disabled
           li.list-group-item.list-group-item-warning.px-1
-            => icon('fa-regular', 'calendar', html_options: { title: user.user_roles.unscoped.future.find_by(role: predefined_role.id).end_time })
+            => icon('fa-regular', :calendar, html_options: { title: user.user_roles.unscoped.future.find_by(role: predefined_role.id).end_time })
             = predefined_role.localized_name
         - else
           li.list-group-item.px-1
-            => icon('fa-regular', 'square-minus')
+            => icon('fa-regular', :square)
             = predefined_role.localized_name
     .d-inline.m-2
       = link_to fauna_user_role_assignments_path(user.id), :class => 'btn btn-primary btn-sm' do
-        => icon('fa-solid', 'calendar')
+        => icon('fa-solid', :pencil)
     /    = t 'views.navigation.view_edit'
     / button.btn.btn-sm.btn-primary[type='button' data-bs-toggle='modal' data-bs-target="#modal-timed-roles-#{user.id}"]
-      = icon('fa-solid', 'calendar')
+      = icon('fa-solid', :pencil)
     / = render partial: '/fauna/role_assignments/temporary_roles', locals: {user: user}
