@@ -1,12 +1,12 @@
 = form_for @user.user_roles.new, url: fauna_user_role_assignments_path, html: { class: 'row m-0 p-0 row-cols-xs-auto g-3 align-items-end' } do |f|
-  .col-2
+  .col-lg-2.col-12
     = f.label :role, class: 'form-label fw-bold'
     = f.select :role, Role.all.map { |r| [r.localized_name.to_s, r.id] }, {}, { required: true, selected: nil, class: 'form-select' }
-  .col-4
+  .col-md-6.col-lg-4.col-12
     = f.label :start_time, class: 'form-label fw-bold'
     = f.datetime_field :start_time, as: :date, html5: true, class: 'form-control', value: Time.current
-  .col-4
+  .col-md-6.col-lg-4.col-12
     = f.label :end_time, class: 'form-label fw-bold'
     = f.datetime_field :end_time, as: :date, html5: true, class: 'form-control'
-  .col-2.d-grid
+  .col-lg-2.col-12.d-grid
     = f.button :submit, class: 'btn btn-success'

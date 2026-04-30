@@ -9,14 +9,12 @@ section.container
         = f.error_notification
         .form-inputs
           .row
-            .col-6 = f.input :email, required: true, autofocus: true
-            .col-6 = f.input :username, required: true, autofocus: true
-          .row
-            .col-6 = f.input :first_name, required: true, autofocus: true
-            .col-6 = f.input :last_name, required: true, autofocus: true
-          .row
-            .col-6 = f.input :password, required: true, hint: (t("views.registrations.minimum_characters", minimum: @minimum_password_length) if @validatable)
-            .col-6 = f.input :password_confirmation, required: true
+            .col-md-6.col-12 = f.input :email, required: true, autofocus: true
+            .col-md-6.col-12 = f.input :username, required: true, autofocus: true
+            .col-md-6.col-12 = f.input :first_name, required: true, autofocus: true
+            .col-md-6.col-12 = f.input :last_name, required: true, autofocus: true
+            .col-md-6.col-12 = f.input :password, required: true, hint: (t("views.registrations.minimum_characters", minimum: @minimum_password_length) if @validatable)
+            .col-md-6.col-12 = f.input :password_confirmation, required: true
         .form-actions
           = f.button :submit, t('views.registrations.sign_me_up')
       = render "devise/shared/links"

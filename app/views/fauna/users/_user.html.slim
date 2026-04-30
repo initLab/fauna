@@ -3,7 +3,7 @@ tr
   td = user.username
   td = user.email
   td.d-flex
-    ul.list-group.list-group-horizontal-md.align-items-center.border-primary.small
+    ul.list-group.list-group-horizontal-md.border-primary.small
       - Role.predefined.each do |predefined_role|
         - if user.role? predefined_role.name
           / TODO: hidden form here

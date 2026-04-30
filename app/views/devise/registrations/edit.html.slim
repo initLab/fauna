@@ -11,12 +11,11 @@ section.container
 
         h4 = t('views.registrations.personal_data')
         .row
-          .col-6
+          .col-md-9.col-lg-6.col-12
             .row
-              .col-12
-              .col-6
+              .col-md-6.col-12
                 = f.input :first_name, required: true
-              .col-6
+              .col-md-6.col-12
                 = f.input :last_name, required: true
               .col-12
                 = f.input :username, required: true
@@ -26,14 +25,13 @@ section.container
                   p
                     | Currently waiting confirmation for:
                     =< resource.unconfirmed_email
-          .col-md-3
-          .col-6.col-md-3
+          .col-12.col-md-3.offset-lg-3
             .row
               = f.input :locale, collection: I18n.available_locales, required: true, class: ''
             .row
               .row.edit_gravatar
                 .col.d-flex.justify-content-center
-                  = image_tag resource.picture(192)
+                  = image_tag resource.picture(192), class: 'img-fluid'
               .row
                 .col.d-flex.justify-content-center
                   span.overlay
@@ -45,22 +43,22 @@ section.container
             = f.input :announce_my_presence, hint: t('views.registrations.announce_my_presence_explanation')
 
         .row
-          .col-6
+          .col-md-6.col-12
             = f.input :password, autocomplete: "off", hint: t('views.registrations.leave_blank_if_you_do_not_want_to_change'), required: false
-          .col-6
+          .col-md-6.col-12
             = f.input :password_confirmation, required: false
 
         hr
         h4 = t('views.registrations.phones')
         .row
-          .col-6
+          .col-md-6.col-12
             .row
               = f.input :pin, as: :password, autocomplete: "off", required: false
               = f.input :pin_confirmation, as: :password, required: false
               .col-12.d-grid
                 = link_to_add_association t('views.registrations.add_phone_number'), f, :phone_numbers, role: 'button', class: 'btn btn-primary', data: {'association-insertion-node' => '#phone_numbers', 'association-insertion-method' => 'append'}
 
-          .col-6#phone_numbers
+          .col-md-6.col-12#phone_numbers
             = f.simple_fields_for :phone_numbers do |phone_numbers_form|
               = render 'phone_number_fields', f: phone_numbers_form
 
@@ -70,26 +68,26 @@ section.container
         h4 = t('views.registrations.socials')
 
         .row
-          .col-3
+          .col-md-6.col-lg-3.col-12
             = f.input :github
-          .col-3
+          .col-md-6.col-lg-3.col-12
             = f.input :url
-          .col-3
+          .col-md-6.col-lg-3.col-12
             = f.input :twitter
-          .col-3
+          .col-md-6.col-lg-3.col-12
             = f.input :jabber
 
         hr
 
         .row.align-items-end
-          .col-6
+          .col-md-6.col-12
             = f.input :current_password, hint: t('views.registrations.we_need_your_current_password'), required: true, wrapper_html: {class: 'has-warning'}
             .form-actions.d-grid.g-2
               = f.button :submit, t('views.registrations.update')
-          .col-3
-          .col-3
+          .col-md-6.col-lg-3.offset-lg-3.col-12
             .row
-              = t('views.registrations.unhappy')
-              = link_to t('views.registrations.cancel_my_account'), registration_path(resource_name), data: { confirm: t('views.registrations.are_you_sure') }, method: :delete, class: 'btn btn-danger'
+              .col-12.d-grid
+                = t('views.registrations.unhappy')
+                = link_to t('views.registrations.cancel_my_account'), registration_path(resource_name), data: { confirm: t('views.registrations.are_you_sure') }, method: :delete, class: 'btn btn-danger'
         .clearfix
 

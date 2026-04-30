@@ -2,7 +2,7 @@ nav class="py-0 navbar navbar-expand-lg #{content_for?(:nav_color) ? yield(:nav_
   .container
     = link_to root_url, class: "navbar-brand", active: false do
       = image_tag 'initlab-logo.svg', class: 'logo', height: '47px', alt: 'Fauna'
-    button.navbar-toggler data-target="#navbar-collapse" data-toggle="collapse" type="button"
+    button.navbar-toggler data-bs-target="#navbar-collapse" data-bs-toggle="collapse" type="button"
       span.navbar-toggler-icon
 
     .navbar-collapse.collapse#navbar-collapse

@@ -19,56 +19,59 @@ section.container
   .row.my-3
     .col
       h4 = t 'views.roles.current'
-      table.table.table-hover.table-sm.m-2.table-responsive
-        thead
-          tr
-            th.col-2[scope='col'] = UserRole.human_attribute_name :role
-            th.col-4[scope='col'] = UserRole.human_attribute_name :start_time
-            th.col-4[scope='col'] = UserRole.human_attribute_name :end_time
-            th.col-2
-        tbody
-          - @user.user_roles.order(end_time: :desc).each do |ur|
+      .table-responsive-lg
+        table.table.table-hover.table-sm.m-2
+          thead
             tr
-              td = ur.role.localized_name
-              td = ur.start_time.localtime
-              td = ur.end_time&.localtime
-              td
-                = form_tag fauna_user_role_assignment_path(id: ur.role_id), method: :delete, class: 'd-grid' do
-                  = hidden_field_tag :start_time, value: ur.start_time
-                  = button_tag icon('fa-solid', :close, t('views.roles.deactivate')), class: 'btn btn-danger btn-sm m-0'
+              th.col-2[scope='col'] = UserRole.human_attribute_name :role
+              th.col-4[scope='col'] = UserRole.human_attribute_name :start_time
+              th.col-4[scope='col'] = UserRole.human_attribute_name :end_time
+              th.col-2
+          tbody
+            - @user.user_roles.order(end_time: :desc).each do |ur|
+              tr
+                td = ur.role.localized_name
+                td = ur.start_time.localtime
+                td = ur.end_time&.localtime
+                td
+                  = form_tag fauna_user_role_assignment_path(id: ur.role_id), method: :delete, class: 'd-grid' do
+                    = hidden_field_tag :start_time, value: ur.start_time
+                    = button_tag icon('fa-solid', :close, t('views.roles.deactivate')), class: 'btn btn-danger btn-sm m-0'
       hr
       h4 = t 'views.roles.future'
-      table.table.table-hover.table-sm.m-2.table-responsive
-        thead
-          tr
-            th.col-2[scope='col'] = UserRole.human_attribute_name :role
-            th.col-4[scope='col'] = UserRole.human_attribute_name :start_time
-            th.col-4[scope='col'] = UserRole.human_attribute_name :end_time
-            th.col-2
-        tbody
-          - @user.user_roles.future.order(end_time: :desc).each do |ur|
+      .table-responsive-lg
+        table.table.table-hover.table-sm.m-2
+          thead
             tr
-              td = ur.role.localized_name
-              td = ur.start_time.localtime
-              td = ur.end_time&.localtime
-              td
-                = form_tag fauna_user_role_assignment_path(id: ur.role_id), method: :delete, class: 'd-grid' do
-                  = hidden_field_tag :start_time, value: ur.start_time
-                  = button_tag icon('fa-solid', :trash, t('views.roles.cancel')), class: 'btn btn-danger btn-sm m-0'
+              th.col-2[scope='col'] = UserRole.human_attribute_name :role
+              th.col-4[scope='col'] = UserRole.human_attribute_name :start_time
+              th.col-4[scope='col'] = UserRole.human_attribute_name :end_time
+              th.col-2
+          tbody
+            - @user.user_roles.future.order(end_time: :desc).each do |ur|
+              tr
+                td = ur.role.localized_name
+                td = ur.start_time.localtime
+                td = ur.end_time&.localtime
+                td
+                  = form_tag fauna_user_role_assignment_path(id: ur.role_id), method: :delete, class: 'd-grid' do
+                    = hidden_field_tag :start_time, value: ur.start_time
+                    = button_tag icon('fa-solid', :trash, t('views.roles.cancel')), class: 'btn btn-danger btn-sm m-0'
       hr
       h4 = t 'views.roles.expired'
-      table.table.table-hover.table-sm.m-2.table-responsive
-        thead
-          tr
-            th.col-2[scope='col'] = UserRole.human_attribute_name :role
-            th.col-4[scope='col'] = UserRole.human_attribute_name :start_time
-            th.col-4[scope='col'] = UserRole.human_attribute_name :end_time
-            th.col-2
-
-        tbody
-          - @user.user_roles.expired.order(end_time: :desc).each do |ur|
+      .table-responsive-lg
+        table.table.table-hover.table-sm.m-2
+          thead
             tr
-              td = ur.role.localized_name
-              td = ur.start_time.localtime
-              td = ur.end_time&.localtime
-              td
+              th.col-2[scope='col'] = UserRole.human_attribute_name :role
+              th.col-4[scope='col'] = UserRole.human_attribute_name :start_time
+              th.col-4[scope='col'] = UserRole.human_attribute_name :end_time
+              th.col-2
+
+          tbody
+            - @user.user_roles.expired.order(end_time: :desc).each do |ur|
+              tr
+                td = ur.role.localized_name
+                td = ur.start_time.localtime
+                td = ur.end_time&.localtime
+                td
