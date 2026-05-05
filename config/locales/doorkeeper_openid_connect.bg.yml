@@ -1,0 +1,8 @@
+bg:
+  doorkeeper:
+    scopes:
+      openid: Вход чрез init Lab Fauna
+      profile: Профил в init Lab Fauna
+      email: Имейл адрес за init Lab Fauna
+      address: Адрес
+      phone: Телефонен номер за init Lab Fauna

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_11_102636) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_29_165133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -119,6 +119,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_11_102636) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "oauth_openid_requests", force: :cascade do |t|
+    t.bigint "access_grant_id", null: false
+    t.string "nonce", null: false
+    t.index ["access_grant_id"], name: "index_oauth_openid_requests_on_access_grant_id"
+  end
+
   create_table "phone_numbers", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.integer "owner_id", null: false
@@ -186,4 +192,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_11_102636) do
   end
 
   add_foreign_key "audit_log_entries", "users"
+  add_foreign_key "oauth_openid_requests", "oauth_access_grants", column: "access_grant_id", on_delete: :cascade
 end
