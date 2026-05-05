@@ -111,7 +111,7 @@ Doorkeeper::OpenidConnect.configure do
       resource_owner.username
     end
 
-    claim :roles do |resource_owner|
+    claim :roles, scope: :roles do |resource_owner|
       resource_owner.roles.map(&:name)
     end
   end
