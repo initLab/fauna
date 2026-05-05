@@ -77,8 +77,9 @@ gem 'snmp'
 gem 'yaml_db'
 
 # OAuth
-gem 'doorkeeper', '> 1.0beta'
+gem 'doorkeeper'
 gem 'doorkeeper-i18n'
+gem 'doorkeeper-openid_connect'
 
 gem 'matrix'
 gem 'net-smtp', require: false
