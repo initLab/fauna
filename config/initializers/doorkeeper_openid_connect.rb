@@ -107,7 +107,11 @@ Doorkeeper::OpenidConnect.configure do
       Gravatar.new(resource_owner.email).image_url ssl: true, s: 128, d: 'retro'
     end
 
-    claim :username do |resource_owner|
+    claim :username, scope: :profile do |resource_owner|
+      resource_owner.username
+    end
+
+    claim :preferred_username, scope: :profile do |resource_owner|
       resource_owner.username
     end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_29_165133) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_18_063540) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -184,9 +184,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_29_165133) do
   end
 
   create_table "users_roles", primary_key: ["user_id", "role_id", "start_time"], force: :cascade do |t|
-    t.datetime "end_time"
+    t.timestamptz "end_time"
     t.integer "role_id", null: false
-    t.datetime "start_time", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.timestamptz "start_time", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.integer "user_id", null: false
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
   end

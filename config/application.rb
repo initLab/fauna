@@ -17,6 +17,7 @@ module Fauna
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = 'Europe/Sofia'
     # config.eager_load_paths << Rails.root.join("extras")
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
